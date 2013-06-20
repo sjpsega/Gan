@@ -8,6 +8,7 @@
 
 #import "GanViewController.h"
 #import "GanDataModel.h"
+#import "EditorDialog.h"
 @interface GanViewController (){
     NSArray *dataSource;
 }
@@ -21,11 +22,26 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self initDataSource];
+    [self addBtnEvent];
 }
 
 -(void)initDataSource{
     dataSource = @[[[GanDataModel alloc]initWithContent:@"aaa"],
-                   [[GanDataModel alloc]initWithContent:@"BBB"]];
+                   [[GanDataModel alloc]initWithContent:@"BBB"],
+                   [[GanDataModel alloc]initWithContent:@"d"],
+                   [[GanDataModel alloc]initWithContent:@"e"],
+                   [[GanDataModel alloc]initWithContent:@"f"]];
+}
+
+-(void)addBtnEvent{
+    [self.addBtn setTarget:self];
+    [self.addBtn setAction:@selector(showAddDialog:)];
+}
+
+-(IBAction)showAddDialog:(id)sender{
+    NSLog(@"AddDialog");    
+    EditorDialog *addDialog = [[EditorDialog alloc]initWithTitle:@"增加新任务"];
+    [addDialog show];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,8 +52,26 @@
 
 - (void)viewDidUnload {
     [self setTableView:nil];
+    [self setAddBtn:nil];
+    [self setAddBtn:nil];
     [super viewDidUnload];
 }
+
+//-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return YES;
+//}
+//
+//-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+//    
+//}
+//
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
+//
+//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [dataSource count];

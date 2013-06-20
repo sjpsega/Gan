@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GanViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addBtn;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end

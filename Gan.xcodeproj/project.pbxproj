@@ -22,6 +22,8 @@
 		1842AFD6176CB24600A1ED20 /* Icon@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFD4176CB24600A1ED20 /* Icon@x2.png */; };
 		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
 		1842AFDD176CDECA00A1ED20 /* GanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFDC176CDECA00A1ED20 /* GanTableViewCell.m */; };
+		18874BA11771A17600C8ED01 /* GanDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanDownViewController.m */; };
+		18874BA41771B49500C8ED01 /* EditorDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA31771B49500C8ED01 /* EditorDialog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,10 @@
 		1842AFD9176CB9A900A1ED20 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
 		1842AFDB176CDEC900A1ED20 /* GanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanTableViewCell.h; sourceTree = "<group>"; };
 		1842AFDC176CDECA00A1ED20 /* GanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanTableViewCell.m; sourceTree = "<group>"; };
+		18874B9F1771A17600C8ED01 /* GanDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDownViewController.h; sourceTree = "<group>"; };
+		18874BA01771A17600C8ED01 /* GanDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDownViewController.m; sourceTree = "<group>"; };
+		18874BA21771B49500C8ED01 /* EditorDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorDialog.h; sourceTree = "<group>"; };
+		18874BA31771B49500C8ED01 /* EditorDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorDialog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,8 @@
 		1842AF8C176CA9A200A1ED20 = {
 			isa = PBXGroup;
 			children = (
+				18874BA21771B49500C8ED01 /* EditorDialog.h */,
+				18874BA31771B49500C8ED01 /* EditorDialog.m */,
 				1842AFD1176CB1F700A1ED20 /* Resources */,
 				1842AF9E176CA9A200A1ED20 /* Gan */,
 				1842AF97176CA9A200A1ED20 /* Frameworks */,
@@ -104,6 +112,8 @@
 				1842AFDC176CDECA00A1ED20 /* GanTableViewCell.m */,
 				1842AFB3176CA9A200A1ED20 /* GanViewController.h */,
 				1842AFB4176CA9A200A1ED20 /* GanViewController.m */,
+				18874B9F1771A17600C8ED01 /* GanDownViewController.h */,
+				18874BA01771A17600C8ED01 /* GanDownViewController.m */,
 				1842AF9F176CA9A200A1ED20 /* Supporting Files */,
 			);
 			path = Gan;
@@ -215,6 +225,8 @@
 				1842AFB5176CA9A200A1ED20 /* GanViewController.m in Sources */,
 				1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */,
 				1842AFDD176CDECA00A1ED20 /* GanTableViewCell.m in Sources */,
+				18874BA11771A17600C8ED01 /* GanDownViewController.m in Sources */,
+				18874BA41771B49500C8ED01 /* EditorDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
