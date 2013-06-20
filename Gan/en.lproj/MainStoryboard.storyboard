@@ -45,7 +45,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="QfU-uu-I5F">
+                                    <navigationItem title="想要做" id="QfU-uu-I5F">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bVo-QE-CMb"/>
                                     </navigationItem>
                                 </items>
@@ -120,6 +120,22 @@
             <point key="canvasLocation" x="78" y="-33"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="GanDownViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GanDownViewController.h"/>
+        </class>
+        <class className="GanTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GanTableViewCell.h"/>
+        </class>
+        <class className="GanViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GanViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showAddDialog:"/>
+                <relationship kind="outlet" name="addBtn" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

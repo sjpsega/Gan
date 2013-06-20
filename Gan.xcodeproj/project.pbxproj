@@ -50,10 +50,11 @@
 		1842AFD9176CB9A900A1ED20 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
 		1842AFDB176CDEC900A1ED20 /* GanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanTableViewCell.h; sourceTree = "<group>"; };
 		1842AFDC176CDECA00A1ED20 /* GanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanTableViewCell.m; sourceTree = "<group>"; };
+		187D9816177357D40052D7A2 /* AlertViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertViewProtocol.h; sourceTree = "<group>"; };
 		18874B9F1771A17600C8ED01 /* GanDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDownViewController.h; sourceTree = "<group>"; };
 		18874BA01771A17600C8ED01 /* GanDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDownViewController.m; sourceTree = "<group>"; };
-		18874BA21771B49500C8ED01 /* EditorDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorDialog.h; sourceTree = "<group>"; };
-		18874BA31771B49500C8ED01 /* EditorDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorDialog.m; sourceTree = "<group>"; };
+		18874BA21771B49500C8ED01 /* EditorDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditorDialog.h; path = ../EditorDialog.h; sourceTree = "<group>"; };
+		18874BA31771B49500C8ED01 /* EditorDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditorDialog.m; path = ../EditorDialog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +74,6 @@
 		1842AF8C176CA9A200A1ED20 = {
 			isa = PBXGroup;
 			children = (
-				18874BA21771B49500C8ED01 /* EditorDialog.h */,
-				18874BA31771B49500C8ED01 /* EditorDialog.m */,
 				1842AFD1176CB1F700A1ED20 /* Resources */,
 				1842AF9E176CA9A200A1ED20 /* Gan */,
 				1842AF97176CA9A200A1ED20 /* Frameworks */,
@@ -103,6 +102,9 @@
 		1842AF9E176CA9A200A1ED20 /* Gan */ = {
 			isa = PBXGroup;
 			children = (
+				18874BA21771B49500C8ED01 /* EditorDialog.h */,
+				187D9816177357D40052D7A2 /* AlertViewProtocol.h */,
+				18874BA31771B49500C8ED01 /* EditorDialog.m */,
 				1842AFD8176CB9A900A1ED20 /* GanDataModel.h */,
 				1842AFD9176CB9A900A1ED20 /* GanDataModel.m */,
 				1842AFA7176CA9A200A1ED20 /* GanAppDelegate.h */,

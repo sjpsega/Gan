@@ -10,7 +10,7 @@
 #import "GanDataModel.h"
 #import "EditorDialog.h"
 @interface GanViewController (){
-    NSArray *dataSource;
+    NSMutableArray *dataSource;
 }
 
 @end
@@ -26,11 +26,12 @@
 }
 
 -(void)initDataSource{
-    dataSource = @[[[GanDataModel alloc]initWithContent:@"aaa"],
+    dataSource = [NSMutableArray arrayWithArray:
+                  @[[[GanDataModel alloc]initWithContent:@"aaa"],
                    [[GanDataModel alloc]initWithContent:@"BBB"],
                    [[GanDataModel alloc]initWithContent:@"d"],
                    [[GanDataModel alloc]initWithContent:@"e"],
-                   [[GanDataModel alloc]initWithContent:@"f"]];
+                   [[GanDataModel alloc]initWithContent:@"f"]]];
 }
 
 -(void)addBtnEvent{
@@ -39,9 +40,38 @@
 }
 
 -(IBAction)showAddDialog:(id)sender{
-    NSLog(@"AddDialog");    
-    EditorDialog *addDialog = [[EditorDialog alloc]initWithTitle:@"增加新任务"];
+    NSLog(@"AddDialog");
+//    [[EditorDialog class]setAnimationsEnabled:FALSE];
+    EditorDialog *addDialog = [[EditorDialog alloc]initWithTitle:@"增加新任务" showDelegate:self type:@"add"];
     [addDialog show];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    EditorDialog *dialog = (EditorDialog *)alertView;
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"Cancel Button Pressed");
+            break;
+        case 1:
+            NSLog(@"Button 1 Pressed type:%@",((EditorDialog *)alertView).type);
+            if([dialog.type isEqualToString:@"add"]){
+                [dataSource addObject:[[GanDataModel alloc]initWithContent:dialog.titleTxt.text]];
+                [self.tableView reloadData];
+            }
+            if([dialog.type isEqualToString:@"editor"]){
+                
+            }
+            break;
+        case 2:
+            NSLog(@"Button 2 Pressed");
+            break;
+        case 3:
+            NSLog(@"Button 3 Pressed");
+            break;
+        default:
+            break;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

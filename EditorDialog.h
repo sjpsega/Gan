@@ -11,5 +11,6 @@
 @interface EditorDialog : UIAlertView
 @property(strong,nonatomic) UITextField *titleTxt;
 @property(strong,nonatomic) UITextField *detailTxt;
--(id)initWithTitle:(NSString *)title;
+@property(strong,nonatomic) NSString *type;
+-(id)initWithTitle:(NSString *)title showDelegate:(id)delegate type:(NSString *)type;
 @end

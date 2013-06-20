@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AlertViewProtocol.h"
 
-@interface GanViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface GanViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,AlertViewProtocol>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addBtn;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
