@@ -9,7 +9,7 @@
 #import "GanDownViewController.h"
 #import "GanDataModel.h"
 @interface GanDownViewController (){
-    NSArray *dataSource;
+    NSMutableArray *dataSource;
 }
 
 @end
@@ -26,11 +26,15 @@
 }
 
 -(void)initDataSource{
-    dataSource = @[[[GanDataModel alloc]initWithContent:@"aaa"],
-                   [[GanDataModel alloc]initWithContent:@"BBB"],
-                   [[GanDataModel alloc]initWithContent:@"d"],
-                   [[GanDataModel alloc]initWithContent:@"e"],
-                   [[GanDataModel alloc]initWithContent:@"f"]];
+    dataSource = [NSMutableArray arrayWithArray:
+                  @[
+                  [[GanDataModel alloc]initWithTitle:@"aaa" detail:@"aaaDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"bbb" detail:@"bbbDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"ccc" detail:@"cccDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"ddd" detail:@"dddDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"eee" detail:@"eeeDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"fff" detail:@"fffDetail"]]];
+
     
     //    [self.tableView setEditing:YES animated:YES];
 }

@@ -47,12 +47,12 @@
 //            view.frame = btnBounds;
 //        }
 //    }
-//    
+//
 //    //调整大小
 //    CGRect frame = self.frame;
 //    frame.size.height = frame.size.height + detailFrame.size.height + self.titleTxt.frame.size.height + 7;
 //    self.frame = frame;
-//    
+//
 //    //弹出框动画后居中
 ////    self.center = CGPointMake(160, 200);
 //}
@@ -76,6 +76,11 @@
     
     //弹出框动画后居中
     self.center = CGPointMake(160, 200);
+    
+    if(_data){
+        self.titleTxt.text = _data.title;
+        self.detailTxt.text = _data.detail;
+    }
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

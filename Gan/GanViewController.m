@@ -9,6 +9,8 @@
 #import "GanViewController.h"
 #import "GanDataModel.h"
 #import "EditorDialog.h"
+#import "GanTableViewCell.h"
+
 @interface GanViewController (){
     NSMutableArray *dataSource;
 }
@@ -23,15 +25,18 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self initDataSource];
     [self addBtnEvent];
+//    self.tableView.allowsSelectionDuringEditing=YES;
 }
 
 -(void)initDataSource{
     dataSource = [NSMutableArray arrayWithArray:
-                  @[[[GanDataModel alloc]initWithContent:@"aaa"],
-                   [[GanDataModel alloc]initWithContent:@"BBB"],
-                   [[GanDataModel alloc]initWithContent:@"d"],
-                   [[GanDataModel alloc]initWithContent:@"e"],
-                   [[GanDataModel alloc]initWithContent:@"f"]]];
+                  @[
+                  [[GanDataModel alloc]initWithTitle:@"aaa" detail:@"aaaDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"bbb" detail:@"bbbDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"ccc" detail:@"cccDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"ddd" detail:@"dddDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"eee" detail:@"eeeDetail"],
+                  [[GanDataModel alloc]initWithTitle:@"fff" detail:@"fffDetail"]]];
 }
 
 -(void)addBtnEvent{
@@ -41,9 +46,15 @@
 
 -(IBAction)showAddDialog:(id)sender{
     NSLog(@"AddDialog");
-//    [[EditorDialog class]setAnimationsEnabled:FALSE];
-    EditorDialog *addDialog = [[EditorDialog alloc]initWithTitle:@"增加新任务" showDelegate:self type:@"add"];
+    EditorDialog *addDialog = [[EditorDialog alloc]initWithTitle:@"添加任务" showDelegate:self type:@"add"];
     [addDialog show];
+}
+
+-(void)cellDataEditHandler:(GanDataModel *)data{
+    NSLog(@"cellDataEditHandler");
+    EditorDialog *editDialog = [[EditorDialog alloc]initWithTitle:@"编辑任务" showDelegate:self type:@"edit"];
+    editDialog.data = data;
+    [editDialog show];
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -55,24 +66,21 @@
         case 1:
             NSLog(@"Button 1 Pressed type:%@",((EditorDialog *)alertView).type);
             if([dialog.type isEqualToString:@"add"]){
-                [dataSource addObject:[[GanDataModel alloc]initWithContent:dialog.titleTxt.text]];
+                [dataSource addObject:[[GanDataModel alloc]initWithTitle:dialog.titleTxt.text detail:dialog.detailTxt.text]];
                 [self.tableView reloadData];
             }
-            if([dialog.type isEqualToString:@"editor"]){
-                
+            if([dialog.type isEqualToString:@"edit"]){
+                GanDataModel *data = dialog.data;
+                data.title = dialog.titleTxt.text;
+                data.detail = dialog.detailTxt.text;
+                [self.tableView reloadData];
             }
-            break;
-        case 2:
-            NSLog(@"Button 2 Pressed");
-            break;
-        case 3:
-            NSLog(@"Button 3 Pressed");
             break;
         default:
             break;
     }
-    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -95,9 +103,25 @@
 //    
 //}
 //
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    GanTableViewCell *cell = (GanTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    if([cell isSelected]){
+//        CGRect rect = cell.frame;
+//        rect.size.height = 88.f;
+//        cell.frame = rect;
+//    }
+//    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+    [tableView beginUpdates];
+    [tableView endUpdates];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if([tableView indexPathForSelectedRow] && indexPath.row == [tableView indexPathForSelectedRow].row){
+        return 88.f;
+    }
+    return 44.f;
+}
+
 //
 //-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
 //    
@@ -107,23 +131,29 @@
     return [dataSource count];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellName = @"SimpleTableItem";
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellName];
-    if(cell == nil){
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
-    }
-    cell.textLabel.text = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]).content;
-    
-    //设置背景颜色
-    UIView *backgroundView = [[UIView alloc]initWithFrame:CGRectZero];
-    backgroundView.backgroundColor = [[UIColor alloc]initWithRed:[self random0_1] green:[self random0_1] blue:[self random0_1] alpha:[self random0_1]];
-    cell.backgroundView = backgroundView;
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    cell.backgroundColor = [[UIColor alloc]initWithRed:[self random0_1] green:[self random0_1] blue:[self random0_1] alpha:[self random0_1]];
+
+    cell.backgroundColor = [[UIColor alloc]initWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f];
+
     for ( UIView* view in cell.contentView.subviews )
     {
         view.backgroundColor = [ UIColor clearColor ];
     }
+
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellName = @"GanTableViewCellIdent";
+    //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数，导致无法添加自定义事件
+//    GanTableViewCell *cell = (GanTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellName];
+//    if(cell == nil){
+//        cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+//    }
     
+    GanTableViewCell *cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+    cell.data = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]);
+    cell.viewController = self;
     return cell;
 }
 

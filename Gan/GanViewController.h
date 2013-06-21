@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AlertViewProtocol.h"
-
+#import "GanDataModel.h"
 @interface GanViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,AlertViewProtocol>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addBtn;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+-(void)cellDataEditHandler:(GanDataModel *)data;
 @end

@@ -10,8 +10,8 @@
 
 @interface GanDataModel : NSObject
 @property(strong,nonatomic)NSString *title;
-@property(strong,nonatomic)NSString *content;
+@property(strong,nonatomic)NSString *detail;
 @property(strong,nonatomic)NSDate *date;
 @property(nonatomic)BOOL isCompelete;
--(id)initWithContent:(NSString *)conent;
+-(id)initWithTitle:(NSString *)title detail:(NSString *)detail;
 @end

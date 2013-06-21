@@ -11,19 +11,23 @@
 @implementation GanDataModel
 -(id)init{
     if(self = [super init]){
-        _content = @"";
+        _title = @"";
+        _detail = @"";
         _date = [NSDate date];
         _isCompelete = false;
     }
     return self;
 }
 
--(id)initWithContent:(NSString *)conent{
+-(id)initWithTitle:(NSString *)title detail:(NSString *)detail{
     self = [self init];
-    self.content = conent;
+    self.title = title;
+    self.detail = detail;
     return self;
 }
-@synthesize content=_content;
+
+@synthesize title = _title;
+@synthesize detail = _detail;
 @synthesize date = _date;
 @synthesize isCompelete = _isCompelete;
 @end
