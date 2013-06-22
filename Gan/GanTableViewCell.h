@@ -12,6 +12,7 @@
 @interface GanTableViewCell : UITableViewCell
 @property(strong,nonatomic)GanViewController *viewController;
 @property(strong,nonatomic)GanDataModel *data;
-@property(strong,nonatomic)UILabel *titleLabel;
-@property(strong,nonatomic)UILabel *detailLabel;
+@property(strong,nonatomic)UILabel *contentLabel;
+@property(strong,nonatomic)UITextField *contentEditTxt;
+//@property(strong,nonatomic)UILabel *detailLabel;
 @end

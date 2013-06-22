@@ -41,14 +41,22 @@
 
 -(void)addBtnEvent{
     [self.addBtn setTarget:self];
-    [self.addBtn setAction:@selector(showAddDialog:)];
+    [self.addBtn setAction:@selector(addOne:)];
 }
 
--(IBAction)showAddDialog:(id)sender{
-    NSLog(@"AddDialog");
-    EditorDialog *addDialog = [[EditorDialog alloc]initWithTitle:@"添加任务" showDelegate:self type:@"add"];
-    [addDialog show];
+-(IBAction)addOne:(id)sender{
+    [dataSource insertObject:[[GanDataModel alloc]initWithTitle:@"" detail:@"aaaDetail"] atIndex:0];
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
+
+//-(IBAction)showAddDialog:(id)sender{
+//    NSLog(@"AddDialog");
+//    EditorDialog *addDialog = [[EditorDialog alloc]initWithTitle:@"添加任务" showDelegate:self type:@"add"];
+//    [addDialog show];
+//}
 
 -(void)cellDataEditHandler:(GanDataModel *)data{
     NSLog(@"cellDataEditHandler");
@@ -116,9 +124,10 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if([tableView indexPathForSelectedRow] && indexPath.row == [tableView indexPathForSelectedRow].row){
-        return 88.f;
-    }
+    NSLog(@"%@",indexPath);
+//    if([tableView indexPathForSelectedRow] && indexPath.row == [tableView indexPathForSelectedRow].row){
+//        return 88.f;
+//    }
     return 44.f;
 }
 
