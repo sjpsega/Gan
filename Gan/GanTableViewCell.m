@@ -10,9 +10,9 @@
 #import "GanViewController.h"
 @implementation GanTableViewCell
 
--(void)prepareForReuse{
-    NSLog(@"prepareForReuse...");
-}
+//-(void)prepareForReuse{
+//    NSLog(@"prepareForReuse...");
+//}
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -22,25 +22,36 @@
     if (self) {
         // Initialization code
         
+        self.selectionStyle = UITableViewCellSelectionStyleGray;
+        
         [self addDoubleClickEvnet];
         self.textLabel.hidden = YES;
         
         self.contentLabel = [[UILabel alloc]init];
-        self.contentLabel.frame = CGRectMake(0,0, 100, 44);
+        self.contentLabel.frame = CGRectMake(0,0, 320, 44);
         self.contentLabel.shadowColor = [[UIColor alloc]initWithRed:0xcc/255.f green:0xcc/255.f blue:0xcc/255.f alpha:1];
         self.contentLabel.shadowOffset = CGSizeMake(2, 1);
         [self.contentView addSubview:self.contentLabel];
         
         self.contentEditTxt = [[UITextField alloc]init];
-        self.contentEditTxt.frame = CGRectMake(0,0, 100, 44);
-        [self.contentView addSubview:self.contentEditTxt];
+        self.contentEditTxt.frame = CGRectMake(0,0, 320, 44);
+        self.contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        self.contentEditTxt.returnKeyType = UIReturnKeyDone;
         
-        //        self.detailLabel = [[UILabel alloc]init];
-        //        self.detailLabel.frame = CGRectMake(0,44, 100, 44);
-        //        self.detailLabel.textColor = [[UIColor alloc]initWithRed:0x33/255.f green:0x33/255.f blue:0x33/255.f alpha:1];
-        //        [self.contentView addSubview:self.detailLabel];
+        [self.contentEditTxt addTarget:self action:@selector(keyboardDoneClcik:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        
+        [self.contentView addSubview:self.contentEditTxt];
     }
     return self;
+}
+
+-(void)keyboardDoneClcik:(id)sender{
+    [self hideKeyboard:self];
+    [self setDataContent:self.contentEditTxt.text];
+}
+
+-(IBAction)hideKeyboard:(id)sender{
+    [self.contentEditTxt resignFirstResponder];
 }
 
 -(void)addDoubleClickEvnet{
@@ -52,33 +63,49 @@
 
 -(void)editHandler:(UIGestureRecognizer *)recognizer{
     NSLog(@"doubleLick");
-//    [self.viewController cellDataEditHandler:_data];
+    //    [self.viewController cellDataEditHandler:_data];
+    self.contentEditTxt.text = self.contentLabel.text;
+    [self beginEdit];
+}
+
+-(void)beginEdit{
+    self.contentEditTxt.hidden = NO;
+    self.contentLabel.hidden = YES;
+    [self.contentEditTxt becomeFirstResponder];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    //    NSLog(@"setSelected %i",selected);
+    NSLog(@"setSelected %i    %i    %@",selected,![self.contentEditTxt.text isEqualToString: @""],self.contentEditTxt.text);
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
-    //    self.detailLabel.hidden = YES;
-    //    if(selected == YES){
-    //        self.detailLabel.hidden = NO;
-    //    }
     
     self.contentEditTxt.hidden = YES;
     self.contentLabel.hidden = NO;
-    if(selected == YES){
-        self.contentEditTxt.text = self.contentLabel.text;
-        self.contentEditTxt.hidden = NO;
-        self.contentLabel.hidden = YES;
+    //cell失去焦点，保存编辑数据
+    if(selected == NO){
+        self.contentLabel.text = self.contentEditTxt.text;
+        [self setDataContent:self.contentEditTxt.text];
+    }else{
+        //新增行，自动进入编辑模式
+        if([self.data.content isEqualToString:@""]){
+            [self beginEdit];
+        }
     }
 }
 
+-(void)setDataContent:(NSString *)content{
+    if(!self.data.isNew && [content isEqualToString:@""]){
+        [self.viewController deleteCell:self.data];
+    }
+    self.data.content = content;
+}
+
 -(void)willMoveToSuperview:(UIView *)newSuperview{
-    NSLog(@"willMoveToSuperview");
+//    NSLog(@"willMoveToSuperview");
     [super willMoveToSuperview:newSuperview];
-    self.contentLabel.text = _data.title;
-    //    self.detailLabel.text = _data.detail;
+    self.contentLabel.text = _data.content;
+    self.contentEditTxt.text = _data.content;
 }
 
 @end

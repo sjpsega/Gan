@@ -28,12 +28,12 @@
 -(void)initDataSource{
     dataSource = [NSMutableArray arrayWithArray:
                   @[
-                  [[GanDataModel alloc]initWithTitle:@"aaa" detail:@"aaaDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"bbb" detail:@"bbbDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"ccc" detail:@"cccDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"ddd" detail:@"dddDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"eee" detail:@"eeeDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"fff" detail:@"fffDetail"]]];
+                  [[GanDataModel alloc]initWithContent:@"aaa"],
+                  [[GanDataModel alloc]initWithContent:@"bbb"],
+                  [[GanDataModel alloc]initWithContent:@"ccc"],
+                  [[GanDataModel alloc]initWithContent:@"ddd"],
+                  [[GanDataModel alloc]initWithContent:@"eee"],
+                  [[GanDataModel alloc]initWithContent:@"fff"]]];
 
     
     //    [self.tableView setEditing:YES animated:YES];

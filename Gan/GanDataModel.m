@@ -9,25 +9,30 @@
 #import "GanDataModel.h"
 
 @implementation GanDataModel
+@synthesize content = _content;
+@synthesize date = _date;
+@synthesize isCompelete = _isCompelete;
+@synthesize isNew = _isNew;
+
 -(id)init{
     if(self = [super init]){
-        _title = @"";
-        _detail = @"";
+        _content = @"";
         _date = [NSDate date];
         _isCompelete = false;
+        _isNew = true;
     }
     return self;
 }
 
--(id)initWithTitle:(NSString *)title detail:(NSString *)detail{
+-(id)initWithContent:(NSString *)content{
     self = [self init];
-    self.title = title;
-    self.detail = detail;
+    _content = content;
     return self;
 }
 
-@synthesize title = _title;
-@synthesize detail = _detail;
-@synthesize date = _date;
-@synthesize isCompelete = _isCompelete;
+-(void)setContent:(NSString *)content{
+    _content = content;
+    _isNew = false;
+}
+
 @end

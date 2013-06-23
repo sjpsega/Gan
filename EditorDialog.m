@@ -7,7 +7,6 @@
 //
 
 #import "EditorDialog.h"
-#import "AlertViewProtocol.h"
 
 @interface EditorDialog (){
     id<AlertViewProtocol> showDelegate;

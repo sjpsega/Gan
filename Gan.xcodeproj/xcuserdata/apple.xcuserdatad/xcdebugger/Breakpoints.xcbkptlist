@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gan/GanViewController.m"
-         timestampString = "393584002.647838"
+         timestampString = "393696800.788778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "155"
-         endingLineNumber = "155"
+         startingLineNumber = "175"
+         endingLineNumber = "175"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,12 +86,51 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gan/GanViewController.m"
-         timestampString = "393584002.647838"
+         timestampString = "393696800.788778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "125"
-         endingLineNumber = "125"
-         landmarkName = "-tableView:heightForRowAtIndexPath:"
+         startingLineNumber = "145"
+         endingLineNumber = "145"
+         landmarkName = "@implementation GanViewController"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Gan/GanTableViewCell.m"
+         timestampString = "393690697.996008"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
+         landmarkName = "-setSelected:animated:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Gan/GanViewController.m"
+         timestampString = "393696800.788778"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
+         landmarkName = "-deleteCell:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Gan/GanTableViewCell.m"
+         timestampString = "393696503.109155"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
+         landmarkName = "-setDataContent:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

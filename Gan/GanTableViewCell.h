@@ -14,5 +14,4 @@
 @property(strong,nonatomic)GanDataModel *data;
 @property(strong,nonatomic)UILabel *contentLabel;
 @property(strong,nonatomic)UITextField *contentEditTxt;
-//@property(strong,nonatomic)UILabel *detailLabel;
 @end

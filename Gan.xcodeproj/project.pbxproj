@@ -23,7 +23,6 @@
 		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
 		185584D11774450A006C89AC /* GanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185584D01774450A006C89AC /* GanTableViewCell.m */; };
 		18874BA11771A17600C8ED01 /* GanDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanDownViewController.m */; };
-		18874BA41771B49500C8ED01 /* EditorDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA31771B49500C8ED01 /* EditorDialog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,11 +49,8 @@
 		1842AFD9176CB9A900A1ED20 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
 		1842AFDB176CDEC900A1ED20 /* GanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanTableViewCell.h; sourceTree = "<group>"; };
 		185584D01774450A006C89AC /* GanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanTableViewCell.m; sourceTree = "<group>"; };
-		187D9816177357D40052D7A2 /* AlertViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertViewProtocol.h; sourceTree = "<group>"; };
 		18874B9F1771A17600C8ED01 /* GanDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDownViewController.h; sourceTree = "<group>"; };
 		18874BA01771A17600C8ED01 /* GanDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDownViewController.m; sourceTree = "<group>"; };
-		18874BA21771B49500C8ED01 /* EditorDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditorDialog.h; path = ../EditorDialog.h; sourceTree = "<group>"; };
-		18874BA31771B49500C8ED01 /* EditorDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditorDialog.m; path = ../EditorDialog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +98,6 @@
 		1842AF9E176CA9A200A1ED20 /* Gan */ = {
 			isa = PBXGroup;
 			children = (
-				187D9816177357D40052D7A2 /* AlertViewProtocol.h */,
-				18874BA21771B49500C8ED01 /* EditorDialog.h */,
-				18874BA31771B49500C8ED01 /* EditorDialog.m */,
 				1842AFD8176CB9A900A1ED20 /* GanDataModel.h */,
 				1842AFD9176CB9A900A1ED20 /* GanDataModel.m */,
 				1842AFA7176CA9A200A1ED20 /* GanAppDelegate.h */,
@@ -227,7 +220,6 @@
 				1842AFB5176CA9A200A1ED20 /* GanViewController.m in Sources */,
 				1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */,
 				18874BA11771A17600C8ED01 /* GanDownViewController.m in Sources */,
-				18874BA41771B49500C8ED01 /* EditorDialog.m in Sources */,
 				185584D11774450A006C89AC /* GanTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

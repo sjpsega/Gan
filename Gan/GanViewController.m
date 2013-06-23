@@ -8,7 +8,6 @@
 
 #import "GanViewController.h"
 #import "GanDataModel.h"
-#import "EditorDialog.h"
 #import "GanTableViewCell.h"
 
 @interface GanViewController (){
@@ -29,14 +28,19 @@
 }
 
 -(void)initDataSource{
+//    dataSource = [NSMutableArray arrayWithArray:
+//                  @[
+//                  [[GanDataModel alloc]initWithTitle:@"aaa" detail:@"aaaDetail"],
+//                  [[GanDataModel alloc]initWithTitle:@"bbb" detail:@"bbbDetail"],
+//                  [[GanDataModel alloc]initWithTitle:@"ccc" detail:@"cccDetail"],
+//                  [[GanDataModel alloc]initWithTitle:@"ddd" detail:@"dddDetail"],
+//                  [[GanDataModel alloc]initWithTitle:@"eee" detail:@"eeeDetail"],
+//                  [[GanDataModel alloc]initWithTitle:@"fff" detail:@"fffDetail"]]];
+    
     dataSource = [NSMutableArray arrayWithArray:
                   @[
-                  [[GanDataModel alloc]initWithTitle:@"aaa" detail:@"aaaDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"bbb" detail:@"bbbDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"ccc" detail:@"cccDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"ddd" detail:@"dddDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"eee" detail:@"eeeDetail"],
-                  [[GanDataModel alloc]initWithTitle:@"fff" detail:@"fffDetail"]]];
+                  [[GanDataModel alloc]initWithContent:@"aaa"],
+                  [[GanDataModel alloc]initWithContent:@"bbb"]]];
 }
 
 -(void)addBtnEvent{
@@ -45,11 +49,23 @@
 }
 
 -(IBAction)addOne:(id)sender{
-    [dataSource insertObject:[[GanDataModel alloc]initWithTitle:@"" detail:@"aaaDetail"] atIndex:0];
+    
+    [dataSource insertObject:[[GanDataModel alloc]initWithContent:@""] atIndex:0];
+    NSLog(@"add");
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     
     [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+}
+
+//
+-(void)deleteCell:(GanDataModel*)data{
+    NSInteger index = [dataSource indexOfObject:data];
+    
+    NSLog(@"delete %i",index);
+    [dataSource removeObject:data];
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 //-(IBAction)showAddDialog:(id)sender{
@@ -58,36 +74,36 @@
 //    [addDialog show];
 //}
 
--(void)cellDataEditHandler:(GanDataModel *)data{
-    NSLog(@"cellDataEditHandler");
-    EditorDialog *editDialog = [[EditorDialog alloc]initWithTitle:@"编辑任务" showDelegate:self type:@"edit"];
-    editDialog.data = data;
-    [editDialog show];
-}
-
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    EditorDialog *dialog = (EditorDialog *)alertView;
-    switch (buttonIndex) {
-        case 0:
-            NSLog(@"Cancel Button Pressed");
-            break;
-        case 1:
-            NSLog(@"Button 1 Pressed type:%@",((EditorDialog *)alertView).type);
-            if([dialog.type isEqualToString:@"add"]){
-                [dataSource addObject:[[GanDataModel alloc]initWithTitle:dialog.titleTxt.text detail:dialog.detailTxt.text]];
-                [self.tableView reloadData];
-            }
-            if([dialog.type isEqualToString:@"edit"]){
-                GanDataModel *data = dialog.data;
-                data.title = dialog.titleTxt.text;
-                data.detail = dialog.detailTxt.text;
-                [self.tableView reloadData];
-            }
-            break;
-        default:
-            break;
-    }
-}
+//-(void)cellDataEditHandler:(GanDataModel *)data{
+//    NSLog(@"cellDataEditHandler");
+//    EditorDialog *editDialog = [[EditorDialog alloc]initWithTitle:@"编辑任务" showDelegate:self type:@"edit"];
+//    editDialog.data = data;
+//    [editDialog show];
+//}
+//
+//- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    EditorDialog *dialog = (EditorDialog *)alertView;
+//    switch (buttonIndex) {
+//        case 0:
+//            NSLog(@"Cancel Button Pressed");
+//            break;
+//        case 1:
+//            NSLog(@"Button 1 Pressed type:%@",((EditorDialog *)alertView).type);
+//            if([dialog.type isEqualToString:@"add"]){
+//                [dataSource addObject:[[GanDataModel alloc]initWithTitle:dialog.titleTxt.text detail:dialog.detailTxt.text]];
+//                [self.tableView reloadData];
+//            }
+//            if([dialog.type isEqualToString:@"edit"]){
+//                GanDataModel *data = dialog.data;
+//                data.title = dialog.titleTxt.text;
+//                data.detail = dialog.detailTxt.text;
+//                [self.tableView reloadData];
+//            }
+//            break;
+//        default:
+//            break;
+//    }
+//}
 
 
 - (void)didReceiveMemoryWarning
@@ -111,6 +127,9 @@
 //    
 //}
 //
+
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    GanTableViewCell *cell = (GanTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
 //    if([cell isSelected]){
@@ -119,12 +138,13 @@
 //        cell.frame = rect;
 //    }
 //    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-    [tableView beginUpdates];
-    [tableView endUpdates];
+    NSLog(@"didSelectRowAtIndexPath");
+//    [tableView beginUpdates];
+//    [tableView endUpdates];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%@",indexPath);
+//    NSLog(@"%@",indexPath);
 //    if([tableView indexPathForSelectedRow] && indexPath.row == [tableView indexPathForSelectedRow].row){
 //        return 88.f;
 //    }
