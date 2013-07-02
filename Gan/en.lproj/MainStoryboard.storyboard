@@ -17,7 +17,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="GanTableViewCellIdent" textLabel="CBk-hE-39W" style="IBUITableViewCellStyleDefault" id="KaP-kc-RrP" customClass="GanTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="GanTableViewCellIdentifier" textLabel="CBk-hE-39W" style="IBUITableViewCellStyleDefault" id="KaP-kc-RrP" customClass="GanTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -121,22 +121,6 @@
             <point key="canvasLocation" x="78" y="-33"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="GanDownViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GanDownViewController.h"/>
-        </class>
-        <class className="GanTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GanTableViewCell.h"/>
-        </class>
-        <class className="GanViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GanViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showAddDialog:"/>
-                <relationship kind="outlet" name="addBtn" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

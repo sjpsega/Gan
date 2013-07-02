@@ -10,39 +10,60 @@
 #import "GanViewController.h"
 @implementation GanTableViewCell
 
-//-(void)prepareForReuse{
-//    NSLog(@"prepareForReuse...");
+-(void)prepareForReuse{
+    //    NSLog(@"prepareForReuse...");
+}
+
+-(NSString *)reuseIdentifier{
+    //    NSLog(@"reuseIdentifier...");
+    return @"GanTableViewCellIdentifier";
+}
+
+-(void)layoutSubviews{
+    //    NSLog(@"layoutSubviews...");
+    [super layoutSubviews];
+}
+
+//
+-(void)awakeFromNib{
+    NSLog(@"awakeFromNib...");
+    
+    [super awakeFromNib];
+    [self initCustomElements];
+}
+
+//- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+//{
+//    NSLog(@"initWithSytle");
+//    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+//    if (self) {
+//
+//        [self initCustomElements];
+//    }
+//    return self;
 //}
 
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    NSLog(@"initWithSytle");
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-        
-        self.selectionStyle = UITableViewCellSelectionStyleGray;
-        
-        [self addDoubleClickEvnet];
-        self.textLabel.hidden = YES;
-        
-        self.contentLabel = [[UILabel alloc]init];
-        self.contentLabel.frame = CGRectMake(0,0, 320, 44);
-        self.contentLabel.shadowColor = [[UIColor alloc]initWithRed:0xcc/255.f green:0xcc/255.f blue:0xcc/255.f alpha:1];
-        self.contentLabel.shadowOffset = CGSizeMake(2, 1);
-        [self.contentView addSubview:self.contentLabel];
-        
-        self.contentEditTxt = [[UITextField alloc]init];
-        self.contentEditTxt.frame = CGRectMake(0,0, 320, 44);
-        self.contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        self.contentEditTxt.returnKeyType = UIReturnKeyDone;
-        
-        [self.contentEditTxt addTarget:self action:@selector(keyboardDoneClcik:) forControlEvents:UIControlEventEditingDidEndOnExit];
-        
-        [self.contentView addSubview:self.contentEditTxt];
-    }
-    return self;
+-(void)initCustomElements{
+    self.selectionStyle = UITableViewCellSelectionStyleGray;
+    
+    [self addDoubleClickEvnet];
+    self.textLabel.hidden = YES;
+    
+    self.contentLabel = [[UILabel alloc]init];
+    self.contentLabel.frame = CGRectMake(0,0, 320, 44);
+    self.contentLabel.shadowColor = [[UIColor alloc]initWithRed:0xcc/255.f green:0xcc/255.f blue:0xcc/255.f alpha:1];
+    self.contentLabel.shadowOffset = CGSizeMake(2, 1);
+    [self.contentView addSubview:self.contentLabel];
+    
+    self.contentEditTxt = [[UITextField alloc]init];
+    self.contentEditTxt.frame = CGRectMake(0,0, 320, 44);
+    self.contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    self.contentEditTxt.returnKeyType = UIReturnKeyDone;
+    
+    [self.contentEditTxt addTarget:self action:@selector(keyboardDoneClcik:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.contentView addSubview:self.contentEditTxt];
+    
 }
 
 -(void)keyboardDoneClcik:(id)sender{
@@ -101,8 +122,9 @@
     self.data.content = content;
 }
 
+
 -(void)willMoveToSuperview:(UIView *)newSuperview{
-//    NSLog(@"willMoveToSuperview");
+    //    NSLog(@"willMoveToSuperview");
     [super willMoveToSuperview:newSuperview];
     self.contentLabel.text = _data.content;
     self.contentEditTxt.text = _data.content;

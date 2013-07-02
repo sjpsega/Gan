@@ -12,6 +12,7 @@
 
 @interface GanViewController (){
     NSMutableArray *dataSource;
+    NSIndexPath *currentIndexPath;
 }
 
 @end
@@ -25,6 +26,7 @@
     [self initDataSource];
     [self addBtnEvent];
 //    self.tableView.allowsSelectionDuringEditing=YES;
+    
 }
 
 -(void)initDataSource{
@@ -58,7 +60,6 @@
     [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
-//
 -(void)deleteCell:(GanDataModel*)data{
     NSInteger index = [dataSource indexOfObject:data];
     
@@ -67,43 +68,6 @@
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
-
-//-(IBAction)showAddDialog:(id)sender{
-//    NSLog(@"AddDialog");
-//    EditorDialog *addDialog = [[EditorDialog alloc]initWithTitle:@"添加任务" showDelegate:self type:@"add"];
-//    [addDialog show];
-//}
-
-//-(void)cellDataEditHandler:(GanDataModel *)data{
-//    NSLog(@"cellDataEditHandler");
-//    EditorDialog *editDialog = [[EditorDialog alloc]initWithTitle:@"编辑任务" showDelegate:self type:@"edit"];
-//    editDialog.data = data;
-//    [editDialog show];
-//}
-//
-//- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    EditorDialog *dialog = (EditorDialog *)alertView;
-//    switch (buttonIndex) {
-//        case 0:
-//            NSLog(@"Cancel Button Pressed");
-//            break;
-//        case 1:
-//            NSLog(@"Button 1 Pressed type:%@",((EditorDialog *)alertView).type);
-//            if([dialog.type isEqualToString:@"add"]){
-//                [dataSource addObject:[[GanDataModel alloc]initWithTitle:dialog.titleTxt.text detail:dialog.detailTxt.text]];
-//                [self.tableView reloadData];
-//            }
-//            if([dialog.type isEqualToString:@"edit"]){
-//                GanDataModel *data = dialog.data;
-//                data.title = dialog.titleTxt.text;
-//                data.detail = dialog.detailTxt.text;
-//                [self.tableView reloadData];
-//            }
-//            break;
-//        default:
-//            break;
-//    }
-//}
 
 
 - (void)didReceiveMemoryWarning
@@ -128,41 +92,60 @@
 //}
 //
 
-
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView
+//           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"editingStyleForRowAtIndexPath %i",self.editing);
+//    return self.editing ?
+//    UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleNone;
+//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    GanTableViewCell *cell = (GanTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    if([cell isSelected]){
-//        CGRect rect = cell.frame;
-//        rect.size.height = 88.f;
-//        cell.frame = rect;
-//    }
-//    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+//    [cell setEditing:YES animated:YES];
+    [self.tableView setEditing:YES animated:YES];
     NSLog(@"didSelectRowAtIndexPath");
-//    [tableView beginUpdates];
-//    [tableView endUpdates];
+}
+
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+//           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"editingStyleForRowAtIndexPath~~~~~~~~~~~");
+////    if (indexPath.section == 1) {
+//        NSInteger ct =
+//        [self tableView:tableView numberOfRowsInSection:indexPath.section];
+//        if (ct-1 == indexPath.row)
+//            return UITableViewCellEditingStyleInsert;
+//        return UITableViewCellEditingStyleDelete;
+////    }
+////    return UITableViewCellEditingStyleNone;
+//}
+
+//- (BOOL)tableView:(UITableView *)tableView
+//shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.section == 1)
+//        return YES;
+//    return NO;
+//}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([tableView indexPathForSelectedRow].row == indexPath.row) {
+        return YES;
+    }
+    return NO;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"%@",indexPath);
-//    if([tableView indexPathForSelectedRow] && indexPath.row == [tableView indexPathForSelectedRow].row){
-//        return 88.f;
-//    }
     return 44.f;
 }
 
-//
-//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [dataSource count];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    cell.backgroundColor = [[UIColor alloc]initWithRed:[self random0_1] green:[self random0_1] blue:[self random0_1] alpha:[self random0_1]];
-
     cell.backgroundColor = [[UIColor alloc]initWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f];
 
     for ( UIView* view in cell.contentView.subviews )
@@ -173,14 +156,15 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellName = @"GanTableViewCellIdent";
-    //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数，导致无法添加自定义事件
-//    GanTableViewCell *cell = (GanTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellName];
-//    if(cell == nil){
-//        cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
-//    }
+    static NSString *cellName = @"GanTableViewCellIdentifier";
+    //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
+    //storyboard情况下，cell init使用的是awakeFromNib方法
+    GanTableViewCell *cell = (GanTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellName];
+    if(cell == nil){
+        cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+    }
     
-    GanTableViewCell *cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+//    GanTableViewCell *cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
     cell.data = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]);
     cell.viewController = self;
     return cell;
