@@ -100,45 +100,61 @@
 //}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    GanTableViewCell *cell = (GanTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    [cell setEditing:YES animated:YES];
-    [self.tableView setEditing:YES animated:YES];
-    NSLog(@"didSelectRowAtIndexPath");
+//    [self tableView:tableView canEditRowAtIndexPath:indexPath];
+//    [tableView setEditing:YES animated:YES];
+
+//    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    [tableView willBeginEditingRowAtIndexPath:indexPath];
+//    CGRect frame = [[tableView cellForRowAtIndexPath:indexPath] frame];
+//    frame.origin.x -=50;
+//    [[tableView cellForRowAtIndexPath:indexPath] setFrame:frame];
+    NSLog(@"didSelectRowAtIndexPath %@ %@",[tableView indexPathForSelectedRow],indexPath);
 }
+
 
 //- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
 //           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    NSLog(@"editingStyleForRowAtIndexPath~~~~~~~~~~~");
 ////    if (indexPath.section == 1) {
-//        NSInteger ct =
+////        NSInteger ct =
 //        [self tableView:tableView numberOfRowsInSection:indexPath.section];
-//        if (ct-1 == indexPath.row)
-//            return UITableViewCellEditingStyleInsert;
-//        return UITableViewCellEditingStyleDelete;
+////        if (ct-1 == indexPath.row)
+////            return UITableViewCellEditingStyleInsert;
+////        return UITableViewCellEditingStyleDelete;
 ////    }
 ////    return UITableViewCellEditingStyleNone;
 //}
 
 //- (BOOL)tableView:(UITableView *)tableView
 //shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.section == 1)
+////    if (indexPath.section == 1)
 //        return YES;
-//    return NO;
+////    return NO;
+//    
 //}
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([tableView indexPathForSelectedRow].row == indexPath.row) {
-        return YES;
-    }
-    return NO;
-}
+//-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NSLog(@"canEditRowAtIndexPath %@ %@ %i",[tableView indexPathForSelectedRow],indexPath,[tableView indexPathForSelectedRow].row == indexPath.row);
+//    if ([tableView indexPathForSelectedRow].row == indexPath.row) {
+//        return YES;
+//    }
+//    return NO;
+//}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44.f;
 }
 
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"willBeginEditingRowAtIndexPath");
+}
+
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    NSLog(@"commitEditingStyle.....");
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -156,6 +172,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"cellForRowAtIndexPath %@",tableView.indexPathForSelectedRow);
     static NSString *cellName = @"GanTableViewCellIdentifier";
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法
