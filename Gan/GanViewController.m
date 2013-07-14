@@ -9,10 +9,10 @@
 #import "GanViewController.h"
 #import "GanDataModel.h"
 #import "GanTableViewCell.h"
-
-@interface GanViewController (){
+#import "GanTableViewCellDelegate.h"
+#import "GanDataManager.h"
+@interface GanViewController ()<GanTableViewCellDelegate>{
     NSMutableArray *dataSource;
-    NSIndexPath *currentIndexPath;
 }
 
 @end
@@ -39,10 +39,11 @@
 //                  [[GanDataModel alloc]initWithTitle:@"eee" detail:@"eeeDetail"],
 //                  [[GanDataModel alloc]initWithTitle:@"fff" detail:@"fffDetail"]]];
     
-    dataSource = [NSMutableArray arrayWithArray:
-                  @[
-                  [[GanDataModel alloc]initWithContent:@"aaa"],
-                  [[GanDataModel alloc]initWithContent:@"bbb"]]];
+//    dataSource = [NSMutableArray arrayWithArray:
+//                  @[
+//                  [[GanDataModel alloc]initWithContent:@"aaa"],
+//                  [[GanDataModel alloc]initWithContent:@"bbb"]]];
+    dataSource = [[GanDataManager getInstance] getData];
 }
 
 -(void)addBtnEvent{
@@ -60,6 +61,29 @@
     [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
+#pragma mark - MCSwipeTableViewCellDelegate
+
+- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
+    NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+    
+    if (mode == MCSwipeTableViewCellModeExit) {
+//        [dataSource removeObject:((GanTableViewCell *)cell).data];
+//        [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+//        [cell bounceToOrigin];
+//        [self tableView:self.tableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
+            [dataSource removeObject:((GanTableViewCell *)cell).data];
+            [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+            [[GanDataManager getInstance] saveData];
+        }else if(state == MCSwipeTableViewCellState4){
+            NSLog(@"4444....");
+            [dataSource removeObject:((GanTableViewCell *)cell).data];
+            [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+            [[GanDataManager getInstance] saveData];
+        }
+    }
+}
+
 -(void)deleteCell:(GanDataModel*)data{
     NSInteger index = [dataSource indexOfObject:data];
     
@@ -68,7 +92,6 @@
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -162,12 +185,12 @@
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell.backgroundColor = [[UIColor alloc]initWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f];
-
-    for ( UIView* view in cell.contentView.subviews )
-    {
-        view.backgroundColor = [ UIColor clearColor ];
-    }
+//    cell.backgroundColor = [[UIColor alloc]initWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f];
+//
+//    for ( UIView* view in cell.contentView.subviews )
+//    {
+//        view.backgroundColor = [ UIColor clearColor ];
+//    }
 
 }
 
@@ -182,8 +205,25 @@
     }
     
 //    GanTableViewCell *cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+    // For the delegate callback
+    [cell setDelegate:self];
+    
+    // We need to provide the icon names and the desired colors
+    [cell setFirstStateIconName:@"check.png"
+                     firstColor:[UIColor colorWithRed:85.0/255.0 green:213.0/255.0 blue:80.0/255.0 alpha:1.0]
+            secondStateIconName:@"check.png"
+                    secondColor:NULL
+                  thirdIconName:@"cross.png"
+                     thirdColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:0.5]
+                 fourthIconName:@"cross.png"
+                    fourthColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:1.0]];
+    
+    // We need to set a background to the content view of the cell
+    [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+    
+    // Setting the type of the cell
+    [cell setMode:MCSwipeTableViewCellModeExit];
     cell.data = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]);
-    cell.viewController = self;
     return cell;
 }
 

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "GanDataModel.h"
 #import "GanViewController.h"
-@interface GanTableViewCell : UITableViewCell
-@property(strong,nonatomic)GanViewController *viewController;
+#import "MCSwipeTableViewCell.h"
+
+@interface GanTableViewCell : MCSwipeTableViewCell
+//@property(strong,nonatomic)GanViewController *viewController;
 @property(strong,nonatomic)GanDataModel *data;
 @property(strong,nonatomic)UILabel *contentLabel;
 @property(strong,nonatomic)UITextField *contentEditTxt;

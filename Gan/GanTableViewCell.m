@@ -8,34 +8,44 @@
 
 #import "GanTableViewCell.h"
 #import "GanViewController.h"
-@interface GanTableViewCell (){
-    CGPoint tempPanGesturesPoint;
-}
-@end
-
+#import "GanTableViewCellDelegate.h"
+//@interface GanTableViewCell (){
+//    CGPoint tempPanGesturesPoint;
+//}
+//@end
+@class MCSwipeTableViewCell;
 @implementation GanTableViewCell
 -(void)prepareForReuse{
-    //    NSLog(@"prepareForReuse...");
+    NSLog(@"GanTableViewCell prepareForReuse...");
 }
+
 
 -(NSString *)reuseIdentifier{
     //    NSLog(@"reuseIdentifier...");
     return @"GanTableViewCellIdentifier";
 }
 
--(void)awakeFromNib{
-    NSLog(@"awakeFromNib...");
-    
-    [super awakeFromNib];
-    [self initCustomElements];
+//-(void)awakeFromNib{
+//    NSLog(@"gan awakeFromNib...");
+//    
+//    [super awakeFromNib];
+//    [self initCustomElements];
+//}
+
+//允许删除操作，必须拖拽超过一半才行
+-(BOOL)shouldMove{
+    MCSwipeTableViewCellState state = [self stateWithPercentage:self.currentPercentage];
+    if(self.direction == MCSwipeTableViewCellDirectionLeft && state==MCSwipeTableViewCellState3){
+        return NO;
+    }
+    return YES;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    NSLog(@"initWithSytle");
+    NSLog(@"GanTableViewCell initWithSytle");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-
         [self initCustomElements];
     }
     return self;
@@ -46,7 +56,7 @@
     
     [self addDoubleClickEvnet];
     
-    [self addSwipeEvent];
+//    [self addSwipeEvent];
     self.textLabel.hidden = YES;
     
     self.contentLabel = [[UILabel alloc]init];
@@ -88,57 +98,53 @@
     [self beginEdit];
 }
 
--(void)addSwipeEvent{
-    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanGestures:)];
-    recognizer.minimumNumberOfTouches=1;
-    recognizer.maximumNumberOfTouches=1;
-    [self addGestureRecognizer:recognizer];
-    
-//    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeFrom:)];
-//    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+//-(void)addSwipeEvent{
+//    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanGestures:)];
+//    recognizer.minimumNumberOfTouches=1;
+//    recognizer.maximumNumberOfTouches=1;
 //    [self addGestureRecognizer:recognizer];
-}
+//}
 
--(void)handlePanGestures:(UIPanGestureRecognizer *)recognizer{
-    UIView *view = [recognizer view]; // 这个view是手势所属的view，也就是增加手势的那个view  
-    NSLog(@"handlePanGestures %i %f %f",recognizer.state,[recognizer locationInView:view].x,[recognizer translationInView:view].x);
-    
-    if(recognizer.state == UIGestureRecognizerStateBegan){
-        tempPanGesturesPoint = view.center;
-    }
-    if(recognizer.state == UIGestureRecognizerStateChanged){
-        /*
-         让view跟着手指移动
-         
-         1.获取每次系统捕获到的手指移动的偏移量translation
-         2.根据偏移量translation算出当前view应该出现的位置
-         3.设置view的新frame
-         4.将translation重置为0（十分重要。否则translation每次都会叠加，很快你的view就会移除屏幕！）
-         */
-        
-        CGPoint translation = [recognizer translationInView:view];
-        view.center = CGPointMake(view.center.x + translation.x, view.center.y);
-        [recognizer setTranslation:CGPointMake(0, 0) inView:view];
-        //  注意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加，很快你的view就会移除屏幕！
-    }
-    if(recognizer.state == UIGestureRecognizerStateEnded){
-        CGFloat x = tempPanGesturesPoint.x - view.center.x;
-        //执行删除逻辑
-        if (abs(x)>100) {
-            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                tempPanGesturesPoint.x-=(x>0 ? 600 : -600);
-                view.center = tempPanGesturesPoint;
-            } completion:nil];
-        }
-        //恢复
-        else{
-            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                view.center = tempPanGesturesPoint;
-            } completion:nil];
-        }
-    
-    }
-}
+//-(void)handlePanGestures:(UIPanGestureRecognizer *)recognizer{
+//    UIView *view = [recognizer view]; // 这个view是手势所属的view，也就是增加手势的那个view  
+//    NSLog(@"handlePanGestures %i %f %f",recognizer.state,[recognizer locationInView:view].x,[recognizer translationInView:view].x);
+//    
+//    if(recognizer.state == UIGestureRecognizerStateBegan){
+//        tempPanGesturesPoint = view.center;
+//    }
+//    if(recognizer.state == UIGestureRecognizerStateChanged){
+//        /*
+//         让view跟着手指移动
+//         
+//         1.获取每次系统捕获到的手指移动的偏移量translation
+//         2.根据偏移量translation算出当前view应该出现的位置
+//         3.设置view的新frame
+//         4.将translation重置为0（十分重要。否则translation每次都会叠加，很快你的view就会移除屏幕！）
+//         */
+//        
+//        CGPoint translation = [recognizer translationInView:view];
+//        view.center = CGPointMake(view.center.x + translation.x, view.center.y);
+//        [recognizer setTranslation:CGPointMake(0, 0) inView:view];
+//        //  注意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加，很快你的view就会移除屏幕！
+//    }
+//    if(recognizer.state == UIGestureRecognizerStateEnded){
+//        CGFloat x = tempPanGesturesPoint.x - view.center.x;
+//        //执行删除逻辑
+//        if (abs(x)>100) {
+//            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//                tempPanGesturesPoint.x-=(x>0 ? 600 : -600);
+//                view.center = tempPanGesturesPoint;
+//            } completion:nil];
+//        }
+//        //恢复
+//        else{
+//            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//                view.center = tempPanGesturesPoint;
+//            } completion:nil];
+//        }
+//    
+//    }
+//}
 
 -(void)beginEdit{
     self.contentEditTxt.hidden = NO;
@@ -168,7 +174,7 @@
 
 -(void)setDataContent:(NSString *)content{
     if(!self.data.isNew && [content isEqualToString:@""]){
-        [self.viewController deleteCell:self.data];
+        [self.delegate deleteCell:self.data];
     }
     self.data.content = content;
 }
