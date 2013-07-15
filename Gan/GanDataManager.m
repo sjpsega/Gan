@@ -28,6 +28,7 @@ static id _instance;
     if(!_isRead){
         [self readData];
         _isRead = YES;
+        NSLog(@"getData,%@",_datas);
         if(_datas == NULL){
             _datas = [[NSMutableArray alloc]init];
         }
@@ -38,22 +39,21 @@ static id _instance;
 -(void)readData{
     NSString *path = [self getFileName];
     NSLog(@"readData   %@",path);
-    _datas=[[NSMutableArray alloc]initWithContentsOfFile:path];
+    NSData *saveData = [[NSData alloc]initWithContentsOfFile:path];
+    _datas=[NSKeyedUnarchiver unarchiveObjectWithData:saveData];
 }
 
 -(void)saveData{
     NSLog(@"saveData....");
     NSString *path = [self getFileName];
-//    NSMutableArray *aa = [NSMutableArray arrayWithArray:@[@"aaa",@"bbb"]];
-    if([_datas writeToFile:path atomically:NO]){
+    NSData *saveData = [NSKeyedArchiver archivedDataWithRootObject:_datas];
+    if([saveData writeToFile:path atomically:YES]){
         NSLog(@"save success!");
     }
 }
 
 
 -(NSString *)getFileName{
-//    return [[NSBundle mainBundle]pathForResource:@"GanDatas" ofType:@"plist"];
-//    return [NSTemporaryDirectory() stringByAppendingString:@"GanDatas.plist"];
     NSString *Path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     return [Path stringByAppendingPathComponent:@"GanDatas.plist"];
 }

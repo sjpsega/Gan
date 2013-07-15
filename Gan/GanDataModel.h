@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GanDataModel : NSObject
+@interface GanDataModel : NSObject<NSCoding,NSCopying>
 @property(strong,nonatomic)NSString *content;
 @property(strong,nonatomic)NSDate *date;
 @property(nonatomic)BOOL isCompelete;

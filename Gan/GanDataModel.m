@@ -19,7 +19,7 @@
         _content = @"";
         _date = [NSDate date];
         _isCompelete = false;
-        _isNew = true;
+        _isNew = YES;
     }
     return self;
 }
@@ -33,6 +33,31 @@
 -(void)setContent:(NSString *)content{
     _content = content;
     _isNew = false;
+}
+
+#pragma mark implement NSCoding
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:_content forKey:@"content"];
+    [aCoder encodeObject:_date forKey:@"date"];
+    [aCoder encodeBool:_isCompelete forKey:@"isComplate"];
+    [aCoder encodeBool:_isNew forKey:@"isNew"];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    if(self = [self init]){
+        self.content = [aDecoder decodeObjectForKey:@"content"];
+        self.date = [aDecoder decodeObjectForKey:@"date"];
+        self.isCompelete = [aDecoder decodeBoolForKey:@"isComplate"];
+        _isNew = [aDecoder decodeBoolForKey:@"isNew"];
+    }
+    return self;
+}
+
+#pragma mark implement NSCopying
+-(id)copyWithZone:(NSZone *)zone{
+    GanDataModel *data;
+    data = [[[self class]allocWithZone:zone]initWithContent:_content];
+    return data;
 }
 
 @end

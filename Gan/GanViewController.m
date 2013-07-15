@@ -30,19 +30,6 @@
 }
 
 -(void)initDataSource{
-//    dataSource = [NSMutableArray arrayWithArray:
-//                  @[
-//                  [[GanDataModel alloc]initWithTitle:@"aaa" detail:@"aaaDetail"],
-//                  [[GanDataModel alloc]initWithTitle:@"bbb" detail:@"bbbDetail"],
-//                  [[GanDataModel alloc]initWithTitle:@"ccc" detail:@"cccDetail"],
-//                  [[GanDataModel alloc]initWithTitle:@"ddd" detail:@"dddDetail"],
-//                  [[GanDataModel alloc]initWithTitle:@"eee" detail:@"eeeDetail"],
-//                  [[GanDataModel alloc]initWithTitle:@"fff" detail:@"fffDetail"]]];
-    
-//    dataSource = [NSMutableArray arrayWithArray:
-//                  @[
-//                  [[GanDataModel alloc]initWithContent:@"aaa"],
-//                  [[GanDataModel alloc]initWithContent:@"bbb"]]];
     dataSource = [[GanDataManager getInstance] getData];
 }
 
@@ -67,16 +54,11 @@
     NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
     
     if (mode == MCSwipeTableViewCellModeExit) {
-//        [dataSource removeObject:((GanTableViewCell *)cell).data];
-//        [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-//        [cell bounceToOrigin];
-//        [self tableView:self.tableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
             [dataSource removeObject:((GanTableViewCell *)cell).data];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [[GanDataManager getInstance] saveData];
         }else if(state == MCSwipeTableViewCellState4){
-            NSLog(@"4444....");
             [dataSource removeObject:((GanTableViewCell *)cell).data];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [[GanDataManager getInstance] saveData];
@@ -102,7 +84,6 @@
 - (void)viewDidUnload {
     [self setTableView:nil];
     [self setAddBtn:nil];
-    [self setAddBtn:nil];
     [super viewDidUnload];
 }
 
@@ -123,14 +104,6 @@
 //}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [self tableView:tableView canEditRowAtIndexPath:indexPath];
-//    [tableView setEditing:YES animated:YES];
-
-//    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//    [tableView willBeginEditingRowAtIndexPath:indexPath];
-//    CGRect frame = [[tableView cellForRowAtIndexPath:indexPath] frame];
-//    frame.origin.x -=50;
-//    [[tableView cellForRowAtIndexPath:indexPath] setFrame:frame];
     NSLog(@"didSelectRowAtIndexPath %@ %@",[tableView indexPathForSelectedRow],indexPath);
 }
 
@@ -203,8 +176,6 @@
     if(cell == nil){
         cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
     }
-    
-//    GanTableViewCell *cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
     // For the delegate callback
     [cell setDelegate:self];
     
