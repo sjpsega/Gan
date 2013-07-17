@@ -11,8 +11,13 @@
 #import "GanTableViewCell.h"
 #import "GanTableViewCellDelegate.h"
 #import "GanDataManager.h"
+
+static const CGFloat CELL_HEIGHT=44.0f;
+
 @interface GanViewController ()<GanTableViewCellDelegate>{
     NSMutableArray *dataSource;
+    UIButton *maskLayer;
+    CGPoint savedContentOffset;
 }
 
 @end
@@ -24,22 +29,59 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self initDataSource];
-    [self addBtnEvent];
+    [self addAddBtnEvent];
+    [self addMaskLayer];
 //    self.tableView.allowsSelectionDuringEditing=YES;
     
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidUnload {
+    [self setTableView:nil];
+    [self setAddBtn:nil];
+    [super viewDidUnload];
 }
 
 -(void)initDataSource{
     dataSource = [[GanDataManager getInstance] getData];
 }
 
--(void)addBtnEvent{
+-(void)addAddBtnEvent{
     [self.addBtn setTarget:self];
     [self.addBtn setAction:@selector(addOne:)];
 }
 
+-(void)addMaskLayer{
+    maskLayer = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect frame = self.tableView.frame;
+    frame.origin.y +=CELL_HEIGHT;
+    [maskLayer setFrame:frame];
+    [maskLayer setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0]];
+    [self.view insertSubview:maskLayer aboveSubview:self.tableView];
+    [maskLayer addTarget:self action:@selector(blurCell:) forControlEvents:UIControlEventTouchUpInside];
+    [self hideMaskLayer];
+}
+
+-(void)showMaskLayer{
+    [maskLayer setHidden:NO];
+}
+
+-(void)hideMaskLayer{
+    [maskLayer setHidden:YES];
+}
+
+-(IBAction)blurCell:(id)sender{
+    NSLog(@"blurCell~~~~~~");
+    [self blurCell];
+}
+
 -(IBAction)addOne:(id)sender{
-    
+    savedContentOffset = CGPointZero;
     [dataSource insertObject:[[GanDataModel alloc]initWithContent:@""] atIndex:0];
     NSLog(@"add");
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -54,11 +96,16 @@
     NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
     
     if (mode == MCSwipeTableViewCellModeExit) {
+        //完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
-            [dataSource removeObject:((GanTableViewCell *)cell).data];
+            GanDataModel *data = ((GanTableViewCell *)cell).data;
+            [data setIsCompelete:YES];
+            [dataSource removeObject:data];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [[GanDataManager getInstance] saveData];
-        }else if(state == MCSwipeTableViewCellState4){
+        }
+        //删除
+        else if(state == MCSwipeTableViewCellState4){
             [dataSource removeObject:((GanTableViewCell *)cell).data];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [[GanDataManager getInstance] saveData];
@@ -68,23 +115,24 @@
 
 -(void)deleteCell:(GanDataModel*)data{
     NSInteger index = [dataSource indexOfObject:data];
-    
     NSLog(@"delete %i",index);
     [dataSource removeObject:data];
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)focusCell:(MCSwipeTableViewCell *)cell{
+    savedContentOffset = [self.tableView contentOffset];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    [self.tableView setContentOffset:CGPointMake(0,CELL_HEIGHT * indexPath.row) animated:YES];
+    [self showMaskLayer];
 }
 
-- (void)viewDidUnload {
-    [self setTableView:nil];
-    [self setAddBtn:nil];
-    [super viewDidUnload];
+-(void)blurCell{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    [self hideMaskLayer];
+    [self.tableView setContentOffset:savedContentOffset animated:YES];
+    [[GanDataManager getInstance] saveData];
 }
 
 //-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -138,7 +186,7 @@
 //}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44.f;
+    return CELL_HEIGHT;
 }
 
 -(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -155,16 +203,6 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [dataSource count];
-}
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    cell.backgroundColor = [[UIColor alloc]initWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f];
-//
-//    for ( UIView* view in cell.contentView.subviews )
-//    {
-//        view.backgroundColor = [ UIColor clearColor ];
-//    }
-
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -190,7 +228,7 @@
                     fourthColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:1.0]];
     
     // We need to set a background to the content view of the cell
-    [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+    [cell.contentView setBackgroundColor:[UIColor colorWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f]];
     
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];

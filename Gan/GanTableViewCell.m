@@ -14,6 +14,7 @@
 //}
 //@end
 @class MCSwipeTableViewCell;
+
 @implementation GanTableViewCell
 -(void)prepareForReuse{
     NSLog(@"GanTableViewCell prepareForReuse...");
@@ -47,8 +48,13 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self initCustomElements];
+        [self clearColorWithElement];
     }
     return self;
+}
+
+-(void)viewDidLoad{
+    NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~");
 }
 
 -(void)initCustomElements{
@@ -76,9 +82,22 @@
     
 }
 
+-(void)clearColorWithElement{
+//    UIColor *bgColor;
+//    bgColor = [UIColor colorWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f];
+//    self.backgroundColor = bgColor;
+    for ( UIView* view in self.contentView.subviews )
+    {
+        view.backgroundColor = [UIColor clearColor];
+    }
+}
+
 -(void)keyboardDoneClcik:(id)sender{
     [self hideKeyboard:self];
     [self setDataContent:self.contentEditTxt.text];
+    if([self.delegate respondsToSelector:@selector(blurCell:)]){
+        [self.delegate blurCell];
+    }
 }
 
 -(IBAction)hideKeyboard:(id)sender{
@@ -102,6 +121,9 @@
     self.contentEditTxt.hidden = NO;
     self.contentLabel.hidden = YES;
     [self.contentEditTxt becomeFirstResponder];
+    if([self.delegate respondsToSelector:@selector(focusCell:)]){
+        [self.delegate focusCell:self];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -116,6 +138,7 @@
     if(selected == NO){
         self.contentLabel.text = self.contentEditTxt.text;
         [self setDataContent:self.contentEditTxt.text];
+        [self hideKeyboard:self];
     }else{
         //新增行，自动进入编辑模式
         if([self.data.content isEqualToString:@""]){
@@ -125,7 +148,7 @@
 }
 
 -(void)setDataContent:(NSString *)content{
-    if(!self.data.isNew && [content isEqualToString:@""]){
+    if(!self.data.isNew && [content isEqualToString:@""] && [self.delegate respondsToSelector:@selector(deleteCell:)]){
         [self.delegate deleteCell:self.data];
     }
     self.data.content = content;

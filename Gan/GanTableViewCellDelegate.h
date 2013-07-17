@@ -13,7 +13,8 @@
 @protocol GanTableViewCellDelegate <NSObject>
 @optional
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode;
-@optional
 -(void)deleteCell:(GanDataModel*)data;
+-(void)focusCell:(MCSwipeTableViewCell*)cell;
+-(void)blurCell;
 @end
 

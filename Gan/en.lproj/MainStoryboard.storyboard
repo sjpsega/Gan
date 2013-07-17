@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Gan View Controller - 正在做-->
+        <!--Gan View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="GanViewController" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="vpe-Gt-u1o"/>
-                    <navigationItem key="navigationItem" title="正在做" id="nBi-aY-Uhn">
+                    <navigationItem key="navigationItem" id="nBi-aY-Uhn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WOE-sW-aDg"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -77,6 +77,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="oqo-ta-PXV"/>
                     <navigationItem key="navigationItem" id="bYV-Zh-gMI"/>
+                    <connections>
+                        <outlet property="tableView" destination="TGB-pj-j5t" id="A1M-AX-Tz6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKp-Qj-ZKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,11 +107,15 @@
     <classes>
         <class className="GanDownViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GanDownViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="GanViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GanViewController.h"/>
             <relationships>
                 <relationship kind="action" name="addOne:"/>
+                <relationship kind="action" name="blurCell:"/>
                 <relationship kind="outlet" name="addBtn" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>

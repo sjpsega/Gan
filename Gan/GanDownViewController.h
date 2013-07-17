@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GanDownViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
-
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
