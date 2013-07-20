@@ -18,7 +18,7 @@
     if(self = [super init]){
         _content = @"";
         _date = [NSDate date];
-        _isCompelete = false;
+        _isCompelete = NO;
         _isNew = YES;
     }
     return self;

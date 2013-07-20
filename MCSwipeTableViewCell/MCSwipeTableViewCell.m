@@ -469,7 +469,7 @@ secondStateIconName:(NSString *)secondIconName
 }
 
 - (void)bounceToOrigin {
-    _currentPercentage = 0;
+//    _currentPercentage = 0;
     CGFloat bounceDistance = kMCBounceAmplitude * _currentPercentage;
 
     [UIView animateWithDuration:kMCBounceDuration1

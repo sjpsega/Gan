@@ -20,13 +20,9 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    [self initDataSource];
-    //    self.tableView.allowsSelectionDuringEditing=YES;
-    
+    [self setBgColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,6 +33,13 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~");
+    [super viewWillAppear:animated];
+    [self initDataSource];
+    [self.tableView reloadData];
 }
 
 -(void)initDataSource{
@@ -54,12 +57,15 @@
     
     
     //TODO:filter已完成的数据
-    dataSource = [[GanDataManager getInstance] getData];
-    NSPredicate *bPredicate =
-    [NSPredicate predicateWithFormat:@"SELF.isCompelete==YES"];
-    NSArray *beginWithB =
-    [dataSource filteredArrayUsingPredicate:bPredicate];
-    dataSource = [NSMutableArray arrayWithArray:beginWithB];
+    dataSource = [[GanDataManager getInstance] getCompletedData];
+    
+        NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%i",[dataSource count]);
+}
+
+-(void)setBgColor{
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+    [self.tableView setBackgroundView:backgroundView];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

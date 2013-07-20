@@ -18,6 +18,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     NSMutableArray *dataSource;
     UIButton *maskLayer;
     CGPoint savedContentOffset;
+    GanDataManager *dataManager;
 }
 
 @end
@@ -28,11 +29,19 @@ static const CGFloat CELL_HEIGHT=44.0f;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self initDataSource];
+//    [self initDataSource];
     [self addAddBtnEvent];
     [self addMaskLayer];
+    [self setBgColor];
+    dataManager = [GanDataManager getInstance];
 //    self.tableView.allowsSelectionDuringEditing=YES;
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self initDataSource];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,7 +57,14 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(void)initDataSource{
-    dataSource = [[GanDataManager getInstance] getData];
+    dataSource = [dataManager getUnCompletedData];
+    NSLog(@"dataSouce unComplate count:%i",[dataSource count]);
+}
+
+-(void)setBgColor{
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+    [self.tableView setBackgroundView:backgroundView];
 }
 
 -(void)addAddBtnEvent{
@@ -82,8 +98,9 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 -(IBAction)addOne:(id)sender{
     savedContentOffset = CGPointZero;
-    [dataSource insertObject:[[GanDataModel alloc]initWithContent:@""] atIndex:0];
     NSLog(@"add");
+    [dataManager insertData:[[GanDataModel alloc]initWithContent:@""]];
+    dataSource = [dataManager getUnCompletedData];
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     
@@ -96,19 +113,20 @@ static const CGFloat CELL_HEIGHT=44.0f;
     NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
     
     if (mode == MCSwipeTableViewCellModeExit) {
+        GanDataModel *data = ((GanTableViewCell *)cell).data;
         //完成
-        if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
-            GanDataModel *data = ((GanTableViewCell *)cell).data;
+        if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){            
             [data setIsCompelete:YES];
-            [dataSource removeObject:data];
+            dataSource = [dataManager getUnCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-            [[GanDataManager getInstance] saveData];
+            [dataManager saveData];
         }
         //删除
         else if(state == MCSwipeTableViewCellState4){
-            [dataSource removeObject:((GanTableViewCell *)cell).data];
+            [dataManager removeData:data];
+            dataSource = [dataManager getUnCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-            [[GanDataManager getInstance] saveData];
+            [dataManager saveData];
         }
     }
 }
@@ -116,7 +134,9 @@ static const CGFloat CELL_HEIGHT=44.0f;
 -(void)deleteCell:(GanDataModel*)data{
     NSInteger index = [dataSource indexOfObject:data];
     NSLog(@"delete %i",index);
-    [dataSource removeObject:data];
+    [dataManager removeData:data];
+    dataSource = [dataManager getUnCompletedData];
+    
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
@@ -132,7 +152,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     [self hideMaskLayer];
     [self.tableView setContentOffset:savedContentOffset animated:YES];
-    [[GanDataManager getInstance] saveData];
+    [dataManager saveData];
 }
 
 //-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -228,7 +248,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
                     fourthColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:1.0]];
     
     // We need to set a background to the content view of the cell
-    [cell.contentView setBackgroundColor:[UIColor colorWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f]];
+    [cell.contentView setBackgroundColor:[UIColor colorWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:0.8]];
     
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];

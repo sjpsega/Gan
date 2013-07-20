@@ -33,7 +33,49 @@ static id _instance;
             _datas = [[NSMutableArray alloc]init];
         }
     }
+    //找出content非空的数据，防止数据错误
+    NSPredicate *predicate =
+    [NSPredicate predicateWithFormat:@"SELF.content!=''"];
+    NSArray *arr =
+    [_datas filteredArrayUsingPredicate:predicate];
+    _datas = [NSMutableArray arrayWithArray:arr];
     return _datas;
+}
+
+-(NSMutableArray *)getCompletedData{
+    if(!_isRead){
+        [self getData];
+    }
+    NSPredicate *predicate =
+    [NSPredicate predicateWithFormat:@"SELF.isCompelete==YES"];
+    NSArray *arr =
+    [_datas filteredArrayUsingPredicate:predicate];
+    return [NSMutableArray arrayWithArray:arr];
+}
+
+-(NSMutableArray *)getUnCompletedData{
+    if(!_isRead){
+        [self getData];
+    }
+    NSPredicate *predicate =
+    [NSPredicate predicateWithFormat:@"SELF.isCompelete==NO"];
+    NSArray *arr =
+    [_datas filteredArrayUsingPredicate:predicate];
+    return [NSMutableArray arrayWithArray:arr];
+}
+
+-(void)insertData:(GanDataModel *)data{
+    if(!_isRead){
+        [self getData];
+    }
+    [_datas insertObject:data atIndex:0];
+}
+
+-(void)removeData:(GanDataModel *)data{
+    if(!_isRead){
+        [self getData];
+    }
+    [_datas removeObject:data];
 }
 
 -(void)readData{

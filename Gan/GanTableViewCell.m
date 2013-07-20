@@ -49,6 +49,11 @@
     if (self) {
         [self initCustomElements];
         [self clearColorWithElement];
+        UIView *bgColorView = [[UIView alloc] init];
+        bgColorView.backgroundColor = [UIColor colorWithRed:0xf6 * 1.1 /255.f green:0xf6* 1.1 /255.f blue:0x34* 1.1 /255.f alpha:1.0];
+//        bgColorView.layer.cornerRadius = 7;
+//        bgColorView.layer.masksToBounds = YES;
+        [self setSelectedBackgroundView:bgColorView];
     }
     return self;
 }
