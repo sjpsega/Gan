@@ -6,15 +6,15 @@
 //  Copyright (c) 2013年 sjp. All rights reserved.
 //
 
-#import "GanViewController.h"
+#import "GanUnComplateViewController.h"
 #import "GanDataModel.h"
-#import "GanTableViewCell.h"
+#import "GanUnComplateTableViewCell.h"
 #import "GanTableViewCellDelegate.h"
 #import "GanDataManager.h"
 
 static const CGFloat CELL_HEIGHT=44.0f;
 
-@interface GanViewController ()<GanTableViewCellDelegate>{
+@interface GanUnComplateViewController ()<GanTableViewCellDelegate>{
     NSMutableArray *dataSource;
     UIButton *maskLayer;
     CGPoint savedContentOffset;
@@ -23,7 +23,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 @end
 
-@implementation GanViewController
+@implementation GanUnComplateViewController
 
 - (void)viewDidLoad
 {
@@ -107,54 +107,6 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
-#pragma mark - MCSwipeTableViewCellDelegate
-
-- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
-    NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
-    
-    if (mode == MCSwipeTableViewCellModeExit) {
-        GanDataModel *data = ((GanTableViewCell *)cell).data;
-        //完成
-        if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){            
-            [data setIsCompelete:YES];
-            dataSource = [dataManager getUnCompletedData];
-            [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-            [dataManager saveData];
-        }
-        //删除
-        else if(state == MCSwipeTableViewCellState4){
-            [dataManager removeData:data];
-            dataSource = [dataManager getUnCompletedData];
-            [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-            [dataManager saveData];
-        }
-    }
-}
-
--(void)deleteCell:(GanDataModel*)data{
-    NSInteger index = [dataSource indexOfObject:data];
-    NSLog(@"delete %i",index);
-    [dataManager removeData:data];
-    dataSource = [dataManager getUnCompletedData];
-    
-    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-}
-
--(void)focusCell:(MCSwipeTableViewCell *)cell{
-    savedContentOffset = [self.tableView contentOffset];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    [self.tableView setContentOffset:CGPointMake(0,CELL_HEIGHT * indexPath.row) animated:YES];
-    [self showMaskLayer];
-}
-
--(void)blurCell{
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-    [self hideMaskLayer];
-    [self.tableView setContentOffset:savedContentOffset animated:YES];
-    [dataManager saveData];
-}
-
 //-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return YES;
 //}
@@ -227,12 +179,12 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"cellForRowAtIndexPath %@",tableView.indexPathForSelectedRow);
-    static NSString *cellName = @"GanTableViewCellIdentifier";
+    NSString *cellName = [GanUnComplateTableViewCell getReuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法
-    GanTableViewCell *cell = (GanTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellName];
+    GanUnComplateTableViewCell *cell = (GanUnComplateTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellName];
     if(cell == nil){
-        cell = [[GanTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+        cell = [[GanUnComplateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
     }
     // For the delegate callback
     [cell setDelegate:self];
@@ -248,7 +200,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
                     fourthColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:1.0]];
     
     // We need to set a background to the content view of the cell
-    [cell.contentView setBackgroundColor:[UIColor colorWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:0.8]];
+    [cell.contentView setBackgroundColor:[UIColor colorWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1]];
     
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];
@@ -256,7 +208,51 @@ static const CGFloat CELL_HEIGHT=44.0f;
     return cell;
 }
 
--(CGFloat)random0_1{
-    return (CGFloat)(arc4random()%100/100.0f);
+#pragma mark - MCSwipeTableViewCellDelegate
+
+- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
+    NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+    
+    if (mode == MCSwipeTableViewCellModeExit) {
+        GanDataModel *data = ((GanUnComplateTableViewCell *)cell).data;
+        //完成
+        if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
+            [data setIsCompelete:YES];
+            dataSource = [dataManager getUnCompletedData];
+            [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+            [dataManager saveData];
+        }
+        //删除
+        else if(state == MCSwipeTableViewCellState4){
+            [dataManager removeData:data];
+            dataSource = [dataManager getUnCompletedData];
+            [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+            [dataManager saveData];
+        }
+    }
+}
+
+-(void)deleteCell:(GanDataModel*)data{
+    NSInteger index = [dataSource indexOfObject:data];
+    NSLog(@"delete %i",index);
+    [dataManager removeData:data];
+    dataSource = [dataManager getUnCompletedData];
+    
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)focusCell:(MCSwipeTableViewCell *)cell{
+    savedContentOffset = [self.tableView contentOffset];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    [self.tableView setContentOffset:CGPointMake(0,CELL_HEIGHT * indexPath.row) animated:YES];
+    [self showMaskLayer];
+}
+
+-(void)blurCell{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    [self hideMaskLayer];
+    [self.tableView setContentOffset:savedContentOffset animated:YES];
+    [dataManager saveData];
 }
 @end

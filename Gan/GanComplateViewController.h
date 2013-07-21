@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GanDownViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface GanComplateViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *trashBtn;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end

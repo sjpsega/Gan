@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GanDataModel.h"
-#import "GanViewController.h"
 #import "MCSwipeTableViewCell.h"
 
-@interface GanTableViewCell : MCSwipeTableViewCell
+@interface GanUnComplateTableViewCell : MCSwipeTableViewCell
 //@property(strong,nonatomic)GanViewController *viewController;
++(NSString *)getReuseIdentifier;
 @property(strong,nonatomic)GanDataModel *data;
-@property(strong,nonatomic)UILabel *contentLabel;
+//@property(strong,nonatomic)UILabel *contentLabel;
 @property(strong,nonatomic)UITextField *contentEditTxt;
 @end

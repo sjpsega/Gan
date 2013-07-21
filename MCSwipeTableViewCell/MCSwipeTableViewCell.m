@@ -169,7 +169,8 @@ secondStateIconName:(NSString *)secondIconName
 #pragma mark - Handle Gestures
 
 - (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)gesture {
-    
+    //拖动开始，设置select为NO
+    [self setSelected:NO animated:NO];
     // The user do not want you to be dragged!
     if (!_shouldDrag) return;
     
