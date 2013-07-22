@@ -7,6 +7,8 @@
 //
 
 #import "GanDataManager.h"
+#import "DLog.h"
+
 static id _instance;
 
 @interface GanDataManager ()
@@ -18,7 +20,7 @@ static id _instance;
 
 +(id)getInstance{
     if(!_instance){
-        NSLog(@"GanDataManager getInstance");
+        DLog(@"GanDataManager getInstance");
         _instance = [[GanDataManager alloc]init];
     }
     return _instance;
@@ -28,7 +30,7 @@ static id _instance;
     if(!_isRead){
         [self readData];
         _isRead = YES;
-        NSLog(@"getData,%@",_datas);
+        DLog(@"getData,%@",_datas);
         if(_datas == NULL){
             _datas = [[NSMutableArray alloc]init];
         }

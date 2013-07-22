@@ -11,7 +11,7 @@
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewCellDelegate.h"
 #import "GanDataManager.h"
-
+#import "DLog.h"
 static const CGFloat CELL_HEIGHT=44.0f;
 
 @interface GanUnComplateViewController ()<GanTableViewCellDelegate>{
@@ -58,7 +58,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 -(void)initDataSource{
     dataSource = [dataManager getUnCompletedData];
-    NSLog(@"dataSouce unComplate count:%i",[dataSource count]);
+    DLog(@"dataSouce unComplate count:%i",[dataSource count]);
 }
 
 -(void)setBgColor{
@@ -92,13 +92,13 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(IBAction)blurCell:(id)sender{
-    NSLog(@"blurCell~~~~~~");
+    DLog(@"blurCell~~~~~~");
     [self blurCell];
 }
 
 -(IBAction)addOne:(id)sender{
     savedContentOffset = CGPointZero;
-    NSLog(@"add");
+    DLog(@"add");
     [dataManager insertData:[[GanDataModel alloc]initWithContent:@""]];
     dataSource = [dataManager getUnCompletedData];
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -124,7 +124,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 //}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"didSelectRowAtIndexPath %@ %@",[tableView indexPathForSelectedRow],indexPath);
+    DLog(@"didSelectRowAtIndexPath %@ %@",[tableView indexPathForSelectedRow],indexPath);
 }
 
 
@@ -162,11 +162,11 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"willBeginEditingRowAtIndexPath");
+    DLog(@"willBeginEditingRowAtIndexPath");
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"commitEditingStyle.....");
+    DLog(@"commitEditingStyle.....");
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -211,7 +211,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 #pragma mark - MCSwipeTableViewCellDelegate
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
-    NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+    DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
     
     if (mode == MCSwipeTableViewCellModeExit) {
         GanDataModel *data = ((GanUnComplateTableViewCell *)cell).data;
@@ -234,7 +234,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 -(void)deleteCell:(GanDataModel*)data{
     NSInteger index = [dataSource indexOfObject:data];
-    NSLog(@"delete %i",index);
+    DLog(@"delete %i",index);
     [dataManager removeData:data];
     dataSource = [dataManager getUnCompletedData];
     

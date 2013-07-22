@@ -5,6 +5,7 @@
 //  Created by sjpsega on 13-6-15.
 //  Copyright (c) 2013年 sjp. All rights reserved.
 //
+/** DEBUG LOG **/
 
 #import "GanAppDelegate.h"
 

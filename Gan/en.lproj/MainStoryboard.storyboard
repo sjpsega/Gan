@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Gan Un Complate View Controller-->
+        <!--Gan Un Complate View Controller - Doing-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="GanUnComplateViewController" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="vpe-Gt-u1o"/>
+                    <tabBarItem key="tabBarItem" title="Doing" image="clock.png" id="vpe-Gt-u1o"/>
                     <navigationItem key="navigationItem" id="nBi-aY-Uhn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WOE-sW-aDg"/>
                     </navigationItem>
@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="621" y="-9"/>
         </scene>
-        <!--Gan Complate View Controller-->
+        <!--Gan Complate View Controller - Done-->
         <scene sceneID="DOE-fI-p1E">
             <objects>
                 <viewController id="gE5-WM-eS5" customClass="GanComplateViewController" sceneMemberID="viewController">
@@ -77,7 +77,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="oqo-ta-PXV"/>
+                    <tabBarItem key="tabBarItem" title="Done" image="check.png" id="oqo-ta-PXV"/>
                     <connections>
                         <outlet property="tableView" destination="TGB-pj-j5t" id="cWu-O9-lNO"/>
                         <outlet property="trashBtn" destination="CQ3-GE-mbL" id="Her-hg-cVe"/>
@@ -106,6 +106,10 @@
             <point key="canvasLocation" x="78" y="-33"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="check.png" width="23" height="20"/>
+        <image name="clock.png" width="22" height="22"/>
+    </resources>
     <classes>
         <class className="GanComplateViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GanComplateViewController.h"/>

@@ -8,7 +8,7 @@
 
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewCellDelegate.h"
-
+#import "DLog.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
 @class MCSwipeTableViewCell;
@@ -20,7 +20,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 -(void)prepareForReuse{
-    NSLog(@"GanTableViewCell prepareForReuse...");
+    DLog(@"GanTableViewCell prepareForReuse...");
 }
 
 
@@ -47,7 +47,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    NSLog(@"GanTableViewCell initWithSytle");
+    DLog(@"GanTableViewCell initWithSytle");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self initCustomElements];
@@ -61,7 +61,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 -(void)viewDidLoad{
-    NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
 }
 
 -(void)initCustomElements{
@@ -118,7 +118,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 -(void)editHandler:(UIGestureRecognizer *)recognizer{
-    NSLog(@"doubleLick");
+    DLog(@"doubleLick");
 //    self.contentEditTxt.text = self.contentLabel.text;
     self.contentEditTxt.text = self.textLabel.text;
     [self beginEdit];
@@ -163,7 +163,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 
 -(void)willMoveToSuperview:(UIView *)newSuperview{
-    NSLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    DLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super willMoveToSuperview:newSuperview];
     self.textLabel.text = _data.content;
     self.contentEditTxt.text = _data.content;

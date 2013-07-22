@@ -10,6 +10,8 @@
 #import "GanDataModel.h"
 #import "GanComplateTableViewCell.h"
 #import "GanDataManager.h"
+#import "DLog.h"
+
 @interface GanComplateViewController ()<GanTableViewCellDelegate,UIAlertViewDelegate>{
     NSMutableArray *dataSource;
     GanDataManager *dataManager;
@@ -39,7 +41,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~");
+    DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super viewWillAppear:animated];
     [self initDataSource];
     [self.tableView reloadData];
@@ -62,7 +64,7 @@
     //TODO:filter已完成的数据
     dataSource = [[GanDataManager getInstance] getCompletedData];
     
-    NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%i",[dataSource count]);
+    DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%i",[dataSource count]);
 }
 
 -(void)setBgColor{
@@ -100,7 +102,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cellForRowAtIndexPath %@",tableView.indexPathForSelectedRow);
+    DLog(@"cellForRowAtIndexPath %@",tableView.indexPathForSelectedRow);
     NSString *cellName = [GanComplateTableViewCell getReuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法
@@ -133,7 +135,7 @@
 #pragma mark - MCSwipeTableViewCellDelegate
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
-    NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+    DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
     
     if (mode == MCSwipeTableViewCellModeExit) {
         GanDataModel *data = ((GanComplateTableViewCell *)cell).data;

@@ -67,7 +67,6 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
 #pragma mark - Initialization
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    NSLog(@"MC initWithStyle");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 
     if (self) {
@@ -77,7 +76,6 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    NSLog(@"MC initWithCoder");
     self = [super initWithCoder:aDecoder];
 
     if (self) {
@@ -87,7 +85,6 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
 }
 
 - (id)init {
-    NSLog(@"MC init");
     self = [super init];
 
     if (self) {

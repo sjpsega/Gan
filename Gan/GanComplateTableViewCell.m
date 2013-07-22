@@ -7,6 +7,7 @@
 //
 
 #import "GanComplateTableViewCell.h"
+#import "DLog.h"
 
 static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 @class MCSwipeTableViewCell;
@@ -18,7 +19,7 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 }
 
 -(void)prepareForReuse{
-    NSLog(@"GanTableViewCell prepareForReuse...");
+    DLog(@"GanTableViewCell prepareForReuse...");
 }
 
 
@@ -29,7 +30,7 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    NSLog(@"GanTableViewCell initWithSytle");
+    DLog(@"GanTableViewCell initWithSytle");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 //        [self clearColorWithElement];
@@ -42,12 +43,12 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 }
 
 -(void)viewDidLoad{
-    NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~");
 //    self.textLabel.text = self.data.content;
 }
 
 -(void)willMoveToSuperview:(UIView *)newSuperview{
-    NSLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    DLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super willMoveToSuperview:newSuperview];
     self.textLabel.text =_data.content;
 }
