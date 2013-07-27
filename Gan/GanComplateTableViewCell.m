@@ -8,6 +8,7 @@
 
 #import "GanComplateTableViewCell.h"
 #import "DLog.h"
+#import "UIColor+HEXColor.h"
 
 static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 @class MCSwipeTableViewCell;
@@ -33,11 +34,9 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
     DLog(@"GanTableViewCell initWithSytle");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        [self clearColorWithElement];
-        //        UIView *bgColorView = [[UIView alloc] initWithFrame:self.bounds];
-        //        bgColorView.backgroundColor = [UIColor colorWithRed:0xf6 * 1.1 /255.f green:0xf6* 1.1 /255.f blue:0x34* 1.1 /255.f alpha:1.0];
-        
-        //        [self setSelectedBackgroundView:bgColorView];
+        UIView *bgColorView = [[UIView alloc] initWithFrame:self.bounds];
+        bgColorView.backgroundColor = [UIColor colorWithHEX:CELL_EDIT_BG alpha:1.0f];
+        [self setSelectedBackgroundView:bgColorView];
     }
     return self;
 }

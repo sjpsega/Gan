@@ -12,6 +12,7 @@
 #import "GanTableViewCellDelegate.h"
 #import "GanDataManager.h"
 #import "DLog.h"
+#import "UIColor+HEXColor.h"
 static const CGFloat CELL_HEIGHT=44.0f;
 
 @interface GanUnComplateViewController ()<GanTableViewCellDelegate>{
@@ -63,7 +64,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 -(void)setBgColor{
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+    [backgroundView setBackgroundColor:[UIColor colorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
 }
 
@@ -191,16 +192,16 @@ static const CGFloat CELL_HEIGHT=44.0f;
     
     // We need to provide the icon names and the desired colors
     [cell setFirstStateIconName:@"check.png"
-                     firstColor:[UIColor colorWithRed:85.0/255.0 green:213.0/255.0 blue:80.0/255.0 alpha:1.0]
+                     firstColor:[UIColor colorWithHEX:COMPLATE_COLOR alpha:1.0f]
             secondStateIconName:@"check.png"
                     secondColor:NULL
                   thirdIconName:@"cross.png"
-                     thirdColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:0.5]
+                     thirdColor:[UIColor colorWithHEX:DEL_COLOR alpha:0.5f]
                  fourthIconName:@"cross.png"
-                    fourthColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:1.0]];
+                    fourthColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0f]];
     
     // We need to set a background to the content view of the cell
-    [cell.contentView setBackgroundColor:[UIColor colorWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1]];
+    [cell.contentView setBackgroundColor:[UIColor colorWithHEX:CELL_BG alpha:1.0f]];
     
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];

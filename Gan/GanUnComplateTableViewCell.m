@@ -9,6 +9,7 @@
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewCellDelegate.h"
 #import "DLog.h"
+#import "UIColor+HEXColor.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
 @class MCSwipeTableViewCell;
@@ -52,10 +53,10 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     if (self) {
         [self initCustomElements];
         [self clearColorWithElement];
-//        UIView *bgColorView = [[UIView alloc] initWithFrame:self.bounds];
-//        bgColorView.backgroundColor = [UIColor colorWithRed:0xf6 * 1.1 /255.f green:0xf6* 1.1 /255.f blue:0x34* 1.1 /255.f alpha:1.0];
-
-//        [self setSelectedBackgroundView:bgColorView];
+        
+        UIView *bgColorView = [[UIView alloc] initWithFrame:self.bounds];
+        bgColorView.backgroundColor = [UIColor colorWithHEX:CELL_EDIT_BG alpha:1.0f];
+        [self setSelectedBackgroundView:bgColorView];
     }
     return self;
 }
@@ -136,7 +137,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
 //    NSLog(@"setSelected %i    %i    %@",selected,![self.contentEditTxt.text isEqualToString: @""],self.contentEditTxt.text);
-    [super setSelected:selected animated:animated];
+    [super setSelected:selected animated:NO];
     // Configure the view for the selected state
     
     self.contentEditTxt.hidden = YES;

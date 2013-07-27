@@ -28,4 +28,11 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode){
     MCSwipeTableViewCellModeSwitch
 };
 
+#define TITLE_TINY 0x00BF96
+#define CELL_BG 0xF7E967
+#define CELL_EDIT_BG 0xFFB03B
+#define COMPLATE_COLOR 0x328F26
+#define UNCOMPLATE_COLOR 0xA9CF54
+#define DEL_COLOR 0xE83D0E
+#define TABLE_BG 0xCAFCD8
 #endif

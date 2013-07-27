@@ -8,6 +8,7 @@
 
 #import "GanDataManager.h"
 #import "DLog.h"
+#import "GanDataModel.h"
 
 static id _instance;
 
@@ -52,6 +53,7 @@ static id _instance;
     [NSPredicate predicateWithFormat:@"SELF.isCompelete==YES"];
     NSArray *arr =
     [_datas filteredArrayUsingPredicate:predicate];
+//    arr = [self returnSortedArray:arr];
     return [NSMutableArray arrayWithArray:arr];
 }
 
@@ -63,6 +65,7 @@ static id _instance;
     [NSPredicate predicateWithFormat:@"SELF.isCompelete==NO"];
     NSArray *arr =
     [_datas filteredArrayUsingPredicate:predicate];
+    arr = [self returnSortedArray:arr];
     return [NSMutableArray arrayWithArray:arr];
 }
 
@@ -100,5 +103,16 @@ static id _instance;
 -(NSString *)getFileName{
     NSString *Path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     return [Path stringByAppendingPathComponent:@"GanDatas.plist"];
+}
+
+//降序排列
+-(NSArray *)returnSortedArray:(NSArray *)array{
+    NSArray *sortedArray;
+    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDate *first = [(GanDataModel*)a date];
+        NSDate *second = [(GanDataModel*)b date];
+        return [second compare:first];
+    }];
+    return sortedArray;
 }
 @end

@@ -11,6 +11,7 @@
 #import "GanComplateTableViewCell.h"
 #import "GanDataManager.h"
 #import "DLog.h"
+#import "UIColor+HEXColor.h"
 
 @interface GanComplateViewController ()<GanTableViewCellDelegate,UIAlertViewDelegate>{
     NSMutableArray *dataSource;
@@ -28,6 +29,7 @@
     [self addTashBtnEvent];
     [self setBgColor];
     dataManager = [GanDataManager getInstance];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,7 +71,7 @@
 
 -(void)setBgColor{
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+    [backgroundView setBackgroundColor:[UIColor colorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
 }
 
@@ -115,13 +117,13 @@
     
     // We need to provide the icon names and the desired colors
     [cell setFirstStateIconName:@"check.png"
-                     firstColor:[UIColor colorWithRed:206.0 / 255.0 green:149.0 / 255.0 blue:98.0 / 255.0 alpha:1.0]
+                     firstColor:[UIColor colorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
             secondStateIconName:@"check.png"
-                    secondColor:[UIColor colorWithRed:206.0 / 255.0 green:149.0 / 255.0 blue:98.0 / 255.0 alpha:1.0]
+                    secondColor:[UIColor colorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
                   thirdIconName:@"cross.png"
-                     thirdColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:1.0]
+                     thirdColor:[UIColor colorWithHEX:DEL_COLOR alpha:0.5]
                  fourthIconName:@"cross.png"
-                    fourthColor:[UIColor colorWithRed:232.0/255.0 green:61.0/255.0 blue:14.0/255.0 alpha:1.0]];
+                    fourthColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0]];
     
     // We need to set a background to the content view of the cell
     [cell.contentView setBackgroundColor:[UIColor colorWithRed:85.0/255.0 green:213.0/255.0 blue:80.0/255.0 alpha:1.0]];

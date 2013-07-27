@@ -114,6 +114,7 @@
         <class className="GanComplateViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GanComplateViewController.h"/>
             <relationships>
+                <relationship kind="action" name="delAllComplate:"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="trashBtn" candidateClass="UIBarButtonItem"/>
             </relationships>

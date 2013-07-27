@@ -35,6 +35,11 @@
     _isNew = false;
 }
 
+-(void)setIsCompelete:(BOOL)isCompelete{
+    _isCompelete = isCompelete;
+    _date = [NSDate date];
+}
+
 #pragma mark implement NSCoding
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:_content forKey:@"content"];
@@ -46,8 +51,8 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if(self = [self init]){
         self.content = [aDecoder decodeObjectForKey:@"content"];
-        self.date = [aDecoder decodeObjectForKey:@"date"];
         self.isCompelete = [aDecoder decodeBoolForKey:@"isComplate"];
+        _date = [aDecoder decodeObjectForKey:@"date"];
         _isNew = [aDecoder decodeBoolForKey:@"isNew"];
     }
     return self;
