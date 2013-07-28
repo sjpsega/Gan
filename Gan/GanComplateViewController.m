@@ -29,7 +29,22 @@
     [self addTashBtnEvent];
     [self setBgColor];
     dataManager = [GanDataManager getInstance];
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+    
+    //创建一个导航栏
+    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+    
+    //创建一个导航栏集合
+    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:@"想要做"];
+    
+    //创建一个右边按钮
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                 target:self
+                                                                                 action:@selector(delAllComplate:)];
+    [navBarItem setRightBarButtonItem:rightButton];
+    
+    [navBar pushNavigationItem:navBarItem animated:NO];
+    [self.view addSubview:navBar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,20 +65,6 @@
 }
 
 -(void)initDataSource{
-    //    dataSource = [NSMutableArray arrayWithArray:
-    //                  @[
-    //                  [[GanDataModel alloc]initWithContent:@"aaa"],
-    //                  [[GanDataModel alloc]initWithContent:@"bbb"],
-    //                  [[GanDataModel alloc]initWithContent:@"ccc"],
-    //                  [[GanDataModel alloc]initWithContent:@"ddd"],
-    //                  [[GanDataModel alloc]initWithContent:@"eee"],
-    //                  [[GanDataModel alloc]initWithContent:@"fff"]]];
-    
-    
-    //    [self.tableView setEditing:YES animated:YES];
-    
-    
-    //TODO:filter已完成的数据
     dataSource = [[GanDataManager getInstance] getCompletedData];
     
     DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%i",[dataSource count]);
@@ -108,6 +109,7 @@
     NSString *cellName = [GanComplateTableViewCell getReuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法
+    //PS:现使用纯代码方式生成cell
     GanComplateTableViewCell *cell = (GanComplateTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellName];
     if(cell == nil){
         cell = [[GanComplateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];

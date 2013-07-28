@@ -30,13 +30,38 @@ static const CGFloat CELL_HEIGHT=44.0f;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-//    [self initDataSource];
     [self addAddBtnEvent];
     [self addMaskLayer];
     [self setBgColor];
     dataManager = [GanDataManager getInstance];
-//    self.tableView.allowsSelectionDuringEditing=YES;
     
+    //创建一个导航栏
+    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+    
+    //创建一个导航栏集合
+    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:@"想要做"];
+    
+    //创建一个右边按钮
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                   target:self
+                                                                   action:@selector(addOne:)];
+    [navBarItem setRightBarButtonItem:rightButton];
+    
+    [navBar pushNavigationItem:navBarItem animated:NO];
+    [self.view addSubview:navBar];
+    
+    //调整底部TabBar高度
+    CGRect frame = self.tabBarController.tabBar.frame;
+    frame.size.height-=14;
+    self.tabBarController.tabBar.frame = frame;
+    
+    //调整TabBarItem中图片的位置
+    NSArray *items = self.tabBarController.tabBar.items;
+    UIEdgeInsets imageInset = UIEdgeInsetsMake(5, 0, -5, 0);
+    for (UITabBarItem *item in items) {
+        item.imageInsets = imageInset;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -108,70 +133,12 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
-//-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return YES;
-//}
-//
-//-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-//    
-//}
-//
-
-//- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView
-//           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"editingStyleForRowAtIndexPath %i",self.editing);
-//    return self.editing ?
-//    UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleNone;
-//}
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DLog(@"didSelectRowAtIndexPath %@ %@",[tableView indexPathForSelectedRow],indexPath);
 }
 
-
-//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
-//           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"editingStyleForRowAtIndexPath~~~~~~~~~~~");
-////    if (indexPath.section == 1) {
-////        NSInteger ct =
-//        [self tableView:tableView numberOfRowsInSection:indexPath.section];
-////        if (ct-1 == indexPath.row)
-////            return UITableViewCellEditingStyleInsert;
-////        return UITableViewCellEditingStyleDelete;
-////    }
-////    return UITableViewCellEditingStyleNone;
-//}
-
-//- (BOOL)tableView:(UITableView *)tableView
-//shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-////    if (indexPath.section == 1)
-//        return YES;
-////    return NO;
-//    
-//}
-
-//-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"canEditRowAtIndexPath %@ %@ %i",[tableView indexPathForSelectedRow],indexPath,[tableView indexPathForSelectedRow].row == indexPath.row);
-//    if ([tableView indexPathForSelectedRow].row == indexPath.row) {
-//        return YES;
-//    }
-//    return NO;
-//}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return CELL_HEIGHT;
-}
-
--(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
-    DLog(@"willBeginEditingRowAtIndexPath");
-}
-
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    DLog(@"commitEditingStyle.....");
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return @"删除";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -183,6 +150,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     NSString *cellName = [GanUnComplateTableViewCell getReuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法
+    //PS:现使用纯代码方式生成cell
     GanUnComplateTableViewCell *cell = (GanUnComplateTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellName];
     if(cell == nil){
         cell = [[GanUnComplateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];

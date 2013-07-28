@@ -33,7 +33,7 @@ static id _instance;
         _isRead = YES;
         DLog(@"getData,%@",_datas);
         if(_datas == NULL){
-            _datas = [[NSMutableArray alloc]init];
+            _datas = [self returnInitData];
         }
     }
     //找出content非空的数据，防止数据错误
@@ -114,5 +114,27 @@ static id _instance;
         return [second compare:first];
     }];
     return sortedArray;
+}
+
+-(NSMutableArray *)returnInitData{
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:
+                    @[[[GanDataModel alloc]initWithContent:@"任务右拖动，删除任务"],
+                     [[GanDataModel alloc]initWithContent:@"任务左拖动，完成任务"],
+                     [[GanDataModel alloc]initWithContent:@"双击编辑任务"],
+                     [[GanDataModel alloc]initWithContent:@"右上角'+'按钮，添加新任务"]]];
+    GanDataModel *tempData;
+    tempData = [[GanDataModel alloc]initWithContent:@"任务左拖动，重新加入任务列表"];
+    tempData.isCompelete = YES;
+    [arr addObject:tempData];
+    
+    tempData = [[GanDataModel alloc]initWithContent:@"任务右拖动，删除任务"];
+    tempData.isCompelete = YES;
+    [arr addObject:tempData];
+    
+    tempData = [[GanDataModel alloc]initWithContent:@"右上角按钮，删除所有已完成任务"];
+    tempData.isCompelete = YES;
+    [arr addObject:tempData];
+    
+    return arr;
 }
 @end

@@ -37,6 +37,9 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
         UIView *bgColorView = [[UIView alloc] initWithFrame:self.bounds];
         bgColorView.backgroundColor = [UIColor colorWithHEX:CELL_EDIT_BG alpha:1.0f];
         [self setSelectedBackgroundView:bgColorView];
+        
+        self.textLabel.font = [UIFont fontWithName:@"Arial" size:18.0];
+        self.textLabel.highlightedTextColor = [UIColor blackColor];
     }
     return self;
 }

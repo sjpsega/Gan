@@ -30,13 +30,6 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     return ReuseIdentifier.copy;
 }
 
-//-(void)awakeFromNib{
-//    NSLog(@"gan awakeFromNib...");
-//    
-//    [super awakeFromNib];
-//    [self initCustomElements];
-//}
-
 //允许删除操作，必须拖拽超过一半才行
 -(BOOL)shouldMove{
     MCSwipeTableViewCellState state = [self stateWithPercentage:self.currentPercentage];
@@ -57,6 +50,9 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
         UIView *bgColorView = [[UIView alloc] initWithFrame:self.bounds];
         bgColorView.backgroundColor = [UIColor colorWithHEX:CELL_EDIT_BG alpha:1.0f];
         [self setSelectedBackgroundView:bgColorView];
+        
+        self.textLabel.font = [UIFont fontWithName:@"Arial" size:18.0];
+        self.textLabel.highlightedTextColor = [UIColor blackColor];
     }
     return self;
 }
@@ -69,17 +65,9 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     
     [self addDoubleClickEvnet];
     
-//    [self addSwipeEvent];
-//    self.textLabel.hidden = YES;
-    
-//    self.contentLabel = [[UILabel alloc]init];
-//    self.contentLabel.frame = CGRectMake(0,0, 320, 44);
-//    self.contentLabel.shadowColor = [[UIColor alloc]initWithRed:0xcc/255.f green:0xcc/255.f blue:0xcc/255.f alpha:1];
-//    self.contentLabel.shadowOffset = CGSizeMake(2, 1);
-//    [self.contentView addSubview:self.contentLabel];
-    
     self.contentEditTxt = [[UITextField alloc]init];
     self.contentEditTxt.frame = CGRectMake(0,0, 320, 44);
+    self.contentEditTxt.font = [UIFont fontWithName:@"Arial" size:18.0];
     self.contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.contentEditTxt.returnKeyType = UIReturnKeyDone;
     
@@ -90,9 +78,6 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 -(void)clearColorWithElement{
-//    UIColor *bgColor;
-//    bgColor = [UIColor colorWithRed:0xf6/255.f green:0xf6/255.f blue:0x34/255.f alpha:1.f];
-//    self.backgroundColor = bgColor;
     for ( UIView* view in self.contentView.subviews )
     {
         view.backgroundColor = [UIColor clearColor];
@@ -120,7 +105,6 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 -(void)editHandler:(UIGestureRecognizer *)recognizer{
     DLog(@"doubleLick");
-//    self.contentEditTxt.text = self.contentLabel.text;
     self.contentEditTxt.text = self.textLabel.text;
     [self beginEdit];
 }
@@ -142,6 +126,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     
     self.contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
+
     //cell失去焦点，保存编辑数据
     if(selected == NO){
         self.textLabel.text = self.contentEditTxt.text;
