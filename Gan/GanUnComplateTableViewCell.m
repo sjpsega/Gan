@@ -14,6 +14,10 @@
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
 @class MCSwipeTableViewCell;
 
+@interface GanUnComplateTableViewCell()
+@property(strong,nonatomic)UITextField *contentEditTxt;
+@end
+
 @implementation GanUnComplateTableViewCell
 
 +(NSString *)getReuseIdentifier{
@@ -23,7 +27,6 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 -(void)prepareForReuse{
     DLog(@"GanTableViewCell prepareForReuse...");
 }
-
 
 -(NSString *)reuseIdentifier{
     //    NSLog(@"reuseIdentifier...");
@@ -61,19 +64,33 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 }
 
+
+//- (void)didReceiveMemoryWarning
+//{
+//    NSLog(@"un cell didReceiveMemoryWarning");
+//    [super didReceiveMemoryWarning];
+////    // Dispose of any resources that can be recreated.
+////    if([self isViewLoaded] && self.view.window == nil){
+////        NSLog(@"GanUnComplateViewController unload view");
+////        self.view = nil;
+////    }
+//    _contentEditTxt = nil;
+//    self.data = nil;
+//}
+
 -(void)initCustomElements{
     
     [self addDoubleClickEvnet];
     
-    self.contentEditTxt = [[UITextField alloc]init];
-    self.contentEditTxt.frame = CGRectMake(0,0, 320, 44);
-    self.contentEditTxt.font = [UIFont fontWithName:@"Arial" size:18.0];
-    self.contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    self.contentEditTxt.returnKeyType = UIReturnKeyDone;
+    _contentEditTxt = [[UITextField alloc]init];
+    _contentEditTxt.frame = CGRectMake(0,0, 320, 44);
+    _contentEditTxt.font = [UIFont fontWithName:@"Arial" size:18.0];
+    _contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _contentEditTxt.returnKeyType = UIReturnKeyDone;
     
-    [self.contentEditTxt addTarget:self action:@selector(keyboardDoneClcik:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_contentEditTxt addTarget:self action:@selector(keyboardDoneClcik:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    [self.contentView addSubview:self.contentEditTxt];
+    [self.contentView addSubview:_contentEditTxt];
     
 }
 
@@ -86,14 +103,14 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 -(void)keyboardDoneClcik:(id)sender{
     [self hideKeyboard:self];
-    [self setDataContent:self.contentEditTxt.text];
+    [self setDataContent:_contentEditTxt.text];
     if([self.delegate respondsToSelector:@selector(blurCell:)]){
         [self.delegate blurCell];
     }
 }
 
 -(IBAction)hideKeyboard:(id)sender{
-    [self.contentEditTxt resignFirstResponder];
+    [_contentEditTxt resignFirstResponder];
 }
 
 -(void)addDoubleClickEvnet{
@@ -105,14 +122,14 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 -(void)editHandler:(UIGestureRecognizer *)recognizer{
     DLog(@"doubleLick");
-    self.contentEditTxt.text = self.textLabel.text;
+    _contentEditTxt.text = self.textLabel.text;
     [self beginEdit];
 }
 
 -(void)beginEdit{
-    self.contentEditTxt.hidden = NO;
+    _contentEditTxt.hidden = NO;
     self.textLabel.hidden = YES;
-    [self.contentEditTxt becomeFirstResponder];
+    [_contentEditTxt becomeFirstResponder];
     if([self.delegate respondsToSelector:@selector(focusCell:)]){
         [self.delegate focusCell:self];
     }
@@ -120,17 +137,17 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-//    NSLog(@"setSelected %i    %i    %@",selected,![self.contentEditTxt.text isEqualToString: @""],self.contentEditTxt.text);
+//    NSLog(@"setSelected %i    %i    %@",selected,![_contentEditTxt.text isEqualToString: @""],_contentEditTxt.text);
     [super setSelected:selected animated:NO];
     // Configure the view for the selected state
     
-    self.contentEditTxt.hidden = YES;
+    _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
 
     //cell失去焦点，保存编辑数据
     if(selected == NO){
-        self.textLabel.text = self.contentEditTxt.text;
-        [self setDataContent:self.contentEditTxt.text];
+        self.textLabel.text = _contentEditTxt.text;
+        [self setDataContent:_contentEditTxt.text];
         [self hideKeyboard:self];
     }else{
         //新增行，自动进入编辑模式
@@ -152,7 +169,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     DLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super willMoveToSuperview:newSuperview];
     self.textLabel.text = _data.content;
-    self.contentEditTxt.text = _data.content;
+    _contentEditTxt.text = _data.content;
 }
 
 @end

@@ -28,6 +28,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 - (void)viewDidLoad
 {
+    NSLog(@"GanUnComplateViewController viewDidLoad");
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self addAddBtnEvent];
@@ -72,13 +73,24 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 - (void)didReceiveMemoryWarning
 {
+    DLog(@"GanUnComplateViewController didReceiveMemoryWarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    if([self isViewLoaded] && self.view.window == nil){
+        NSLog(@"GanUnComplateViewController unload view");
+        self.view = nil;
+    }
+    self.tableView = nil;
+    self.addBtn = nil;
+    maskLayer = nil;
+    dataSource = nil;
+    dataManager = nil;
 }
 
 - (void)viewDidUnload {
-    [self setTableView:nil];
-    [self setAddBtn:nil];
+    DLog(@"GanUnComplateViewController viewDidUnload");
+    self.tableView = nil;
+    self.addBtn = nil;
     [super viewDidUnload];
 }
 

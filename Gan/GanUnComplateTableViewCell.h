@@ -12,6 +12,5 @@
 
 @interface GanUnComplateTableViewCell : MCSwipeTableViewCell
 +(NSString *)getReuseIdentifier;
-@property(strong,nonatomic)GanDataModel *data;
-@property(strong,nonatomic)UITextField *contentEditTxt;
+@property(weak,nonatomic)GanDataModel *data;
 @end

@@ -11,5 +11,5 @@
 
 @interface GanComplateTableViewCell : MCSwipeTableViewCell
 +(NSString *)getReuseIdentifier;
-@property(strong,nonatomic)GanDataModel *data;
+@property(weak,nonatomic)GanDataModel *data;
 @end

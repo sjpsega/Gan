@@ -49,8 +49,17 @@
 
 - (void)didReceiveMemoryWarning
 {
+    DLog(@"GanComplateViewController didReceiveMemoryWarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    if([self isViewLoaded] && self.view.window == nil){
+        DLog(@"GanComplateViewController unload view");
+        self.view = nil;
+    }
+    self.tableView = nil;
+    self.trashBtn = nil;
+    dataSource = nil;
+    dataManager = nil;
 }
 
 - (void)viewDidUnload {
