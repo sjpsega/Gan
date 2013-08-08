@@ -132,7 +132,7 @@
             secondStateIconName:@"check.png"
                     secondColor:[UIColor colorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
                   thirdIconName:@"cross.png"
-                     thirdColor:[UIColor colorWithHEX:DEL_COLOR alpha:0.5]
+                     thirdColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0]
                  fourthIconName:@"cross.png"
                     fourthColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0]];
     
