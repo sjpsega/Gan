@@ -11,8 +11,6 @@
 		1815090B178C6366007BEB3E /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150905178C6366007BEB3E /* check@2x.png */; };
 		1815090C178C6366007BEB3E /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150906178C6366007BEB3E /* cross.png */; };
 		1815090D178C6366007BEB3E /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150907178C6366007BEB3E /* cross@2x.png */; };
-		1815090E178C6366007BEB3E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150908178C6366007BEB3E /* Icon.png */; };
-		1815090F178C6366007BEB3E /* Icon@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150909178C6366007BEB3E /* Icon@x2.png */; };
 		18150912178C63B3007BEB3E /* gan.psd in Resources */ = {isa = PBXBuildFile; fileRef = 18150911178C63B3007BEB3E /* gan.psd */; };
 		182CC30A17A4233600227007 /* UIColor+HEXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CC30917A4233600227007 /* UIColor+HEXColor.m */; };
 		1842AF99176CA9A200A1ED20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF98176CA9A200A1ED20 /* UIKit.framework */; };
@@ -28,6 +26,8 @@
 		1842AFB5176CA9A200A1ED20 /* GanUnComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFB4176CA9A200A1ED20 /* GanUnComplateViewController.m */; };
 		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
 		185584D11774450A006C89AC /* GanUnComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */; };
+		185C842317D2497500C9E65E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 185C842117D2497500C9E65E /* Icon.png */; };
+		185C842417D2497500C9E65E /* Icon@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 185C842217D2497500C9E65E /* Icon@x2.png */; };
 		18874BA11771A17600C8ED01 /* GanComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanComplateViewController.m */; };
 		188FF712179D8EFA0019234D /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF710179D8EFA0019234D /* clock.png */; };
 		188FF713179D8EFA0019234D /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF711179D8EFA0019234D /* clock@2x.png */; };
@@ -41,8 +41,6 @@
 		18150905178C6366007BEB3E /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		18150906178C6366007BEB3E /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
 		18150907178C6366007BEB3E /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
-		18150908178C6366007BEB3E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		18150909178C6366007BEB3E /* Icon@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@x2.png"; sourceTree = "<group>"; };
 		18150911178C63B3007BEB3E /* gan.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = gan.psd; sourceTree = "<group>"; };
 		18150917178C735F007BEB3E /* GanTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GanTableViewCellDelegate.h; sourceTree = "<group>"; };
 		182CC30817A4233600227007 /* UIColor+HEXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEXColor.h"; sourceTree = "<group>"; };
@@ -68,6 +66,8 @@
 		1842AFD9176CB9A900A1ED20 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
 		1842AFDB176CDEC900A1ED20 /* GanUnComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanUnComplateTableViewCell.h; sourceTree = "<group>"; };
 		185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
+		185C842117D2497500C9E65E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Gan/Icon.png; sourceTree = "<group>"; };
+		185C842217D2497500C9E65E /* Icon@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@x2.png"; path = "Gan/Icon@x2.png"; sourceTree = "<group>"; };
 		18874B9F1771A17600C8ED01 /* GanComplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateViewController.h; sourceTree = "<group>"; };
 		18874BA01771A17600C8ED01 /* GanComplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateViewController.m; sourceTree = "<group>"; };
 		188FF70F179D85C30019234D /* DLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
@@ -104,8 +104,6 @@
 				18150905178C6366007BEB3E /* check@2x.png */,
 				18150906178C6366007BEB3E /* cross.png */,
 				18150907178C6366007BEB3E /* cross@2x.png */,
-				18150908178C6366007BEB3E /* Icon.png */,
-				18150909178C6366007BEB3E /* Icon@x2.png */,
 			);
 			name = Images;
 			path = Gan/Images;
@@ -122,6 +120,8 @@
 		1842AF8C176CA9A200A1ED20 = {
 			isa = PBXGroup;
 			children = (
+				185C842117D2497500C9E65E /* Icon.png */,
+				185C842217D2497500C9E65E /* Icon@x2.png */,
 				18150910178C63B3007BEB3E /* Assets */,
 				1842AF97176CA9A200A1ED20 /* Frameworks */,
 				1842AF9E176CA9A200A1ED20 /* Gan */,
@@ -261,11 +261,11 @@
 				1815090B178C6366007BEB3E /* check@2x.png in Resources */,
 				1815090C178C6366007BEB3E /* cross.png in Resources */,
 				1815090D178C6366007BEB3E /* cross@2x.png in Resources */,
-				1815090E178C6366007BEB3E /* Icon.png in Resources */,
-				1815090F178C6366007BEB3E /* Icon@x2.png in Resources */,
 				18150912178C63B3007BEB3E /* gan.psd in Resources */,
 				188FF712179D8EFA0019234D /* clock.png in Resources */,
 				188FF713179D8EFA0019234D /* clock@2x.png in Resources */,
+				185C842317D2497500C9E65E /* Icon.png in Resources */,
+				185C842417D2497500C9E65E /* Icon@x2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,8 +323,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jianping shen (K5VFH2E7N6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jianping shen (K5VFH2E7N6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -339,8 +339,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "F62A0195-377F-4BD1-8D26-545B06FB1661";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F62A0195-377F-4BD1-8D26-545B06FB1661";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -357,8 +357,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jianping shen (K5VFH2E7N6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jianping shen (K5VFH2E7N6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -367,8 +367,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "F62A0195-377F-4BD1-8D26-545B06FB1661";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F62A0195-377F-4BD1-8D26-545B06FB1661";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -377,11 +377,15 @@
 		1842AFB9176CA9A200A1ED20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -389,11 +393,15 @@
 		1842AFBA176CA9A200A1ED20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
