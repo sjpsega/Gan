@@ -85,17 +85,17 @@ static id _instance;
 
 -(void)readData{
     NSString *path = [self getFileName];
-    NSLog(@"readData   %@",path);
+    DLog(@"readData   %@",path);
     NSData *saveData = [[NSData alloc]initWithContentsOfFile:path];
     _datas=[NSKeyedUnarchiver unarchiveObjectWithData:saveData];
 }
 
 -(void)saveData{
-    NSLog(@"saveData....");
+    DLog(@"saveData....");
     NSString *path = [self getFileName];
     NSData *saveData = [NSKeyedArchiver archivedDataWithRootObject:_datas];
     if([saveData writeToFile:path atomically:YES]){
-        NSLog(@"save success!");
+        DLog(@"save success!");
     }
 }
 

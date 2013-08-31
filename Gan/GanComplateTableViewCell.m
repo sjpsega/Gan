@@ -25,7 +25,6 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 
 
 -(NSString *)reuseIdentifier{
-    //    NSLog(@"reuseIdentifier...");
     return ReuseIdentifier.copy;
 }
 

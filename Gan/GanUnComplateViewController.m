@@ -28,7 +28,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 - (void)viewDidLoad
 {
-    NSLog(@"GanUnComplateViewController viewDidLoad");
+    DLog(@"GanUnComplateViewController viewDidLoad");
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self addAddBtnEvent];
@@ -77,7 +77,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     if([self isViewLoaded] && self.view.window == nil){
-        NSLog(@"GanUnComplateViewController unload view");
+        DLog(@"GanUnComplateViewController unload view");
         self.view = nil;
     }
     self.tableView = nil;
@@ -158,7 +158,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cellForRowAtIndexPath %@",tableView.indexPathForSelectedRow);
+    DLog(@"cellForRowAtIndexPath %@",tableView.indexPathForSelectedRow);
     NSString *cellName = [GanUnComplateTableViewCell getReuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法

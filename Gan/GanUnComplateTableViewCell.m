@@ -29,7 +29,6 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 -(NSString *)reuseIdentifier{
-    //    NSLog(@"reuseIdentifier...");
     return ReuseIdentifier.copy;
 }
 
@@ -67,11 +66,11 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 //- (void)didReceiveMemoryWarning
 //{
-//    NSLog(@"un cell didReceiveMemoryWarning");
+//    DLog(@"un cell didReceiveMemoryWarning");
 //    [super didReceiveMemoryWarning];
 ////    // Dispose of any resources that can be recreated.
 ////    if([self isViewLoaded] && self.view.window == nil){
-////        NSLog(@"GanUnComplateViewController unload view");
+////        DLog(@"GanUnComplateViewController unload view");
 ////        self.view = nil;
 ////    }
 //    _contentEditTxt = nil;
@@ -137,7 +136,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-//    NSLog(@"setSelected %i    %i    %@",selected,![_contentEditTxt.text isEqualToString: @""],_contentEditTxt.text);
+//    DLog(@"setSelected %i    %i    %@",selected,![_contentEditTxt.text isEqualToString: @""],_contentEditTxt.text);
     [super setSelected:selected animated:NO];
     // Configure the view for the selected state
     
