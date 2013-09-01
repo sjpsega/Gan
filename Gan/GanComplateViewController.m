@@ -35,7 +35,7 @@
     navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
     
     //创建一个导航栏集合
-    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:@"想要做"];
+    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:@"已完成"];
     
     //创建一个右边按钮
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
