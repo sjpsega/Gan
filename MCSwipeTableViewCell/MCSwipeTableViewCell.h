@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Mad Castle. All rights reserved.
 //
 
-#import "GanTableViewCellDelegate.h"
+#import "GanTableViewDelegate.h"
 #import "Global_ENUM.h"
 @class MCSwipeTableViewCell;
 
 @interface MCSwipeTableViewCell : UITableViewCell
 
-@property(nonatomic, assign) id <GanTableViewCellDelegate> delegate;
+@property(nonatomic, assign) id <GanTableViewDelegate> delegate;
 
 @property(nonatomic, copy) NSString *firstIconName;
 @property(nonatomic, copy) NSString *secondIconName;

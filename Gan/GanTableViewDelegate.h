@@ -10,7 +10,7 @@
 #import "Global_ENUM.h"
 @class MCSwipeTableViewCell;
 @class GanDataModel;
-@protocol GanTableViewCellDelegate <NSObject>
+@protocol GanTableViewDelegate <NSObject>
 @optional
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode;
 -(void)deleteCell:(GanDataModel*)data;

@@ -7,7 +7,7 @@
 //
 
 #import "GanUnComplateTableViewCell.h"
-#import "GanTableViewCellDelegate.h"
+#import "GanTableViewDelegate.h"
 #import "DLog.h"
 #import "UIColor+HEXColor.h"
 

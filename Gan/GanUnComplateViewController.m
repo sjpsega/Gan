@@ -9,13 +9,13 @@
 #import "GanUnComplateViewController.h"
 #import "GanDataModel.h"
 #import "GanUnComplateTableViewCell.h"
-#import "GanTableViewCellDelegate.h"
+#import "GanTableViewDelegate.h"
 #import "GanDataManager.h"
 #import "DLog.h"
 #import "UIColor+HEXColor.h"
 static const CGFloat CELL_HEIGHT=44.0f;
 
-@interface GanUnComplateViewController ()<GanTableViewCellDelegate>{
+@interface GanUnComplateViewController ()<GanTableViewDelegate>{
     NSMutableArray *dataSource;
     UIButton *maskLayer;
     CGPoint savedContentOffset;

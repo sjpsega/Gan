@@ -13,7 +13,7 @@
 #import "DLog.h"
 #import "UIColor+HEXColor.h"
 
-@interface GanComplateViewController ()<GanTableViewCellDelegate,UIAlertViewDelegate>{
+@interface GanComplateViewController ()<GanTableViewDelegate,UIAlertViewDelegate>{
     NSMutableArray *dataSource;
     GanDataManager *dataManager;
 }
@@ -71,6 +71,13 @@
     [super viewWillAppear:animated];
     [self initDataSource];
     [self.tableView reloadData];
+    
+    [self resignFirstResponder];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self becomeFirstResponder];
 }
 
 -(void)initDataSource{
@@ -169,4 +176,16 @@
     }
 }
 
+#pragma mark - 摇一摇删除功能
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    //检测到摇动
+    if (event.subtype == UIEventSubtypeMotionShake) {
+        [self delAllComplate:self];
+    }
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
 @end
