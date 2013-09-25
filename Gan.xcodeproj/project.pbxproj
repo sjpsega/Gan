@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180E21F817F28FB2004B2EA2 /* icon_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 180E21F717F28FB2004B2EA2 /* icon_114x114.png */; };
+		180E21FA17F28FB6004B2EA2 /* icon_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 180E21F917F28FB6004B2EA2 /* icon_57x57.png */; };
+		180E21FC17F28FE6004B2EA2 /* icon_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 180E21FB17F28FE6004B2EA2 /* icon_120x120.png */; };
 		1815090A178C6366007BEB3E /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150904178C6366007BEB3E /* check.png */; };
 		1815090B178C6366007BEB3E /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150905178C6366007BEB3E /* check@2x.png */; };
 		1815090C178C6366007BEB3E /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150906178C6366007BEB3E /* cross.png */; };
 		1815090D178C6366007BEB3E /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150907178C6366007BEB3E /* cross@2x.png */; };
-		18150912178C63B3007BEB3E /* gan.psd in Resources */ = {isa = PBXBuildFile; fileRef = 18150911178C63B3007BEB3E /* gan.psd */; };
 		182CC30A17A4233600227007 /* UIColor+HEXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CC30917A4233600227007 /* UIColor+HEXColor.m */; };
 		1842AF99176CA9A200A1ED20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF98176CA9A200A1ED20 /* UIKit.framework */; };
 		1842AF9B176CA9A200A1ED20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF9A176CA9A200A1ED20 /* Foundation.framework */; };
@@ -26,8 +28,6 @@
 		1842AFB5176CA9A200A1ED20 /* GanUnComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFB4176CA9A200A1ED20 /* GanUnComplateViewController.m */; };
 		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
 		185584D11774450A006C89AC /* GanUnComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */; };
-		185C842317D2497500C9E65E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 185C842117D2497500C9E65E /* Icon.png */; };
-		185C842417D2497500C9E65E /* Icon@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 185C842217D2497500C9E65E /* Icon@x2.png */; };
 		18874BA11771A17600C8ED01 /* GanComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanComplateViewController.m */; };
 		188FF712179D8EFA0019234D /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF710179D8EFA0019234D /* clock.png */; };
 		188FF713179D8EFA0019234D /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF711179D8EFA0019234D /* clock@2x.png */; };
@@ -37,11 +37,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180E21F717F28FB2004B2EA2 /* icon_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114x114.png; sourceTree = "<group>"; };
+		180E21F917F28FB6004B2EA2 /* icon_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57x57.png; sourceTree = "<group>"; };
+		180E21FB17F28FE6004B2EA2 /* icon_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120x120.png; sourceTree = "<group>"; };
 		18150904178C6366007BEB3E /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		18150905178C6366007BEB3E /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		18150906178C6366007BEB3E /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
 		18150907178C6366007BEB3E /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
-		18150911178C63B3007BEB3E /* gan.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = gan.psd; sourceTree = "<group>"; };
 		18150917178C735F007BEB3E /* GanTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GanTableViewDelegate.h; sourceTree = "<group>"; };
 		182CC30817A4233600227007 /* UIColor+HEXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEXColor.h"; sourceTree = "<group>"; };
 		182CC30917A4233600227007 /* UIColor+HEXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEXColor.m"; sourceTree = "<group>"; };
@@ -66,8 +68,6 @@
 		1842AFD9176CB9A900A1ED20 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
 		1842AFDB176CDEC900A1ED20 /* GanUnComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanUnComplateTableViewCell.h; sourceTree = "<group>"; };
 		185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
-		185C842117D2497500C9E65E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Gan/Icon.png; sourceTree = "<group>"; };
-		185C842217D2497500C9E65E /* Icon@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@x2.png"; path = "Gan/Icon@x2.png"; sourceTree = "<group>"; };
 		18874B9F1771A17600C8ED01 /* GanComplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateViewController.h; sourceTree = "<group>"; };
 		18874BA01771A17600C8ED01 /* GanComplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateViewController.m; sourceTree = "<group>"; };
 		188FF70F179D85C30019234D /* DLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
@@ -109,20 +109,12 @@
 			path = Gan/Images;
 			sourceTree = "<group>";
 		};
-		18150910178C63B3007BEB3E /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				18150911178C63B3007BEB3E /* gan.psd */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
 		1842AF8C176CA9A200A1ED20 = {
 			isa = PBXGroup;
 			children = (
-				185C842117D2497500C9E65E /* Icon.png */,
-				185C842217D2497500C9E65E /* Icon@x2.png */,
-				18150910178C63B3007BEB3E /* Assets */,
+				180E21FB17F28FE6004B2EA2 /* icon_120x120.png */,
+				180E21F917F28FB6004B2EA2 /* icon_57x57.png */,
+				180E21F717F28FB2004B2EA2 /* icon_114x114.png */,
 				1842AF97176CA9A200A1ED20 /* Frameworks */,
 				1842AF9E176CA9A200A1ED20 /* Gan */,
 				18150903178C6366007BEB3E /* Images */,
@@ -261,11 +253,11 @@
 				1815090B178C6366007BEB3E /* check@2x.png in Resources */,
 				1815090C178C6366007BEB3E /* cross.png in Resources */,
 				1815090D178C6366007BEB3E /* cross@2x.png in Resources */,
-				18150912178C63B3007BEB3E /* gan.psd in Resources */,
 				188FF712179D8EFA0019234D /* clock.png in Resources */,
 				188FF713179D8EFA0019234D /* clock@2x.png in Resources */,
-				185C842317D2497500C9E65E /* Icon.png in Resources */,
-				185C842417D2497500C9E65E /* Icon@x2.png in Resources */,
+				180E21F817F28FB2004B2EA2 /* icon_114x114.png in Resources */,
+				180E21FA17F28FB6004B2EA2 /* icon_57x57.png in Resources */,
+				180E21FC17F28FE6004B2EA2 /* icon_120x120.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

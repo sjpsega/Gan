@@ -52,10 +52,18 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [navBar pushNavigationItem:navBarItem animated:NO];
     [self.view addSubview:navBar];
     
+    CGFloat adjustDis = 14.0;
     //调整底部TabBar高度
     CGRect frame = self.tabBarController.tabBar.frame;
-    frame.size.height-=14;
+    frame.size.height -= adjustDis;
+    frame.origin.y += adjustDis;
     self.tabBarController.tabBar.frame = frame;
+    
+    //重设设置内容区域高度
+    UIView *transitionView = [[self.tabBarController.view subviews] objectAtIndex:0];
+    frame = transitionView.frame;
+    frame.size.height += adjustDis;
+    transitionView.frame = frame;
     
     //调整TabBarItem中图片的位置
     NSArray *items = self.tabBarController.tabBar.items;
@@ -63,6 +71,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     for (UITabBarItem *item in items) {
         item.imageInsets = imageInset;
     }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
