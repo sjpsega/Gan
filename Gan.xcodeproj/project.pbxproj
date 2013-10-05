@@ -27,6 +27,7 @@
 		1842AFB2176CA9A200A1ED20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFB0176CA9A200A1ED20 /* MainStoryboard.storyboard */; };
 		1842AFB5176CA9A200A1ED20 /* GanUnComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFB4176CA9A200A1ED20 /* GanUnComplateViewController.m */; };
 		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
+		184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184EF9B117FFEDDA00827FF9 /* Localizable.strings */; };
 		185584D11774450A006C89AC /* GanUnComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */; };
 		18874BA11771A17600C8ED01 /* GanComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanComplateViewController.m */; };
 		188FF712179D8EFA0019234D /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF710179D8EFA0019234D /* clock.png */; };
@@ -67,6 +68,10 @@
 		1842AFD8176CB9A900A1ED20 /* GanDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataModel.h; sourceTree = "<group>"; };
 		1842AFD9176CB9A900A1ED20 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
 		1842AFDB176CDEC900A1ED20 /* GanUnComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanUnComplateTableViewCell.h; sourceTree = "<group>"; };
+		184EF99F17FFE1BE00827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		184EF9B017FFEDDA00827FF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		184EF9B217FFEDDC00827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		184EF9B31800085300827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
 		18874B9F1771A17600C8ED01 /* GanComplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateViewController.h; sourceTree = "<group>"; };
 		18874BA01771A17600C8ED01 /* GanComplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateViewController.m; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 		1842AF9F176CA9A200A1ED20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				184EF9B117FFEDDA00827FF9 /* Localizable.strings */,
 				1842AFA0176CA9A200A1ED20 /* Gan-Info.plist */,
 				1842AFA1176CA9A200A1ED20 /* InfoPlist.strings */,
 				1842AFA4176CA9A200A1ED20 /* main.m */,
@@ -228,6 +234,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 1842AF8C176CA9A200A1ED20;
 			productRefGroup = 1842AF96176CA9A200A1ED20 /* Products */;
@@ -258,6 +265,7 @@
 				180E21F817F28FB2004B2EA2 /* icon_114x114.png in Resources */,
 				180E21FA17F28FB6004B2EA2 /* icon_57x57.png in Resources */,
 				180E21FC17F28FE6004B2EA2 /* icon_120x120.png in Resources */,
+				184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +296,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1842AFA2176CA9A200A1ED20 /* en */,
+				184EF99F17FFE1BE00827FF9 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -296,8 +305,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				1842AFB1176CA9A200A1ED20 /* en */,
+				184EF9B31800085300827FF9 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		184EF9B117FFEDDA00827FF9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				184EF9B017FFEDDA00827FF9 /* en */,
+				184EF9B217FFEDDC00827FF9 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

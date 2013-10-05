@@ -33,9 +33,9 @@
     //创建一个导航栏
     UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
-    
+
     //创建一个导航栏集合
-    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:@"已完成"];
+    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"doneTitle", @"")];
     
     //创建一个右边按钮
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
@@ -98,7 +98,11 @@
 }
 
 -(IBAction)delAllComplate:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提醒" message:@"删除所有已完成项?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"delAllComplateAlertTitle", @"")
+                    message:NSLocalizedString(@"delAllComplateAlertMessage", @"")
+                    delegate:self
+                    cancelButtonTitle:NSLocalizedString(@"delAllComplateAlertCancelBtn", @"")
+                    otherButtonTitles:NSLocalizedString(@"delAllComplateAlertOkBtn", @""), nil];
     [alert show];
 }
 

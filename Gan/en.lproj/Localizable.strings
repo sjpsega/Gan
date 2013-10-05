@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  Gan
+
+  Created by sjpsega on 13-10-5.
+  Copyright (c) 2013年 sjp. All rights reserved.
+*/
+todoTitle = "todo";
+doneTitle = "done";
+
+unComplateItem1 = "click '+' button to add new task";
+unComplateItem2 = "double click to edit task";
+unComplateItem3 = "swipe task left to complete it";
+unComplateItem4 = "swipe task right to delete it";
+
+complateItem1 = "swipe task left to set it incomplete";
+complateItem2 = "swipe task right to delete it";
+complateItem3 = "click 'trash' to delete all completed";
+
+delAllComplateAlertTitle = "Alert";
+delAllComplateAlertMessage = "Do you want to delete all completed tasks?";
+delAllComplateAlertCancelBtn = "Cancel";
+delAllComplateAlertOkBtn = "OK";

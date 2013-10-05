@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  Gan
+
+  Created by sjpsega on 13-10-5.
+  Copyright (c) 2013年 sjp. All rights reserved.
+*/
+todoTitle = "想要做";
+doneTitle = "已完成";
+
+unComplateItem1 = "右上角'+'按钮，添加新任务";
+unComplateItem2 = "双击编辑任务";
+unComplateItem3 = "任务左拖动，完成任务";
+unComplateItem4 = "任务右拖动，删除任务";
+
+complateItem1 = "任务左拖动，重新加入任务列表";
+complateItem2 = "任务右拖动，删除任务";
+complateItem3 = "右上角按钮，删除所有已完成任务";
+
+delAllComplateAlertTitle = "提醒";
+delAllComplateAlertMessage = "删除所有已完成项?";
+delAllComplateAlertCancelBtn = "取消";
+delAllComplateAlertOkBtn = "确定";

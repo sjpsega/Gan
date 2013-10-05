@@ -118,20 +118,20 @@ static id _instance;
 
 -(NSMutableArray *)returnInitData{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:
-                    @[[[GanDataModel alloc]initWithContent:@"任务右拖动，删除任务"],
-                     [[GanDataModel alloc]initWithContent:@"任务左拖动，完成任务"],
-                     [[GanDataModel alloc]initWithContent:@"双击编辑任务"],
-                     [[GanDataModel alloc]initWithContent:@"右上角'+'按钮，添加新任务"]]];
+                    @[[[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem4", @"")],
+                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem3", @"")],
+                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem2", @"")],
+                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem1", @"")]]];
     GanDataModel *tempData;
-    tempData = [[GanDataModel alloc]initWithContent:@"任务左拖动，重新加入任务列表"];
+    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem1", @"")];
     tempData.isCompelete = YES;
     [arr addObject:tempData];
     
-    tempData = [[GanDataModel alloc]initWithContent:@"任务右拖动，删除任务"];
+    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem2", @"")];
     tempData.isCompelete = YES;
     [arr addObject:tempData];
     
-    tempData = [[GanDataModel alloc]initWithContent:@"右上角按钮，删除所有已完成任务"];
+    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem3", @"")];
     tempData.isCompelete = YES;
     [arr addObject:tempData];
     
