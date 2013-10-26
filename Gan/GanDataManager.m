@@ -15,8 +15,10 @@ static id _instance;
 @interface GanDataManager ()
 @property(nonatomic)BOOL isRead;
 @property(nonatomic,strong)NSMutableArray *datas;
+-(NSMutableArray *)getData;
 -(NSString *)getFileName;
 @end
+
 @implementation GanDataManager
 
 +(id)getInstance{
@@ -88,6 +90,14 @@ static id _instance;
     DLog(@"readData   %@",path);
     NSData *saveData = [[NSData alloc]initWithContentsOfFile:path];
     _datas=[NSKeyedUnarchiver unarchiveObjectWithData:saveData];
+}
+
+-(GanDataModel *)getFirstUnCompletedData{
+    if(!_isRead){
+        [self getData];
+    }
+    NSMutableArray *unCompleteDatas = [self getUnCompletedData];
+    return unCompleteDatas.count ? [unCompleteDatas objectAtIndex:0] : nil;
 }
 
 -(void)saveData{

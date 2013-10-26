@@ -71,7 +71,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     for (UITabBarItem *item in items) {
         item.imageInsets = imageInset;
     }
-    
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -144,6 +144,11 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(IBAction)addOne:(id)sender{
+    //若第一个数据内容为空，则不添加新行
+    GanDataModel *firstObj = [dataManager getFirstUnCompletedData];
+    if(firstObj && [firstObj.content isEqual:(@"")]){
+        return;
+    }
     savedContentOffset = CGPointZero;
     DLog(@"add");
     [dataManager insertData:[[GanDataModel alloc]initWithContent:@""]];
