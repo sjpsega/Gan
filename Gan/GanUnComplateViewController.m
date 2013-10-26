@@ -144,11 +144,13 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(IBAction)addOne:(id)sender{
-    //若第一个数据内容为空，则不添加新行
-    GanDataModel *firstObj = [dataManager getFirstUnCompletedData];
-    if(firstObj && [firstObj.content isEqual:(@"")]){
+    //若第一行数据内容为空，则不添加新行
+    NSIndexPath *firstIdx = [NSIndexPath indexPathForRow:0 inSection:0];
+    GanUnComplateTableViewCell *firstCell = (GanUnComplateTableViewCell *)([self.tableView cellForRowAtIndexPath:firstIdx]);
+    if(firstCell.isEditing && [firstCell.contentEditTxt.text isEqual:@""]){
         return;
     }
+    
     savedContentOffset = CGPointZero;
     DLog(@"add");
     [dataManager insertData:[[GanDataModel alloc]initWithContent:@""]];

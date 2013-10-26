@@ -29,9 +29,11 @@
 		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
 		184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184EF9B117FFEDDA00827FF9 /* Localizable.strings */; };
 		185584D11774450A006C89AC /* GanUnComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */; };
+		1879AEDD181BBB830051735A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1879AEDC181BBB830051735A /* libz.dylib */; };
 		18874BA11771A17600C8ED01 /* GanComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanComplateViewController.m */; };
 		188FF712179D8EFA0019234D /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF710179D8EFA0019234D /* clock.png */; };
 		188FF713179D8EFA0019234D /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF711179D8EFA0019234D /* clock@2x.png */; };
+		189AC7BA181C117700834A85 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189AC7B8181C117700834A85 /* libMobClickLibrary.a */; };
 		18A06B6F1792CE88000E3A74 /* GanDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A06B6E1792CE88000E3A74 /* GanDataManager.m */; };
 		18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */; };
 		18D1BE71179C041E000CDBD1 /* GanComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */; };
@@ -73,11 +75,14 @@
 		184EF9B217FFEDDC00827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		184EF9B31800085300827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
+		1879AEDC181BBB830051735A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		18874B9F1771A17600C8ED01 /* GanComplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateViewController.h; sourceTree = "<group>"; };
 		18874BA01771A17600C8ED01 /* GanComplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateViewController.m; sourceTree = "<group>"; };
 		188FF70F179D85C30019234D /* DLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		188FF710179D8EFA0019234D /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		188FF711179D8EFA0019234D /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
+		189AC7B8181C117700834A85 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		189AC7B9181C117700834A85 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		18A06B6D1792CE88000E3A74 /* GanDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataManager.h; sourceTree = "<group>"; };
 		18A06B6E1792CE88000E3A74 /* GanDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataManager.m; sourceTree = "<group>"; };
 		18CF068B178D0AB600F0CD7D /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
@@ -91,9 +96,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1879AEDD181BBB830051735A /* libz.dylib in Frameworks */,
 				1842AF99176CA9A200A1ED20 /* UIKit.framework in Frameworks */,
 				1842AF9B176CA9A200A1ED20 /* Foundation.framework in Frameworks */,
 				1842AF9D176CA9A200A1ED20 /* CoreGraphics.framework in Frameworks */,
+				189AC7BA181C117700834A85 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +124,8 @@
 		1842AF8C176CA9A200A1ED20 = {
 			isa = PBXGroup;
 			children = (
+				1879AEDC181BBB830051735A /* libz.dylib */,
+				1879AEDB181BBAB90051735A /* UM */,
 				180E21FB17F28FE6004B2EA2 /* icon_120x120.png */,
 				180E21F917F28FB6004B2EA2 /* icon_57x57.png */,
 				180E21F717F28FB2004B2EA2 /* icon_114x114.png */,
@@ -187,6 +196,15 @@
 				1842AFAE176CA9A200A1ED20 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1879AEDB181BBAB90051735A /* UM */ = {
+			isa = PBXGroup;
+			children = (
+				189AC7B8181C117700834A85 /* libMobClickLibrary.a */,
+				189AC7B9181C117700834A85 /* MobClick.h */,
+			);
+			name = UM;
 			sourceTree = "<group>";
 		};
 		18CF068A178D0AB600F0CD7D /* MCSwipeTableViewCell */ = {
@@ -394,6 +412,10 @@
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -410,6 +432,10 @@
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

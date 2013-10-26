@@ -9,11 +9,22 @@
 
 #import "GanAppDelegate.h"
 #import "GanDataManager.h"
+#import "MobClick.h"
+#define UMENG_APPKEY @"526b6a1d56240b395506cbd5"
+
 @implementation GanAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    //友盟统计分析
+    [MobClick setLogEnabled:NO];
+    [MobClick startWithAppkey:UMENG_APPKEY];
+    
+    //友盟升级提醒
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    [MobClick checkUpdate];
     return YES;
 }
 

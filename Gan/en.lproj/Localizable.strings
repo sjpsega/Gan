@@ -21,3 +21,7 @@ delAllComplateAlertTitle = "Alert";
 delAllComplateAlertMessage = "Do you want to delete all completed tasks?";
 delAllComplateAlertCancelBtn = "Cancel";
 delAllComplateAlertOkBtn = "OK";
+
+umUpdateTitle = "new version ";
+umUpdateCancel = "Skip";
+umUpdateOK = "Update";

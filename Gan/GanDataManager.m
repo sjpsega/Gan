@@ -92,14 +92,6 @@ static id _instance;
     _datas=[NSKeyedUnarchiver unarchiveObjectWithData:saveData];
 }
 
--(GanDataModel *)getFirstUnCompletedData{
-    if(!_isRead){
-        [self getData];
-    }
-    NSMutableArray *unCompleteDatas = [self getUnCompletedData];
-    return unCompleteDatas.count ? [unCompleteDatas objectAtIndex:0] : nil;
-}
-
 -(void)saveData{
     DLog(@"saveData....");
     NSString *path = [self getFileName];

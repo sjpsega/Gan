@@ -21,3 +21,7 @@ delAllComplateAlertTitle = "提醒";
 delAllComplateAlertMessage = "删除所有已完成项?";
 delAllComplateAlertCancelBtn = "取消";
 delAllComplateAlertOkBtn = "确定";
+
+umUpdateTitle = "有可用的新版本 ";
+umUpdateCancel = "忽略";
+umUpdateOK = "升级";

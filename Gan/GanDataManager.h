@@ -14,6 +14,5 @@
 -(NSMutableArray *)getUnCompletedData;
 -(void)insertData:(GanDataModel *)data;
 -(void)removeData:(GanDataModel *)data;
--(GanDataModel *)getFirstUnCompletedData;
 -(void)saveData;
 @end

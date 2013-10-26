@@ -12,11 +12,6 @@
 #import "UIColor+HEXColor.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
-@class MCSwipeTableViewCell;
-
-@interface GanUnComplateTableViewCell()
-@property(strong,nonatomic)UITextField *contentEditTxt;
-@end
 
 @implementation GanUnComplateTableViewCell
 
@@ -46,6 +41,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     DLog(@"GanTableViewCell initWithSytle");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.isEditing = false;
         [self initCustomElements];
         [self clearColorWithElement];
         
@@ -104,6 +100,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     [self hideKeyboard:self];
     [self setDataContent:_contentEditTxt.text];
     if([self.delegate respondsToSelector:@selector(blurCell:)]){
+        self.isEditing = false;
         [self.delegate blurCell];
     }
 }
@@ -130,6 +127,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     self.textLabel.hidden = YES;
     [_contentEditTxt becomeFirstResponder];
     if([self.delegate respondsToSelector:@selector(focusCell:)]){
+        self.isEditing = true;
         [self.delegate focusCell:self];
     }
 }
