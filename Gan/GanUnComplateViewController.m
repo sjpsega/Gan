@@ -199,15 +199,18 @@ static const CGFloat CELL_HEIGHT=44.0f;
     // We need to set a background to the content view of the cell
     [cell.contentView setBackgroundColor:[UIColor colorWithHEX:CELL_BG alpha:1.0f]];
     
+    // Setting the default inactive state color to the tableView background color
+    [cell setDefaultColor:self.tableView.backgroundView.backgroundColor];
+    
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];
     cell.data = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]);
     return cell;
 }
 
-#pragma mark - MCSwipeTableViewCellDelegate
+#pragma mark - GanTableViewDelegate
 
-- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
+- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode{
     DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
     
     if (mode == MCSwipeTableViewCellModeExit) {
@@ -227,6 +230,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
             [dataManager saveData];
         }
     }
+
 }
 
 -(void)deleteCell:(GanDataModel*)data{

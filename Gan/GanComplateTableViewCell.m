@@ -9,6 +9,7 @@
 #import "GanComplateTableViewCell.h"
 #import "DLog.h"
 #import "UIColor+HEXColor.h"
+#import "Global_ENUM.h"
 
 static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 @class MCSwipeTableViewCell;

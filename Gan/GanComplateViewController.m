@@ -150,15 +150,18 @@
     // We need to set a background to the content view of the cell
     [cell.contentView setBackgroundColor:[UIColor colorWithRed:85.0/255.0 green:213.0/255.0 blue:80.0/255.0 alpha:1.0]];
     
+    // Setting the default inactive state color to the tableView background color
+    [cell setDefaultColor:self.tableView.backgroundView.backgroundColor];
+    
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];
     cell.data = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]);
     return cell;
 }
 
-#pragma mark - MCSwipeTableViewCellDelegate
+#pragma mark - GanTableViewDelegate
 
-- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode {
+- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode {
     DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
     
     if (mode == MCSwipeTableViewCellModeExit) {

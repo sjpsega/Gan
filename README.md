@@ -15,6 +15,9 @@
 * ~~在已完成页面，摇一摇，显示删除全部提示？~~
 * ~~底部导航高度有点问题（有点奇怪，模拟器上看没问题，屏幕截图有问题，实机测试也有问题~~
 
+## Thanks
+[MCSwipeTableViewCell](https://github.com/alikaragoz/MCSwipeTableViewCell) 
+
 
 ## Log
 
@@ -24,3 +27,7 @@
 ### 1.2
 * “添加task“方法优化，防止频繁点击，crash
 * 引入友盟，进行统计分析、升级提醒
+
+### 1.3(doing)
+* 适配iOS7
+* 增加"添加任务"等统计信息
