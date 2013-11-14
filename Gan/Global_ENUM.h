@@ -55,4 +55,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode) {
 #define UNCOMPLATE_COLOR 0xA9CF54
 #define DEL_COLOR 0xE83D0E
 #define TABLE_BG 0xCAFCD8
+
+#define SystemVersion_floatValue ([[[UIDevice currentDevice] systemVersion] floatValue])
+
 #endif

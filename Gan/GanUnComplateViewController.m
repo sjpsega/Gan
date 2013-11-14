@@ -20,6 +20,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     UIButton *maskLayer;
     CGPoint savedContentOffset;
     GanDataManager *dataManager;
+    UINavigationBar *navBar;
 }
 
 @end
@@ -34,15 +35,16 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [self addAddBtnEvent];
     [self addMaskLayer];
     [self setBgColor];
+    
     dataManager = [GanDataManager getInstance];
     
     //创建一个导航栏
-    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
     
     //创建一个导航栏集合
     UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"todoTitle", @"")];
-    
+
     //创建一个右边按钮
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                    target:self
@@ -72,6 +74,22 @@ static const CGFloat CELL_HEIGHT=44.0f;
         item.imageInsets = imageInset;
     }
 
+    [self fitForiOS7];
+}
+
+-(void)fitForiOS7{
+    if(SystemVersion_floatValue>=7.f){
+        //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
+        self.tableView.separatorInset = UIEdgeInsetsZero;
+        
+        CGRect frame = navBar.frame;
+        frame.size.height += 20;
+        navBar.frame = frame;
+
+        frame = self.tableView.frame;
+        frame.origin.y+=20;
+        self.tableView.frame = frame;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -159,6 +177,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     
     [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -174,7 +193,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DLog(@"cellForRowAtIndexPath %@",tableView.indexPathForSelectedRow);
+    DLog(@"cellForRowAtIndexPath %@",indexPath);
     NSString *cellName = [GanUnComplateTableViewCell getReuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法

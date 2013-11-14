@@ -36,6 +36,11 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     return YES;
 }
 
+-(void)didMoveToWindow{
+    NSLog(@"12132132123132132");
+}
+
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     DLog(@"GanTableViewCell initWithSytle");
@@ -134,7 +139,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-//    DLog(@"setSelected %i    %i    %@",selected,![_contentEditTxt.text isEqualToString: @""],_contentEditTxt.text);
+    DLog(@"setSelected %i    %i    %@",selected,![_contentEditTxt.text isEqualToString: @""],_contentEditTxt.text);
     [super setSelected:selected animated:NO];
     // Configure the view for the selected state
     

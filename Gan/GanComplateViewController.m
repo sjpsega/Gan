@@ -16,6 +16,7 @@
 @interface GanComplateViewController ()<GanTableViewDelegate,UIAlertViewDelegate>{
     NSMutableArray *dataSource;
     GanDataManager *dataManager;
+    UINavigationBar *navBar;
 }
 
 @end
@@ -28,10 +29,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self addTashBtnEvent];
     [self setBgColor];
+    
     dataManager = [GanDataManager getInstance];
     
     //创建一个导航栏
-    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
 
     //创建一个导航栏集合
@@ -45,6 +47,23 @@
     
     [navBar pushNavigationItem:navBarItem animated:NO];
     [self.view addSubview:navBar];
+    
+    [self fitForiOS7];
+}
+
+-(void)fitForiOS7{
+    if(SystemVersion_floatValue>=7.f){
+        //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
+        self.tableView.separatorInset = UIEdgeInsetsZero;
+        
+        CGRect frame = navBar.frame;
+        frame.size.height += 20;
+        navBar.frame = frame;
+        
+        frame = self.tableView.frame;
+        frame.origin.y+=20;
+        self.tableView.frame = frame;
+    }
 }
 
 - (void)didReceiveMemoryWarning
