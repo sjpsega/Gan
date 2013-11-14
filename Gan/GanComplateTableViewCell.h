@@ -12,4 +12,5 @@
 @interface GanComplateTableViewCell : MCSwipeTableViewCell
 +(NSString *)getReuseIdentifier;
 @property(weak,nonatomic)GanDataModel *data;
+-(void)setDataValToTxt;
 @end

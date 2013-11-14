@@ -32,7 +32,7 @@
 
 -(void)setContent:(NSString *)content{
     _content = content;
-    _isNew = false;
+    _isNew = NO;
 }
 
 -(void)setIsCompelete:(BOOL)isCompelete{

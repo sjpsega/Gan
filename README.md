@@ -30,4 +30,5 @@
 
 ### 1.3(doing)
 * 适配iOS7
+* 修复TableViewCell数据重用在iOS6及以上版本的bug
 * 增加"添加任务"等统计信息

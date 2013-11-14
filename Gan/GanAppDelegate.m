@@ -18,7 +18,7 @@
 {
     // Override point for customization after application launch.
     //友盟统计分析
-    [MobClick setLogEnabled:NO];
+    [MobClick setLogEnabled:YES];
     [MobClick startWithAppkey:UMENG_APPKEY];
     
     //友盟升级提醒

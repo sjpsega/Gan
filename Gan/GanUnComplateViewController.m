@@ -13,6 +13,8 @@
 #import "GanDataManager.h"
 #import "DLog.h"
 #import "UIColor+HEXColor.h"
+#import "MobClick.h"
+
 static const CGFloat CELL_HEIGHT=44.0f;
 
 @interface GanUnComplateViewController ()<GanTableViewDelegate>{
@@ -80,14 +82,24 @@ static const CGFloat CELL_HEIGHT=44.0f;
 -(void)fitForiOS7{
     if(SystemVersion_floatValue>=7.f){
         //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
-        self.tableView.separatorInset = UIEdgeInsetsZero;
+//        self.tableView.separatorInset = UIEdgeInsetsZero;
+
+        CGFloat statusHeight = 20.0f;
         
+        //ios7的nav默认y为0，为了不挡住statusBar，拉低y的高度，并减少tableView的高度
         CGRect frame = navBar.frame;
-        frame.size.height += 20;
+        frame.size.height += statusHeight;
         navBar.frame = frame;
 
         frame = self.tableView.frame;
-        frame.origin.y+=20;
+        frame.origin.y+=statusHeight;
+        frame.size.height-=statusHeight;
+        self.tableView.frame = frame;
+        
+        //底部的tabBar也会遮挡tableView，减少对应高度
+        CGRect tabBarFrame = self.tabBarController.tabBar.frame;
+        frame = self.tableView.frame;
+        frame.size.height -= tabBarFrame.size.height;
         self.tableView.frame = frame;
     }
 }
@@ -171,6 +183,8 @@ static const CGFloat CELL_HEIGHT=44.0f;
     
     savedContentOffset = CGPointZero;
     DLog(@"add");
+    [MobClick event:@"add"];
+    
     [dataManager insertData:[[GanDataModel alloc]initWithContent:@""]];
     dataSource = [dataManager getUnCompletedData];
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -224,6 +238,8 @@ static const CGFloat CELL_HEIGHT=44.0f;
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];
     cell.data = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]);
+    //给cell的显示元素设值，防止因为元素重用，导致显示错误
+    [cell setDataValToTxt];
     return cell;
 }
 
@@ -240,6 +256,8 @@ static const CGFloat CELL_HEIGHT=44.0f;
             dataSource = [dataManager getUnCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [dataManager saveData];
+            
+            [MobClick event:@"complate"];
         }
         //删除
         else if(state == MCSwipeTableViewCellState4){
@@ -247,6 +265,8 @@ static const CGFloat CELL_HEIGHT=44.0f;
             dataSource = [dataManager getUnCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [dataManager saveData];
+            
+            [MobClick event:@"remove"];
         }
     }
 
@@ -258,8 +278,8 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [dataManager removeData:data];
     dataSource = [dataManager getUnCompletedData];
     
-    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    NSIndexPath *delIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.tableView deleteRowsAtIndexPaths:@[delIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)focusCell:(MCSwipeTableViewCell *)cell{

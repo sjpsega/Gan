@@ -15,4 +15,5 @@
 @property(strong,nonatomic)UITextField *contentEditTxt;
 @property(nonatomic)BOOL isEditing;
 @property(weak,nonatomic)GanDataModel *data;
+-(void)setDataValToTxt;
 @end

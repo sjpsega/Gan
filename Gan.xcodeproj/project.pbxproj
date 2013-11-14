@@ -245,6 +245,11 @@
 				CLASSPREFIX = Gan;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = sjp;
+				TargetAttributes = {
+					1842AF94176CA9A200A1ED20 = {
+						DevelopmentTeam = QFX23S23N7;
+					};
+				};
 			};
 			buildConfigurationList = 1842AF90176CA9A200A1ED20 /* Build configuration list for PBXProject "Gan" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -406,8 +411,8 @@
 		1842AFB9176CA9A200A1ED20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
@@ -426,8 +431,8 @@
 		1842AFBA176CA9A200A1ED20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";

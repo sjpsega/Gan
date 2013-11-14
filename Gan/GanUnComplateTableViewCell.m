@@ -1,3 +1,4 @@
+
 //
 //  GanTableViewCell.m
 //  Gan
@@ -37,7 +38,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 -(void)didMoveToWindow{
-    NSLog(@"12132132123132132");
+
 }
 
 
@@ -163,6 +164,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     if(!self.data.isNew && [content isEqualToString:@""] && [self.delegate respondsToSelector:@selector(deleteCell:)]){
         [self.delegate deleteCell:self.data];
     }
+    //必须放在判断后，因为content设置后isNew为NO
     self.data.content = content;
 }
 
@@ -174,4 +176,9 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     _contentEditTxt.text = _data.content;
 }
 
+-(void)setDataValToTxt{
+    self.textLabel.text = self.data.content;
+    _contentEditTxt.text = self.data.content;
+}
 @end
+

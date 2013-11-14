@@ -12,6 +12,7 @@
 #import "GanDataManager.h"
 #import "DLog.h"
 #import "UIColor+HEXColor.h"
+#import "MobClick.h"
 
 @interface GanComplateViewController ()<GanTableViewDelegate,UIAlertViewDelegate>{
     NSMutableArray *dataSource;
@@ -54,14 +55,24 @@
 -(void)fitForiOS7{
     if(SystemVersion_floatValue>=7.f){
         //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
-        self.tableView.separatorInset = UIEdgeInsetsZero;
+        //        self.tableView.separatorInset = UIEdgeInsetsZero;
         
+        CGFloat statusHeight = 20.0f;
+        
+        //ios7的nav默认y为0，为了不挡住statusBar，拉低y的高度，并减少tableView的高度
         CGRect frame = navBar.frame;
-        frame.size.height += 20;
+        frame.size.height += statusHeight;
         navBar.frame = frame;
         
         frame = self.tableView.frame;
-        frame.origin.y+=20;
+        frame.origin.y+=statusHeight;
+        frame.size.height-=statusHeight;
+        self.tableView.frame = frame;
+        
+        //底部的tabBar也会遮挡tableView，减少对应高度
+        CGRect tabBarFrame = self.tabBarController.tabBar.frame;
+        frame = self.tableView.frame;
+        frame.size.height -= tabBarFrame.size.height;
         self.tableView.frame = frame;
     }
 }
@@ -136,6 +147,8 @@
         dataSource = [dataManager getCompletedData];
         [dataManager saveData];
         [self.tableView reloadData];
+        
+        [MobClick event:@"removeAll"];
     }
 }
 
@@ -191,6 +204,8 @@
             dataSource = [dataManager getCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [dataManager saveData];
+            
+            [MobClick event:@"restore"];
         }
         //删除
         else if(state == MCSwipeTableViewCellState3 || state == MCSwipeTableViewCellState4){
@@ -198,6 +213,8 @@
             dataSource = [dataManager getCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [dataManager saveData];
+            
+            [MobClick event:@"remove"];
         }
     }
 }
