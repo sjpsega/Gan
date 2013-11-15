@@ -5,8 +5,8 @@
   Created by sjpsega on 13-10-5.
   Copyright (c) 2013年 sjp. All rights reserved.
 */
-todoTitle = "todo";
-doneTitle = "done";
+todoTitle = "Todo";
+doneTitle = "Done";
 
 unComplateItem1 = "click '+' button to add new task";
 unComplateItem2 = "double click to edit task";

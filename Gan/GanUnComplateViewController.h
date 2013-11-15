@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "GanDataModel.h"
 @interface GanUnComplateViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 -(void)deleteCell:(GanDataModel*)data;
 @end

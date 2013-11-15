@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GanComplateViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *trashBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

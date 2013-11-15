@@ -34,8 +34,6 @@ static const CGFloat CELL_HEIGHT=44.0f;
     DLog(@"GanUnComplateViewController viewDidLoad");
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self addAddBtnEvent];
-    [self addMaskLayer];
     [self setBgColor];
     
     dataManager = [GanDataManager getInstance];
@@ -77,12 +75,14 @@ static const CGFloat CELL_HEIGHT=44.0f;
     }
 
     [self fitForiOS7];
+    [self addMaskLayer];
+    
 }
 
 -(void)fitForiOS7{
-    if(SystemVersion_floatValue>=7.f){
+    if(SystemVersion_floatValue>=7.0f){
         //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
-//        self.tableView.separatorInset = UIEdgeInsetsZero;
+        self.tableView.separatorInset = UIEdgeInsetsZero;
 
         CGFloat statusHeight = 20.0f;
         
@@ -120,7 +120,6 @@ static const CGFloat CELL_HEIGHT=44.0f;
         self.view = nil;
     }
     self.tableView = nil;
-    self.addBtn = nil;
     maskLayer = nil;
     dataSource = nil;
     dataManager = nil;
@@ -129,7 +128,6 @@ static const CGFloat CELL_HEIGHT=44.0f;
 - (void)viewDidUnload {
     DLog(@"GanUnComplateViewController viewDidUnload");
     self.tableView = nil;
-    self.addBtn = nil;
     [super viewDidUnload];
 }
 
@@ -142,11 +140,6 @@ static const CGFloat CELL_HEIGHT=44.0f;
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     [backgroundView setBackgroundColor:[UIColor colorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
-}
-
--(void)addAddBtnEvent{
-    [self.addBtn setTarget:self];
-    [self.addBtn setAction:@selector(addOne:)];
 }
 
 -(void)addMaskLayer{
@@ -174,6 +167,8 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(IBAction)addOne:(id)sender{
+    //添加时需要先移动到第一行,否则可能产生第一行没有数据的问题(可能的原因:第一行在屏幕外，系统性能优化，未对屏幕外的Cell进行渲染)
+    [self.tableView setContentOffset:CGPointZero animated:NO];
     //若第一行数据内容为空，则不添加新行
     NSIndexPath *firstIdx = [NSIndexPath indexPathForRow:0 inSection:0];
     GanUnComplateTableViewCell *firstCell = (GanUnComplateTableViewCell *)([self.tableView cellForRowAtIndexPath:firstIdx]);

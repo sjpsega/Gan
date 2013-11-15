@@ -28,7 +28,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self addTashBtnEvent];
     [self setBgColor];
     
     dataManager = [GanDataManager getInstance];
@@ -53,9 +52,9 @@
 }
 
 -(void)fitForiOS7{
-    if(SystemVersion_floatValue>=7.f){
+    if(SystemVersion_floatValue>=7.0f){
         //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
-        //        self.tableView.separatorInset = UIEdgeInsetsZero;
+        self.tableView.separatorInset = UIEdgeInsetsZero;
         
         CGFloat statusHeight = 20.0f;
         
@@ -87,7 +86,6 @@
         self.view = nil;
     }
     self.tableView = nil;
-    self.trashBtn = nil;
     dataSource = nil;
     dataManager = nil;
 }
@@ -120,11 +118,6 @@
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     [backgroundView setBackgroundColor:[UIColor colorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
-}
-
--(void)addTashBtnEvent{
-    [self.trashBtn setTarget:self];
-    [self.trashBtn setAction:@selector(delAllComplate:)];
 }
 
 -(IBAction)delAllComplate:(id)sender{
