@@ -167,6 +167,11 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(IBAction)addOne:(id)sender{
+    //使得目前选中的，或者在编辑的Cell失去焦点，保存数据
+    NSIndexPath *currentSelectedIndex = [self.tableView indexPathForSelectedRow];
+    if(currentSelectedIndex){
+        [self.tableView deselectRowAtIndexPath:currentSelectedIndex animated:NO];
+    }
     //添加时需要先移动到第一行,否则可能产生第一行没有数据的问题(可能的原因:第一行在屏幕外，系统性能优化，未对屏幕外的Cell进行渲染)
     [self.tableView setContentOffset:CGPointZero animated:NO];
     //若第一行数据内容为空，则不添加新行
