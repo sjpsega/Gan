@@ -25,18 +25,19 @@
 		1842AFAD176CA9A200A1ED20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFAC176CA9A200A1ED20 /* Default@2x.png */; };
 		1842AFAF176CA9A200A1ED20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFAE176CA9A200A1ED20 /* Default-568h@2x.png */; };
 		1842AFB2176CA9A200A1ED20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFB0176CA9A200A1ED20 /* MainStoryboard.storyboard */; };
-		1842AFB5176CA9A200A1ED20 /* GanUnComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFB4176CA9A200A1ED20 /* GanUnComplateViewController.m */; };
+		1842AFB5176CA9A200A1ED20 /* GanUnComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFB4176CA9A200A1ED20 /* GanUnComplateVC.m */; };
 		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
 		184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184EF9B117FFEDDA00827FF9 /* Localizable.strings */; };
 		185584D11774450A006C89AC /* GanUnComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */; };
 		1879AEDD181BBB830051735A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1879AEDC181BBB830051735A /* libz.dylib */; };
-		18874BA11771A17600C8ED01 /* GanComplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanComplateViewController.m */; };
+		18874BA11771A17600C8ED01 /* GanComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanComplateVC.m */; };
 		188FF712179D8EFA0019234D /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF710179D8EFA0019234D /* clock.png */; };
 		188FF713179D8EFA0019234D /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF711179D8EFA0019234D /* clock@2x.png */; };
 		189AC7BA181C117700834A85 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189AC7B8181C117700834A85 /* libMobClickLibrary.a */; };
 		18A06B6F1792CE88000E3A74 /* GanDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A06B6E1792CE88000E3A74 /* GanDataManager.m */; };
 		18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */; };
 		18D1BE71179C041E000CDBD1 /* GanComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */; };
+		58B834202679C1DA51F9A721 /* GanBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8344DA35121DE2F92FB18 /* GanBaseVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +66,8 @@
 		1842AFAC176CA9A200A1ED20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1842AFAE176CA9A200A1ED20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1842AFB1176CA9A200A1ED20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		1842AFB3176CA9A200A1ED20 /* GanUnComplateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GanUnComplateViewController.h; sourceTree = "<group>"; };
-		1842AFB4176CA9A200A1ED20 /* GanUnComplateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateViewController.m; sourceTree = "<group>"; };
+		1842AFB3176CA9A200A1ED20 /* GanUnComplateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GanUnComplateVC.h; sourceTree = "<group>"; };
+		1842AFB4176CA9A200A1ED20 /* GanUnComplateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateVC.m; sourceTree = "<group>"; };
 		1842AFD8176CB9A900A1ED20 /* GanDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataModel.h; sourceTree = "<group>"; };
 		1842AFD9176CB9A900A1ED20 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
 		1842AFDB176CDEC900A1ED20 /* GanUnComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanUnComplateTableViewCell.h; sourceTree = "<group>"; };
@@ -76,8 +77,8 @@
 		184EF9B31800085300827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
 		1879AEDC181BBB830051735A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		18874B9F1771A17600C8ED01 /* GanComplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateViewController.h; sourceTree = "<group>"; };
-		18874BA01771A17600C8ED01 /* GanComplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateViewController.m; sourceTree = "<group>"; };
+		18874B9F1771A17600C8ED01 /* GanComplateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateVC.h; sourceTree = "<group>"; };
+		18874BA01771A17600C8ED01 /* GanComplateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateVC.m; sourceTree = "<group>"; };
 		188FF70F179D85C30019234D /* DLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		188FF710179D8EFA0019234D /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		188FF711179D8EFA0019234D /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
@@ -89,6 +90,8 @@
 		18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
 		18D1BE6F179C041E000CDBD1 /* GanComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateTableViewCell.h; sourceTree = "<group>"; };
 		18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateTableViewCell.m; sourceTree = "<group>"; };
+		58B8344DA35121DE2F92FB18 /* GanBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanBaseVC.m; sourceTree = "<group>"; };
+		58B838AEEEF09EB4252EB852 /* GanBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanBaseVC.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,16 +171,18 @@
 				1842AFB0176CA9A200A1ED20 /* MainStoryboard.storyboard */,
 				1842AFDB176CDEC900A1ED20 /* GanUnComplateTableViewCell.h */,
 				185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */,
-				1842AFB3176CA9A200A1ED20 /* GanUnComplateViewController.h */,
-				1842AFB4176CA9A200A1ED20 /* GanUnComplateViewController.m */,
+				1842AFB3176CA9A200A1ED20 /* GanUnComplateVC.h */,
+				1842AFB4176CA9A200A1ED20 /* GanUnComplateVC.m */,
 				18D1BE6F179C041E000CDBD1 /* GanComplateTableViewCell.h */,
 				18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */,
-				18874B9F1771A17600C8ED01 /* GanComplateViewController.h */,
-				18874BA01771A17600C8ED01 /* GanComplateViewController.m */,
+				18874B9F1771A17600C8ED01 /* GanComplateVC.h */,
+				18874BA01771A17600C8ED01 /* GanComplateVC.m */,
 				182CC30817A4233600227007 /* UIColor+HEXColor.h */,
 				182CC30917A4233600227007 /* UIColor+HEXColor.m */,
 				18A06B6D1792CE88000E3A74 /* GanDataManager.h */,
 				18A06B6E1792CE88000E3A74 /* GanDataManager.m */,
+				58B838AEEEF09EB4252EB852 /* GanBaseVC.h */,
+				58B8344DA35121DE2F92FB18 /* GanBaseVC.m */,
 				1842AF9F176CA9A200A1ED20 /* Supporting Files */,
 			);
 			path = Gan;
@@ -301,14 +306,15 @@
 			files = (
 				1842AFA5176CA9A200A1ED20 /* main.m in Sources */,
 				1842AFA9176CA9A200A1ED20 /* GanAppDelegate.m in Sources */,
-				1842AFB5176CA9A200A1ED20 /* GanUnComplateViewController.m in Sources */,
+				1842AFB5176CA9A200A1ED20 /* GanUnComplateVC.m in Sources */,
 				1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */,
-				18874BA11771A17600C8ED01 /* GanComplateViewController.m in Sources */,
+				18874BA11771A17600C8ED01 /* GanComplateVC.m in Sources */,
 				185584D11774450A006C89AC /* GanUnComplateTableViewCell.m in Sources */,
 				18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */,
 				18A06B6F1792CE88000E3A74 /* GanDataManager.m in Sources */,
 				18D1BE71179C041E000CDBD1 /* GanComplateTableViewCell.m in Sources */,
 				182CC30A17A4233600227007 /* UIColor+HEXColor.m in Sources */,
+				58B834202679C1DA51F9A721 /* GanBaseVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

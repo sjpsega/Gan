@@ -10,6 +10,9 @@
 #import "GanAppDelegate.h"
 #import "GanDataManager.h"
 #import "MobClick.h"
+#import "GanUnComplateVC.h"
+#import "GanComplateVC.h"
+
 #define UMENG_APPKEY @"526b6a1d56240b395506cbd5"
 
 @implementation GanAppDelegate
@@ -18,13 +21,21 @@
 {
     // Override point for customization after application launch.
     //友盟统计分析
-    [MobClick setLogEnabled:NO];
-    [MobClick startWithAppkey:UMENG_APPKEY];
-    
-    //友盟升级提醒
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [MobClick setAppVersion:version];
-    [MobClick checkUpdate];
+//    [MobClick setLogEnabled:NO];
+//    [MobClick startWithAppkey:UMENG_APPKEY];
+//
+//    //友盟升级提醒
+//    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+//    [MobClick setAppVersion:version];
+//    [MobClick checkUpdate];
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    GanUnComplateVC *unComplateVC = [[GanUnComplateVC alloc] init];
+    GanComplateVC *complateVC = [[GanComplateVC alloc] init];
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[unComplateVC,complateVC];
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

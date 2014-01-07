@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 sjp. All rights reserved.
 //
 
-#import "GanUnComplateViewController.h"
+#import "GanUnComplateVC.h"
 #import "GanDataModel.h"
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewDelegate.h"
@@ -15,58 +15,52 @@
 #import "UIColor+HEXColor.h"
 #import "MobClick.h"
 
-static const CGFloat CELL_HEIGHT=44.0f;
-
-@interface GanUnComplateViewController ()<GanTableViewDelegate>{
-    NSMutableArray *dataSource;
+@interface GanUnComplateVC ()<GanTableViewDelegate>{
     UIButton *maskLayer;
     CGPoint savedContentOffset;
-    GanDataManager *dataManager;
-    UINavigationBar *navBar;
 }
 
 @end
 
-@implementation GanUnComplateViewController
+@implementation GanUnComplateVC
 
 - (void)viewDidLoad
 {
-    DLog(@"GanUnComplateViewController viewDidLoad");
+    DLog(@"GanUnComplateVC viewDidLoad");
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    // Do any additional setup after loading the view, typically from a nib.
     [self setBgColor];
-    
-    dataManager = [GanDataManager getInstance];
-    
+
     //创建一个导航栏
-    navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
-    
+    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+
     //创建一个导航栏集合
     UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"todoTitle", @"")];
 
     //创建一个右边按钮
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                   target:self
-                                                                   action:@selector(addOne:)];
+                                                                                 target:self
+                                                                                 action:@selector(addOne:)];
     [navBarItem setRightBarButtonItem:rightButton];
-    
-    [navBar pushNavigationItem:navBarItem animated:NO];
-    [self.view addSubview:navBar];
-    
+
+    [self.navBar pushNavigationItem:navBarItem animated:NO];
+    [self.view addSubview:self.navBar];
+
     CGFloat adjustDis = 14.0;
     //调整底部TabBar高度
     CGRect frame = self.tabBarController.tabBar.frame;
     frame.size.height -= adjustDis;
     frame.origin.y += adjustDis;
     self.tabBarController.tabBar.frame = frame;
-    
+
     //重设设置内容区域高度
     UIView *transitionView = [[self.tabBarController.view subviews] objectAtIndex:0];
     frame = transitionView.frame;
     frame.size.height += adjustDis;
     transitionView.frame = frame;
-    
+
     //调整TabBarItem中图片的位置
     NSArray *items = self.tabBarController.tabBar.items;
     UIEdgeInsets imageInset = UIEdgeInsetsMake(5, 0, -5, 0);
@@ -76,33 +70,33 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
     [self fitForiOS7];
     [self addMaskLayer];
-    
+
 }
 
--(void)fitForiOS7{
-    if(SystemVersion_floatValue>=7.0f){
-        //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
-        self.tableView.separatorInset = UIEdgeInsetsZero;
-
-        CGFloat statusHeight = 20.0f;
-        
-        //ios7的nav默认y为0，为了不挡住statusBar，拉低y的高度，并减少tableView的高度
-        CGRect frame = navBar.frame;
-        frame.size.height += statusHeight;
-        navBar.frame = frame;
-
-        frame = self.tableView.frame;
-        frame.origin.y+=statusHeight;
-        frame.size.height-=statusHeight;
-        self.tableView.frame = frame;
-        
-        //底部的tabBar也会遮挡tableView，减少对应高度
-        CGRect tabBarFrame = self.tabBarController.tabBar.frame;
-        frame = self.tableView.frame;
-        frame.size.height -= tabBarFrame.size.height;
-        self.tableView.frame = frame;
-    }
-}
+//-(void)fitForiOS7{
+//    if(SystemVersion_floatValue>=7.0f){
+//        //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
+//        self.tableView.separatorInset = UIEdgeInsetsZero;
+//
+//        CGFloat statusHeight = 20.0f;
+//
+//        //ios7的nav默认y为0，为了不挡住statusBar，拉低y的高度，并减少tableView的高度
+//        CGRect frame = navBar.frame;
+//        frame.size.height += statusHeight;
+//        navBar.frame = frame;
+//
+//        frame = self.tableView.frame;
+//        frame.origin.y+=statusHeight;
+//        frame.size.height-=statusHeight;
+//        self.tableView.frame = frame;
+//
+//        //底部的tabBar也会遮挡tableView，减少对应高度
+//        CGRect tabBarFrame = self.tabBarController.tabBar.frame;
+//        frame = self.tableView.frame;
+//        frame.size.height -= tabBarFrame.size.height;
+//        self.tableView.frame = frame;
+//    }
+//}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -112,28 +106,28 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 - (void)didReceiveMemoryWarning
 {
-    DLog(@"GanUnComplateViewController didReceiveMemoryWarning");
+    DLog(@"GanUnComplateVC didReceiveMemoryWarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     if([self isViewLoaded] && self.view.window == nil){
-        DLog(@"GanUnComplateViewController unload view");
+        DLog(@"GanUnComplateVC unload view");
         self.view = nil;
     }
     self.tableView = nil;
     maskLayer = nil;
-    dataSource = nil;
-    dataManager = nil;
+    self.dataSource = nil;
+    self.dataManager = nil;
 }
 
 - (void)viewDidUnload {
-    DLog(@"GanUnComplateViewController viewDidUnload");
+    DLog(@"GanUnComplateVC viewDidUnload");
     self.tableView = nil;
     [super viewDidUnload];
 }
 
 -(void)initDataSource{
-    dataSource = [dataManager getUnCompletedData];
-    DLog(@"dataSouce unComplate count:%i",[dataSource count]);
+    self.dataSource = [self.dataManager getUnCompletedData];
+    DLog(@"dataSouce unComplate count:%i",[self.dataSource count]);
 }
 
 -(void)setBgColor{
@@ -180,30 +174,18 @@ static const CGFloat CELL_HEIGHT=44.0f;
     if(firstCell.isEditing && [firstCell.contentEditTxt.text isEqual:@""]){
         return;
     }
-    
+
     savedContentOffset = CGPointZero;
     DLog(@"add");
     [MobClick event:@"add"];
-    
-    [dataManager insertData:[[GanDataModel alloc]initWithContent:@""]];
-    dataSource = [dataManager getUnCompletedData];
+
+    [self.dataManager insertData:[[GanDataModel alloc]initWithContent:@""]];
+    self.dataSource = [self.dataManager getUnCompletedData];
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
+
     [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
-    
-}
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DLog(@"didSelectRowAtIndexPath %@ %@",[tableView indexPathForSelectedRow],indexPath);
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return CELL_HEIGHT;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [dataSource count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -218,7 +200,7 @@ static const CGFloat CELL_HEIGHT=44.0f;
     }
     // For the delegate callback
     [cell setDelegate:self];
-    
+
     // We need to provide the icon names and the desired colors
     [cell setFirstStateIconName:@"check.png"
                      firstColor:[UIColor colorWithHEX:COMPLATE_COLOR alpha:1.0f]
@@ -228,16 +210,16 @@ static const CGFloat CELL_HEIGHT=44.0f;
                      thirdColor:[UIColor colorWithHEX:DEL_COLOR alpha:0.5f]
                  fourthIconName:@"cross.png"
                     fourthColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0f]];
-    
+
     // We need to set a background to the content view of the cell
     [cell.contentView setBackgroundColor:[UIColor colorWithHEX:CELL_BG alpha:1.0f]];
-    
+
     // Setting the default inactive state color to the tableView background color
     [cell setDefaultColor:self.tableView.backgroundView.backgroundColor];
-    
+
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];
-    cell.data = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]);
+    cell.data = ((GanDataModel *)[self.dataSource objectAtIndex:indexPath.row]);
     //给cell的显示元素设值，防止因为元素重用，导致显示错误
     [cell setDataValToTxt];
     return cell;
@@ -247,25 +229,25 @@ static const CGFloat CELL_HEIGHT=44.0f;
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode{
     DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
-    
+
     if (mode == MCSwipeTableViewCellModeExit) {
         GanDataModel *data = ((GanUnComplateTableViewCell *)cell).data;
         //完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
             [data setIsCompelete:YES];
-            dataSource = [dataManager getUnCompletedData];
+            self.dataSource = [self.dataManager getUnCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-            [dataManager saveData];
-            
+            [self.dataManager saveData];
+
             [MobClick event:@"complate"];
         }
-        //删除
+                //删除
         else if(state == MCSwipeTableViewCellState4){
-            [dataManager removeData:data];
-            dataSource = [dataManager getUnCompletedData];
+            [self.dataManager removeData:data];
+            self.dataSource = [self.dataManager getUnCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-            [dataManager saveData];
-            
+            [self.dataManager saveData];
+
             [MobClick event:@"remove"];
         }
     }
@@ -273,11 +255,11 @@ static const CGFloat CELL_HEIGHT=44.0f;
 }
 
 -(void)deleteCell:(GanDataModel*)data{
-    NSInteger index = [dataSource indexOfObject:data];
+    NSInteger index = [self.dataSource indexOfObject:data];
     DLog(@"delete %i",index);
-    [dataManager removeData:data];
-    dataSource = [dataManager getUnCompletedData];
-    
+    [self.dataManager removeData:data];
+    self.dataSource = [self.dataManager getUnCompletedData];
+
     NSIndexPath *delIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView deleteRowsAtIndexPaths:@[delIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
@@ -293,6 +275,6 @@ static const CGFloat CELL_HEIGHT=44.0f;
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     [self hideMaskLayer];
     [self.tableView setContentOffset:savedContentOffset animated:YES];
-    [dataManager saveData];
+    [self.dataManager saveData];
 }
 @end

@@ -44,11 +44,6 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
     return self;
 }
 
--(void)viewDidLoad{
-    DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~");
-//    self.textLabel.text = self.data.content;
-}
-
 -(void)willMoveToSuperview:(UIView *)newSuperview{
     DLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super willMoveToSuperview:newSuperview];

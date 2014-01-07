@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GanDataModel.h"
-@interface GanUnComplateViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+#import "GanBaseVC.h"
+
+@interface GanUnComplateVC : GanBaseVC
 -(void)deleteCell:(GanDataModel*)data;
 @end

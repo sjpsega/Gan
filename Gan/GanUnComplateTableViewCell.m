@@ -72,7 +72,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 //    [super didReceiveMemoryWarning];
 ////    // Dispose of any resources that can be recreated.
 ////    if([self isViewLoaded] && self.view.window == nil){
-////        DLog(@"GanUnComplateViewController unload view");
+////        DLog(@"GanUnComplateVC unload view");
 ////        self.view = nil;
 ////    }
 //    _contentEditTxt = nil;

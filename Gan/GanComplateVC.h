@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GanBaseVC.h"
 
-@interface GanComplateViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface GanComplateVC : GanBaseVC
 @end

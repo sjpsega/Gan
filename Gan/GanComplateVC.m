@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 sjp. All rights reserved.
 //
 
-#import "GanComplateViewController.h"
+#import "GanComplateVC.h"
 #import "GanDataModel.h"
 #import "GanComplateTableViewCell.h"
 #import "GanDataManager.h"
@@ -14,15 +14,12 @@
 #import "UIColor+HEXColor.h"
 #import "MobClick.h"
 
-@interface GanComplateViewController ()<GanTableViewDelegate,UIAlertViewDelegate>{
-    NSMutableArray *dataSource;
-    GanDataManager *dataManager;
-    UINavigationBar *navBar;
+@interface GanComplateVC ()<GanTableViewDelegate,UIAlertViewDelegate>{
 }
 
 @end
 
-@implementation GanComplateViewController
+@implementation GanComplateVC
 
 - (void)viewDidLoad
 {
@@ -30,11 +27,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self setBgColor];
     
-    dataManager = [GanDataManager getInstance];
+//    dataManager = [GanDataManager getInstance];
     
     //创建一个导航栏
-    navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
 
     //创建一个导航栏集合
     UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"doneTitle", @"")];
@@ -45,10 +42,11 @@
                                                                                  action:@selector(delAllComplate:)];
     [navBarItem setRightBarButtonItem:rightButton];
     
-    [navBar pushNavigationItem:navBarItem animated:NO];
-    [self.view addSubview:navBar];
+    [self.navBar pushNavigationItem:navBarItem animated:NO];
+    [self.view addSubview:self.navBar];
     
     [self fitForiOS7];
+
 }
 
 -(void)fitForiOS7{
@@ -59,9 +57,9 @@
         CGFloat statusHeight = 20.0f;
         
         //ios7的nav默认y为0，为了不挡住statusBar，拉低y的高度，并减少tableView的高度
-        CGRect frame = navBar.frame;
+        CGRect frame = self.navBar.frame;
         frame.size.height += statusHeight;
-        navBar.frame = frame;
+        self.navBar.frame = frame;
         
         frame = self.tableView.frame;
         frame.origin.y+=statusHeight;
@@ -78,16 +76,16 @@
 
 - (void)didReceiveMemoryWarning
 {
-    DLog(@"GanComplateViewController didReceiveMemoryWarning");
+    DLog(@"GanComplateVC didReceiveMemoryWarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     if([self isViewLoaded] && self.view.window == nil){
-        DLog(@"GanComplateViewController unload view");
+        DLog(@"GanComplateVC unload view");
         self.view = nil;
     }
     self.tableView = nil;
-    dataSource = nil;
-    dataManager = nil;
+    self.dataSource = nil;
+    self.dataManager = nil;
 }
 
 - (void)viewDidUnload {
@@ -109,9 +107,9 @@
 }
 
 -(void)initDataSource{
-    dataSource = [[GanDataManager getInstance] getCompletedData];
+    self.dataSource = [[GanDataManager getInstance] getCompletedData];
     
-    DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%i",[dataSource count]);
+    DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%i",[self.dataSource count]);
 }
 
 -(void)setBgColor{
@@ -134,19 +132,15 @@
         //cancel clicked ...do your action
     }else if (buttonIndex == 1){
         //ok clicked
-        for (GanDataModel *data in dataSource) {
-            [dataManager removeData:data];
+        for (GanDataModel *data in self.dataSource) {
+            [self.dataManager removeData:data];
         }
-        dataSource = [dataManager getCompletedData];
-        [dataManager saveData];
+        self.dataSource = [self.dataManager getCompletedData];
+        [self.dataManager saveData];
         [self.tableView reloadData];
         
         [MobClick event:@"removeAll"];
     }
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [dataSource count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -163,9 +157,9 @@
     [cell setDelegate:self];
     
     // We need to provide the icon names and the desired colors
-    [cell setFirstStateIconName:@"check.png"
+    [cell setFirstStateIconName:@"clock.png"
                      firstColor:[UIColor colorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
-            secondStateIconName:@"check.png"
+            secondStateIconName:@"clock.png"
                     secondColor:[UIColor colorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
                   thirdIconName:@"cross.png"
                      thirdColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0]
@@ -180,7 +174,9 @@
     
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];
-    cell.data = ((GanDataModel *)[dataSource objectAtIndex:indexPath.row]);
+    cell.data = ((GanDataModel *)[self.dataSource objectAtIndex:indexPath.row]);
+    //给cell的显示元素设值，防止因为元素重用，导致显示错误
+    [cell setDataValToTxt];
     return cell;
 }
 
@@ -194,18 +190,18 @@
         //变成未完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
             [data setIsCompelete:NO];
-            dataSource = [dataManager getCompletedData];
+            self.dataSource = [self.dataManager getCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-            [dataManager saveData];
+            [self.dataManager saveData];
             
             [MobClick event:@"restore"];
         }
         //删除
         else if(state == MCSwipeTableViewCellState3 || state == MCSwipeTableViewCellState4){
-            [dataManager removeData:data];
-            dataSource = [dataManager getCompletedData];
+            [self.dataManager removeData:data];
+            self.dataSource = [self.dataManager getCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-            [dataManager saveData];
+            [self.dataManager saveData];
             
             [MobClick event:@"remove"];
         }
