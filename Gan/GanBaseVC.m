@@ -7,15 +7,58 @@
 #import "GanDataManager.h"
 #import "Global_ENUM.h"
 #import "DLog.h"
+#import "UIColor+HEXColor.h"
+
+static BOOL isAdjust = NO;
 
 @implementation GanBaseVC {
 
 }
 
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+
+    }
+    return self;
+}
+
 -(void)viewDidLoad {
     [super viewDidLoad];
     _dataManager = [GanDataManager getInstance];
+    self.view.backgroundColor = [UIColor whiteColor];
+
     [self genTableView];
+    //创建一个导航栏
+    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+
+    [self.view addSubview:self.navBar];
+
+    //只调整一次，因为tabBarController是全局的
+    if(!isAdjust){
+        isAdjust = YES;
+
+        CGFloat adjustDis = 14.0;
+        //调整底部TabBar高度，使得界面更美观
+        CGRect frame = self.tabBarController.tabBar.frame;
+        frame.size.height -= adjustDis;
+        frame.origin.y += adjustDis;
+        self.tabBarController.tabBar.frame = frame;
+
+        //重设设置内容区域高度
+        UIView *transitionView = [[self.tabBarController.view subviews] objectAtIndex:0];
+        frame = transitionView.frame;
+        frame.size.height += adjustDis;
+        transitionView.frame = frame;
+
+        //调整TabBarItem中图片的位置
+        NSArray *items = self.tabBarController.tabBar.items;
+        UIEdgeInsets imageInset = UIEdgeInsetsMake(5, 0, -5, 0);
+        for (UITabBarItem *item in items) {
+            item.imageInsets = imageInset;
+        }
+    }
 }
 
 -(void)fitForiOS7{
@@ -59,7 +102,8 @@
 #pragma mark private
 -(void)genTableView{
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, CGRectGetWidth(screenRect), CGRectGetHeight(screenRect))];
+    //TODO:-44?
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, CGRectGetWidth(screenRect), CGRectGetHeight(screenRect)-44)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

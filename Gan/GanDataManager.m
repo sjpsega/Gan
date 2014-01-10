@@ -10,8 +10,6 @@
 #import "DLog.h"
 #import "GanDataModel.h"
 
-static id _instance;
-
 @interface GanDataManager ()
 @property(nonatomic)BOOL isRead;
 @property(nonatomic,strong)NSMutableArray *datas;
@@ -22,11 +20,12 @@ static id _instance;
 @implementation GanDataManager
 
 +(id)getInstance{
-    if(!_instance){
-        DLog(@"GanDataManager getInstance");
-        _instance = [[GanDataManager alloc]init];
-    }
-    return _instance;
+    static GanDataManager *instance = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        instance = [[self alloc] init];
+    });
+    return instance;
 }
 
 -(NSMutableArray *)getData{

@@ -9,10 +9,6 @@
 #import "GanDataModel.h"
 
 @implementation GanDataModel
-@synthesize content = _content;
-@synthesize date = _date;
-@synthesize isCompelete = _isCompelete;
-@synthesize isNew = _isNew;
 
 -(id)init{
     if(self = [super init]){

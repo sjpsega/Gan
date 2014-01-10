@@ -8,9 +8,8 @@
 
 #import "MCSwipeTableViewCell.h"
 #import "GanDataModel.h"
+#import "GanBaseTableViewCell.h"
 
-@interface GanComplateTableViewCell : MCSwipeTableViewCell
+@interface GanComplateTableViewCell : GanBaseTableViewCell
 +(NSString *)getReuseIdentifier;
-@property(weak,nonatomic)GanDataModel *data;
--(void)setDataValToTxt;
 @end

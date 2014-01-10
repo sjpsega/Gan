@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "GanDataModel.h"
 #import "MCSwipeTableViewCell.h"
+#import "GanBaseTableViewCell.h"
 
-@interface GanUnComplateTableViewCell : MCSwipeTableViewCell
+@interface GanUnComplateTableViewCell : GanBaseTableViewCell
 +(NSString *)getReuseIdentifier;
 @property(strong,nonatomic)UITextField *contentEditTxt;
 @property(nonatomic)BOOL isEditing;
-@property(weak,nonatomic)GanDataModel *data;
--(void)setDataValToTxt;
 @end

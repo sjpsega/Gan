@@ -21,6 +21,14 @@
 
 @implementation GanComplateVC
 
+-(id)init {
+    self = [super init];
+    if(self){
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:[UIImage imageNamed:@"check.png"] tag:0];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -30,9 +38,9 @@
 //    dataManager = [GanDataManager getInstance];
     
     //创建一个导航栏
-    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
-
+//    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+//    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+//    [self.view addSubview:self.navBar];
     //创建一个导航栏集合
     UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"doneTitle", @"")];
     
@@ -43,35 +51,10 @@
     [navBarItem setRightBarButtonItem:rightButton];
     
     [self.navBar pushNavigationItem:navBarItem animated:NO];
-    [self.view addSubview:self.navBar];
+
     
     [self fitForiOS7];
 
-}
-
--(void)fitForiOS7{
-    if(SystemVersion_floatValue>=7.0f){
-        //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
-        self.tableView.separatorInset = UIEdgeInsetsZero;
-        
-        CGFloat statusHeight = 20.0f;
-        
-        //ios7的nav默认y为0，为了不挡住statusBar，拉低y的高度，并减少tableView的高度
-        CGRect frame = self.navBar.frame;
-        frame.size.height += statusHeight;
-        self.navBar.frame = frame;
-        
-        frame = self.tableView.frame;
-        frame.origin.y+=statusHeight;
-        frame.size.height-=statusHeight;
-        self.tableView.frame = frame;
-        
-        //底部的tabBar也会遮挡tableView，减少对应高度
-        CGRect tabBarFrame = self.tabBarController.tabBar.frame;
-        frame = self.tableView.frame;
-        frame.size.height -= tabBarFrame.size.height;
-        self.tableView.frame = frame;
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,7 +127,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DLog(@"cellForRowAtIndexPath %@",tableView.indexPathForSelectedRow);
+    DLog(@"cellForRowAtIndexPath %@",indexPath);
     NSString *cellName = [GanComplateTableViewCell getReuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法

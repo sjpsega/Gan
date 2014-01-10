@@ -23,6 +23,13 @@
 @end
 
 @implementation GanUnComplateVC
+-(id)init {
+    self = [super init];
+    if(self){
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:[UIImage imageNamed:@"clock.png"] tag:0];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -33,8 +40,9 @@
     [self setBgColor];
 
     //创建一个导航栏
-    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+//    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+//    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+//    [self.view addSubview:self.navBar];
 
     //创建一个导航栏集合
     UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"todoTitle", @"")];
@@ -46,57 +54,11 @@
     [navBarItem setRightBarButtonItem:rightButton];
 
     [self.navBar pushNavigationItem:navBarItem animated:NO];
-    [self.view addSubview:self.navBar];
-
-    CGFloat adjustDis = 14.0;
-    //调整底部TabBar高度
-    CGRect frame = self.tabBarController.tabBar.frame;
-    frame.size.height -= adjustDis;
-    frame.origin.y += adjustDis;
-    self.tabBarController.tabBar.frame = frame;
-
-    //重设设置内容区域高度
-    UIView *transitionView = [[self.tabBarController.view subviews] objectAtIndex:0];
-    frame = transitionView.frame;
-    frame.size.height += adjustDis;
-    transitionView.frame = frame;
-
-    //调整TabBarItem中图片的位置
-    NSArray *items = self.tabBarController.tabBar.items;
-    UIEdgeInsets imageInset = UIEdgeInsetsMake(5, 0, -5, 0);
-    for (UITabBarItem *item in items) {
-        item.imageInsets = imageInset;
-    }
 
     [self fitForiOS7];
     [self addMaskLayer];
 
 }
-
-//-(void)fitForiOS7{
-//    if(SystemVersion_floatValue>=7.0f){
-//        //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
-//        self.tableView.separatorInset = UIEdgeInsetsZero;
-//
-//        CGFloat statusHeight = 20.0f;
-//
-//        //ios7的nav默认y为0，为了不挡住statusBar，拉低y的高度，并减少tableView的高度
-//        CGRect frame = navBar.frame;
-//        frame.size.height += statusHeight;
-//        navBar.frame = frame;
-//
-//        frame = self.tableView.frame;
-//        frame.origin.y+=statusHeight;
-//        frame.size.height-=statusHeight;
-//        self.tableView.frame = frame;
-//
-//        //底部的tabBar也会遮挡tableView，减少对应高度
-//        CGRect tabBarFrame = self.tabBarController.tabBar.frame;
-//        frame = self.tableView.frame;
-//        frame.size.height -= tabBarFrame.size.height;
-//        self.tableView.frame = frame;
-//    }
-//}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -164,16 +126,16 @@
     //使得目前选中的，或者在编辑的Cell失去焦点，保存数据
     NSIndexPath *currentSelectedIndex = [self.tableView indexPathForSelectedRow];
     if(currentSelectedIndex){
+        GanUnComplateTableViewCell *currentCell = (GanUnComplateTableViewCell *)[self.tableView cellForRowAtIndexPath:currentSelectedIndex];
+        //若当前选中的为第一行数据，且数据为空，则不添加新行，并返回
+        if(currentSelectedIndex.row == 0 && currentCell.isEditing && [currentCell.contentEditTxt.text isEqualToString:@""]){
+            return;
+        }
+
         [self.tableView deselectRowAtIndexPath:currentSelectedIndex animated:NO];
     }
     //添加时需要先移动到第一行,否则可能产生第一行没有数据的问题(可能的原因:第一行在屏幕外，系统性能优化，未对屏幕外的Cell进行渲染)
     [self.tableView setContentOffset:CGPointZero animated:NO];
-    //若第一行数据内容为空，则不添加新行
-    NSIndexPath *firstIdx = [NSIndexPath indexPathForRow:0 inSection:0];
-    GanUnComplateTableViewCell *firstCell = (GanUnComplateTableViewCell *)([self.tableView cellForRowAtIndexPath:firstIdx]);
-    if(firstCell.isEditing && [firstCell.contentEditTxt.text isEqual:@""]){
-        return;
-    }
 
     savedContentOffset = CGPointZero;
     DLog(@"add");
@@ -241,7 +203,7 @@
 
             [MobClick event:@"complate"];
         }
-                //删除
+        //删除
         else if(state == MCSwipeTableViewCellState4){
             [self.dataManager removeData:data];
             self.dataSource = [self.dataManager getUnCompletedData];

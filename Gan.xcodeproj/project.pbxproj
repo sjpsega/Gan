@@ -37,6 +37,7 @@
 		18A06B6F1792CE88000E3A74 /* GanDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A06B6E1792CE88000E3A74 /* GanDataManager.m */; };
 		18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */; };
 		18D1BE71179C041E000CDBD1 /* GanComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */; };
+		58B832BC5DD574DDF13F0B85 /* GanBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83D6A5A962E2C59E36054 /* GanBaseTableViewCell.m */; };
 		58B834202679C1DA51F9A721 /* GanBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8344DA35121DE2F92FB18 /* GanBaseVC.m */; };
 /* End PBXBuildFile section */
 
@@ -91,7 +92,9 @@
 		18D1BE6F179C041E000CDBD1 /* GanComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateTableViewCell.h; sourceTree = "<group>"; };
 		18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateTableViewCell.m; sourceTree = "<group>"; };
 		58B8344DA35121DE2F92FB18 /* GanBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanBaseVC.m; sourceTree = "<group>"; };
+		58B83862C8F39631EFEB80B0 /* GanBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanBaseTableViewCell.h; sourceTree = "<group>"; };
 		58B838AEEEF09EB4252EB852 /* GanBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanBaseVC.h; sourceTree = "<group>"; };
+		58B83D6A5A962E2C59E36054 /* GanBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanBaseTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 				58B838AEEEF09EB4252EB852 /* GanBaseVC.h */,
 				58B8344DA35121DE2F92FB18 /* GanBaseVC.m */,
 				1842AF9F176CA9A200A1ED20 /* Supporting Files */,
+				58B83D6A5A962E2C59E36054 /* GanBaseTableViewCell.m */,
+				58B83862C8F39631EFEB80B0 /* GanBaseTableViewCell.h */,
 			);
 			path = Gan;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				18D1BE71179C041E000CDBD1 /* GanComplateTableViewCell.m in Sources */,
 				182CC30A17A4233600227007 /* UIColor+HEXColor.m in Sources */,
 				58B834202679C1DA51F9A721 /* GanBaseVC.m in Sources */,
+				58B832BC5DD574DDF13F0B85 /* GanBaseTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,8 +423,8 @@
 		1842AFB9176CA9A200A1ED20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jianping shen (QFX23S23N7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianping shen (QFX23S23N7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
@@ -428,8 +434,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "98F55269-1AFE-42EF-8B3D-E534991D9A18";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98F55269-1AFE-42EF-8B3D-E534991D9A18";
+				PROVISIONING_PROFILE = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -437,8 +443,8 @@
 		1842AFBA176CA9A200A1ED20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jianping shen (QFX23S23N7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianping shen (QFX23S23N7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
@@ -448,8 +454,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "98F55269-1AFE-42EF-8B3D-E534991D9A18";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98F55269-1AFE-42EF-8B3D-E534991D9A18";
+				PROVISIONING_PROFILE = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

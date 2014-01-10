@@ -20,10 +20,6 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     return ReuseIdentifier.copy;
 }
 
--(void)prepareForReuse{
-    DLog(@"GanTableViewCell prepareForReuse...");
-}
-
 -(NSString *)reuseIdentifier{
     return ReuseIdentifier.copy;
 }
@@ -37,11 +33,6 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     return YES;
 }
 
--(void)didMoveToWindow{
-
-}
-
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     DLog(@"GanTableViewCell initWithSytle");
@@ -50,21 +41,10 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
         self.isEditing = false;
         [self initCustomElements];
         [self clearColorWithElement];
-        
-        UIView *bgColorView = [[UIView alloc] initWithFrame:self.bounds];
-        bgColorView.backgroundColor = [UIColor colorWithHEX:CELL_EDIT_BG alpha:1.0f];
-        [self setSelectedBackgroundView:bgColorView];
-        
-        self.textLabel.font = [UIFont fontWithName:@"Arial" size:18.0];
-        self.textLabel.highlightedTextColor = [UIColor blackColor];
+        [self addLine];
     }
     return self;
 }
-
--(void)viewDidLoad{
-
-}
-
 
 //- (void)didReceiveMemoryWarning
 //{
@@ -96,10 +76,10 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 -(void)clearColorWithElement{
-    for ( UIView* view in self.contentView.subviews )
-    {
-        view.backgroundColor = [UIColor clearColor];
-    }
+//    for ( UIView* view in self.contentView.subviews )
+//    {
+//        view.backgroundColor = [UIColor clearColor];
+//    }
 }
 
 -(void)keyboardDoneClcik:(id)sender{
@@ -172,8 +152,8 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 -(void)willMoveToSuperview:(UIView *)newSuperview{
     DLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super willMoveToSuperview:newSuperview];
-    self.textLabel.text = _data.content;
-    _contentEditTxt.text = _data.content;
+    self.textLabel.text = self.data.content;
+    _contentEditTxt.text = self.data.content;
 }
 
 -(void)setDataValToTxt{
