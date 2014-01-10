@@ -39,11 +39,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self setBgColor];
 
-    //创建一个导航栏
-//    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-//    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
-//    [self.view addSubview:self.navBar];
-
     //创建一个导航栏集合
     UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"todoTitle", @"")];
 

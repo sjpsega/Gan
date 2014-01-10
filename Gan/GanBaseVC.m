@@ -10,17 +10,12 @@
 #import "UIColor+HEXColor.h"
 
 static BOOL isAdjust = NO;
+static CGFloat NAVBar_H = 44;
+static CGFloat TABBar_ADJUST_H = 14;
+static CGFloat TABBar_H = 49 - 14;
 
 @implementation GanBaseVC {
 
-}
-
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){
-
-    }
-    return self;
 }
 
 -(void)viewDidLoad {
@@ -30,7 +25,7 @@ static BOOL isAdjust = NO;
 
     [self genTableView];
     //创建一个导航栏
-    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, NAVBar_H)];
     self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
 
     [self.view addSubview:self.navBar];
@@ -39,7 +34,7 @@ static BOOL isAdjust = NO;
     if(!isAdjust){
         isAdjust = YES;
 
-        CGFloat adjustDis = 14.0;
+        CGFloat adjustDis = TABBar_ADJUST_H;
         //调整底部TabBar高度，使得界面更美观
         CGRect frame = self.tabBarController.tabBar.frame;
         frame.size.height -= adjustDis;
@@ -77,12 +72,6 @@ static BOOL isAdjust = NO;
         frame.origin.y+=statusHeight;
         frame.size.height-=statusHeight;
         self.tableView.frame = frame;
-
-        //底部的tabBar也会遮挡tableView，减少对应高度
-        CGRect tabBarFrame = self.tabBarController.tabBar.frame;
-        frame = self.tableView.frame;
-        frame.size.height -= tabBarFrame.size.height;
-        self.tableView.frame = frame;
     }
 }
 
@@ -101,9 +90,8 @@ static BOOL isAdjust = NO;
 
 #pragma mark private
 -(void)genTableView{
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    //TODO:-44?
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, CGRectGetWidth(screenRect), CGRectGetHeight(screenRect)-44)];
+    CGRect viewFrame = self.view.frame;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVBar_H, CGRectGetWidth(viewFrame), CGRectGetHeight(viewFrame) - NAVBar_H - TABBar_H)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

@@ -24,7 +24,6 @@
 		1842AFAB176CA9A200A1ED20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFAA176CA9A200A1ED20 /* Default.png */; };
 		1842AFAD176CA9A200A1ED20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFAC176CA9A200A1ED20 /* Default@2x.png */; };
 		1842AFAF176CA9A200A1ED20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFAE176CA9A200A1ED20 /* Default-568h@2x.png */; };
-		1842AFB2176CA9A200A1ED20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFB0176CA9A200A1ED20 /* MainStoryboard.storyboard */; };
 		1842AFB5176CA9A200A1ED20 /* GanUnComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFB4176CA9A200A1ED20 /* GanUnComplateVC.m */; };
 		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
 		184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184EF9B117FFEDDA00827FF9 /* Localizable.strings */; };
@@ -66,7 +65,6 @@
 		1842AFAA176CA9A200A1ED20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1842AFAC176CA9A200A1ED20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1842AFAE176CA9A200A1ED20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		1842AFB1176CA9A200A1ED20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1842AFB3176CA9A200A1ED20 /* GanUnComplateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GanUnComplateVC.h; sourceTree = "<group>"; };
 		1842AFB4176CA9A200A1ED20 /* GanUnComplateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateVC.m; sourceTree = "<group>"; };
 		1842AFD8176CB9A900A1ED20 /* GanDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataModel.h; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 		184EF99F17FFE1BE00827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		184EF9B017FFEDDA00827FF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		184EF9B217FFEDDC00827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		184EF9B31800085300827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
 		1879AEDC181BBB830051735A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		18874B9F1771A17600C8ED01 /* GanComplateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateVC.h; sourceTree = "<group>"; };
@@ -171,7 +168,6 @@
 				1842AFD9176CB9A900A1ED20 /* GanDataModel.m */,
 				1842AFA7176CA9A200A1ED20 /* GanAppDelegate.h */,
 				1842AFA8176CA9A200A1ED20 /* GanAppDelegate.m */,
-				1842AFB0176CA9A200A1ED20 /* MainStoryboard.storyboard */,
 				1842AFDB176CDEC900A1ED20 /* GanUnComplateTableViewCell.h */,
 				185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */,
 				1842AFB3176CA9A200A1ED20 /* GanUnComplateVC.h */,
@@ -184,11 +180,11 @@
 				182CC30917A4233600227007 /* UIColor+HEXColor.m */,
 				18A06B6D1792CE88000E3A74 /* GanDataManager.h */,
 				18A06B6E1792CE88000E3A74 /* GanDataManager.m */,
+				58B83862C8F39631EFEB80B0 /* GanBaseTableViewCell.h */,
+				58B83D6A5A962E2C59E36054 /* GanBaseTableViewCell.m */,
 				58B838AEEEF09EB4252EB852 /* GanBaseVC.h */,
 				58B8344DA35121DE2F92FB18 /* GanBaseVC.m */,
 				1842AF9F176CA9A200A1ED20 /* Supporting Files */,
-				58B83D6A5A962E2C59E36054 /* GanBaseTableViewCell.m */,
-				58B83862C8F39631EFEB80B0 /* GanBaseTableViewCell.h */,
 			);
 			path = Gan;
 			sourceTree = "<group>";
@@ -288,7 +284,6 @@
 				1842AFAB176CA9A200A1ED20 /* Default.png in Resources */,
 				1842AFAD176CA9A200A1ED20 /* Default@2x.png in Resources */,
 				1842AFAF176CA9A200A1ED20 /* Default-568h@2x.png in Resources */,
-				1842AFB2176CA9A200A1ED20 /* MainStoryboard.storyboard in Resources */,
 				1815090A178C6366007BEB3E /* check.png in Resources */,
 				1815090B178C6366007BEB3E /* check@2x.png in Resources */,
 				1815090C178C6366007BEB3E /* cross.png in Resources */,
@@ -336,15 +331,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		1842AFB0176CA9A200A1ED20 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1842AFB1176CA9A200A1ED20 /* en */,
-				184EF9B31800085300827FF9 /* zh-Hans */,
-			);
-			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
 		184EF9B117FFEDDA00827FF9 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -385,8 +371,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "98F55269-1AFE-42EF-8B3D-E534991D9A18";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98F55269-1AFE-42EF-8B3D-E534991D9A18";
+				PROVISIONING_PROFILE = "1E591240-4734-4D82-A6D6-FB86322587E5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E591240-4734-4D82-A6D6-FB86322587E5";
 				SDKROOT = iphoneos7.0;
 			};
 			name = Debug;
@@ -413,8 +399,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "98F55269-1AFE-42EF-8B3D-E534991D9A18";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98F55269-1AFE-42EF-8B3D-E534991D9A18";
+				PROVISIONING_PROFILE = "1E591240-4734-4D82-A6D6-FB86322587E5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E591240-4734-4D82-A6D6-FB86322587E5";
 				SDKROOT = iphoneos7.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -434,8 +420,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
+				PROVISIONING_PROFILE = "1E591240-4734-4D82-A6D6-FB86322587E5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E591240-4734-4D82-A6D6-FB86322587E5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -454,8 +440,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
+				PROVISIONING_PROFILE = "1E591240-4734-4D82-A6D6-FB86322587E5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E591240-4734-4D82-A6D6-FB86322587E5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

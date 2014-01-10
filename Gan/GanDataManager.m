@@ -54,7 +54,7 @@
     [NSPredicate predicateWithFormat:@"SELF.isCompelete==YES"];
     NSArray *arr =
     [_datas filteredArrayUsingPredicate:predicate];
-//    arr = [self returnSortedArray:arr];
+    arr = [self returnSortedArray:arr];
     return [NSMutableArray arrayWithArray:arr];
 }
 
