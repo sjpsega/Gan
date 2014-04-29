@@ -7,15 +7,13 @@
 //
 
 #import "GanUnComplateVC.h"
-#import "GanDataModel.h"
 #import "GanUnComplateTableViewCell.h"
-#import "GanTableViewDelegate.h"
 #import "GanDataManager.h"
 #import "DLog.h"
 #import "UIColor+HEXColor.h"
 #import "MobClick.h"
 
-@interface GanUnComplateVC ()<GanTableViewDelegate>{
+@interface GanUnComplateVC ()<GanTableViewProtocol>{
     UIButton *maskLayer;
     CGPoint savedContentOffset;
 }
@@ -182,7 +180,7 @@
     return cell;
 }
 
-#pragma mark - GanTableViewDelegate
+#pragma mark - GanTableViewProtocol
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode{
     DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);

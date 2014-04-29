@@ -11,7 +11,7 @@
 @class MCSwipeTableViewCell;
 @class GanDataModel;
 
-@protocol GanTableViewDelegate <NSObject>
+@protocol GanTableViewProtocol <NSObject>
 @optional
 // When the user starts swiping the cell this method is called
 - (void)swipeTableViewCellDidStartSwiping:(MCSwipeTableViewCell *)cell;

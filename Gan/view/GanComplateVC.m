@@ -14,7 +14,7 @@
 #import "UIColor+HEXColor.h"
 #import "MobClick.h"
 
-@interface GanComplateVC ()<GanTableViewDelegate,UIAlertViewDelegate>{
+@interface GanComplateVC ()<GanTableViewProtocol,UIAlertViewDelegate>{
 }
 
 @end
@@ -155,7 +155,7 @@
     return cell;
 }
 
-#pragma mark - GanTableViewDelegate
+#pragma mark - GanTableViewProtocol
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode {
     DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);

@@ -14,7 +14,6 @@
 		1815090B178C6366007BEB3E /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150905178C6366007BEB3E /* check@2x.png */; };
 		1815090C178C6366007BEB3E /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150906178C6366007BEB3E /* cross.png */; };
 		1815090D178C6366007BEB3E /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18150907178C6366007BEB3E /* cross@2x.png */; };
-		182CC30A17A4233600227007 /* UIColor+HEXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CC30917A4233600227007 /* UIColor+HEXColor.m */; };
 		1842AF99176CA9A200A1ED20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF98176CA9A200A1ED20 /* UIKit.framework */; };
 		1842AF9B176CA9A200A1ED20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF9A176CA9A200A1ED20 /* Foundation.framework */; };
 		1842AF9D176CA9A200A1ED20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF9C176CA9A200A1ED20 /* CoreGraphics.framework */; };
@@ -24,20 +23,21 @@
 		1842AFAB176CA9A200A1ED20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFAA176CA9A200A1ED20 /* Default.png */; };
 		1842AFAD176CA9A200A1ED20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFAC176CA9A200A1ED20 /* Default@2x.png */; };
 		1842AFAF176CA9A200A1ED20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842AFAE176CA9A200A1ED20 /* Default-568h@2x.png */; };
-		1842AFB5176CA9A200A1ED20 /* GanUnComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFB4176CA9A200A1ED20 /* GanUnComplateVC.m */; };
-		1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842AFD9176CB9A900A1ED20 /* GanDataModel.m */; };
 		184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184EF9B117FFEDDA00827FF9 /* Localizable.strings */; };
-		185584D11774450A006C89AC /* GanUnComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */; };
 		1879AEDD181BBB830051735A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1879AEDC181BBB830051735A /* libz.dylib */; };
-		18874BA11771A17600C8ED01 /* GanComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18874BA01771A17600C8ED01 /* GanComplateVC.m */; };
 		188FF712179D8EFA0019234D /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF710179D8EFA0019234D /* clock.png */; };
 		188FF713179D8EFA0019234D /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FF711179D8EFA0019234D /* clock@2x.png */; };
 		189AC7BA181C117700834A85 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189AC7B8181C117700834A85 /* libMobClickLibrary.a */; };
-		18A06B6F1792CE88000E3A74 /* GanDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A06B6E1792CE88000E3A74 /* GanDataManager.m */; };
 		18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */; };
-		18D1BE71179C041E000CDBD1 /* GanComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */; };
-		58B832BC5DD574DDF13F0B85 /* GanBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83D6A5A962E2C59E36054 /* GanBaseTableViewCell.m */; };
-		58B834202679C1DA51F9A721 /* GanBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8344DA35121DE2F92FB18 /* GanBaseVC.m */; };
+		58B8302073063C3D3F3B3AEC /* GanBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B833D98671DE1E69C4D545 /* GanBaseVC.m */; };
+		58B83124DB4FA40E80DF64ED /* GanDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83207D887900897F8EB10 /* GanDataManager.m */; };
+		58B834E1B52B7203F735E01E /* GanBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83D31D1C75C5D13AE59BE /* GanBaseTableViewCell.m */; };
+		58B835523D78A37B4F10F365 /* GanComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83AFF52D333C59496BC8A /* GanComplateVC.m */; };
+		58B835A59D42C0F6CD7EA148 /* GanUnComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B834CC5855B18A79579DB8 /* GanUnComplateTableViewCell.m */; };
+		58B83932ECD081A614B80D51 /* GanComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B836ED399CBE44096097CA /* GanComplateTableViewCell.m */; };
+		58B83AE72C28F0D59A2A4288 /* UIColor+HEXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83941C4630E2D92A31D7C /* UIColor+HEXColor.m */; };
+		58B83BBC682DB8E66F776406 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8384A1C10E8101EA88ED6 /* GanDataModel.m */; };
+		58B83E987B156AA95186A248 /* GanUnComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B833069163D1BEB2025C47 /* GanUnComplateVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,10 +48,6 @@
 		18150905178C6366007BEB3E /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
 		18150906178C6366007BEB3E /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
 		18150907178C6366007BEB3E /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
-		18150917178C735F007BEB3E /* GanTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GanTableViewDelegate.h; sourceTree = "<group>"; };
-		182CC30817A4233600227007 /* UIColor+HEXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEXColor.h"; sourceTree = "<group>"; };
-		182CC30917A4233600227007 /* UIColor+HEXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEXColor.m"; sourceTree = "<group>"; };
-		1835885B178D44AA00C51ABC /* Global_ENUM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global_ENUM.h; sourceTree = "<group>"; };
 		1842AF95176CA9A200A1ED20 /* Gan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1842AF98176CA9A200A1ED20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1842AF9A176CA9A200A1ED20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,33 +61,37 @@
 		1842AFAA176CA9A200A1ED20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1842AFAC176CA9A200A1ED20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1842AFAE176CA9A200A1ED20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		1842AFB3176CA9A200A1ED20 /* GanUnComplateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GanUnComplateVC.h; sourceTree = "<group>"; };
-		1842AFB4176CA9A200A1ED20 /* GanUnComplateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateVC.m; sourceTree = "<group>"; };
-		1842AFD8176CB9A900A1ED20 /* GanDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataModel.h; sourceTree = "<group>"; };
-		1842AFD9176CB9A900A1ED20 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
-		1842AFDB176CDEC900A1ED20 /* GanUnComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanUnComplateTableViewCell.h; sourceTree = "<group>"; };
 		184EF99F17FFE1BE00827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		184EF9B017FFEDDA00827FF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		184EF9B217FFEDDC00827FF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
 		1879AEDC181BBB830051735A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		18874B9F1771A17600C8ED01 /* GanComplateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateVC.h; sourceTree = "<group>"; };
-		18874BA01771A17600C8ED01 /* GanComplateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateVC.m; sourceTree = "<group>"; };
-		188FF70F179D85C30019234D /* DLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		188FF710179D8EFA0019234D /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		188FF711179D8EFA0019234D /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
 		189AC7B8181C117700834A85 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		189AC7B9181C117700834A85 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		18A06B6D1792CE88000E3A74 /* GanDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataManager.h; sourceTree = "<group>"; };
-		18A06B6E1792CE88000E3A74 /* GanDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataManager.m; sourceTree = "<group>"; };
 		18CF068B178D0AB600F0CD7D /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
 		18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
-		18D1BE6F179C041E000CDBD1 /* GanComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateTableViewCell.h; sourceTree = "<group>"; };
-		18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateTableViewCell.m; sourceTree = "<group>"; };
-		58B8344DA35121DE2F92FB18 /* GanBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanBaseVC.m; sourceTree = "<group>"; };
-		58B83862C8F39631EFEB80B0 /* GanBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanBaseTableViewCell.h; sourceTree = "<group>"; };
-		58B838AEEEF09EB4252EB852 /* GanBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanBaseVC.h; sourceTree = "<group>"; };
-		58B83D6A5A962E2C59E36054 /* GanBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanBaseTableViewCell.m; sourceTree = "<group>"; };
+		58B83090999E85F0750437A8 /* GanComplateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateVC.h; sourceTree = "<group>"; };
+		58B830A370FFE690198F123D /* GanUnComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanUnComplateTableViewCell.h; sourceTree = "<group>"; };
+		58B830A66DCFEE2861D5F583 /* GanTableViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanTableViewProtocol.h; sourceTree = "<group>"; };
+		58B83207D887900897F8EB10 /* GanDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataManager.m; sourceTree = "<group>"; };
+		58B83223E4A6B7083B8ECCCB /* GanUnComplateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanUnComplateVC.h; sourceTree = "<group>"; };
+		58B833069163D1BEB2025C47 /* GanUnComplateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateVC.m; sourceTree = "<group>"; };
+		58B83357185CCBE059011C8C /* GanComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateTableViewCell.h; sourceTree = "<group>"; };
+		58B833D98671DE1E69C4D545 /* GanBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanBaseVC.m; sourceTree = "<group>"; };
+		58B834168B11736E24B7E0E9 /* UIColor+HEXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEXColor.h"; sourceTree = "<group>"; };
+		58B83488E4B4F489CB16D78A /* GanBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanBaseTableViewCell.h; sourceTree = "<group>"; };
+		58B834CC5855B18A79579DB8 /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
+		58B83596BAC103651785424A /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
+		58B836ED399CBE44096097CA /* GanComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateTableViewCell.m; sourceTree = "<group>"; };
+		58B8374F616163D81713F100 /* GanDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataManager.h; sourceTree = "<group>"; };
+		58B8384A1C10E8101EA88ED6 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
+		58B83941C4630E2D92A31D7C /* UIColor+HEXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEXColor.m"; sourceTree = "<group>"; };
+		58B83AFF52D333C59496BC8A /* GanComplateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateVC.m; sourceTree = "<group>"; };
+		58B83C58C0364746FF749D87 /* Global_ENUM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global_ENUM.h; sourceTree = "<group>"; };
+		58B83D31D1C75C5D13AE59BE /* GanBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanBaseTableViewCell.m; sourceTree = "<group>"; };
+		58B83DFEA827DA31D9D3D6A3 /* GanDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataModel.h; sourceTree = "<group>"; };
+		58B83F6C2C1BBE138B21FB57 /* GanBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanBaseVC.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,30 +161,12 @@
 		1842AF9E176CA9A200A1ED20 /* Gan */ = {
 			isa = PBXGroup;
 			children = (
-				1835885B178D44AA00C51ABC /* Global_ENUM.h */,
-				188FF70F179D85C30019234D /* DLog.h */,
-				18150917178C735F007BEB3E /* GanTableViewDelegate.h */,
-				1842AFD8176CB9A900A1ED20 /* GanDataModel.h */,
-				1842AFD9176CB9A900A1ED20 /* GanDataModel.m */,
 				1842AFA7176CA9A200A1ED20 /* GanAppDelegate.h */,
 				1842AFA8176CA9A200A1ED20 /* GanAppDelegate.m */,
-				1842AFDB176CDEC900A1ED20 /* GanUnComplateTableViewCell.h */,
-				185584D01774450A006C89AC /* GanUnComplateTableViewCell.m */,
-				1842AFB3176CA9A200A1ED20 /* GanUnComplateVC.h */,
-				1842AFB4176CA9A200A1ED20 /* GanUnComplateVC.m */,
-				18D1BE6F179C041E000CDBD1 /* GanComplateTableViewCell.h */,
-				18D1BE70179C041E000CDBD1 /* GanComplateTableViewCell.m */,
-				18874B9F1771A17600C8ED01 /* GanComplateVC.h */,
-				18874BA01771A17600C8ED01 /* GanComplateVC.m */,
-				182CC30817A4233600227007 /* UIColor+HEXColor.h */,
-				182CC30917A4233600227007 /* UIColor+HEXColor.m */,
-				18A06B6D1792CE88000E3A74 /* GanDataManager.h */,
-				18A06B6E1792CE88000E3A74 /* GanDataManager.m */,
-				58B83862C8F39631EFEB80B0 /* GanBaseTableViewCell.h */,
-				58B83D6A5A962E2C59E36054 /* GanBaseTableViewCell.m */,
-				58B838AEEEF09EB4252EB852 /* GanBaseVC.h */,
-				58B8344DA35121DE2F92FB18 /* GanBaseVC.m */,
 				1842AF9F176CA9A200A1ED20 /* Supporting Files */,
+				58B831CB86DBC0441D892478 /* data */,
+				58B8333C9EEC8710A50DF892 /* util */,
+				58B83D299130E677634AD4FE /* view */,
 			);
 			path = Gan;
 			sourceTree = "<group>";
@@ -220,6 +202,48 @@
 				18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */,
 			);
 			path = MCSwipeTableViewCell;
+			sourceTree = "<group>";
+		};
+		58B831CB86DBC0441D892478 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				58B83DFEA827DA31D9D3D6A3 /* GanDataModel.h */,
+				58B8384A1C10E8101EA88ED6 /* GanDataModel.m */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		58B8333C9EEC8710A50DF892 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				58B834168B11736E24B7E0E9 /* UIColor+HEXColor.h */,
+				58B83941C4630E2D92A31D7C /* UIColor+HEXColor.m */,
+				58B83C58C0364746FF749D87 /* Global_ENUM.h */,
+				58B83596BAC103651785424A /* DLog.h */,
+				58B8374F616163D81713F100 /* GanDataManager.h */,
+				58B83207D887900897F8EB10 /* GanDataManager.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		58B83D299130E677634AD4FE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				58B836ED399CBE44096097CA /* GanComplateTableViewCell.m */,
+				58B83488E4B4F489CB16D78A /* GanBaseTableViewCell.h */,
+				58B83357185CCBE059011C8C /* GanComplateTableViewCell.h */,
+				58B834CC5855B18A79579DB8 /* GanUnComplateTableViewCell.m */,
+				58B833D98671DE1E69C4D545 /* GanBaseVC.m */,
+				58B83F6C2C1BBE138B21FB57 /* GanBaseVC.h */,
+				58B830A370FFE690198F123D /* GanUnComplateTableViewCell.h */,
+				58B83223E4A6B7083B8ECCCB /* GanUnComplateVC.h */,
+				58B83090999E85F0750437A8 /* GanComplateVC.h */,
+				58B83D31D1C75C5D13AE59BE /* GanBaseTableViewCell.m */,
+				58B833069163D1BEB2025C47 /* GanUnComplateVC.m */,
+				58B83AFF52D333C59496BC8A /* GanComplateVC.m */,
+				58B830A66DCFEE2861D5F583 /* GanTableViewProtocol.h */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,16 +330,16 @@
 			files = (
 				1842AFA5176CA9A200A1ED20 /* main.m in Sources */,
 				1842AFA9176CA9A200A1ED20 /* GanAppDelegate.m in Sources */,
-				1842AFB5176CA9A200A1ED20 /* GanUnComplateVC.m in Sources */,
-				1842AFDA176CB9A900A1ED20 /* GanDataModel.m in Sources */,
-				18874BA11771A17600C8ED01 /* GanComplateVC.m in Sources */,
-				185584D11774450A006C89AC /* GanUnComplateTableViewCell.m in Sources */,
 				18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */,
-				18A06B6F1792CE88000E3A74 /* GanDataManager.m in Sources */,
-				18D1BE71179C041E000CDBD1 /* GanComplateTableViewCell.m in Sources */,
-				182CC30A17A4233600227007 /* UIColor+HEXColor.m in Sources */,
-				58B834202679C1DA51F9A721 /* GanBaseVC.m in Sources */,
-				58B832BC5DD574DDF13F0B85 /* GanBaseTableViewCell.m in Sources */,
+				58B83BBC682DB8E66F776406 /* GanDataModel.m in Sources */,
+				58B83AE72C28F0D59A2A4288 /* UIColor+HEXColor.m in Sources */,
+				58B83932ECD081A614B80D51 /* GanComplateTableViewCell.m in Sources */,
+				58B835A59D42C0F6CD7EA148 /* GanUnComplateTableViewCell.m in Sources */,
+				58B8302073063C3D3F3B3AEC /* GanBaseVC.m in Sources */,
+				58B834E1B52B7203F735E01E /* GanBaseTableViewCell.m in Sources */,
+				58B83E987B156AA95186A248 /* GanUnComplateVC.m in Sources */,
+				58B835523D78A37B4F10F365 /* GanComplateVC.m in Sources */,
+				58B83124DB4FA40E80DF64ED /* GanDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

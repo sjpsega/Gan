@@ -21,9 +21,10 @@
 {
     // Override point for customization after application launch.
     //友盟统计分析
-    [MobClick setLogEnabled:NO];
-    [MobClick startWithAppkey:UMENG_APPKEY];
-
+    #if !DEBUG
+        [MobClick setLogEnabled:NO];
+        [MobClick startWithAppkey:UMENG_APPKEY];
+    #endif
     //友盟升级提醒
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];

@@ -38,10 +38,8 @@
         }
     }
     //找出content非空的数据，防止数据错误
-    NSPredicate *predicate =
-    [NSPredicate predicateWithFormat:@"SELF.content!=''"];
-    NSArray *arr =
-    [_datas filteredArrayUsingPredicate:predicate];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.content!=''"];
+    NSArray *arr = [_datas filteredArrayUsingPredicate:predicate];
     _datas = [NSMutableArray arrayWithArray:arr];
     return _datas;
 }
