@@ -93,7 +93,7 @@
     [self.tableView setBackgroundView:backgroundView];
 }
 
--(IBAction)delAllComplate:(id)sender{
+-(void)delAllComplate:(id)sender{
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"delAllComplateAlertTitle", @"")
                     message:NSLocalizedString(@"delAllComplateAlertMessage", @"")
                     delegate:self
@@ -120,7 +120,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DLog(@"cellForRowAtIndexPath %@",indexPath);
-    NSString *cellName = [GanComplateTableViewCell getReuseIdentifier];
+    NSString *cellName = [GanComplateTableViewCell reuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法
     //PS:现使用纯代码方式生成cell

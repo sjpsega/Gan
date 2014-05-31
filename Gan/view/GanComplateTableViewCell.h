@@ -11,5 +11,5 @@
 #import "GanBaseTableViewCell.h"
 
 @interface GanComplateTableViewCell : GanBaseTableViewCell
-+(NSString *)getReuseIdentifier;
++(NSString *)reuseIdentifier;
 @end

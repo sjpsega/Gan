@@ -16,11 +16,7 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 
 @implementation GanComplateTableViewCell
 
-+(NSString *)getReuseIdentifier{
-    return ReuseIdentifier.copy;
-}
-
--(NSString *)reuseIdentifier{
++(NSString *)reuseIdentifier{
     return ReuseIdentifier.copy;
 }
 

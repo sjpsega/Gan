@@ -110,7 +110,7 @@
     [maskLayer setHidden:YES];
 }
 
--(IBAction)blurCell:(id)sender{
+-(void)blurCell:(id)sender{
     DLog(@"blurCell~~~~~~");
     [self blurCell];
 }
@@ -145,7 +145,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DLog(@"cellForRowAtIndexPath %@",indexPath);
-    NSString *cellName = [GanUnComplateTableViewCell getReuseIdentifier];
+    NSString *cellName = [GanUnComplateTableViewCell reuseIdentifier];
     //这里使用dequeueReusableCellWithIdentifier:cellName，发现使用自定义的cell，没有调用init函数
     //storyboard情况下，cell init使用的是awakeFromNib方法
     //PS:现使用纯代码方式生成cell

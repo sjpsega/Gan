@@ -16,11 +16,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 @implementation GanUnComplateTableViewCell
 
-+(NSString *)getReuseIdentifier{
-    return ReuseIdentifier.copy;
-}
-
--(NSString *)reuseIdentifier{
++(NSString *)reuseIdentifier{
     return ReuseIdentifier.copy;
 }
 
@@ -91,7 +87,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     }
 }
 
--(IBAction)hideKeyboard:(id)sender{
+-(void)hideKeyboard:(id)sender{
     [_contentEditTxt resignFirstResponder];
 }
 
