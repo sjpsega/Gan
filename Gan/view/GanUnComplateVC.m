@@ -9,7 +9,6 @@
 #import "GanUnComplateVC.h"
 #import "GanUnComplateTableViewCell.h"
 #import "GanDataManager.h"
-#import "DLog.h"
 #import "UIColor+HEXColor.h"
 #import "MobClick.h"
 

@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180E21F817F28FB2004B2EA2 /* icon_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 180E21F717F28FB2004B2EA2 /* icon_114x114.png */; };
-		180E21FA17F28FB6004B2EA2 /* icon_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 180E21F917F28FB6004B2EA2 /* icon_57x57.png */; };
-		180E21FC17F28FE6004B2EA2 /* icon_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 180E21FB17F28FE6004B2EA2 /* icon_120x120.png */; };
 		1842AF99176CA9A200A1ED20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF98176CA9A200A1ED20 /* UIKit.framework */; };
 		1842AF9B176CA9A200A1ED20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF9A176CA9A200A1ED20 /* Foundation.framework */; };
 		1842AF9D176CA9A200A1ED20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1842AF9C176CA9A200A1ED20 /* CoreGraphics.framework */; };
@@ -23,6 +20,7 @@
 		1879AEDD181BBB830051735A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1879AEDC181BBB830051735A /* libz.dylib */; };
 		189AC7BA181C117700834A85 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189AC7B8181C117700834A85 /* libMobClickLibrary.a */; };
 		18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */; };
+		4A954FD8194558AF00A34770 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A954FD7194558AF00A34770 /* Reveal.framework */; };
 		4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFDC5AB1944C0DD0054457B /* Images.xcassets */; };
 		58B8302073063C3D3F3B3AEC /* GanBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B833D98671DE1E69C4D545 /* GanBaseVC.m */; };
 		58B83124DB4FA40E80DF64ED /* GanDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83207D887900897F8EB10 /* GanDataManager.m */; };
@@ -36,9 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		180E21F717F28FB2004B2EA2 /* icon_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114x114.png; sourceTree = "<group>"; };
-		180E21F917F28FB6004B2EA2 /* icon_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57x57.png; sourceTree = "<group>"; };
-		180E21FB17F28FE6004B2EA2 /* icon_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120x120.png; sourceTree = "<group>"; };
 		1842AF95176CA9A200A1ED20 /* Gan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1842AF98176CA9A200A1ED20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1842AF9A176CA9A200A1ED20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,6 +55,10 @@
 		189AC7B9181C117700834A85 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		18CF068B178D0AB600F0CD7D /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
 		18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
+		4A954FD7194558AF00A34770 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		4A954FDA194563C700A34770 /* MacroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
+		4A954FDB194563C700A34770 /* UIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
+		4A954FDC194563C700A34770 /* VersionCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCompare.h; sourceTree = "<group>"; };
 		4AFDC5AB1944C0DD0054457B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		58B83090999E85F0750437A8 /* GanComplateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanComplateVC.h; sourceTree = "<group>"; };
 		58B830A370FFE690198F123D /* GanUnComplateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanUnComplateTableViewCell.h; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 		58B834168B11736E24B7E0E9 /* UIColor+HEXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEXColor.h"; sourceTree = "<group>"; };
 		58B83488E4B4F489CB16D78A /* GanBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanBaseTableViewCell.h; sourceTree = "<group>"; };
 		58B834CC5855B18A79579DB8 /* GanUnComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanUnComplateTableViewCell.m; sourceTree = "<group>"; };
-		58B83596BAC103651785424A /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		58B836ED399CBE44096097CA /* GanComplateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanComplateTableViewCell.m; sourceTree = "<group>"; };
 		58B8374F616163D81713F100 /* GanDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataManager.h; sourceTree = "<group>"; };
 		58B8384A1C10E8101EA88ED6 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
@@ -92,6 +90,7 @@
 				1879AEDD181BBB830051735A /* libz.dylib in Frameworks */,
 				1842AF99176CA9A200A1ED20 /* UIKit.framework in Frameworks */,
 				1842AF9B176CA9A200A1ED20 /* Foundation.framework in Frameworks */,
+				4A954FD8194558AF00A34770 /* Reveal.framework in Frameworks */,
 				1842AF9D176CA9A200A1ED20 /* CoreGraphics.framework in Frameworks */,
 				189AC7BA181C117700834A85 /* libMobClickLibrary.a in Frameworks */,
 			);
@@ -103,10 +102,8 @@
 		1842AF8C176CA9A200A1ED20 = {
 			isa = PBXGroup;
 			children = (
+				4A954FD7194558AF00A34770 /* Reveal.framework */,
 				1879AEDB181BBAB90051735A /* UM */,
-				180E21FB17F28FE6004B2EA2 /* icon_120x120.png */,
-				180E21F917F28FB6004B2EA2 /* icon_57x57.png */,
-				180E21F717F28FB2004B2EA2 /* icon_114x114.png */,
 				1842AF97176CA9A200A1ED20 /* Frameworks */,
 				1842AF9E176CA9A200A1ED20 /* Gan */,
 				18CF068A178D0AB600F0CD7D /* MCSwipeTableViewCell */,
@@ -136,6 +133,7 @@
 		1842AF9E176CA9A200A1ED20 /* Gan */ = {
 			isa = PBXGroup;
 			children = (
+				4A954FD9194563C700A34770 /* macros */,
 				1842AFA7176CA9A200A1ED20 /* GanAppDelegate.h */,
 				1842AFA8176CA9A200A1ED20 /* GanAppDelegate.m */,
 				1842AF9F176CA9A200A1ED20 /* Supporting Files */,
@@ -180,6 +178,16 @@
 			path = MCSwipeTableViewCell;
 			sourceTree = "<group>";
 		};
+		4A954FD9194563C700A34770 /* macros */ = {
+			isa = PBXGroup;
+			children = (
+				4A954FDA194563C700A34770 /* MacroUtils.h */,
+				4A954FDB194563C700A34770 /* UIConstants.h */,
+				4A954FDC194563C700A34770 /* VersionCompare.h */,
+			);
+			path = macros;
+			sourceTree = "<group>";
+		};
 		58B831CB86DBC0441D892478 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +203,6 @@
 				58B834168B11736E24B7E0E9 /* UIColor+HEXColor.h */,
 				58B83941C4630E2D92A31D7C /* UIColor+HEXColor.m */,
 				58B83C58C0364746FF749D87 /* Global_ENUM.h */,
-				58B83596BAC103651785424A /* DLog.h */,
 				58B8374F616163D81713F100 /* GanDataManager.h */,
 				58B83207D887900897F8EB10 /* GanDataManager.m */,
 			);
@@ -285,9 +292,6 @@
 				1842AFAD176CA9A200A1ED20 /* Default@2x.png in Resources */,
 				1842AFAF176CA9A200A1ED20 /* Default-568h@2x.png in Resources */,
 				4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */,
-				180E21F817F28FB2004B2EA2 /* icon_114x114.png in Resources */,
-				180E21FA17F28FB6004B2EA2 /* icon_57x57.png in Resources */,
-				180E21FC17F28FE6004B2EA2 /* icon_120x120.png in Resources */,
 				184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,8 +410,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: jianping shen (QFX23S23N7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianping shen (QFX23S23N7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
@@ -417,8 +425,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1E591240-4734-4D82-A6D6-FB86322587E5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E591240-4734-4D82-A6D6-FB86322587E5";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AB194426-1152-4E62-86F3-AF3E446F3237";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -428,8 +437,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: jianping shen (QFX23S23N7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianping shen (QFX23S23N7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
@@ -439,8 +452,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1E591240-4734-4D82-A6D6-FB86322587E5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E591240-4734-4D82-A6D6-FB86322587E5";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

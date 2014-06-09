@@ -6,7 +6,6 @@
 #import "GanBaseVC.h"
 #import "GanDataManager.h"
 #import "Global_ENUM.h"
-#import "DLog.h"
 #import "UIColor+HEXColor.h"
 
 static BOOL isAdjust = NO;
@@ -30,6 +29,7 @@ static CGFloat TABBar_H = 49 - 14;
 
     [self.view addSubview:self.navBar];
 
+    //FIXME:iOS7.1中，这样设置样式有问题
     //只调整一次，因为tabBarController是全局的
     if(!isAdjust){
         isAdjust = YES;
@@ -86,6 +86,11 @@ static CGFloat TABBar_H = 49 - 14;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.dataSource count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    return cell;
 }
 
 #pragma mark private

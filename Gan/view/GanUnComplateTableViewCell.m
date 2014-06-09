@@ -9,7 +9,6 @@
 
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewProtocol.h"
-#import "DLog.h"
 #import "UIColor+HEXColor.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
@@ -64,11 +63,15 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     _contentEditTxt.font = [UIFont fontWithName:@"Arial" size:18.0];
     _contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _contentEditTxt.returnKeyType = UIReturnKeyDone;
-    
     [_contentEditTxt addTarget:self action:@selector(keyboardDoneClcik:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
     [self.contentView addSubview:_contentEditTxt];
     
+    UIImage *clockImg = [UIImage imageNamed:@"clock"];
+    UIImageView *imgView = [[UIImageView alloc]initWithImage:clockImg];
+    CGRect frame = imgView.frame;
+    frame.origin = CGPointMake(320 - 44, 20);
+    imgView.frame = frame;
+    [self.contentView addSubview:imgView];
 }
 
 -(void)clearColorWithElement{
@@ -144,6 +147,10 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     self.data.content = content;
 }
 
+-(void)willRemoveSubview:(UIView *)subview{
+    DLog(@"willRemoveSubview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    [super willRemoveSubview:subview];
+}
 
 -(void)willMoveToSuperview:(UIView *)newSuperview{
     DLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");

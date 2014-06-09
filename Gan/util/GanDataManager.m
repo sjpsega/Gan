@@ -7,7 +7,6 @@
 //
 
 #import "GanDataManager.h"
-#import "DLog.h"
 #import "GanDataModel.h"
 
 @interface GanDataManager ()

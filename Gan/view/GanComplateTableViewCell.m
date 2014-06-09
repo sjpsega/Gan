@@ -7,7 +7,6 @@
 //
 
 #import "GanComplateTableViewCell.h"
-#import "DLog.h"
 #import "UIColor+HEXColor.h"
 #import "Global_ENUM.h"
 

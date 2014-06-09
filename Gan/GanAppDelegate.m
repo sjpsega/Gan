@@ -19,15 +19,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     //友盟统计分析
+    [MobClick setLogEnabled:YES];
     #if !DEBUG
         [MobClick setLogEnabled:NO];
         [MobClick startWithAppkey:UMENG_APPKEY];
     #endif
     //友盟升级提醒
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [MobClick setAppVersion:version];
+    [MobClick setAppVersion:APP_VERSION];
     [MobClick checkUpdate];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
