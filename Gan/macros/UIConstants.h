@@ -8,6 +8,7 @@
 #define UI_STATUS_BAR_HEIGHT        20
 #define UI_SCREEN_WIDTH             320
 #define UI_SCREEN_HEIGHT            480
+#define UI_SCREEN_HEIGHT_4INCH      568
 
 #define UI_LABEL_LENGTH             200
 #define UI_LABEL_HEIGHT             15

@@ -13,12 +13,20 @@
 #import "GanUnComplateVC.h"
 #import "GanComplateVC.h"
 #import "Global_ENUM.h"
+#import "GanUnComplateTableViewCell.h"
+
 #define UMENG_APPKEY @"526b6a1d56240b395506cbd5"
 
 @implementation GanAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    [Xtrace describeValues:YES];
+//    [Xtrace showArguments:NO];
+//    [Xtrace showReturns:NO];
+//    [Xtrace showCaller:YES];
+//    [GanUnComplateTableViewCell xtrace];
+    
     //友盟统计分析
     [MobClick setLogEnabled:YES];
     #if !DEBUG
