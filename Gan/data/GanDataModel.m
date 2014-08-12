@@ -10,7 +10,7 @@
 
 @implementation GanDataModel
 
--(id)init{
+- (id)init{
     if(self = [super init]){
         _content = @"";
         _date = [NSDate date];
@@ -20,34 +20,36 @@
     return self;
 }
 
--(id)initWithContent:(NSString *)content{
+- (id)initWithContent:(NSString *)content{
     self = [self init];
     _content = content;
     return self;
 }
 
--(void)setContent:(NSString *)content{
+- (void)setContent:(NSString *)content{
     _content = content;
     _isNew = NO;
 }
 
--(void)setIsCompelete:(BOOL)isCompelete{
+- (void)setIsCompelete:(BOOL)isCompelete{
     _isCompelete = isCompelete;
     _date = [NSDate date];
 }
 
 #pragma mark implement NSCoding
--(void)encodeWithCoder:(NSCoder *)aCoder{
+- (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:_content forKey:@"content"];
     [aCoder encodeObject:_date forKey:@"date"];
     [aCoder encodeBool:_isCompelete forKey:@"isComplate"];
     [aCoder encodeBool:_isNew forKey:@"isNew"];
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder{
+- (id)initWithCoder:(NSCoder *)aDecoder{
     if(self = [self init]){
-        self.content = [aDecoder decodeObjectForKey:@"content"];
-        self.isCompelete = [aDecoder decodeBoolForKey:@"isComplate"];
+        _content = [aDecoder decodeObjectForKey:@"content"];
+        _isNew = NO;
+        _isCompelete = [aDecoder decodeBoolForKey:@"isComplate"];
+        _date = [NSDate date];
         _date = [aDecoder decodeObjectForKey:@"date"];
         _isNew = [aDecoder decodeBoolForKey:@"isNew"];
     }
@@ -55,7 +57,7 @@
 }
 
 #pragma mark implement NSCopying
--(id)copyWithZone:(NSZone *)zone{
+- (id)copyWithZone:(NSZone *)zone{
     GanDataModel *data;
     data = [[[self class]allocWithZone:zone]initWithContent:_content];
     return data;

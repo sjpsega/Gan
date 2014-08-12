@@ -80,7 +80,7 @@
 }
 
 -(void)setApplicationIconBadgeNumber{
-    NSInteger unCompleteDataCount = [[[GanDataManager getInstance] getUnCompletedData] count];
+    NSInteger unCompleteDataCount = [[[GanDataManager getInstance] unCompletedData] count];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:unCompleteDataCount];
 }
 

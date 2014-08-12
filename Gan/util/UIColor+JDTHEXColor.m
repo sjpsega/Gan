@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 sjp. All rights reserved.
 //
 
-#import "UIColor+HEXColor.h"
+#import "UIColor+JDTHEXColor.h"
 
-@implementation UIColor (HEXColor)
-+(id)colorWithHEX:(int)rgbValue alpha:(float)alphaVal{
+@implementation UIColor (JDTHEXColor)
++ (id)JDT_ColorWithHEX:(int)rgbValue alpha:(float)alphaVal{
     return [UIColor
             colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0
             green:((float)((rgbValue & 0xFF00) >> 8))/255.0

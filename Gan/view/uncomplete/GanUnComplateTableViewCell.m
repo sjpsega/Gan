@@ -9,7 +9,7 @@
 
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewProtocol.h"
-#import "UIColor+HEXColor.h"
+#import "UIColor+JDTHEXColor.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
 
@@ -35,7 +35,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     DLog(@"GanTableViewCell initWithSytle");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.isEditing = false;
+        _isEditing = false;
         [self initCustomElements];
         [self addLine];
     }
@@ -81,7 +81,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     [self hideKeyboard:self];
     [self setDataContent:_contentEditTxt.text];
     if([self.delegate respondsToSelector:@selector(blurCell:)]){
-        self.isEditing = false;
+        _isEditing = false;
         [self.delegate blurCell];
     }
 }
@@ -118,7 +118,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     _clockImgView.hidden = NO;
     [_contentEditTxt becomeFirstResponder];
     if([self.delegate respondsToSelector:@selector(focusCell:)]){
-        self.isEditing = true;
+        _isEditing = true;
         [self.delegate focusCell:self];
     }
 }

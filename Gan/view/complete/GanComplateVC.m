@@ -10,7 +10,7 @@
 #import "GanDataModel.h"
 #import "GanComplateTableViewCell.h"
 #import "GanDataManager.h"
-#import "UIColor+HEXColor.h"
+#import "UIColor+JDTHEXColor.h"
 #import "MobClick.h"
 
 @interface GanComplateVC ()<GanTableViewProtocol,UIAlertViewDelegate>{
@@ -35,7 +35,7 @@
     [self setBgColor];
 
     //创建一个导航栏集合
-    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"doneTitle", @"")];
+    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"doneTitle", @"Done")];
     
     //创建一个右边按钮
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
@@ -81,23 +81,23 @@
 }
 
 -(void)initDataSource{
-    self.dataSource = [[GanDataManager getInstance] getCompletedData];
+    self.dataSource = [[GanDataManager getInstance] completedData];
     
     DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%i",[self.dataSource count]);
 }
 
 -(void)setBgColor{
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [backgroundView setBackgroundColor:[UIColor colorWithHEX:TABLE_BG alpha:1.0f]];
+    [backgroundView setBackgroundColor:[UIColor JDT_ColorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
 }
 
 -(void)delAllComplate:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"delAllComplateAlertTitle", @"")
-                    message:NSLocalizedString(@"delAllComplateAlertMessage", @"")
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"delAllComplateAlertTitle", @"Alert")
+                    message:NSLocalizedString(@"delAllComplateAlertMessage", @"Do you want to delete all completed tasks?")
                     delegate:self
-                    cancelButtonTitle:NSLocalizedString(@"delAllComplateAlertCancelBtn", @"")
-                    otherButtonTitles:NSLocalizedString(@"delAllComplateAlertOkBtn", @""), nil];
+                    cancelButtonTitle:NSLocalizedString(@"delAllComplateAlertCancelBtn", @"Cancel")
+                    otherButtonTitles:NSLocalizedString(@"delAllComplateAlertOkBtn", @"OK"), nil];
     [alert show];
 }
 
@@ -109,7 +109,7 @@
         for (GanDataModel *data in self.dataSource) {
             [self.dataManager removeData:data];
         }
-        self.dataSource = [self.dataManager getCompletedData];
+        self.dataSource = [self.dataManager completedData];
         [self.dataManager saveData];
         [self.tableView reloadData];
         
@@ -132,13 +132,13 @@
     
     // We need to provide the icon names and the desired colors
     [cell setFirstStateIconName:@"clock.png"
-                     firstColor:[UIColor colorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
+                     firstColor:[UIColor JDT_ColorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
             secondStateIconName:@"clock.png"
-                    secondColor:[UIColor colorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
+                    secondColor:[UIColor JDT_ColorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
                   thirdIconName:@"cross.png"
-                     thirdColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0]
+                     thirdColor:[UIColor JDT_ColorWithHEX:DEL_COLOR alpha:1.0]
                  fourthIconName:@"cross.png"
-                    fourthColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0]];
+                    fourthColor:[UIColor JDT_ColorWithHEX:DEL_COLOR alpha:1.0]];
     
     // We need to set a background to the content view of the cell
     [cell.contentView setBackgroundColor:[UIColor colorWithRed:85.0/255.0 green:213.0/255.0 blue:80.0/255.0 alpha:1.0]];
@@ -148,7 +148,7 @@
     
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];
-    cell.data = ((GanDataModel *)[self.dataSource objectAtIndex:indexPath.row]);
+    cell.data = ((GanDataModel *)self.dataSource[indexPath.row]);
     //给cell的显示元素设值，防止因为元素重用，导致显示错误
     [cell setDataValToTxt];
     return cell;
@@ -164,7 +164,7 @@
         //变成未完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
             [data setIsCompelete:NO];
-            self.dataSource = [self.dataManager getCompletedData];
+            self.dataSource = [self.dataManager completedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [self.dataManager saveData];
             
@@ -173,7 +173,7 @@
         //删除
         else if(state == MCSwipeTableViewCellState3 || state == MCSwipeTableViewCellState4){
             [self.dataManager removeData:data];
-            self.dataSource = [self.dataManager getCompletedData];
+            self.dataSource = [self.dataManager completedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [self.dataManager saveData];
             

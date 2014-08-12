@@ -9,7 +9,7 @@
 #import "GanUnComplateVC.h"
 #import "GanUnComplateTableViewCell.h"
 #import "GanDataManager.h"
-#import "UIColor+HEXColor.h"
+#import "UIColor+JDTHEXColor.h"
 #import "MobClick.h"
 
 @interface GanUnComplateVC ()<GanTableViewProtocol,UIPickerViewDelegate,UIPickerViewDataSource>{
@@ -39,7 +39,7 @@
     [self setBgColor];
 
     //创建一个导航栏集合
-    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"todoTitle", @"")];
+    UINavigationItem *navBarItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"todoTitle", @"Todo")];
 
     //创建一个右边按钮
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
@@ -51,13 +51,7 @@
 
     [self fitForiOS7];
     [self addMaskLayer];
-
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self initDataSource];
-    [self.tableView reloadData];
+    
     
     _data = @[@1,@2,@3,@4,@5,@6,@7,@8];
     _pickerView = [ [ UIPickerView alloc] initWithFrame:CGRectMake(0, UI_SCREEN_HEIGHT_4INCH - 200, UI_SCREEN_WIDTH, 200)];
@@ -68,6 +62,13 @@
     _pickerView.dataSource =  self;
     [self.view addSubview:_pickerView];
     _pickerView.hidden = YES;
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self initDataSource];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,13 +93,13 @@
 }
 
 -(void)initDataSource{
-    self.dataSource = [self.dataManager getUnCompletedData];
+    self.dataSource = [self.dataManager unCompletedData];
     DLog(@"dataSouce unComplate count:%i",[self.dataSource count]);
 }
 
 -(void)setBgColor{
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [backgroundView setBackgroundColor:[UIColor colorWithHEX:TABLE_BG alpha:1.0f]];
+    [backgroundView setBackgroundColor:[UIColor JDT_ColorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
 }
 
@@ -146,7 +147,7 @@
     [MobClick event:@"add"];
 
     [self.dataManager insertData:[[GanDataModel alloc]initWithContent:@""]];
-    self.dataSource = [self.dataManager getUnCompletedData];
+    self.dataSource = [self.dataManager unCompletedData];
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 
@@ -169,23 +170,23 @@
 
     // We need to provide the icon names and the desired colors
     [cell setFirstStateIconName:@"check.png"
-                     firstColor:[UIColor colorWithHEX:COMPLATE_COLOR alpha:1.0f]
+                     firstColor:[UIColor JDT_ColorWithHEX:COMPLATE_COLOR alpha:1.0f]
             secondStateIconName:@"check.png"
                     secondColor:NULL
                   thirdIconName:@"cross.png"
-                     thirdColor:[UIColor colorWithHEX:DEL_COLOR alpha:0.5f]
+                     thirdColor:[UIColor JDT_ColorWithHEX:DEL_COLOR alpha:0.5f]
                  fourthIconName:@"cross.png"
-                    fourthColor:[UIColor colorWithHEX:DEL_COLOR alpha:1.0f]];
+                    fourthColor:[UIColor JDT_ColorWithHEX:DEL_COLOR alpha:1.0f]];
 
     // We need to set a background to the content view of the cell
-    [cell.contentView setBackgroundColor:[UIColor colorWithHEX:CELL_BG alpha:1.0f]];
+    [cell.contentView setBackgroundColor:[UIColor JDT_ColorWithHEX:CELL_BG alpha:1.0f]];
 
     // Setting the default inactive state color to the tableView background color
     [cell setDefaultColor:self.tableView.backgroundView.backgroundColor];
 
     // Setting the type of the cell
     [cell setMode:MCSwipeTableViewCellModeExit];
-    cell.data = ((GanDataModel *)[self.dataSource objectAtIndex:indexPath.row]);
+    cell.data = ((GanDataModel *)(self.dataSource)[indexPath.row]);
     //给cell的显示元素设值，防止因为元素重用，导致显示错误
     [cell setDataValToTxt];
     return cell;
@@ -201,7 +202,7 @@
         //完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
             [data setIsCompelete:YES];
-            self.dataSource = [self.dataManager getUnCompletedData];
+            self.dataSource = [self.dataManager unCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [self.dataManager saveData];
 
@@ -210,7 +211,7 @@
         //删除
         else if(state == MCSwipeTableViewCellState4){
             [self.dataManager removeData:data];
-            self.dataSource = [self.dataManager getUnCompletedData];
+            self.dataSource = [self.dataManager unCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [self.dataManager saveData];
 
@@ -224,7 +225,7 @@
     NSInteger index = [self.dataSource indexOfObject:data];
     DLog(@"delete %i",index);
     [self.dataManager removeData:data];
-    self.dataSource = [self.dataManager getUnCompletedData];
+    self.dataSource = [self.dataManager unCompletedData];
 
     NSIndexPath *delIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.tableView deleteRowsAtIndexPaths:@[delIndexPath] withRowAnimation:UITableViewRowAnimationFade];

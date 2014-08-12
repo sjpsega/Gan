@@ -12,8 +12,8 @@
 @interface GanDataManager ()
 @property(nonatomic)BOOL isRead;
 @property(nonatomic,strong)NSMutableArray *datas;
--(NSMutableArray *)getData;
--(NSString *)getFileName;
+-(NSMutableArray *)data;
+-(NSString *)fileName;
 @end
 
 @implementation GanDataManager
@@ -27,7 +27,7 @@
     return instance;
 }
 
--(NSMutableArray *)getData{
+-(NSMutableArray *)data{
     if(!_isRead){
         [self readData];
         _isRead = YES;
@@ -43,9 +43,9 @@
     return _datas;
 }
 
--(NSMutableArray *)getCompletedData{
+-(NSMutableArray *)completedData{
     if(!_isRead){
-        [self getData];
+        [self data];
     }
     NSPredicate *predicate =
     [NSPredicate predicateWithFormat:@"SELF.isCompelete==YES"];
@@ -55,9 +55,9 @@
     return [NSMutableArray arrayWithArray:arr];
 }
 
--(NSMutableArray *)getUnCompletedData{
+-(NSMutableArray *)unCompletedData{
     if(!_isRead){
-        [self getData];
+        [self data];
     }
     NSPredicate *predicate =
     [NSPredicate predicateWithFormat:@"SELF.isCompelete==NO"];
@@ -69,20 +69,20 @@
 
 -(void)insertData:(GanDataModel *)data{
     if(!_isRead){
-        [self getData];
+        [self data];
     }
     [_datas insertObject:data atIndex:0];
 }
 
 -(void)removeData:(GanDataModel *)data{
     if(!_isRead){
-        [self getData];
+        [self data];
     }
     [_datas removeObject:data];
 }
 
 -(void)readData{
-    NSString *path = [self getFileName];
+    NSString *path = [self fileName];
     DLog(@"readData   %@",path);
     NSData *saveData = [[NSData alloc]initWithContentsOfFile:path];
     _datas=[NSKeyedUnarchiver unarchiveObjectWithData:saveData];
@@ -90,7 +90,7 @@
 
 -(void)saveData{
     DLog(@"saveData....");
-    NSString *path = [self getFileName];
+    NSString *path = [self fileName];
     NSData *saveData = [NSKeyedArchiver archivedDataWithRootObject:_datas];
     if([saveData writeToFile:path atomically:YES]){
         DLog(@"save success!");
@@ -98,8 +98,8 @@
 }
 
 
--(NSString *)getFileName{
-    NSString *Path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+-(NSString *)fileName{
+    NSString *Path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     return [Path stringByAppendingPathComponent:@"GanDatas.plist"];
 }
 
@@ -116,20 +116,20 @@
 
 -(NSMutableArray *)returnInitData{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:
-                    @[[[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem4", @"")],
-                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem3", @"")],
-                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem2", @"")],
-                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem1", @"")]]];
+                    @[[[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem4", @"swipe task right to delete it")],
+                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem3", @"swipe task left to complete it")],
+                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem2", @"double click to edit task")],
+                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem1", @"click '+' button to add new task")]]];
     GanDataModel *tempData;
-    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem1", @"")];
+    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem1", @"swipe task left to set it incomplete")];
     tempData.isCompelete = YES;
     [arr addObject:tempData];
     
-    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem2", @"")];
+    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem2", @"swipe task right to delete it")];
     tempData.isCompelete = YES;
     [arr addObject:tempData];
     
-    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem3", @"")];
+    tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem3", @"click 'trash' to delete all completed")];
     tempData.isCompelete = YES;
     [arr addObject:tempData];
     

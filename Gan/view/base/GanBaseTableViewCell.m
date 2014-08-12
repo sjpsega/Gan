@@ -4,7 +4,7 @@
 //
 
 #import "GanBaseTableViewCell.h"
-#import "UIColor+HEXColor.h"
+#import "UIColor+JDTHEXColor.h"
 
 
 @implementation GanBaseTableViewCell {
@@ -21,7 +21,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         UIView *bgColorView = [[UIView alloc] initWithFrame:self.bounds];
-        bgColorView.backgroundColor = [UIColor colorWithHEX:CELL_EDIT_BG alpha:1.0f];
+        bgColorView.backgroundColor = [UIColor JDT_ColorWithHEX:CELL_EDIT_BG alpha:1.0f];
         [self setSelectedBackgroundView:bgColorView];
 
         self.textLabel.font = [UIFont fontWithName:@"Arial" size:18.0];
@@ -35,7 +35,7 @@
     const CGFloat lineH = 1;
     const CGFloat paddingL = 10;
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(paddingL, CGRectGetHeight(self.frame) - lineH, CGRectGetWidth(self.frame) - paddingL, lineH)];
-    line.backgroundColor = [UIColor colorWithHEX:0xcccccc alpha:.5];
+    line.backgroundColor = [UIColor JDT_ColorWithHEX:0xcccccc alpha:.5];
     [self.contentView addSubview:line];
 }
 

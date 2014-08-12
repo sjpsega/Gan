@@ -6,7 +6,7 @@
 #import "GanBaseVC.h"
 #import "GanDataManager.h"
 #import "Global_ENUM.h"
-#import "UIColor+HEXColor.h"
+#import "UIColor+JDTHEXColor.h"
 
 static BOOL isAdjust = NO;
 static CGFloat NAVBar_H = 44;
@@ -17,7 +17,7 @@ static CGFloat TABBar_H = 49 - 14;
 
 }
 
--(void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     _dataManager = [GanDataManager getInstance];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -25,7 +25,7 @@ static CGFloat TABBar_H = 49 - 14;
     [self genTableView];
     //创建一个导航栏
     self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, NAVBar_H)];
-    self.navBar.tintColor = [UIColor colorWithHEX:TITLE_TINY alpha:1.0f];
+    self.navBar.tintColor = [UIColor JDT_ColorWithHEX:TITLE_TINY alpha:1.0f];
 
     [self.view addSubview:self.navBar];
 
@@ -42,49 +42,53 @@ static CGFloat TABBar_H = 49 - 14;
         self.tabBarController.tabBar.frame = frame;
 
         //重设设置内容区域高度
-        UIView *transitionView = [[self.tabBarController.view subviews] objectAtIndex:0];
+        UIView *transitionView = [[self.tabBarController.view subviews] firstObject];
         frame = transitionView.frame;
         frame.size.height += adjustDis;
         transitionView.frame = frame;
 
         //调整TabBarItem中图片的位置
-        NSArray *items = self.tabBarController.tabBar.items;
-        UIEdgeInsets imageInset = UIEdgeInsetsMake(5, 0, -5, 0);
-        for (UITabBarItem *item in items) {
-            item.imageInsets = imageInset;
+        if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && SYSTEM_VERSION_LESS_THAN(@"7.1")){
+            NSArray *items = self.tabBarController.tabBar.items;
+            UIEdgeInsets imageInset = UIEdgeInsetsMake(5, 0, -5, 0);
+            for (UITabBarItem *item in items) {
+                item.imageInsets = imageInset;
+            }
         }
     }
 }
 
--(void)fitForiOS7{
+- (void)dealloc{
+    self.tableView.delegate = nil;
+}
+
+- (void)fitForiOS7{
     if(SystemVersion_floatValue>=7.0f){
         //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
         self.tableView.separatorInset = UIEdgeInsetsZero;
 
-        CGFloat statusHeight = 20.0f;
-
         //ios7的nav默认y为0，为了不挡住statusBar，拉低y的高度，并减少tableView的高度
         CGRect frame = _navBar.frame;
-        frame.size.height += statusHeight;
+        frame.size.height += UI_STATUS_BAR_HEIGHT;
         _navBar.frame = frame;
 
         frame = self.tableView.frame;
-        frame.origin.y+=statusHeight;
-        frame.size.height-=statusHeight;
+        frame.origin.y += UI_STATUS_BAR_HEIGHT;
+        frame.size.height -= UI_STATUS_BAR_HEIGHT;
         self.tableView.frame = frame;
     }
 }
 
 #pragma mark implement UITableViewDataSource,UITableViewDelegate
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DLog(@"didSelectRowAtIndexPath %@ %@",[tableView indexPathForSelectedRow],indexPath);
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return CELL_HEIGHT;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.dataSource count];
 }
 
@@ -94,7 +98,7 @@ static CGFloat TABBar_H = 49 - 14;
 }
 
 #pragma mark private
--(void)genTableView{
+- (void)genTableView{
     CGRect viewFrame = self.view.frame;
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVBar_H, CGRectGetWidth(viewFrame), CGRectGetHeight(viewFrame) - NAVBar_H - TABBar_H)];
     self.tableView.delegate = self;

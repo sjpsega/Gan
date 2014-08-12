@@ -23,11 +23,9 @@
 		4A8D607219475D0F00B022BF /* GanComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D606919475D0F00B022BF /* GanComplateVC.m */; };
 		4A8D607319475D0F00B022BF /* GanUnComplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D606C19475D0F00B022BF /* GanUnComplateTableViewCell.m */; };
 		4A8D607419475D0F00B022BF /* GanUnComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D606E19475D0F00B022BF /* GanUnComplateVC.m */; };
-		4A954FDF19458C1A00A34770 /* Xtrace.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A954FDE19458C1A00A34770 /* Xtrace.mm */; };
-		4A954FE11945971D00A34770 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A954FE01945971D00A34770 /* Reveal.framework */; };
 		4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFDC5AB1944C0DD0054457B /* Images.xcassets */; };
 		58B83124DB4FA40E80DF64ED /* GanDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83207D887900897F8EB10 /* GanDataManager.m */; };
-		58B83AE72C28F0D59A2A4288 /* UIColor+HEXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83941C4630E2D92A31D7C /* UIColor+HEXColor.m */; };
+		58B83AE72C28F0D59A2A4288 /* UIColor+JDTHEXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83941C4630E2D92A31D7C /* UIColor+JDTHEXColor.m */; };
 		58B83BBC682DB8E66F776406 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8384A1C10E8101EA88ED6 /* GanDataModel.m */; };
 /* End PBXBuildFile section */
 
@@ -66,15 +64,12 @@
 		4A954FDA194563C700A34770 /* MacroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
 		4A954FDB194563C700A34770 /* UIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
 		4A954FDC194563C700A34770 /* VersionCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCompare.h; sourceTree = "<group>"; };
-		4A954FDD19458C1A00A34770 /* Xtrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xtrace.h; sourceTree = "<group>"; };
-		4A954FDE19458C1A00A34770 /* Xtrace.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Xtrace.mm; sourceTree = "<group>"; };
-		4A954FE01945971D00A34770 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../Downloads/reveal/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		4AFDC5AB1944C0DD0054457B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		58B83207D887900897F8EB10 /* GanDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataManager.m; sourceTree = "<group>"; };
-		58B834168B11736E24B7E0E9 /* UIColor+HEXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEXColor.h"; sourceTree = "<group>"; };
+		58B834168B11736E24B7E0E9 /* UIColor+JDTHEXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JDTHEXColor.h"; sourceTree = "<group>"; };
 		58B8374F616163D81713F100 /* GanDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataManager.h; sourceTree = "<group>"; };
 		58B8384A1C10E8101EA88ED6 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
-		58B83941C4630E2D92A31D7C /* UIColor+HEXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEXColor.m"; sourceTree = "<group>"; };
+		58B83941C4630E2D92A31D7C /* UIColor+JDTHEXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JDTHEXColor.m"; sourceTree = "<group>"; };
 		58B83C58C0364746FF749D87 /* Global_ENUM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global_ENUM.h; sourceTree = "<group>"; };
 		58B83DFEA827DA31D9D3D6A3 /* GanDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +82,6 @@
 				1879AEDD181BBB830051735A /* libz.dylib in Frameworks */,
 				1842AF99176CA9A200A1ED20 /* UIKit.framework in Frameworks */,
 				1842AF9B176CA9A200A1ED20 /* Foundation.framework in Frameworks */,
-				4A954FE11945971D00A34770 /* Reveal.framework in Frameworks */,
 				1842AF9D176CA9A200A1ED20 /* CoreGraphics.framework in Frameworks */,
 				189AC7BA181C117700834A85 /* libMobClickLibrary.a in Frameworks */,
 			);
@@ -99,9 +93,6 @@
 		1842AF8C176CA9A200A1ED20 = {
 			isa = PBXGroup;
 			children = (
-				4A954FE01945971D00A34770 /* Reveal.framework */,
-				4A954FDD19458C1A00A34770 /* Xtrace.h */,
-				4A954FDE19458C1A00A34770 /* Xtrace.mm */,
 				1879AEDB181BBAB90051735A /* UM */,
 				1842AF97176CA9A200A1ED20 /* Frameworks */,
 				1842AF9E176CA9A200A1ED20 /* Gan */,
@@ -230,8 +221,8 @@
 		58B8333C9EEC8710A50DF892 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				58B834168B11736E24B7E0E9 /* UIColor+HEXColor.h */,
-				58B83941C4630E2D92A31D7C /* UIColor+HEXColor.m */,
+				58B834168B11736E24B7E0E9 /* UIColor+JDTHEXColor.h */,
+				58B83941C4630E2D92A31D7C /* UIColor+JDTHEXColor.m */,
 				58B83C58C0364746FF749D87 /* Global_ENUM.h */,
 				58B8374F616163D81713F100 /* GanDataManager.h */,
 				58B83207D887900897F8EB10 /* GanDataManager.m */,
@@ -325,11 +316,10 @@
 				18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */,
 				58B83BBC682DB8E66F776406 /* GanDataModel.m in Sources */,
 				4A8D607319475D0F00B022BF /* GanUnComplateTableViewCell.m in Sources */,
-				58B83AE72C28F0D59A2A4288 /* UIColor+HEXColor.m in Sources */,
+				58B83AE72C28F0D59A2A4288 /* UIColor+JDTHEXColor.m in Sources */,
 				4A8D607019475D0F00B022BF /* GanBaseVC.m in Sources */,
 				4A8D606F19475D0F00B022BF /* GanBaseTableViewCell.m in Sources */,
 				4A8D607219475D0F00B022BF /* GanComplateVC.m in Sources */,
-				4A954FDF19458C1A00A34770 /* Xtrace.mm in Sources */,
 				58B83124DB4FA40E80DF64ED /* GanDataManager.m in Sources */,
 				4A8D607119475D0F00B022BF /* GanComplateTableViewCell.m in Sources */,
 				4A8D607419475D0F00B022BF /* GanUnComplateVC.m in Sources */,
@@ -433,16 +423,17 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"/Users/sjpsega/Downloads/reveal/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AB194426-1152-4E62-86F3-AF3E446F3237";
@@ -461,16 +452,20 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"/Users/sjpsega/Downloads/reveal/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NS_BLOCK_ASSERTIONS,
+					NDEBUG,
+				);
 				INFOPLIST_FILE = "Gan/Gan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
