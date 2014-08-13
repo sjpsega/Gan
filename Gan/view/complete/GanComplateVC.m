@@ -10,7 +10,6 @@
 #import "GanDataModel.h"
 #import "GanComplateTableViewCell.h"
 #import "GanDataManager.h"
-#import "UIColor+JDTHEXColor.h"
 #import "MobClick.h"
 
 @interface GanComplateVC ()<GanTableViewProtocol,UIAlertViewDelegate>{
@@ -82,13 +81,11 @@
 
 -(void)initDataSource{
     self.dataSource = [[GanDataManager getInstance] completedData];
-    
-    DLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%i",[self.dataSource count]);
 }
 
 -(void)setBgColor{
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [backgroundView setBackgroundColor:[UIColor JDT_ColorWithHEX:TABLE_BG alpha:1.0f]];
+    [backgroundView setBackgroundColor:[UIColor Gan_ColorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
 }
 
@@ -132,13 +129,13 @@
     
     // We need to provide the icon names and the desired colors
     [cell setFirstStateIconName:@"clock.png"
-                     firstColor:[UIColor JDT_ColorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
+                     firstColor:[UIColor Gan_ColorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
             secondStateIconName:@"clock.png"
-                    secondColor:[UIColor JDT_ColorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
+                    secondColor:[UIColor Gan_ColorWithHEX:UNCOMPLATE_COLOR alpha:1.0]
                   thirdIconName:@"cross.png"
-                     thirdColor:[UIColor JDT_ColorWithHEX:DEL_COLOR alpha:1.0]
+                     thirdColor:[UIColor Gan_ColorWithHEX:DEL_COLOR alpha:1.0]
                  fourthIconName:@"cross.png"
-                    fourthColor:[UIColor JDT_ColorWithHEX:DEL_COLOR alpha:1.0]];
+                    fourthColor:[UIColor Gan_ColorWithHEX:DEL_COLOR alpha:1.0]];
     
     // We need to set a background to the content view of the cell
     [cell.contentView setBackgroundColor:[UIColor colorWithRed:85.0/255.0 green:213.0/255.0 blue:80.0/255.0 alpha:1.0]];
@@ -157,7 +154,7 @@
 #pragma mark - GanTableViewProtocol
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode {
-    DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+    DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %lu - MCSwipeTableViewCellMode : %lu", [self.tableView indexPathForCell:cell], state, mode);
     
     if (mode == MCSwipeTableViewCellModeExit) {
         GanDataModel *data = ((GanComplateTableViewCell *)cell).data;

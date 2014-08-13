@@ -9,14 +9,14 @@
 #import "GanUnComplateVC.h"
 #import "GanUnComplateTableViewCell.h"
 #import "GanDataManager.h"
-#import "UIColor+JDTHEXColor.h"
 #import "MobClick.h"
+#import "GanDatePickerView.h"
 
 @interface GanUnComplateVC ()<GanTableViewProtocol,UIPickerViewDelegate,UIPickerViewDataSource>{
     UIButton *_maskLayer;
     CGPoint _savedContentOffset;
     NSArray *_data;
-    UIPickerView *_pickerView;
+    GanDatePickerView *_dataPicker;
 }
 
 @end
@@ -53,15 +53,10 @@
     [self addMaskLayer];
     
     
-    _data = @[@1,@2,@3,@4,@5,@6,@7,@8];
-    _pickerView = [ [ UIPickerView alloc] initWithFrame:CGRectMake(0, UI_SCREEN_HEIGHT_4INCH - 200, UI_SCREEN_WIDTH, 200)];
-    _pickerView.showsSelectionIndicator = YES;
-    _pickerView.backgroundColor = [UIColor whiteColor];
-    _pickerView.alpha = 0.85f;
-    _pickerView.delegate = self;
-    _pickerView.dataSource =  self;
-    [self.view addSubview:_pickerView];
-    _pickerView.hidden = YES;
+    _dataPicker = [[GanDatePickerView alloc] initWithFrame:self.view.frame];
+    DLog(@"Locale: %@, %@",[[NSLocale currentLocale] localeIdentifier],[[NSLocale systemLocale]localeIdentifier]);
+    [self.view addSubview:_dataPicker];
+    _dataPicker.hidden = YES;
 
 }
 
@@ -94,12 +89,12 @@
 
 -(void)initDataSource{
     self.dataSource = [self.dataManager unCompletedData];
-    DLog(@"dataSouce unComplate count:%i",[self.dataSource count]);
+    DLog(@"dataSouce unComplate count:%lu",(unsigned long)[self.dataSource count]);
 }
 
 -(void)setBgColor{
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [backgroundView setBackgroundColor:[UIColor JDT_ColorWithHEX:TABLE_BG alpha:1.0f]];
+    [backgroundView setBackgroundColor:[UIColor Gan_ColorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
 }
 
@@ -170,16 +165,16 @@
 
     // We need to provide the icon names and the desired colors
     [cell setFirstStateIconName:@"check.png"
-                     firstColor:[UIColor JDT_ColorWithHEX:COMPLATE_COLOR alpha:1.0f]
+                     firstColor:[UIColor Gan_ColorWithHEX:COMPLATE_COLOR alpha:1.0f]
             secondStateIconName:@"check.png"
                     secondColor:NULL
                   thirdIconName:@"cross.png"
-                     thirdColor:[UIColor JDT_ColorWithHEX:DEL_COLOR alpha:0.5f]
+                     thirdColor:[UIColor Gan_ColorWithHEX:DEL_COLOR alpha:0.5f]
                  fourthIconName:@"cross.png"
-                    fourthColor:[UIColor JDT_ColorWithHEX:DEL_COLOR alpha:1.0f]];
+                    fourthColor:[UIColor Gan_ColorWithHEX:DEL_COLOR alpha:1.0f]];
 
     // We need to set a background to the content view of the cell
-    [cell.contentView setBackgroundColor:[UIColor JDT_ColorWithHEX:CELL_BG alpha:1.0f]];
+    [cell.contentView setBackgroundColor:[UIColor Gan_ColorWithHEX:CELL_BG alpha:1.0f]];
 
     // Setting the default inactive state color to the tableView background color
     [cell setDefaultColor:self.tableView.backgroundView.backgroundColor];
@@ -195,7 +190,7 @@
 #pragma mark - GanTableViewProtocol
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode{
-    DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+    DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %lu - MCSwipeTableViewCellMode : %lu", [self.tableView indexPathForCell:cell], state, mode);
 
     if (mode == MCSwipeTableViewCellModeExit) {
         GanDataModel *data = ((GanUnComplateTableViewCell *)cell).data;
@@ -223,7 +218,6 @@
 
 -(void)deleteCell:(GanDataModel*)data{
     NSInteger index = [self.dataSource indexOfObject:data];
-    DLog(@"delete %i",index);
     [self.dataManager removeData:data];
     self.dataSource = [self.dataManager unCompletedData];
 
@@ -247,7 +241,7 @@
 
 
 -(void)showPickerView{
-    _pickerView.hidden = NO;
+    _dataPicker.hidden = NO;
 }
 
 #pragma mark UIPickerView delegate & dataSource

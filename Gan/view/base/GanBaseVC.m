@@ -6,7 +6,6 @@
 #import "GanBaseVC.h"
 #import "GanDataManager.h"
 #import "Global_ENUM.h"
-#import "UIColor+JDTHEXColor.h"
 
 static BOOL isAdjust = NO;
 static CGFloat NAVBar_H = 44;
@@ -25,7 +24,7 @@ static CGFloat TABBar_H = 49 - 14;
     [self genTableView];
     //创建一个导航栏
     self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, NAVBar_H)];
-    self.navBar.tintColor = [UIColor JDT_ColorWithHEX:TITLE_TINY alpha:1.0f];
+    self.navBar.tintColor = [UIColor Gan_ColorWithHEX:TITLE_TINY alpha:1.0f];
 
     [self.view addSubview:self.navBar];
 

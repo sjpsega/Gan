@@ -41,7 +41,7 @@
     GanUnComplateVC *unComplateVC = [[GanUnComplateVC alloc] init];
     GanComplateVC *complateVC = [[GanComplateVC alloc] init];
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = @[unComplateVC,complateVC];
+    tabBarController.viewControllers = @[unComplateVC, complateVC];
     self.window.rootViewController = tabBarController;
     if(SystemVersion_floatValue >= 7.0){
         tabBarController.tabBar.translucent = NO;

@@ -7,7 +7,6 @@
 //
 
 #import "GanComplateTableViewCell.h"
-#import "UIColor+JDTHEXColor.h"
 #import "Global_ENUM.h"
 
 static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";

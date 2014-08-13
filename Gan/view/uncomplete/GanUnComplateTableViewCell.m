@@ -9,7 +9,6 @@
 
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewProtocol.h"
-#import "UIColor+JDTHEXColor.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
 
@@ -17,12 +16,12 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     UIImageView *_clockImgView;
 }
 
-+(NSString *)reuseIdentifier{
++ (NSString *)reuseIdentifier{
     return ReuseIdentifier.copy;
 }
 
 //允许删除操作，必须拖拽超过一半才行
--(BOOL)shouldMove{
+- (BOOL)shouldMove{
     MCSwipeTableViewCellState state = [self stateWithPercentage:self.currentPercentage];
     if(self.direction == MCSwipeTableViewCellDirectionLeft && state==MCSwipeTableViewCellState3){
         return NO;
@@ -55,7 +54,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 //    self.data = nil;
 //}
 
--(void)initCustomElements{
+- (void)initCustomElements{
 
     [self addContentEditTxt];
     
@@ -67,7 +66,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 #pragma mark addContentEditTxt
--(void)addContentEditTxt{
+- (void)addContentEditTxt{
     _contentEditTxt = [[UITextField alloc]init];
     _contentEditTxt.frame = CGRectMake(0,0, UI_SCREEN_WIDTH, 44);
     _contentEditTxt.font = [UIFont fontWithName:@"Arial" size:18.0];
@@ -77,7 +76,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     [self.contentView addSubview:_contentEditTxt];
 }
 
--(void)keyboardDoneClcik:(id)sender{
+- (void)keyboardDoneClcik:(id)sender{
     [self hideKeyboard:self];
     [self setDataContent:_contentEditTxt.text];
     if([self.delegate respondsToSelector:@selector(blurCell:)]){
@@ -86,11 +85,11 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     }
 }
 
--(void)hideKeyboard:(id)sender{
+- (void)hideKeyboard:(id)sender{
     [_contentEditTxt resignFirstResponder];
 }
 
--(void)addContentEditTxtDoubleTapEvnet{
+- (void)addContentEditTxtDoubleTapEvnet{
     _contentEditTxt.userInteractionEnabled = YES;
     UITapGestureRecognizer *doubleClick = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(editHandler:)];
     doubleClick.numberOfTapsRequired = 2;
@@ -99,7 +98,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     [self addGestureRecognizer:doubleClick];
 }
 
--(void)editHandler:(UIGestureRecognizer *)recognizer{
+- (void)editHandler:(UIGestureRecognizer *)recognizer{
     //如果双击的位置是clockImg的为止，则不进行编辑
     CGPoint touchPoint = [recognizer locationInView:self];
     BOOL isTouchImgView = CGRectContainsPoint(_clockImgView.frame, touchPoint);
@@ -112,7 +111,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     [self beginEdit];
 }
 
--(void)beginEdit{
+- (void)beginEdit{
     _contentEditTxt.hidden = NO;
     self.textLabel.hidden = YES;
     _clockImgView.hidden = NO;
@@ -124,7 +123,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 }
 
 #pragma mark addClockIcon
--(void)addClockIcon{
+- (void)addClockIcon{
     UIImage *clockImg = [UIImage imageNamed:@"clock"];
     _clockImgView = [[UIImageView alloc]initWithImage:clockImg];
     CGRect frame = _clockImgView.frame;
@@ -135,16 +134,16 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     [self.contentView addSubview:_clockImgView];
 }
 
--(void)addClockIconSingleTapEvent{
+- (void)addClockIconSingleTapEvent{
     _clockImgView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *clockClick = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(editDateAction:)];
-    clockClick.numberOfTapsRequired = 1;
-    clockClick.numberOfTouchesRequired = 1;
+    UITapGestureRecognizer *clockTapGestureGecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(editDateAction:)];
+    clockTapGestureGecognizer.numberOfTapsRequired = 1;
+    clockTapGestureGecognizer.numberOfTouchesRequired = 1;
     
-    [_clockImgView addGestureRecognizer:clockClick];
+    [_clockImgView addGestureRecognizer:clockTapGestureGecognizer];
 }
 
--(void)editDateAction:(id)sender{
+- (void)editDateAction:(id)sender{
     DLog(@"editDateAction");
     if([self.delegate respondsToSelector:@selector(showPickerView)]){
         [self.delegate showPickerView];
@@ -176,7 +175,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     }
 }
 
--(void)setDataContent:(NSString *)content{
+- (void)setDataContent:(NSString *)content{
     if(!self.data.isNew && [content isEqualToString:@""] && [self.delegate respondsToSelector:@selector(deleteCell:)]){
         [self.delegate deleteCell:self.data];
     }
@@ -184,14 +183,14 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     self.data.content = content;
 }
 
--(void)willMoveToSuperview:(UIView *)newSuperview{
+- (void)willMoveToSuperview:(UIView *)newSuperview{
     DLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super willMoveToSuperview:newSuperview];
     self.textLabel.text = self.data.content;
     _contentEditTxt.text = self.data.content;
 }
 
--(void)setDataValToTxt{
+- (void)setDataValToTxt{
     self.textLabel.text = self.data.content;
     _contentEditTxt.text = self.data.content;
 }

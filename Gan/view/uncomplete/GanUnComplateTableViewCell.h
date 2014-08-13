@@ -12,7 +12,7 @@
 #import "GanBaseTableViewCell.h"
 
 @interface GanUnComplateTableViewCell : GanBaseTableViewCell
-+(NSString *)reuseIdentifier;
++ (NSString *)reuseIdentifier;
 @property(strong,nonatomic)UITextField *contentEditTxt;
 @property(nonatomic)BOOL isEditing;
 @end

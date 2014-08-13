@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (JDTHEXColor)
-+ (id)JDT_ColorWithHEX:(int)rgbValue alpha:(float)alphaVal;
+@interface UIColor (GanHEXColor)
++ (id)Gan_ColorWithHEX:(int)rgbValue alpha:(float)alphaVal;
 @end

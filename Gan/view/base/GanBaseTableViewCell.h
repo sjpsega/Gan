@@ -9,6 +9,6 @@
 
 @interface GanBaseTableViewCell : MCSwipeTableViewCell
 @property(weak,nonatomic)GanDataModel *data;
--(void)setDataValToTxt;
--(void)addLine;
+- (void)setDataValToTxt;
+- (void)addLine;
 @end
