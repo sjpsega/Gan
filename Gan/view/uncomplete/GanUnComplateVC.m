@@ -16,7 +16,7 @@
     UIButton *_maskLayer;
     CGPoint _savedContentOffset;
     NSArray *_data;
-    GanDatePickerView *_dataPicker;
+    GanDatePickerView *_datePicker;
 }
 
 @end
@@ -52,11 +52,23 @@
     [self fitForiOS7];
     [self addMaskLayer];
     
-    
-    _dataPicker = [[GanDatePickerView alloc] initWithFrame:self.view.frame];
+    CGRect frame = self.view.frame;
+    frame.size.height -= GAN_TABBAR_H;
+    _datePicker = [[GanDatePickerView alloc] initWithFrame:frame];
+    __weak GanDatePickerView *weakDatePicker = _datePicker;
+    __weak typeof(self) weakSelf = self;
+    _datePicker.confirmBlock = ^(NSDate *date){
+        [weakSelf hideDatePickerView];
+    };
+    _datePicker.changeBlock = ^(NSDate *date){
+
+    };
+    _datePicker.cancelBlock = ^(){
+        [weakSelf hideDatePickerView];
+    };
     DLog(@"Locale: %@, %@",[[NSLocale currentLocale] localeIdentifier],[[NSLocale systemLocale]localeIdentifier]);
-    [self.view addSubview:_dataPicker];
-    _dataPicker.hidden = YES;
+    [self.view addSubview:_datePicker];
+    _datePicker.hidden = YES;
 
 }
 
@@ -188,7 +200,6 @@
 }
 
 #pragma mark - GanTableViewProtocol
-
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode{
     DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %lu - MCSwipeTableViewCellMode : %lu", [self.tableView indexPathForCell:cell], state, mode);
 
@@ -216,7 +227,7 @@
 
 }
 
--(void)deleteCell:(GanDataModel*)data{
+- (void)deleteCell:(GanDataModel*)data{
     NSInteger index = [self.dataSource indexOfObject:data];
     [self.dataManager removeData:data];
     self.dataSource = [self.dataManager unCompletedData];
@@ -225,14 +236,14 @@
     [self.tableView deleteRowsAtIndexPaths:@[delIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
--(void)focusCell:(MCSwipeTableViewCell *)cell{
+- (void)focusCell{
     _savedContentOffset = [self.tableView contentOffset];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    [self.tableView setContentOffset:CGPointMake(0,CELL_HEIGHT * indexPath.row) animated:YES];
+    NSIndexPath *selectIndexPath = [self.tableView indexPathForSelectedRow];
+    [self.tableView setContentOffset:CGPointMake(0, CELL_HEIGHT * selectIndexPath.row) animated:YES];
     [self showMaskLayer];
 }
 
--(void)blurCell{
+- (void)blurCell{
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     [self hideMaskLayer];
     [self.tableView setContentOffset:_savedContentOffset animated:YES];
@@ -240,8 +251,16 @@
 }
 
 
--(void)showPickerView{
-    _dataPicker.hidden = NO;
+- (void)showDatePickerView{
+    _datePicker.hidden = NO;
+    _savedContentOffset = [self.tableView contentOffset];
+    NSIndexPath *selectIndexPath = [self.tableView indexPathForSelectedRow];
+    [self.tableView setContentOffset:CGPointMake(0, CELL_HEIGHT * selectIndexPath.row) animated:YES];
+}
+
+- (void)hideDatePickerView{
+    _datePicker.hidden = YES;
+    [self.tableView setContentOffset:_savedContentOffset animated:YES];
 }
 
 #pragma mark UIPickerView delegate & dataSource

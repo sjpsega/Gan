@@ -47,22 +47,35 @@ static const CGFloat DatePickerH = 200.0f;
     [_toolBar removeFromSuperview];
 }
 
+#pragma mark - getter\setter date
+- (void)setDate:(NSDate *)date{
+    _datePicker.date = date;
+}
+
+- (NSDate *)date{
+    return _datePicker.date;
+}
+
 #pragma mark - toolBar
 - (void)addToolBar{
     _toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, _selfViewH - ToolBarH - DatePickerH, _selfViewW, ToolBarH)];
-    UIBarButtonItem *removeBtn = [[UIBarButtonItem alloc]initWithTitle:@"移除" style:UIBarButtonItemStylePlain target:self action:@selector(removeHandler)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]initWithTitle:@"移除" style:UIBarButtonItemStylePlain target:self action:@selector(cancelHandler)];
     UIBarButtonItem * spaceBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem : UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *confirmBtn = [[UIBarButtonItem alloc]initWithTitle:@"确认" style:UIBarButtonItemStylePlain target:self action:@selector(confirmHandler)];
-    _toolBar.items = @[removeBtn, spaceBtn, confirmBtn];
+    _toolBar.items = @[cancelBtn, spaceBtn, confirmBtn];
     [self addSubview:_toolBar];
 }
 
-- (void)removeHandler{
-    
+- (void)cancelHandler{
+    if(_cancelBlock){
+        _cancelBlock();
+    }
 }
 
 - (void)confirmHandler{
-    
+    if(_confirmBlock){
+        _confirmBlock(_datePicker.date);
+    }
 }
 
 #pragma mark - datePicker
@@ -82,6 +95,7 @@ static const CGFloat DatePickerH = 200.0f;
 }
 
 - (void)maskViewTap{
+    [self confirmHandler];
 }
 
 @end

@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 
 #define CELL_HEIGHT 44
-
 @class GanDataManager;
 
 @interface GanBaseVC : UIViewController<UITableViewDataSource,UITableViewDelegate>

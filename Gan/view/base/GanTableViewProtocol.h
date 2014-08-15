@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Global_ENUM.h"
+#import "GanConstants.h"
 @class MCSwipeTableViewCell;
 @class GanDataModel;
 
@@ -25,9 +25,9 @@
 // When the user releases the cell, after swiping it, this method is called
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode;
 
--(void)deleteCell:(GanDataModel*)data;
--(void)focusCell:(MCSwipeTableViewCell*)cell;
--(void)blurCell;
--(void)showPickerView;
+- (void)deleteCell:(GanDataModel*)data;
+- (void)focusCell;
+- (void)blurCell;
+- (void)showDatePickerView;
 @end
 

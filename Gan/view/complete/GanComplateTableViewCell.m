@@ -7,7 +7,7 @@
 //
 
 #import "GanComplateTableViewCell.h"
-#import "Global_ENUM.h"
+#import "GanConstants.h"
 
 static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 @class MCSwipeTableViewCell;

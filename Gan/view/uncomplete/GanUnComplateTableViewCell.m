@@ -116,9 +116,9 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
     self.textLabel.hidden = YES;
     _clockImgView.hidden = NO;
     [_contentEditTxt becomeFirstResponder];
-    if([self.delegate respondsToSelector:@selector(focusCell:)]){
+    if([self.delegate respondsToSelector:@selector(focusCell)]){
         _isEditing = true;
-        [self.delegate focusCell:self];
+        [self.delegate focusCell];
     }
 }
 
@@ -145,8 +145,11 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 
 - (void)editDateAction:(id)sender{
     DLog(@"editDateAction");
-    if([self.delegate respondsToSelector:@selector(showPickerView)]){
-        [self.delegate showPickerView];
+    _contentEditTxt.hidden = YES;
+    self.textLabel.hidden = NO;
+    [self hideKeyboard:self];
+    if([self.delegate respondsToSelector:@selector(showDatePickerView)]){
+        [self.delegate showDatePickerView];
     }
 }
 

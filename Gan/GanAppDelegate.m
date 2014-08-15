@@ -12,7 +12,7 @@
 #import "MobClick.h"
 #import "GanUnComplateVC.h"
 #import "GanComplateVC.h"
-#import "Global_ENUM.h"
+#import "GanConstants.h"
 #import "GanUnComplateTableViewCell.h"
 
 #define UMENG_APPKEY @"526b6a1d56240b395506cbd5"

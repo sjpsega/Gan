@@ -5,9 +5,8 @@
 //  Created by sjpsega on 13-7-10.
 //  Copyright (c) 2013年 sjp. All rights reserved.
 //
-
-#ifndef Gan_Global_ENUM_h
-#define Gan_Global_ENUM_h
+#ifndef GanConstants_h
+#define GanConstants_h
 
 typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellState) {
     MCSwipeTableViewCellStateNone = 0,
@@ -37,4 +36,6 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode) {
 #define DEL_COLOR 0xE83D0E
 #define TABLE_BG 0xCAFCD8
 
+#define GAN_TABBAR_ADJUST_H 14
+#define GAN_TABBAR_H 35
 #endif

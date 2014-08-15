@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GanDatePickerView : UIView
+typedef void (^DatePickerConfirmBlock)(NSDate *date);
+typedef void (^DatePickerCancelBlock)();
 
+@interface GanDatePickerView : UIView
+@property (strong, nonatomic)NSDate *date;
+@property (copy ,nonatomic) DatePickerConfirmBlock confirmBlock;
+@property (copy ,nonatomic) DatePickerConfirmBlock changeBlock;
+@property (copy ,nonatomic) DatePickerCancelBlock cancelBlock;
 @end

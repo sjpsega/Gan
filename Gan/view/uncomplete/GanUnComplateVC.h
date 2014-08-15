@@ -11,5 +11,5 @@
 #import "GanBaseVC.h"
 
 @interface GanUnComplateVC : GanBaseVC
--(void)deleteCell:(GanDataModel*)data;
+- (void)deleteCell:(GanDataModel*)data;
 @end

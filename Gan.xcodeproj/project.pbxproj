@@ -73,7 +73,7 @@
 		58B8374F616163D81713F100 /* GanDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataManager.h; sourceTree = "<group>"; };
 		58B8384A1C10E8101EA88ED6 /* GanDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataModel.m; sourceTree = "<group>"; };
 		58B83941C4630E2D92A31D7C /* UIColor+GanHEXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GanHEXColor.m"; sourceTree = "<group>"; };
-		58B83C58C0364746FF749D87 /* Global_ENUM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global_ENUM.h; sourceTree = "<group>"; };
+		58B83C58C0364746FF749D87 /* GanConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanConstants.h; sourceTree = "<group>"; };
 		58B83DFEA827DA31D9D3D6A3 /* GanDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDataModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,7 +235,7 @@
 			children = (
 				58B834168B11736E24B7E0E9 /* UIColor+GanHEXColor.h */,
 				58B83941C4630E2D92A31D7C /* UIColor+GanHEXColor.m */,
-				58B83C58C0364746FF749D87 /* Global_ENUM.h */,
+				58B83C58C0364746FF749D87 /* GanConstants.h */,
 				58B8374F616163D81713F100 /* GanDataManager.h */,
 				58B83207D887900897F8EB10 /* GanDataManager.m */,
 			);

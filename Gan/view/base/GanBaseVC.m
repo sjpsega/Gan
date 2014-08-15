@@ -5,12 +5,9 @@
 
 #import "GanBaseVC.h"
 #import "GanDataManager.h"
-#import "Global_ENUM.h"
+#import "GanConstants.h"
 
 static BOOL isAdjust = NO;
-static CGFloat NAVBar_H = 44;
-static CGFloat TABBar_ADJUST_H = 14;
-static CGFloat TABBar_H = 49 - 14;
 
 @implementation GanBaseVC {
 
@@ -23,7 +20,7 @@ static CGFloat TABBar_H = 49 - 14;
 
     [self genTableView];
     //创建一个导航栏
-    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, NAVBar_H)];
+    self.navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, UI_NAVIGATION_BAR_HEIGHT)];
     self.navBar.tintColor = [UIColor Gan_ColorWithHEX:TITLE_TINY alpha:1.0f];
 
     [self.view addSubview:self.navBar];
@@ -33,7 +30,7 @@ static CGFloat TABBar_H = 49 - 14;
     if(!isAdjust){
         isAdjust = YES;
 
-        CGFloat adjustDis = TABBar_ADJUST_H;
+        CGFloat adjustDis = GAN_TABBAR_ADJUST_H;
         //调整底部TabBar高度，使得界面更美观
         CGRect frame = self.tabBarController.tabBar.frame;
         frame.size.height -= adjustDis;
@@ -62,7 +59,7 @@ static CGFloat TABBar_H = 49 - 14;
 }
 
 - (void)fitForiOS7{
-    if(SystemVersion_floatValue>=7.0f){
+    if(SystemVersion_floatValue >= 7.0f){
         //iOS7 给 UITableView 新增的一个属性 separatorInset，去除
         self.tableView.separatorInset = UIEdgeInsetsZero;
 
@@ -99,7 +96,7 @@ static CGFloat TABBar_H = 49 - 14;
 #pragma mark private
 - (void)genTableView{
     CGRect viewFrame = self.view.frame;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVBar_H, CGRectGetWidth(viewFrame), CGRectGetHeight(viewFrame) - NAVBar_H - TABBar_H)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, UI_NAVIGATION_BAR_HEIGHT, CGRectGetWidth(viewFrame), CGRectGetHeight(viewFrame) - UI_NAVIGATION_BAR_HEIGHT - GAN_TABBAR_H)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
