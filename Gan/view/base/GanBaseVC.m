@@ -15,7 +15,7 @@ static BOOL isAdjust = NO;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _dataManager = [GanDataManager getInstance];
+    _dataManager = [GanDataManager sharedInstance];
     self.view.backgroundColor = [UIColor whiteColor];
 
     [self genTableView];
@@ -81,7 +81,7 @@ static BOOL isAdjust = NO;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return CELL_HEIGHT;
+    return GAN_CELL_HEIGHT;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

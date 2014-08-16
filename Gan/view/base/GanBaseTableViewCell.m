@@ -42,4 +42,7 @@
 
 }
 
+- (void)setRemindDate:(NSDate *)date{
+    
+}
 @end

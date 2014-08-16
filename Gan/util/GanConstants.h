@@ -28,6 +28,8 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode) {
     MCSwipeTableViewCellModeSwitch
 };
 
+#define GAN_LOCAL_NOTIFY_TYPE @"GanLocalNotify"
+
 #define TITLE_TINY 0x00BF96
 #define CELL_BG 0xF7E967
 #define CELL_EDIT_BG 0xFFB03B
@@ -38,4 +40,5 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode) {
 
 #define GAN_TABBAR_ADJUST_H 14
 #define GAN_TABBAR_H 35
+#define GAN_CELL_HEIGHT 44
 #endif

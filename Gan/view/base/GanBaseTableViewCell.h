@@ -8,7 +8,8 @@
 
 
 @interface GanBaseTableViewCell : MCSwipeTableViewCell
-@property(weak,nonatomic)GanDataModel *data;
-- (void)setDataValToTxt;
+@property(weak, nonatomic)GanDataModel *data;
 - (void)addLine;
+- (void)setDataValToTxt;
+- (void)setRemindDate:(NSDate *)date;
 @end

@@ -13,6 +13,6 @@
 
 @interface GanUnComplateTableViewCell : GanBaseTableViewCell
 + (NSString *)reuseIdentifier;
-@property(strong,nonatomic)UITextField *contentEditTxt;
-@property(nonatomic)BOOL isEditing;
+@property(strong, nonatomic)UITextField *contentEditTxt;
+@property(assign ,nonatomic)BOOL isEditing;
 @end

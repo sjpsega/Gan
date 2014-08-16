@@ -18,7 +18,7 @@
 
 @implementation GanDataManager
 
-+(id)getInstance{
++(id)sharedInstance{
     static GanDataManager *instance = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
@@ -107,8 +107,8 @@
 -(NSArray *)returnSortedArray:(NSArray *)array{
     NSArray *sortedArray;
     sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-        NSDate *first = [(GanDataModel*)a date];
-        NSDate *second = [(GanDataModel*)b date];
+        NSDate *first = [(GanDataModel*)a modifyDate];
+        NSDate *second = [(GanDataModel*)b modifyDate];
         return [second compare:first];
     }];
     return sortedArray;

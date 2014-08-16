@@ -41,6 +41,7 @@ static const CGFloat DatePickerH = 200.0f;
 }
 
 - (void)clear{
+    [_datePicker removeTarget:self action:@selector(pickerDidChange:) forControlEvents:UIControlEventValueChanged];
     [_datePicker removeFromSuperview];
     [_maskView removeTarget:self action:@selector(maskViewTap) forControlEvents:UIControlEventTouchDown];
     [_maskView removeFromSuperview];
@@ -85,6 +86,15 @@ static const CGFloat DatePickerH = 200.0f;
     _datePicker.backgroundColor = [UIColor whiteColor];
     _datePicker.alpha = 0.85f;
     [self addSubview:_datePicker];
+    [_datePicker addTarget:self
+                    action:@selector(pickerDidChange:)
+          forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)pickerDidChange:(UIControlEvents *)event{
+    if(_changeBlock){
+        _changeBlock(_datePicker.date);
+    }
 }
 
 #pragma mark - maskView

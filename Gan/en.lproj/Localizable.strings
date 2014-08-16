@@ -17,10 +17,12 @@ complateItem1 = "swipe task left to set it incomplete";
 complateItem2 = "swipe task right to delete it";
 complateItem3 = "click 'trash' to delete all completed";
 
-delAllComplateAlertTitle = "Alert";
+alertTitle = "Alert";
 delAllComplateAlertMessage = "Do you want to delete all completed tasks?";
 delAllComplateAlertCancelBtn = "Cancel";
 delAllComplateAlertOkBtn = "OK";
+
+localNotificationAlertAction = "I know";
 
 umUpdateTitle = "new version ";
 umUpdateCancel = "Skip";

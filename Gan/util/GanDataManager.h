@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 @class GanDataModel;
 @interface GanDataManager : NSObject
-+(id)getInstance;
--(NSMutableArray *)completedData;
--(NSMutableArray *)unCompletedData;
--(void)insertData:(GanDataModel *)data;
--(void)removeData:(GanDataModel *)data;
--(void)saveData;
++ (id)sharedInstance;
+- (NSMutableArray *)completedData;
+- (NSMutableArray *)unCompletedData;
+- (void)insertData:(GanDataModel *)data;
+- (void)removeData:(GanDataModel *)data;
+- (void)saveData;
 @end

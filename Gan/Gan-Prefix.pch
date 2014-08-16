@@ -16,4 +16,5 @@
     #import "UIConstants.h"
     #import "UIColor+GanHEXColor.h"
     #import "GanDataManager.h"
+    #import "GanConstants.h"
 #endif

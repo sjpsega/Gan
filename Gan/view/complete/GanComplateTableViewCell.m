@@ -14,7 +14,7 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 
 @implementation GanComplateTableViewCell
 
-+(NSString *)reuseIdentifier{
++ (NSString *)reuseIdentifier{
     return ReuseIdentifier.copy;
 }
 
@@ -27,13 +27,13 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
     return self;
 }
 
--(void)willMoveToSuperview:(UIView *)newSuperview{
+- (void)willMoveToSuperview:(UIView *)newSuperview{
     DLog(@"willMoveToSuperview~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     [super willMoveToSuperview:newSuperview];
     self.textLabel.text = self.data.content;
 }
 
--(void)setDataValToTxt{
+- (void)setDataValToTxt{
     self.textLabel.text = self.data.content;
 }
 

@@ -11,6 +11,10 @@
 #import "GanTableViewProtocol.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
+static NSDateFormatter *dateFormatter;
+
+@interface GanUnComplateTableViewCell()
+@end
 
 @implementation GanUnComplateTableViewCell{
     UIImageView *_clockImgView;
@@ -32,6 +36,11 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     DLog(@"GanTableViewCell initWithSytle");
+    static dispatch_once_t oneToken;
+    dispatch_once(&oneToken, ^{
+        dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"MM - dd HH : mm"];
+    });
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _isEditing = false;
@@ -68,7 +77,7 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 #pragma mark addContentEditTxt
 - (void)addContentEditTxt{
     _contentEditTxt = [[UITextField alloc]init];
-    _contentEditTxt.frame = CGRectMake(0,0, UI_SCREEN_WIDTH, 44);
+    _contentEditTxt.frame = CGRectMake(0, 0, UI_SCREEN_WIDTH, GAN_CELL_HEIGHT);
     _contentEditTxt.font = [UIFont fontWithName:@"Arial" size:18.0];
     _contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _contentEditTxt.returnKeyType = UIReturnKeyDone;
@@ -158,7 +167,9 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 {
     DLog(@"%i    %i    %@",selected,![_contentEditTxt.text isEqualToString: @""],_contentEditTxt.text);
     [super setSelected:selected animated:NO];
-    // Configure the view for the selected state
+
+    //去除底色，否则默认是白色...
+    self.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
@@ -196,6 +207,19 @@ static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier"
 - (void)setDataValToTxt{
     self.textLabel.text = self.data.content;
     _contentEditTxt.text = self.data.content;
+}
+
+- (void)setRemindDate:(NSDate *)date{
+    self.data.remindDate = date;
+    
+    if(date){
+        DLog(@"%@",[dateFormatter stringFromDate:date]);
+        self.detailTextLabel.text = [dateFormatter stringFromDate:date];
+    }else{
+        self.detailTextLabel.text = @"";
+    }
+    [self setNeedsDisplay];
+    [self setNeedsLayout];
 }
 @end
 

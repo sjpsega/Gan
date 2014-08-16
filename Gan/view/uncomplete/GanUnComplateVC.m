@@ -55,15 +55,15 @@
     CGRect frame = self.view.frame;
     frame.size.height -= GAN_TABBAR_H;
     _datePicker = [[GanDatePickerView alloc] initWithFrame:frame];
-    __weak GanDatePickerView *weakDatePicker = _datePicker;
     __weak typeof(self) weakSelf = self;
     _datePicker.confirmBlock = ^(NSDate *date){
         [weakSelf hideDatePickerView];
     };
     _datePicker.changeBlock = ^(NSDate *date){
-
+        [weakSelf setRemindDateWithSelectedCell:date];
     };
     _datePicker.cancelBlock = ^(){
+        [weakSelf setRemindDateWithSelectedCell:nil];
         [weakSelf hideDatePickerView];
     };
     DLog(@"Locale: %@, %@",[[NSLocale currentLocale] localeIdentifier],[[NSLocale systemLocale]localeIdentifier]);
@@ -104,16 +104,16 @@
     DLog(@"dataSouce unComplate count:%lu",(unsigned long)[self.dataSource count]);
 }
 
--(void)setBgColor{
+- (void)setBgColor{
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     [backgroundView setBackgroundColor:[UIColor Gan_ColorWithHEX:TABLE_BG alpha:1.0f]];
     [self.tableView setBackgroundView:backgroundView];
 }
 
--(void)addMaskLayer{
+- (void)addMaskLayer{
     _maskLayer = [UIButton buttonWithType:UIButtonTypeCustom];
     CGRect frame = self.tableView.frame;
-    frame.origin.y +=CELL_HEIGHT;
+    frame.origin.y += GAN_CELL_HEIGHT;
     [_maskLayer setFrame:frame];
     [_maskLayer setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0]];
     [self.view insertSubview:_maskLayer aboveSubview:self.tableView];
@@ -121,20 +121,28 @@
     [self hideMaskLayer];
 }
 
--(void)showMaskLayer{
+- (void)showMaskLayer{
     [_maskLayer setHidden:NO];
 }
 
--(void)hideMaskLayer{
+- (void)hideMaskLayer{
     [_maskLayer setHidden:YES];
 }
 
--(void)blurCell:(id)sender{
+- (void)blurCell:(id)sender{
     DLog(@"blurCell~~~~~~");
     [self blurCell];
 }
 
--(IBAction)addOne:(id)sender{
+- (void)setRemindDateWithSelectedCell:(NSDate *)date{
+    NSIndexPath *selectIndexPath = [self.tableView indexPathForSelectedRow];
+    if(selectIndexPath){
+        GanUnComplateTableViewCell *currentCell = (GanUnComplateTableViewCell *)[self.tableView cellForRowAtIndexPath:selectIndexPath];
+        [currentCell setRemindDate:date];
+    }
+}
+
+- (IBAction)addOne:(id)sender{
     //使得目前选中的，或者在编辑的Cell失去焦点，保存数据
     NSIndexPath *currentSelectedIndex = [self.tableView indexPathForSelectedRow];
     if(currentSelectedIndex){
@@ -170,7 +178,7 @@
     //PS:现使用纯代码方式生成cell
     GanUnComplateTableViewCell *cell = (GanUnComplateTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellName];
     if(cell == nil){
-        cell = [[GanUnComplateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+        cell = [[GanUnComplateTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellName];
     }
     // For the delegate callback
     [cell setDelegate:self];
@@ -237,10 +245,12 @@
 }
 
 - (void)focusCell{
-    _savedContentOffset = [self.tableView contentOffset];
     NSIndexPath *selectIndexPath = [self.tableView indexPathForSelectedRow];
-    [self.tableView setContentOffset:CGPointMake(0, CELL_HEIGHT * selectIndexPath.row) animated:YES];
-    [self showMaskLayer];
+    if(selectIndexPath){
+        _savedContentOffset = [self.tableView contentOffset];
+        [self.tableView setContentOffset:CGPointMake(0, GAN_CELL_HEIGHT * selectIndexPath.row) animated:YES];
+        [self showMaskLayer];
+    }
 }
 
 - (void)blurCell{
@@ -250,12 +260,13 @@
     [self.dataManager saveData];
 }
 
-
 - (void)showDatePickerView{
-    _datePicker.hidden = NO;
-    _savedContentOffset = [self.tableView contentOffset];
     NSIndexPath *selectIndexPath = [self.tableView indexPathForSelectedRow];
-    [self.tableView setContentOffset:CGPointMake(0, CELL_HEIGHT * selectIndexPath.row) animated:YES];
+    if(selectIndexPath){
+        [self.tableView setContentOffset:CGPointMake(0, GAN_CELL_HEIGHT * selectIndexPath.row) animated:YES];
+        _datePicker.hidden = NO;
+        _savedContentOffset = [self.tableView contentOffset];
+    }
 }
 
 - (void)hideDatePickerView{

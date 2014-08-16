@@ -17,10 +17,12 @@ complateItem1 = "任务左拖动，重新加入任务列表";
 complateItem2 = "任务右拖动，删除任务";
 complateItem3 = "右上角按钮，删除所有已完成任务";
 
-delAllComplateAlertTitle = "提醒";
+alertTitle = "提醒";
 delAllComplateAlertMessage = "删除所有已完成项?";
 delAllComplateAlertCancelBtn = "取消";
 delAllComplateAlertOkBtn = "确定";
+
+localNotificationAlertAction = "我知道了";
 
 umUpdateTitle = "有可用的新版本 ";
 umUpdateCancel = "忽略";

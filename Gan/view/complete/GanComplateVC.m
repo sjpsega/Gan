@@ -80,7 +80,7 @@
 }
 
 -(void)initDataSource{
-    self.dataSource = [[GanDataManager getInstance] completedData];
+    self.dataSource = [[GanDataManager sharedInstance] completedData];
 }
 
 -(void)setBgColor{
@@ -90,7 +90,7 @@
 }
 
 -(void)delAllComplate:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"delAllComplateAlertTitle", @"Alert")
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alertTitle", @"Alert")
                     message:NSLocalizedString(@"delAllComplateAlertMessage", @"Do you want to delete all completed tasks?")
                     delegate:self
                     cancelButtonTitle:NSLocalizedString(@"delAllComplateAlertCancelBtn", @"Cancel")

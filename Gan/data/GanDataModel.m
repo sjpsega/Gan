@@ -12,8 +12,10 @@
 
 - (id)init{
     if(self = [super init]){
+        _uuid =  [[NSUUID UUID] UUIDString];
         _content = @"";
-        _date = [NSDate date];
+        _modifyDate = [NSDate date];
+        _remindDate = nil;
         _isCompelete = NO;
         _isNew = YES;
     }
@@ -33,13 +35,15 @@
 
 - (void)setIsCompelete:(BOOL)isCompelete{
     _isCompelete = isCompelete;
-    _date = [NSDate date];
+    _modifyDate = [NSDate date];
 }
 
 #pragma mark implement NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:_uuid forKey:@"uuid"];
     [aCoder encodeObject:_content forKey:@"content"];
-    [aCoder encodeObject:_date forKey:@"date"];
+    [aCoder encodeObject:_modifyDate forKey:@"date"];
+    [aCoder encodeObject:_remindDate forKey:@"remindDate"];
     [aCoder encodeBool:_isCompelete forKey:@"isComplate"];
     [aCoder encodeBool:_isNew forKey:@"isNew"];
 }
@@ -49,8 +53,15 @@
         _content = [aDecoder decodeObjectForKey:@"content"];
         _isNew = NO;
         _isCompelete = [aDecoder decodeBoolForKey:@"isComplate"];
-        _date = [NSDate date];
-        _date = [aDecoder decodeObjectForKey:@"date"];
+        _uuid = [aDecoder decodeObjectForKey:@"uuid"];
+        if(!_uuid){
+            _uuid =  [[NSUUID UUID] UUIDString];
+        }
+        _modifyDate = [aDecoder decodeObjectForKey:@"date"];
+        if(!_modifyDate){
+            _modifyDate = [NSDate date];
+        }
+        _remindDate = [aDecoder decodeObjectForKey:@"remindDate"];
         _isNew = [aDecoder decodeBoolForKey:@"isNew"];
     }
     return self;

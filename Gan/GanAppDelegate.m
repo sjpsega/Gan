@@ -47,7 +47,22 @@
         tabBarController.tabBar.translucent = NO;
     }
     [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if ([notification.userInfo[@"type"] isEqualToString:GAN_LOCAL_NOTIFY_TYPE]) {
+        //判断应用程序当前的运行状态，如果是激活状态，则进行提醒，否则不提醒
+        if (application.applicationState == UIApplicationStateActive) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alertTitle", @"Alert")
+                                                            message:notification.alertBody
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:notification.alertAction, nil];
+            [alert show];
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -80,7 +95,7 @@
 }
 
 -(void)setApplicationIconBadgeNumber{
-    NSInteger unCompleteDataCount = [[[GanDataManager getInstance] unCompletedData] count];
+    NSInteger unCompleteDataCount = [[[GanDataManager sharedInstance] unCompletedData] count];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:unCompleteDataCount];
 }
 
