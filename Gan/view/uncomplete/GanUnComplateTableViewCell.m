@@ -9,6 +9,7 @@
 
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewProtocol.h"
+#import "GanStringUtil.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
 static NSDateFormatter *dateFormatter;
@@ -81,16 +82,26 @@ static NSDateFormatter *dateFormatter;
     _contentEditTxt.font = [UIFont fontWithName:@"Arial" size:18.0];
     _contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _contentEditTxt.returnKeyType = UIReturnKeyDone;
-    [_contentEditTxt addTarget:self action:@selector(keyboardDoneClcik:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_contentEditTxt addTarget:self action:@selector(keyboardDoneClick:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_contentEditTxt addTarget:self action:@selector(keyboardEnter:) forControlEvents:UIControlEventEditingChanged];
     [self.contentView addSubview:_contentEditTxt];
 }
 
-- (void)keyboardDoneClcik:(id)sender{
+- (void)keyboardDoneClick:(id)sender{
     [self hideKeyboard:self];
     [self setDataContent:_contentEditTxt.text];
     if([self.delegate respondsToSelector:@selector(blurCell:)]){
         _isEditing = false;
         [self.delegate blurCell];
+    }
+}
+
+- (void)keyboardEnter:(id)sender{
+    UITextField *tf = sender;
+    if([GanStringUtil isBlank:tf.text]){
+        _clockImgView.hidden = YES;
+    }else{
+        _clockImgView.hidden = NO;
     }
 }
 
@@ -123,7 +134,10 @@ static NSDateFormatter *dateFormatter;
 - (void)beginEdit{
     _contentEditTxt.hidden = NO;
     self.textLabel.hidden = YES;
-    _clockImgView.hidden = NO;
+
+    if(![GanStringUtil isBlank:_contentEditTxt.text]){
+        _clockImgView.hidden = NO;
+    }
     [_contentEditTxt becomeFirstResponder];
     if([self.delegate respondsToSelector:@selector(focusCell)]){
         _isEditing = true;
@@ -154,6 +168,8 @@ static NSDateFormatter *dateFormatter;
 
 - (void)editDateAction:(id)sender{
     DLog(@"editDateAction");
+    self.textLabel.text = _contentEditTxt.text;
+    [self setDataContent:_contentEditTxt.text];
     _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
     [self hideKeyboard:self];
@@ -173,20 +189,20 @@ static NSDateFormatter *dateFormatter;
     
     _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
+    _clockImgView.hidden = YES;
     
-    //cell失去焦点，保存编辑数据
-    if(selected == NO){
-        _clockImgView.hidden = YES;
-        self.textLabel.text = _contentEditTxt.text;
-        [self setDataContent:_contentEditTxt.text];
-        [self hideKeyboard:self];
-    }else{
-        _clockImgView.hidden = NO;
+    if(selected){
         //新增行，自动进入编辑模式
         if([self.data.content isEqualToString:@""]){
             [self beginEdit];
         }
+    }else{
+        //cell失去焦点，保存编辑数据
+        self.textLabel.text = _contentEditTxt.text;
+        [self setDataContent:_contentEditTxt.text];
+        [self hideKeyboard:self];
     }
+    [self changeStateForRemindDate];
 }
 
 - (void)setDataContent:(NSString *)content{
@@ -204,6 +220,18 @@ static NSDateFormatter *dateFormatter;
     _contentEditTxt.text = self.data.content;
 }
 
+- (void)changeStateForRemindDate{
+    if(self.data.remindDate){
+        DLog(@"%@",[dateFormatter stringFromDate:self.data.remindDate]);
+        self.detailTextLabel.text = [dateFormatter stringFromDate:self.data.remindDate];
+    }else{
+        self.detailTextLabel.text = @"";
+    }
+    [self setNeedsDisplay];
+    [self setNeedsLayout];
+}
+
+#pragma mark - public
 - (void)setDataValToTxt{
     self.textLabel.text = self.data.content;
     _contentEditTxt.text = self.data.content;
@@ -211,15 +239,7 @@ static NSDateFormatter *dateFormatter;
 
 - (void)setRemindDate:(NSDate *)date{
     self.data.remindDate = date;
-    
-    if(date){
-        DLog(@"%@",[dateFormatter stringFromDate:date]);
-        self.detailTextLabel.text = [dateFormatter stringFromDate:date];
-    }else{
-        self.detailTextLabel.text = @"";
-    }
-    [self setNeedsDisplay];
-    [self setNeedsLayout];
+    [self changeStateForRemindDate];
 }
 @end
 

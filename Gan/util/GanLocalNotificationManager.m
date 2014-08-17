@@ -19,11 +19,11 @@
     return sharedInstance;
 }
 
-//TODO:同一个notify重复注册，会发生什么？
 - (void)registeredLocalNotify:(GanDataModel *)model{
-    if(!model.remindDate){
+    if(!model.remindDate || [model.remindDate compare:[NSDate date]] == NSOrderedAscending || model.isCompelete){
         return;
     }
+    
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     //设置本地通知的触发时间
     localNotification.fireDate = model.remindDate;
@@ -49,9 +49,7 @@
 }
 
 - (void)cancelLocalNotify:(GanDataModel *)model{
-    //取消某一个通知
     NSArray *notificaitons = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    //获取当前所有的本地通知
     if (!notificaitons || notificaitons.count <= 0) {
         return;
     }

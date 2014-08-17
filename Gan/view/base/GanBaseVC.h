@@ -8,7 +8,7 @@
 
 @interface GanBaseVC : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic)UITableView *tableView;
-@property (strong, nonatomic)NSMutableArray *dataSource;
+@property (strong, nonatomic)NSArray *dataSource;
 @property (strong, nonatomic)GanDataManager *dataManager;
 @property (strong, nonatomic)UINavigationBar *navBar;
 -(void)fitForiOS7;

@@ -55,20 +55,23 @@
     CGRect frame = self.view.frame;
     frame.size.height -= GAN_TABBAR_H;
     _datePicker = [[GanDatePickerView alloc] initWithFrame:frame];
-    __weak typeof(self) weakSelf = self;
-    _datePicker.confirmBlock = ^(NSDate *date){
-        [weakSelf hideDatePickerView];
-    };
-    _datePicker.changeBlock = ^(NSDate *date){
-        [weakSelf setRemindDateWithSelectedCell:date];
-    };
-    _datePicker.cancelBlock = ^(){
-        [weakSelf setRemindDateWithSelectedCell:nil];
-        [weakSelf hideDatePickerView];
-    };
     DLog(@"Locale: %@, %@",[[NSLocale currentLocale] localeIdentifier],[[NSLocale systemLocale]localeIdentifier]);
     [self.view addSubview:_datePicker];
     _datePicker.hidden = YES;
+    __weak typeof(self) weakSelf = self;
+    _datePicker.confirmBlock = ^(NSDate *date){
+        [weakSelf hideDatePickerView];
+        [weakSelf.dataManager saveData];
+    };
+    _datePicker.changeBlock = ^(NSDate *date){
+        [weakSelf setRemindDateWithSelectedCell:date];
+        [weakSelf.dataManager saveData];
+    };
+    _datePicker.cancelBlock = ^(){
+        [weakSelf hideDatePickerView];
+        [weakSelf setRemindDateWithSelectedCell:nil];
+        [weakSelf.dataManager saveData];
+    };
 
 }
 

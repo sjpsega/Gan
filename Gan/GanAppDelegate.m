@@ -14,6 +14,7 @@
 #import "GanComplateVC.h"
 #import "GanConstants.h"
 #import "GanUnComplateTableViewCell.h"
+#import "GanInit.h"
 
 #define UMENG_APPKEY @"526b6a1d56240b395506cbd5"
 
@@ -47,7 +48,7 @@
         tabBarController.tabBar.translucent = NO;
     }
     [self.window makeKeyAndVisible];
-    
+    [GanInit init];
     return YES;
 }
 

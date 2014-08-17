@@ -10,8 +10,8 @@
 @class GanDataModel;
 @interface GanDataManager : NSObject
 + (id)sharedInstance;
-- (NSMutableArray *)completedData;
-- (NSMutableArray *)unCompletedData;
+- (NSArray *)completedData;
+- (NSArray *)unCompletedData;
 - (void)insertData:(GanDataModel *)data;
 - (void)removeData:(GanDataModel *)data;
 - (void)saveData;

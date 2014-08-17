@@ -18,7 +18,7 @@
 
 @implementation GanDataManager
 
-+(id)sharedInstance{
++ (id)sharedInstance{
     static GanDataManager *instance = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
@@ -27,7 +27,7 @@
     return instance;
 }
 
--(NSMutableArray *)data{
+- (NSMutableArray *)data{
     if(!_isRead){
         [self readData];
         _isRead = YES;
@@ -43,7 +43,7 @@
     return _datas;
 }
 
--(NSMutableArray *)completedData{
+- (NSArray *)completedData{
     if(!_isRead){
         [self data];
     }
@@ -52,10 +52,10 @@
     NSArray *arr =
     [_datas filteredArrayUsingPredicate:predicate];
     arr = [self returnSortedArray:arr];
-    return [NSMutableArray arrayWithArray:arr];
+    return [arr copy];
 }
 
--(NSMutableArray *)unCompletedData{
+- (NSArray *)unCompletedData{
     if(!_isRead){
         [self data];
     }
@@ -64,47 +64,48 @@
     NSArray *arr =
     [_datas filteredArrayUsingPredicate:predicate];
     arr = [self returnSortedArray:arr];
-    return [NSMutableArray arrayWithArray:arr];
+    return [arr copy];
 }
 
--(void)insertData:(GanDataModel *)data{
+- (void)insertData:(GanDataModel *)data{
     if(!_isRead){
         [self data];
     }
     [_datas insertObject:data atIndex:0];
 }
 
--(void)removeData:(GanDataModel *)data{
+- (void)removeData:(GanDataModel *)data{
     if(!_isRead){
         [self data];
     }
     [_datas removeObject:data];
 }
 
--(void)readData{
+- (void)readData{
     NSString *path = [self fileName];
     DLog(@"readData   %@",path);
     NSData *saveData = [[NSData alloc]initWithContentsOfFile:path];
     _datas=[NSKeyedUnarchiver unarchiveObjectWithData:saveData];
 }
 
--(void)saveData{
+- (void)saveData{
     DLog(@"saveData....");
     NSString *path = [self fileName];
     NSData *saveData = [NSKeyedArchiver archivedDataWithRootObject:_datas];
-    if([saveData writeToFile:path atomically:YES]){
+    NSError *error;
+    if([saveData writeToFile:path options:NSDataWritingFileProtectionComplete error:&error]){
         DLog(@"save success!");
     }
 }
 
 
--(NSString *)fileName{
+- (NSString *)fileName{
     NSString *Path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     return [Path stringByAppendingPathComponent:@"GanDatas.plist"];
 }
 
 //降序排列
--(NSArray *)returnSortedArray:(NSArray *)array{
+- (NSArray *)returnSortedArray:(NSArray *)array{
     NSArray *sortedArray;
     sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
         NSDate *first = [(GanDataModel*)a modifyDate];
@@ -114,7 +115,7 @@
     return sortedArray;
 }
 
--(NSMutableArray *)returnInitData{
+- (NSMutableArray *)returnInitData{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:
                     @[[[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem4", @"swipe task right to delete it")],
                       [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem3", @"swipe task left to complete it")],

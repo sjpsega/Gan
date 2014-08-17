@@ -28,6 +28,8 @@
 		4A946FDE199E609B007038A1 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A946FDD199E609B007038A1 /* Reveal.framework */; };
 		4A946FE0199E6150007038A1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A946FDF199E6150007038A1 /* CFNetwork.framework */; };
 		4A946FE2199E6159007038A1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A946FE1199E6159007038A1 /* QuartzCore.framework */; };
+		4AE36BE719A05A650090CE5F /* GanInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE36BE619A05A650090CE5F /* GanInit.m */; };
+		4AE36BEA19A084720090CE5F /* GanStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE36BE919A084720090CE5F /* GanStringUtil.m */; };
 		4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFDC5AB1944C0DD0054457B /* Images.xcassets */; };
 		58B83124DB4FA40E80DF64ED /* GanDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83207D887900897F8EB10 /* GanDataManager.m */; };
 		58B83AE72C28F0D59A2A4288 /* UIColor+GanHEXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83941C4630E2D92A31D7C /* UIColor+GanHEXColor.m */; };
@@ -76,6 +78,10 @@
 		4A954FDA194563C700A34770 /* MacroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
 		4A954FDB194563C700A34770 /* UIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
 		4A954FDC194563C700A34770 /* VersionCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCompare.h; sourceTree = "<group>"; };
+		4AE36BE519A05A650090CE5F /* GanInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanInit.h; sourceTree = "<group>"; };
+		4AE36BE619A05A650090CE5F /* GanInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanInit.m; sourceTree = "<group>"; };
+		4AE36BE819A084720090CE5F /* GanStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanStringUtil.h; sourceTree = "<group>"; };
+		4AE36BE919A084720090CE5F /* GanStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanStringUtil.m; sourceTree = "<group>"; };
 		4AFDC5AB1944C0DD0054457B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		58B83207D887900897F8EB10 /* GanDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDataManager.m; sourceTree = "<group>"; };
 		58B834168B11736E24B7E0E9 /* UIColor+GanHEXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+GanHEXColor.h"; sourceTree = "<group>"; };
@@ -255,6 +261,10 @@
 				58B83207D887900897F8EB10 /* GanDataManager.m */,
 				4A820745199F9C04001F96B8 /* GanLocalNotificationManager.h */,
 				4A820746199F9C04001F96B8 /* GanLocalNotificationManager.m */,
+				4AE36BE519A05A650090CE5F /* GanInit.h */,
+				4AE36BE619A05A650090CE5F /* GanInit.m */,
+				4AE36BE819A084720090CE5F /* GanStringUtil.h */,
+				4AE36BE919A084720090CE5F /* GanStringUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -346,9 +356,11 @@
 				1842AFA9176CA9A200A1ED20 /* GanAppDelegate.m in Sources */,
 				4A820747199F9C04001F96B8 /* GanLocalNotificationManager.m in Sources */,
 				18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */,
+				4AE36BEA19A084720090CE5F /* GanStringUtil.m in Sources */,
 				58B83BBC682DB8E66F776406 /* GanDataModel.m in Sources */,
 				4A8D607319475D0F00B022BF /* GanUnComplateTableViewCell.m in Sources */,
 				58B83AE72C28F0D59A2A4288 /* UIColor+GanHEXColor.m in Sources */,
+				4AE36BE719A05A650090CE5F /* GanInit.m in Sources */,
 				4A8D607019475D0F00B022BF /* GanBaseVC.m in Sources */,
 				4A8D606F19475D0F00B022BF /* GanBaseTableViewCell.m in Sources */,
 				4A8D607219475D0F00B022BF /* GanComplateVC.m in Sources */,

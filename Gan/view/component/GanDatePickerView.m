@@ -31,6 +31,11 @@ static const CGFloat DatePickerH = 200.0f;
     return self;
 }
 
+- (void)setHidden:(BOOL)hidden{
+    [super setHidden:hidden];
+    [_datePicker sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
 - (void)dealloc{
     [self clear];
 }
