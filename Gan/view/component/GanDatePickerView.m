@@ -65,16 +65,16 @@ static const CGFloat DatePickerH = 200.0f;
 #pragma mark - toolBar
 - (void)addToolBar{
     _toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, _selfViewH - ToolBarH - DatePickerH, _selfViewW, ToolBarH)];
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]initWithTitle:@"移除" style:UIBarButtonItemStylePlain target:self action:@selector(cancelHandler)];
+    UIBarButtonItem *removeBtn = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"removeLabel", @"Remove") style:UIBarButtonItemStylePlain target:self action:@selector(removeHandler)];
     UIBarButtonItem * spaceBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem : UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *confirmBtn = [[UIBarButtonItem alloc]initWithTitle:@"确认" style:UIBarButtonItemStylePlain target:self action:@selector(confirmHandler)];
-    _toolBar.items = @[cancelBtn, spaceBtn, confirmBtn];
+    UIBarButtonItem *confirmBtn = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"confirmLabel", @"Done") style:UIBarButtonItemStylePlain target:self action:@selector(confirmHandler)];
+    _toolBar.items = @[removeBtn, spaceBtn, confirmBtn];
     [self addSubview:_toolBar];
 }
 
-- (void)cancelHandler{
-    if(_cancelBlock){
-        _cancelBlock();
+- (void)removeHandler{
+    if(_removeBlock){
+        _removeBlock();
     }
 }
 

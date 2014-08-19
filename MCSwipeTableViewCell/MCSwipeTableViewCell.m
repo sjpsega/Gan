@@ -168,9 +168,6 @@ secondStateIconName:(NSString *)secondIconName
 
 - (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     
-    //拖动开始，设置select为NO
-    [self setSelected:NO animated:NO];
-    
     // The user does not want you to be dragged!
     if (!_shouldDrag) return;
     
@@ -237,6 +234,8 @@ secondStateIconName:(NSString *)secondIconName
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer class] == [UIPanGestureRecognizer class]) {
+        //拖动开始，设置select为NO
+        [self setSelected:NO animated:NO];
         
         UIPanGestureRecognizer *g = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint point = [g velocityInView:self];

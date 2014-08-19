@@ -154,8 +154,12 @@
 #pragma mark - GanTableViewProtocol
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode {
-    DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %lu - MCSwipeTableViewCellMode : %lu", [self.tableView indexPathForCell:cell], state, mode);
-    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    DLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %lu - MCSwipeTableViewCellMode : %lu", indexPath, state, mode);
+    if(!indexPath){
+        DLog(@"error!!!");
+        return;
+    }
     if (mode == MCSwipeTableViewCellModeExit) {
         GanDataModel *data = ((GanComplateTableViewCell *)cell).data;
         //变成未完成

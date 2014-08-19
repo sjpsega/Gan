@@ -27,3 +27,6 @@ localNotificationAlertAction = "I know";
 umUpdateTitle = "new version ";
 umUpdateCancel = "Skip";
 umUpdateOK = "Update";
+
+confirmLabel = "Done";
+removeLabel = "Remove";

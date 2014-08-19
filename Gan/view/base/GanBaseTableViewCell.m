@@ -10,7 +10,7 @@
 
 }
 
--(void)prepareForReuse{
+- (void)prepareForReuse{
     DLog(@"GanBaseTableViewCell prepareForReuse...");
 }
 
@@ -30,7 +30,7 @@
     return self;
 }
 
--(void)addLine{
+- (void)addLine{
     const CGFloat lineH = 1;
     const CGFloat paddingL = 10;
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(paddingL, CGRectGetHeight(self.frame) - lineH, CGRectGetWidth(self.frame) - paddingL, lineH)];
@@ -38,7 +38,7 @@
     [self.contentView addSubview:line];
 }
 
--(void)setDataValToTxt{
+- (void)setDataValToTxt{
 
 }
 

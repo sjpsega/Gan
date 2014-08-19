@@ -27,3 +27,6 @@ localNotificationAlertAction = "我知道了";
 umUpdateTitle = "有可用的新版本 ";
 umUpdateCancel = "忽略";
 umUpdateOK = "升级";
+
+confirmLabel = "确认";
+removeLabel = "移除";

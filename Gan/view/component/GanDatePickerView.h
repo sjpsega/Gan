@@ -15,5 +15,5 @@ typedef void (^DatePickerCancelBlock)();
 @property (strong, nonatomic)NSDate *date;
 @property (copy ,nonatomic) DatePickerConfirmBlock confirmBlock;
 @property (copy ,nonatomic) DatePickerConfirmBlock changeBlock;
-@property (copy ,nonatomic) DatePickerCancelBlock cancelBlock;
+@property (copy ,nonatomic) DatePickerCancelBlock removeBlock;
 @end
