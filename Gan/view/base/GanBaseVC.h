@@ -11,5 +11,6 @@
 @property (strong, nonatomic)NSArray *dataSource;
 @property (strong, nonatomic)GanDataManager *dataManager;
 @property (strong, nonatomic)UINavigationBar *navBar;
--(void)fitForiOS7;
+- (void)fitForiOS7;
+- (void)didSelectThisVC;
 @end

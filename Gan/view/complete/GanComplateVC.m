@@ -164,7 +164,7 @@
         GanDataModel *data = ((GanComplateTableViewCell *)cell).data;
         //变成未完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
-            [data setIsCompelete:NO];
+            data.isCompelete = NO;
             self.dataSource = [self.dataManager completedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [self.dataManager saveData];
@@ -173,6 +173,7 @@
         }
         //删除
         else if(state == MCSwipeTableViewCellState3 || state == MCSwipeTableViewCellState4){
+            [[GanLocalNotificationManager sharedInstance]cancelLocalNotify:data];
             [self.dataManager removeData:data];
             self.dataSource = [self.dataManager completedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];

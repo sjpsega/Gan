@@ -53,8 +53,8 @@ static CGRect textLabelFrameWithHaveDate;
         dateFormatter.locale = [NSLocale currentLocale];
 //        [dateFormatter setDateFormat:@"MM-dd HH:mm EEEE"];
         
-        FutureDateColor = [UIColor Gan_ColorWithHEX:0xd42b2a alpha:1.0f];
-        OutOfDateColor = [UIColor Gan_ColorWithHEX:0x318ad6 alpha:1.0f];
+        FutureDateColor = [UIColor Gan_ColorWithHEX:0x318ad6 alpha:1.0f];
+        OutOfDateColor = [UIColor Gan_ColorWithHEX:0xd42b2a alpha:1.0f];
         
         textLabelFrameWithNormal = CGRectMake(PaddingLeft, 12.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
         textLabelFrameWithHaveDate = CGRectMake(PaddingLeft, 4.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
@@ -68,6 +68,17 @@ static CGRect textLabelFrameWithHaveDate;
     return self;
 }
 
+- (void)dealloc{
+    [self clear];
+    self.data = nil;
+}
+
+- (void)clear{
+    if(self.data){
+        [self.data removeObserver:self forKeyPath:@"remindDate"];
+        [self.data removeObserver:self forKeyPath:@"isCompelete"];
+    }
+}
 //- (void)didReceiveMemoryWarning
 //{
 //    DLog(@"un cell didReceiveMemoryWarning");
@@ -271,10 +282,10 @@ static CGRect textLabelFrameWithHaveDate;
         _remindTxt.text = [dateFormatter stringFromDate:self.data.remindDate];
         _remindTxt.hidden = NO;
         _remindClockImg.hidden = NO;
-        if([self.data.remindDate compare:[NSDate date]] == NSOrderedAscending){
+        if([self.data.remindDate compare:[NSDate date]] == NSOrderedDescending){
             _remindTxt.textColor = [FutureDateColor copy];
             _remindClockImg.textColor = [FutureDateColor copy];
-        }else{
+        }else{  
             _remindTxt.textColor = [OutOfDateColor copy];
             _remindClockImg.textColor = [OutOfDateColor copy];
         }
@@ -302,7 +313,32 @@ static CGRect textLabelFrameWithHaveDate;
 
 - (void)setRemindDate:(NSDate *)date{
     self.data.remindDate = date;
-    [self changeStateForRemindDate];
+}
+
+- (void)setData:(GanDataModel *)data{
+    [self clear];
+    [super setData:data];
+    [self.data addObserver:self forKeyPath:@"remindDate" options:NSKeyValueObservingOptionNew context:(__bridge void *)(self)];
+    [self.data addObserver:self forKeyPath:@"isCompelete" options:NSKeyValueObservingOptionNew context:(__bridge void *)(self)];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if (context == (__bridge void *)(self)) {
+        [self changeStateForRemindDate];
+        if([keyPath isEqualToString:@"remindDate"]){
+            [[GanLocalNotificationManager sharedInstance]cancelLocalNotify:self.data];
+            DLog(@"%@,%@,%d",self.data.remindDate,[NSDate date],[self.data.remindDate compare:[NSDate date]]);
+            if([self.data.remindDate compare:[NSDate date]] == NSOrderedDescending){
+                [[GanLocalNotificationManager sharedInstance] registeredLocalNotify:self.data];
+            }
+        }
+        //空实现，只需要取消本地提醒即可
+        if([keyPath isEqualToString:@"isComplete"]){
+            
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 @end
 

@@ -17,4 +17,5 @@
     #import "UIColor+GanHEXColor.h"
     #import "GanDataManager.h"
     #import "GanConstants.h"
+    #import "GanLocalNotificationManager.h"
 #endif

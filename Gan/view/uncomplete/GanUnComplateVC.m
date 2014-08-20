@@ -102,7 +102,7 @@
     [super viewDidUnload];
 }
 
--(void)initDataSource{
+- (void)initDataSource{
     self.dataSource = [self.dataManager unCompletedData];
     DLog(@"dataSouce unComplate count:%lu",(unsigned long)[self.dataSource count]);
 }
@@ -210,6 +210,11 @@
     return cell;
 }
 
+#pragma mark override
+- (void)didSelectThisVC{
+    [self hideDatePickerView];
+}
+
 #pragma mark - GanTableViewProtocol
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode{
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -222,7 +227,7 @@
         GanDataModel *data = ((GanUnComplateTableViewCell *)cell).data;
         //完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
-            [data setIsCompelete:YES];
+            data.isCompelete = YES;
             self.dataSource = [self.dataManager unCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [self.dataManager saveData];
@@ -231,6 +236,7 @@
         }
         //删除
         else if(state == MCSwipeTableViewCellState4){
+            [[GanLocalNotificationManager sharedInstance]cancelLocalNotify:data];
             [self.dataManager removeData:data];
             self.dataSource = [self.dataManager unCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
@@ -277,7 +283,9 @@
 }
 
 - (void)hideDatePickerView{
-    _datePicker.hidden = YES;
+    if(_datePicker){
+        _datePicker.hidden = YES;
+    }
     [self.tableView setContentOffset:_savedContentOffset animated:YES];
 }
 

@@ -18,6 +18,10 @@
 
 #define UMENG_APPKEY @"526b6a1d56240b395506cbd5"
 
+@interface GanAppDelegate()<UITabBarControllerDelegate>
+
+@end
+
 @implementation GanAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -43,6 +47,7 @@
     GanComplateVC *complateVC = [[GanComplateVC alloc] init];
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     tabBarController.viewControllers = @[unComplateVC, complateVC];
+    tabBarController.delegate = self;
     self.window.rootViewController = tabBarController;
     if(SystemVersion_floatValue >= 7.0){
         tabBarController.tabBar.translucent = NO;
@@ -50,6 +55,12 @@
     [self.window makeKeyAndVisible];
     [GanInit init];
     return YES;
+}
+
+#pragma mark implement UITabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    GanBaseVC *vc = (GanBaseVC *)viewController;
+    [vc didSelectThisVC];
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {

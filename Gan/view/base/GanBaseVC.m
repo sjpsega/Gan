@@ -75,6 +75,10 @@ static BOOL isAdjust = NO;
     }
 }
 
+- (void)didSelectThisVC{
+    
+}
+
 #pragma mark implement UITableViewDataSource,UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DLog(@"didSelectRowAtIndexPath %@ %@",[tableView indexPathForSelectedRow],indexPath);
