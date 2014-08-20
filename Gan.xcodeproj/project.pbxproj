@@ -17,7 +17,7 @@
 		1879AEDD181BBB830051735A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1879AEDC181BBB830051735A /* libz.dylib */; };
 		189AC7BA181C117700834A85 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189AC7B8181C117700834A85 /* libMobClickLibrary.a */; };
 		18CF068D178D0AB600F0CD7D /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */; };
-		4A4C8C8219A37CEB00AB7998 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C8C8119A37CEB00AB7998 /* UIImage+Tint.m */; };
+		4A211AE919A442AE00045E0C /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A211AE819A442AE00045E0C /* icomoon.ttf */; };
 		4A673EEF199BADA3003369BC /* GanDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A673EEE199BADA3003369BC /* GanDatePickerView.m */; };
 		4A820747199F9C04001F96B8 /* GanLocalNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A820746199F9C04001F96B8 /* GanLocalNotificationManager.m */; };
 		4A8D606F19475D0F00B022BF /* GanBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D606119475D0F00B022BF /* GanBaseTableViewCell.m */; };
@@ -56,8 +56,7 @@
 		189AC7B9181C117700834A85 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		18CF068B178D0AB600F0CD7D /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
 		18CF068C178D0AB600F0CD7D /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
-		4A4C8C8019A37CEB00AB7998 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
-		4A4C8C8119A37CEB00AB7998 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
+		4A211AE819A442AE00045E0C /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = ../icomoon.ttf; sourceTree = "<group>"; };
 		4A673EED199BADA3003369BC /* GanDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDatePickerView.h; sourceTree = "<group>"; };
 		4A673EEE199BADA3003369BC /* GanDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDatePickerView.m; sourceTree = "<group>"; };
 		4A820745199F9C04001F96B8 /* GanLocalNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanLocalNotificationManager.h; sourceTree = "<group>"; };
@@ -165,6 +164,7 @@
 		1842AF9F176CA9A200A1ED20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4A211AE819A442AE00045E0C /* icomoon.ttf */,
 				184EF9B117FFEDDA00827FF9 /* Localizable.strings */,
 				1842AFA0176CA9A200A1ED20 /* Gan-Info.plist */,
 				1842AFA1176CA9A200A1ED20 /* InfoPlist.strings */,
@@ -268,8 +268,6 @@
 				4AE36BE619A05A650090CE5F /* GanInit.m */,
 				4AE36BE819A084720090CE5F /* GanStringUtil.h */,
 				4AE36BE919A084720090CE5F /* GanStringUtil.m */,
-				4A4C8C8019A37CEB00AB7998 /* UIImage+Tint.h */,
-				4A4C8C8119A37CEB00AB7998 /* UIImage+Tint.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -344,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1842AFA3176CA9A200A1ED20 /* InfoPlist.strings in Resources */,
+				4A211AE919A442AE00045E0C /* icomoon.ttf in Resources */,
 				4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */,
 				184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */,
 			);
@@ -369,7 +368,6 @@
 				4A8D607019475D0F00B022BF /* GanBaseVC.m in Sources */,
 				4A8D606F19475D0F00B022BF /* GanBaseTableViewCell.m in Sources */,
 				4A8D607219475D0F00B022BF /* GanComplateVC.m in Sources */,
-				4A4C8C8219A37CEB00AB7998 /* UIImage+Tint.m in Sources */,
 				58B83124DB4FA40E80DF64ED /* GanDataManager.m in Sources */,
 				4A8D607119475D0F00B022BF /* GanComplateTableViewCell.m in Sources */,
 				4A8D607419475D0F00B022BF /* GanUnComplateVC.m in Sources */,

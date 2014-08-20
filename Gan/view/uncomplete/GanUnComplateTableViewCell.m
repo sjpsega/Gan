@@ -10,18 +10,22 @@
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewProtocol.h"
 #import "GanStringUtil.h"
-#import "UIImage+Tint.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
+static const UIColor *FutureDateColor;
+static const UIColor *OutOfDateColor;
 static const CGFloat PaddingLeft = 15.0f;
 static NSDateFormatter *dateFormatter;
+static CGRect textLabelFrameWithNormal;
+static CGRect textLabelFrameWithHaveDate;
 
 @interface GanUnComplateTableViewCell()
 @end
 
 @implementation GanUnComplateTableViewCell{
-    UIImageView *_clockImgView;
-    UIImageView *_remindClockImgView;
+    UIImageView *_editClockImgView;
+    //使用iconFont，高保真
+    UILabel *_remindClockImg;
     UILabel *_remindTxt;
 }
 
@@ -44,7 +48,16 @@ static NSDateFormatter *dateFormatter;
     static dispatch_once_t oneToken;
     dispatch_once(&oneToken, ^{
         dateFormatter = [[NSDateFormatter alloc]init];
-        [dateFormatter setDateFormat:@"MM-dd HH:mm"];
+        dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+        dateFormatter.timeStyle = kCFDateFormatterShortStyle;
+        dateFormatter.locale = [NSLocale currentLocale];
+//        [dateFormatter setDateFormat:@"MM-dd HH:mm EEEE"];
+        
+        FutureDateColor = [UIColor Gan_ColorWithHEX:0xd42b2a alpha:1.0f];
+        OutOfDateColor = [UIColor Gan_ColorWithHEX:0x318ad6 alpha:1.0f];
+        
+        textLabelFrameWithNormal = CGRectMake(PaddingLeft, 12.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
+        textLabelFrameWithHaveDate = CGRectMake(PaddingLeft, 4.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
     });
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -74,7 +87,7 @@ static NSDateFormatter *dateFormatter;
     
     [self addContentEditTxtDoubleTapEvnet];
     
-    [self addClockIcon];
+    [self addEditClockIcon];
     
     [self addClockIconSingleTapEvent];
     
@@ -107,9 +120,9 @@ static NSDateFormatter *dateFormatter;
 - (void)keyboardEnter:(id)sender{
     UITextField *tf = sender;
     if([GanStringUtil isBlank:tf.text]){
-        _clockImgView.hidden = YES;
+        _editClockImgView.hidden = YES;
     }else{
-        _clockImgView.hidden = NO;
+        _editClockImgView.hidden = NO;
     }
 }
 
@@ -129,7 +142,7 @@ static NSDateFormatter *dateFormatter;
 - (void)editHandler:(UIGestureRecognizer *)recognizer{
     //如果双击的位置是clockImg的为止，则不进行编辑
     CGPoint touchPoint = [recognizer locationInView:self];
-    BOOL isTouchImgView = CGRectContainsPoint(_clockImgView.frame, touchPoint);
+    BOOL isTouchImgView = CGRectContainsPoint(_editClockImgView.frame, touchPoint);
     if(isTouchImgView){
         return;
     }
@@ -142,15 +155,14 @@ static NSDateFormatter *dateFormatter;
 - (void)beginEdit{
     CGRect textLabelFrame = self.textLabel.frame;
     if(!CGRectIsEmpty(textLabelFrame)){
-//        textLabelFrame.size.width = UI_SCREEN_WIDTH - CGRectGetMaxX(textLabelFrame);
         _contentEditTxt.frame = textLabelFrame;
     }
     _contentEditTxt.hidden = NO;
     self.textLabel.hidden = YES;
-    _clockImgView.hidden = YES;
+    _editClockImgView.hidden = YES;
     
     if(![GanStringUtil isBlank:_contentEditTxt.text]){
-        _clockImgView.hidden = NO;
+        _editClockImgView.hidden = NO;
     }
     [_contentEditTxt becomeFirstResponder];
     if([self.delegate respondsToSelector:@selector(focusCell)]){
@@ -160,24 +172,23 @@ static NSDateFormatter *dateFormatter;
 }
 
 #pragma mark addClockIcon
-- (void)addClockIcon{
+- (void)addEditClockIcon{
     UIImage *clockImg = [UIImage imageNamed:@"clock"];
-    _clockImgView = [[UIImageView alloc]initWithImage:clockImg];
-    CGRect frame = _clockImgView.frame;
+    _editClockImgView = [[UIImageView alloc]initWithImage:clockImg];
+    CGRect frame = _editClockImgView.frame;
     frame.origin = CGPointMake(UI_SCREEN_WIDTH - 30, (44 - CGRectGetHeight(frame))/2);
-    _clockImgView.frame = frame;
-    _clockImgView.hidden = YES;
+    _editClockImgView.frame = frame;
+    _editClockImgView.hidden = YES;
     
-    [self.contentView addSubview:_clockImgView];
+    [self.contentView addSubview:_editClockImgView];
 }
 
 - (void)addClockIconSingleTapEvent{
-    _clockImgView.userInteractionEnabled = YES;
+    _editClockImgView.userInteractionEnabled = YES;
     UITapGestureRecognizer *clockTapGestureGecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(editDateAction:)];
     clockTapGestureGecognizer.numberOfTapsRequired = 1;
     clockTapGestureGecognizer.numberOfTouchesRequired = 1;
-    
-    [_clockImgView addGestureRecognizer:clockTapGestureGecognizer];
+    [_editClockImgView addGestureRecognizer:clockTapGestureGecognizer];
 }
 
 - (void)editDateAction:(id)sender{
@@ -194,18 +205,17 @@ static NSDateFormatter *dateFormatter;
 
 #pragma mark - addRemindClockIcon
 - (void)addRemindClockIcon{
-    UIImage *remindClockImg = [UIImage imageNamed:@"remind-clock"];
-//    remindClockImg = [remindClockImg imageWithTintColor:[UIColor redColor]];
-    _remindClockImgView = [[UIImageView alloc]initWithImage:remindClockImg];
-    _remindClockImgView.frame = CGRectMake(PaddingLeft, 25.0f, 24.0f, 24.0f);
-    _remindClockImgView.hidden = YES;
+    CGFloat fontSize = 14.0f;
+    _remindClockImg = [[UILabel alloc]initWithFrame:CGRectMake(PaddingLeft, 26.0f, fontSize, fontSize)];
+    _remindClockImg.font = [UIFont fontWithName:@"icomoon" size:fontSize];
+    _remindClockImg.text = @"\U0000e600";
     
-    [self.contentView addSubview:_remindClockImgView];
+    [self.contentView addSubview:_remindClockImg];
 }
 
 #pragma mark - addRemindTxt
 - (void)addRemindTxt{
-    _remindTxt = [[UILabel alloc]initWithFrame:CGRectMake(PaddingLeft + 25.0f, 25.0f, UI_SCREEN_WIDTH - PaddingLeft - 50.0f, 15.0f)];
+    _remindTxt = [[UILabel alloc]initWithFrame:CGRectMake(PaddingLeft + 20.0f, 25.0f, UI_SCREEN_WIDTH - PaddingLeft - 50.0f, 15.0f)];
     _remindTxt.font = [UIFont fontWithName:@"Helvetica" size:12.0];
     [self addSubview:_remindTxt];
     _remindTxt.hidden = YES;
@@ -222,10 +232,10 @@ static NSDateFormatter *dateFormatter;
     
     _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
-    _clockImgView.hidden = YES;
+    _editClockImgView.hidden = YES;
     
     if(selected){
-        _clockImgView.hidden = NO;
+        _editClockImgView.hidden = NO;
         //新增行，自动进入编辑模式
         if([self.data.content isEqualToString:@""]){
             [self beginEdit];
@@ -257,39 +267,30 @@ static NSDateFormatter *dateFormatter;
 - (void)changeStateForRemindDate{
     if(self.data.remindDate){
         DLog(@"%@",[dateFormatter stringFromDate:self.data.remindDate]);
-//        self.detailTextLabel.text = [dateFormatter stringFromDate:self.data.remindDate];
         self.textLabel.frame = CGRectMake(PaddingLeft, 4.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
         _remindTxt.text = [dateFormatter stringFromDate:self.data.remindDate];
         _remindTxt.hidden = NO;
-        _remindClockImgView.hidden = NO;
+        _remindClockImg.hidden = NO;
+        if([self.data.remindDate compare:[NSDate date]] == NSOrderedAscending){
+            _remindTxt.textColor = [FutureDateColor copy];
+            _remindClockImg.textColor = [FutureDateColor copy];
+        }else{
+            _remindTxt.textColor = [OutOfDateColor copy];
+            _remindClockImg.textColor = [OutOfDateColor copy];
+        }
     }else{
-//        self.detailTextLabel.text = @"";
-        self.textLabel.frame = CGRectMake(PaddingLeft, 12.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
+        _remindTxt.text = @"";
         _remindTxt.hidden = YES;
-        _remindClockImgView.hidden = YES;
+        _remindClockImg.hidden = YES;
     }
-//    _remindClockImgView.hidden = YES;
-//    if(![GanStringUtil isBlank:self.detailTextLabel.text]){
-//        CGRect detailTextLabelFrame = self.detailTextLabel.frame;
-//        CGRect remindClockImgViewFrame = _remindClockImgView.frame;
-//        remindClockImgViewFrame.origin = detailTextLabelFrame.origin;
-//        _remindClockImgView.frame = remindClockImgViewFrame;
-//        
-//        detailTextLabelFrame.origin.x = 100.0f;
-//        self.detailTextLabel.frame = detailTextLabelFrame;
-//        _remindClockImgView.hidden = NO;
-//    }
-    
-//    [self setNeedsDisplay];
-//    [self setNeedsLayout];
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    if(![GanStringUtil isBlank:_remindTxt.text]){
-        self.textLabel.frame = CGRectMake(PaddingLeft, 4.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
+    if([GanStringUtil isBlank:_remindTxt.text]){
+        self.textLabel.frame = textLabelFrameWithNormal;
     }else{
-        self.textLabel.frame = CGRectMake(PaddingLeft, 12.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
+        self.textLabel.frame = textLabelFrameWithHaveDate;
     }
 }
 
