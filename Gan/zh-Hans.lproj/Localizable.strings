@@ -30,3 +30,7 @@ umUpdateOK = "升级";
 
 confirmLabel = "确认";
 removeLabel = "移除";
+
+yesterday = "昨天";
+today = "今天";
+tomorrow = "明天";

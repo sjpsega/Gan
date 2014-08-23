@@ -55,7 +55,6 @@
     CGRect frame = self.view.frame;
     frame.size.height -= GAN_TABBAR_H;
     _datePicker = [[GanDatePickerView alloc] initWithFrame:frame];
-    DLog(@"Locale: %@, %@",[[NSLocale currentLocale] localeIdentifier],[[NSLocale systemLocale]localeIdentifier]);
     [self.view addSubview:_datePicker];
     _datePicker.hidden = YES;
     __weak typeof(self) weakSelf = self;
@@ -273,10 +272,11 @@
     [self.dataManager saveData];
 }
 
-- (void)showDatePickerView{
+- (void)showDatePickerView:(NSDate *)date{
     NSIndexPath *selectIndexPath = [self.tableView indexPathForSelectedRow];
     if(selectIndexPath){
         [self.tableView setContentOffset:CGPointMake(0, GAN_CELL_HEIGHT * selectIndexPath.row) animated:YES];
+        _datePicker.date = date;
         _datePicker.hidden = NO;
         _savedContentOffset = [self.tableView contentOffset];
     }

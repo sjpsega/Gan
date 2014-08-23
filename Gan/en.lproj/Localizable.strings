@@ -30,3 +30,7 @@ umUpdateOK = "Update";
 
 confirmLabel = "Done";
 removeLabel = "Remove";
+
+yesterday = "yesterday";
+today = "today";
+tomorrow = "tomorrow";

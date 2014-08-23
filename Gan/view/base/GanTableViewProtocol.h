@@ -28,6 +28,6 @@
 - (void)deleteCell:(GanDataModel*)data;
 - (void)focusCell;
 - (void)blurCell;
-- (void)showDatePickerView;
+- (void)showDatePickerView:(NSDate *)date;
 @end
 

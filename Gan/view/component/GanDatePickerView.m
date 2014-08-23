@@ -55,7 +55,9 @@ static const CGFloat DatePickerH = 200.0f;
 
 #pragma mark - getter\setter date
 - (void)setDate:(NSDate *)date{
-    _datePicker.date = date;
+    if(date){
+        _datePicker.date = date;
+    }
 }
 
 - (NSDate *)date{

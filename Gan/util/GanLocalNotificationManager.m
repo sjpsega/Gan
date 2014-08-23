@@ -30,7 +30,7 @@
     //设置本地通知的触发时间
     localNotification.fireDate = model.remindDate;
     //设置本地通知的时区
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.timeZone = [NSTimeZone localTimeZone];
     //设置通知的内容
     localNotification.alertBody = model.content;
     //设置通知动作按钮的标题

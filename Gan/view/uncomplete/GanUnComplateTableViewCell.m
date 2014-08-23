@@ -10,6 +10,7 @@
 #import "GanUnComplateTableViewCell.h"
 #import "GanTableViewProtocol.h"
 #import "GanStringUtil.h"
+#import "GanDateUtil.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
 static const UIColor *FutureDateColor;
@@ -48,10 +49,17 @@ static CGRect textLabelFrameWithHaveDate;
     static dispatch_once_t oneToken;
     dispatch_once(&oneToken, ^{
         dateFormatter = [[NSDateFormatter alloc]init];
-        dateFormatter.dateStyle = kCFDateFormatterShortStyle;
-        dateFormatter.timeStyle = kCFDateFormatterShortStyle;
+//        dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+//        dateFormatter.timeStyle = kCFDateFormatterShortStyle;
         dateFormatter.locale = [NSLocale currentLocale];
-//        [dateFormatter setDateFormat:@"MM-dd HH:mm EEEE"];
+        dateFormatter.timeZone = [NSTimeZone localTimeZone];
+        //参考资料：http://nshipster.com/nslocale/   http://my.oschina.net/yongbin45/blog/150667
+        DLog(@"Locale: %@ -- %@ -- %@",[[NSLocale currentLocale] localeIdentifier],[[NSLocale systemLocale]localeIdentifier],[NSLocale preferredLanguages]);
+        
+        [dateFormatter setDateFormat:@"dd/MM HH:mm ccc"];
+        if([[[NSLocale currentLocale]localeIdentifier] rangeOfString:@"zh-Hans"].location != NSNotFound || [[[NSLocale currentLocale]localeIdentifier] rangeOfString:@"zh-Hant"].location != NSNotFound){
+            [dateFormatter setDateFormat:@"MM-dd HH:mm ccc"];
+        }
         
         FutureDateColor = [UIColor Gan_ColorWithHEX:0x318ad6 alpha:1.0f];
         OutOfDateColor = [UIColor Gan_ColorWithHEX:0xd42b2a alpha:1.0f];
@@ -209,8 +217,8 @@ static CGRect textLabelFrameWithHaveDate;
     _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
     [self hideKeyboard:self];
-    if([self.delegate respondsToSelector:@selector(showDatePickerView)]){
-        [self.delegate showDatePickerView];
+    if([self.delegate respondsToSelector:@selector(showDatePickerView:)]){
+        [self.delegate showDatePickerView:self.data.remindDate ? : [[NSDate alloc] initWithTimeInterval:60 sinceDate:[NSDate date]]];
     }
 }
 
@@ -228,7 +236,7 @@ static CGRect textLabelFrameWithHaveDate;
 - (void)addRemindTxt{
     _remindTxt = [[UILabel alloc]initWithFrame:CGRectMake(PaddingLeft + 20.0f, 25.0f, UI_SCREEN_WIDTH - PaddingLeft - 50.0f, 15.0f)];
     _remindTxt.font = [UIFont fontWithName:@"Helvetica" size:12.0];
-    [self addSubview:_remindTxt];
+    [self.contentView addSubview:_remindTxt];
     _remindTxt.hidden = YES;
 }
 
@@ -277,9 +285,14 @@ static CGRect textLabelFrameWithHaveDate;
 
 - (void)changeStateForRemindDate{
     if(self.data.remindDate){
-        DLog(@"%@",[dateFormatter stringFromDate:self.data.remindDate]);
+        DLog(@"%@ ---- %@",self.data.remindDate,[dateFormatter stringFromDate:self.data.remindDate]);
         self.textLabel.frame = CGRectMake(PaddingLeft, 4.0f, UI_SCREEN_WIDTH - PaddingLeft, 21.0f);
         _remindTxt.text = [dateFormatter stringFromDate:self.data.remindDate];
+        NSString *dateString = [GanDateUtil compareDate:self.data.remindDate];
+        if(dateString){
+            NSString *timeString = [[dateFormatter stringFromDate:self.data.remindDate] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]][1];
+            _remindTxt.text = [NSString stringWithFormat:@"%@ %@", dateString ,timeString];
+        }
         _remindTxt.hidden = NO;
         _remindClockImg.hidden = NO;
         if([self.data.remindDate compare:[NSDate date]] == NSOrderedDescending){
@@ -294,6 +307,8 @@ static CGRect textLabelFrameWithHaveDate;
         _remindTxt.hidden = YES;
         _remindClockImg.hidden = YES;
     }
+    [self setNeedsDisplay];
+    [self setNeedsLayout];
 }
 
 - (void)layoutSubviews{
