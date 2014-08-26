@@ -340,8 +340,8 @@ static CGRect textLabelFrameWithHaveDate;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if (context == (__bridge void *)(self)) {
         [self changeStateForRemindDate];
+        [[GanLocalNotificationManager sharedInstance]cancelLocalNotify:self.data];
         if([keyPath isEqualToString:@"remindDate"]){
-            [[GanLocalNotificationManager sharedInstance]cancelLocalNotify:self.data];
             DLog(@"%@,%@,%d",self.data.remindDate,[NSDate date],[self.data.remindDate compare:[NSDate date]]);
             if([self.data.remindDate compare:[NSDate date]] == NSOrderedDescending){
                 [[GanLocalNotificationManager sharedInstance] registeredLocalNotify:self.data];
