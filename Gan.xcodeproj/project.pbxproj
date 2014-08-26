@@ -28,7 +28,6 @@
 		4A8D607419475D0F00B022BF /* GanUnComplateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D606E19475D0F00B022BF /* GanUnComplateVC.m */; };
 		4A946FE0199E6150007038A1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A946FDF199E6150007038A1 /* CFNetwork.framework */; };
 		4A946FE2199E6159007038A1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A946FE1199E6159007038A1 /* QuartzCore.framework */; };
-		4AA5915819A215D0004624F2 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA5915719A215D0004624F2 /* Reveal.framework */; };
 		4AB0398219A8855000C71D6A /* GanDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0398119A8855000C71D6A /* GanDateUtil.m */; };
 		4AE36BE719A05A650090CE5F /* GanInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE36BE619A05A650090CE5F /* GanInit.m */; };
 		4AE36BEA19A084720090CE5F /* GanStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE36BE919A084720090CE5F /* GanStringUtil.m */; };
@@ -80,7 +79,6 @@
 		4A954FDA194563C700A34770 /* MacroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
 		4A954FDB194563C700A34770 /* UIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
 		4A954FDC194563C700A34770 /* VersionCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCompare.h; sourceTree = "<group>"; };
-		4AA5915719A215D0004624F2 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../Downloads/reveal/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		4AB0398019A8855000C71D6A /* GanDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDateUtil.h; sourceTree = "<group>"; };
 		4AB0398119A8855000C71D6A /* GanDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDateUtil.m; sourceTree = "<group>"; };
 		4AE36BE519A05A650090CE5F /* GanInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanInit.h; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				4A946FE2199E6159007038A1 /* QuartzCore.framework in Frameworks */,
 				4A946FE0199E6150007038A1 /* CFNetwork.framework in Frameworks */,
 				1879AEDD181BBB830051735A /* libz.dylib in Frameworks */,
-				4AA5915819A215D0004624F2 /* Reveal.framework in Frameworks */,
 				1842AF99176CA9A200A1ED20 /* UIKit.framework in Frameworks */,
 				1842AF9B176CA9A200A1ED20 /* Foundation.framework in Frameworks */,
 				1842AF9D176CA9A200A1ED20 /* CoreGraphics.framework in Frameworks */,
@@ -119,7 +116,6 @@
 		1842AF8C176CA9A200A1ED20 = {
 			isa = PBXGroup;
 			children = (
-				4AA5915719A215D0004624F2 /* Reveal.framework */,
 				1879AEDB181BBAB90051735A /* UM */,
 				1842AF97176CA9A200A1ED20 /* Frameworks */,
 				1842AF9E176CA9A200A1ED20 /* Gan */,
@@ -432,8 +428,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "1E591240-4734-4D82-A6D6-FB86322587E5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E591240-4734-4D82-A6D6-FB86322587E5";
+				PROVISIONING_PROFILE = "667f2d53-ebf6-4976-b064-041388184f77";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "667f2d53-ebf6-4976-b064-041388184f77";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -460,8 +456,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "1E591240-4734-4D82-A6D6-FB86322587E5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E591240-4734-4D82-A6D6-FB86322587E5";
+				PROVISIONING_PROFILE = "667f2d53-ebf6-4976-b064-041388184f77";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "667f2d53-ebf6-4976-b064-041388184f77";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -472,12 +468,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jianping shen (QFX23S23N7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianping shen (QFX23S23N7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"/Users/sjpsega/Downloads/reveal/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
@@ -491,8 +486,8 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AB194426-1152-4E62-86F3-AF3E446F3237";
+				PROVISIONING_PROFILE = "667f2d53-ebf6-4976-b064-041388184f77";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "667f2d53-ebf6-4976-b064-041388184f77";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
@@ -503,12 +498,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jianping shen (QFX23S23N7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianping shen (QFX23S23N7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"/Users/sjpsega/Downloads/reveal/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gan/Gan-Prefix.pch";
@@ -525,8 +519,8 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49405C6E-69BE-4322-AAA5-97F6EB84F07E";
+				PROVISIONING_PROFILE = "667f2d53-ebf6-4976-b064-041388184f77";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "667f2d53-ebf6-4976-b064-041388184f77";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};

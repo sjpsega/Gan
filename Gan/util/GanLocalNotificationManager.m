@@ -56,7 +56,7 @@
         return;
     }
     for (UILocalNotification *notify in notificaitons) {
-        if ([[notify.userInfo objectForKey:@"id"] isEqualToString:model.uuid]) {
+        if ([notify.userInfo[@"id"] isEqualToString:model.uuid]) {
             //取消一个特定的通知
             [[UIApplication sharedApplication] cancelLocalNotification:notify];
             break;

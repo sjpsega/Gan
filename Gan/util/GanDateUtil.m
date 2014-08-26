@@ -27,13 +27,13 @@
     
     if ([dateString isEqualToString:todayString])
     {
-        return @"今天";
+        return NSLocalizedString(@"today", @"today");
     } else if ([dateString isEqualToString:yesterdayString])
     {
-        return @"昨天";
+        return NSLocalizedString(@"yesterday", @"yesterday");
     }else if ([dateString isEqualToString:tomorrowString])
     {
-        return @"明天";
+        return NSLocalizedString(@"tomorrow", @"tomorrow");
     }
     else
     {

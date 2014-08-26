@@ -26,12 +26,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [Xtrace describeValues:YES];
-//    [Xtrace showArguments:NO];
-//    [Xtrace showReturns:NO];
-//    [Xtrace showCaller:YES];
-//    [GanUnComplateTableViewCell xtrace];
-    
     //友盟统计分析
     [MobClick setLogEnabled:YES];
     #if !DEBUG

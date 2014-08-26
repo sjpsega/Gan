@@ -11,6 +11,7 @@
 #import "GanTableViewProtocol.h"
 #import "GanStringUtil.h"
 #import "GanDateUtil.h"
+#import "MobClick.h"
 
 static const NSString *ReuseIdentifier = @"GanUnComplateTableViewCellIdentifier";
 static const UIColor *FutureDateColor;
@@ -24,7 +25,7 @@ static CGRect textLabelFrameWithHaveDate;
 @end
 
 @implementation GanUnComplateTableViewCell{
-    UIImageView *_editClockImgView;
+    UIImageView *_editRemindImgView;
     //使用iconFont，高保真
     UILabel *_remindClockImg;
     UILabel *_remindTxt;
@@ -139,9 +140,9 @@ static CGRect textLabelFrameWithHaveDate;
 - (void)keyboardEnter:(id)sender{
     UITextField *tf = sender;
     if([GanStringUtil isBlank:tf.text]){
-        _editClockImgView.hidden = YES;
+        _editRemindImgView.hidden = YES;
     }else{
-        _editClockImgView.hidden = NO;
+        _editRemindImgView.hidden = NO;
     }
 }
 
@@ -161,7 +162,7 @@ static CGRect textLabelFrameWithHaveDate;
 - (void)editHandler:(UIGestureRecognizer *)recognizer{
     //如果双击的位置是clockImg的为止，则不进行编辑
     CGPoint touchPoint = [recognizer locationInView:self];
-    BOOL isTouchImgView = CGRectContainsPoint(_editClockImgView.frame, touchPoint);
+    BOOL isTouchImgView = CGRectContainsPoint(_editRemindImgView.frame, touchPoint);
     if(isTouchImgView){
         return;
     }
@@ -178,10 +179,10 @@ static CGRect textLabelFrameWithHaveDate;
     }
     _contentEditTxt.hidden = NO;
     self.textLabel.hidden = YES;
-    _editClockImgView.hidden = YES;
+    _editRemindImgView.hidden = YES;
     
     if(![GanStringUtil isBlank:_contentEditTxt.text]){
-        _editClockImgView.hidden = NO;
+        _editRemindImgView.hidden = NO;
     }
     [_contentEditTxt becomeFirstResponder];
     if([self.delegate respondsToSelector:@selector(focusCell)]){
@@ -193,21 +194,21 @@ static CGRect textLabelFrameWithHaveDate;
 #pragma mark addClockIcon
 - (void)addEditClockIcon{
     UIImage *clockImg = [UIImage imageNamed:@"clock"];
-    _editClockImgView = [[UIImageView alloc]initWithImage:clockImg];
-    CGRect frame = _editClockImgView.frame;
+    _editRemindImgView = [[UIImageView alloc]initWithImage:clockImg];
+    CGRect frame = _editRemindImgView.frame;
     frame.origin = CGPointMake(UI_SCREEN_WIDTH - 30, (44 - CGRectGetHeight(frame))/2);
-    _editClockImgView.frame = frame;
-    _editClockImgView.hidden = YES;
+    _editRemindImgView.frame = frame;
+    _editRemindImgView.hidden = YES;
     
-    [self.contentView addSubview:_editClockImgView];
+    [self.contentView addSubview:_editRemindImgView];
 }
 
 - (void)addClockIconSingleTapEvent{
-    _editClockImgView.userInteractionEnabled = YES;
+    _editRemindImgView.userInteractionEnabled = YES;
     UITapGestureRecognizer *clockTapGestureGecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(editDateAction:)];
     clockTapGestureGecognizer.numberOfTapsRequired = 1;
     clockTapGestureGecognizer.numberOfTouchesRequired = 1;
-    [_editClockImgView addGestureRecognizer:clockTapGestureGecognizer];
+    [_editRemindImgView addGestureRecognizer:clockTapGestureGecognizer];
 }
 
 - (void)editDateAction:(id)sender{
@@ -217,6 +218,9 @@ static CGRect textLabelFrameWithHaveDate;
     _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
     [self hideKeyboard:self];
+    
+    [MobClick event:@"remind"];
+    
     if([self.delegate respondsToSelector:@selector(showDatePickerView:)]){
         [self.delegate showDatePickerView:self.data.remindDate ? : [[NSDate alloc] initWithTimeInterval:60 sinceDate:[NSDate date]]];
     }
@@ -251,10 +255,10 @@ static CGRect textLabelFrameWithHaveDate;
     
     _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
-    _editClockImgView.hidden = YES;
+    _editRemindImgView.hidden = YES;
     
     if(selected){
-        _editClockImgView.hidden = NO;
+        _editRemindImgView.hidden = NO;
         //新增行，自动进入编辑模式
         if([self.data.content isEqualToString:@""]){
             [self beginEdit];
