@@ -85,7 +85,9 @@
     NSString *path = [self fileName];
     DLog(@"readData   %@",path);
     NSData *saveData = [[NSData alloc]initWithContentsOfFile:path];
-    _datas=[NSKeyedUnarchiver unarchiveObjectWithData:saveData];
+    if(saveData){
+        _datas = [NSKeyedUnarchiver unarchiveObjectWithData:saveData];
+    }
 }
 
 - (void)saveData{

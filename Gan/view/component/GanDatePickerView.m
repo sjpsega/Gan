@@ -66,11 +66,16 @@ static const CGFloat DatePickerH = 200.0f;
 
 #pragma mark - toolBar
 - (void)addToolBar{
-    _toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, _selfViewH - ToolBarH - DatePickerH, _selfViewW, ToolBarH)];
+    _toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0.0f, _selfViewH - ToolBarH - DatePickerH, _selfViewW, ToolBarH)];
     UIBarButtonItem *removeBtn = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"removeLabel", @"Remove") style:UIBarButtonItemStylePlain target:self action:@selector(removeHandler)];
-    UIBarButtonItem * spaceBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem : UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem * spaceBtn1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem : UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UILabel *lbl = [[UILabel alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, ToolBarH)];
+    lbl.textAlignment = NSTextAlignmentCenter;
+    lbl.text = NSLocalizedString(@"remind", @"Remind");
+    UIBarButtonItem *remindLbl = [[UIBarButtonItem alloc] initWithCustomView:lbl];
+    UIBarButtonItem * spaceBtn2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem : UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *confirmBtn = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"confirmLabel", @"Done") style:UIBarButtonItemStylePlain target:self action:@selector(confirmHandler)];
-    _toolBar.items = @[removeBtn, spaceBtn, confirmBtn];
+    _toolBar.items = @[removeBtn, spaceBtn1, remindLbl, spaceBtn2, confirmBtn];
     [self addSubview:_toolBar];
 }
 

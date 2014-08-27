@@ -34,3 +34,5 @@ removeLabel = "Remove";
 yesterday = "yesterday";
 today = "today";
 tomorrow = "tomorrow";
+
+remind = "Remind";
