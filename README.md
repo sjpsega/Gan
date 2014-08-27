@@ -6,7 +6,7 @@
 * 添加操作音效
 
 ## Thanks
-[MCSwipeTableViewCell](https://github.com/alikaragoz/MCSwipeTableViewCell) 
+[MCSwipeTableViewCell](https://github.com/alikaragoz/MCSwipeTableViewCell)
 
 
 ## Log
@@ -27,13 +27,18 @@
 * 修复数据保存 bug
 
 ### 1.3.2
-* 修复‘已完成’数据显示错误 
+* 修复‘已完成’数据显示错误
 * 视觉优化
 
-### 1.4 developing
-* task 设置时间提醒
-* task 反馈信息
-* task 新功能提醒
+### 1.4
+* 设置时间提醒
+
+### 1.4.1
+* 添加"提醒"，给用户明确提示
+
+## feature
+* 用户反馈
+* 新功能提醒
 
 ## bug
 
