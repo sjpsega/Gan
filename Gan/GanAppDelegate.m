@@ -12,34 +12,63 @@
 #import "MobClick.h"
 #import "GanUnComplateVC.h"
 #import "GanComplateVC.h"
-#import "Global_ENUM.h"
+#import "GanConstants.h"
+#import "GanUnComplateTableViewCell.h"
+#import "GanInit.h"
+
 #define UMENG_APPKEY @"526b6a1d56240b395506cbd5"
+
+@interface GanAppDelegate()<UITabBarControllerDelegate>
+
+@end
 
 @implementation GanAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     //友盟统计分析
-    [MobClick setLogEnabled:NO];
-    [MobClick startWithAppkey:UMENG_APPKEY];
-
+    [MobClick setLogEnabled:YES];
+    #if !DEBUG
+        [MobClick setLogEnabled:NO];
+        [MobClick startWithAppkey:UMENG_APPKEY];
+    #endif
     //友盟升级提醒
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [MobClick setAppVersion:version];
+    [MobClick setAppVersion:APP_VERSION];
     [MobClick checkUpdate];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     GanUnComplateVC *unComplateVC = [[GanUnComplateVC alloc] init];
     GanComplateVC *complateVC = [[GanComplateVC alloc] init];
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = @[unComplateVC,complateVC];
+    tabBarController.viewControllers = @[unComplateVC, complateVC];
+    tabBarController.delegate = self;
     self.window.rootViewController = tabBarController;
     if(SystemVersion_floatValue >= 7.0){
         tabBarController.tabBar.translucent = NO;
     }
     [self.window makeKeyAndVisible];
+    [GanInit init];
     return YES;
+}
+
+#pragma mark implement UITabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    GanBaseVC *vc = (GanBaseVC *)viewController;
+    [vc didSelectThisVC];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if ([notification.userInfo[@"type"] isEqualToString:GAN_LOCAL_NOTIFY_TYPE]) {
+        //判断应用程序当前的运行状态，如果是激活状态，则进行提醒，否则不提醒
+        if (application.applicationState == UIApplicationStateActive) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alertTitle", @"Alert")
+                                                            message:notification.alertBody
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:notification.alertAction, nil];
+            [alert show];
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -72,7 +101,7 @@
 }
 
 -(void)setApplicationIconBadgeNumber{
-    NSInteger unCompleteDataCount = [[[GanDataManager getInstance] getUnCompletedData] count];
+    NSInteger unCompleteDataCount = [[[GanDataManager sharedInstance] unCompletedData] count];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:unCompleteDataCount];
 }
 

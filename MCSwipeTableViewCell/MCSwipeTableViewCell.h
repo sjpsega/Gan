@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GanTableViewDelegate.h"
+#import "GanTableViewProtocol.h"
 @class MCSwipeTableViewCell;
 
 //@protocol MCSwipeTableViewCellDelegate <NSObject>
@@ -30,7 +30,7 @@
 
 @interface MCSwipeTableViewCell : UITableViewCell
 
-@property (nonatomic, assign) id <GanTableViewDelegate> delegate;
+@property (nonatomic, assign) id <GanTableViewProtocol> delegate;
 
 @property (nonatomic, copy) NSString *firstIconName;
 @property (nonatomic, copy) NSString *secondIconName;

@@ -20,7 +20,7 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UIImageView *slidingImageView;
-@property (nonatomic, strong) NSString *currentImageName;
+@property (nonatomic, copy) NSString *currentImageName;
 @property (nonatomic, strong) UIView *colorIndicatorView;
 
 @end
@@ -88,7 +88,7 @@ secondStateIconName:(NSString *)secondIconName
     
     _colorIndicatorView = [[UIView alloc] initWithFrame:self.bounds];
     [_colorIndicatorView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
-    [_colorIndicatorView setBackgroundColor:(self.defaultColor ? self.defaultColor : [UIColor clearColor])];
+    [_colorIndicatorView setBackgroundColor:(self.defaultColor ? : [UIColor clearColor])];
     [self insertSubview:_colorIndicatorView atIndex:0];
     
     _slidingImageView = [[UIImageView alloc] init];
@@ -116,6 +116,10 @@ secondStateIconName:(NSString *)secondIconName
     _modeForState2 = MCSwipeTableViewCellModeNone;
     _modeForState3 = MCSwipeTableViewCellModeNone;
     _modeForState4 = MCSwipeTableViewCellModeNone;
+}
+
+- (void)dealloc{
+    _panGestureRecognizer.delegate = nil;
 }
 
 #pragma mark - Setter
@@ -163,9 +167,6 @@ secondStateIconName:(NSString *)secondIconName
 #pragma mark - Handle Gestures
 
 - (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)gesture {
-    
-    //拖动开始，设置select为NO
-    [self setSelected:NO animated:NO];
     
     // The user does not want you to be dragged!
     if (!_shouldDrag) return;
@@ -233,6 +234,8 @@ secondStateIconName:(NSString *)secondIconName
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer class] == [UIPanGestureRecognizer class]) {
+        //拖动开始，设置select为NO
+        [self setSelected:NO animated:NO];
         
         UIPanGestureRecognizer *g = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint point = [g velocityInView:self];
@@ -334,7 +337,7 @@ secondStateIconName:(NSString *)secondIconName
     else if (percentage <= -_secondTrigger)
         color = _fourthColor;
     else
-        color = self.defaultColor ? self.defaultColor : [UIColor clearColor];
+        color = self.defaultColor ? : [UIColor clearColor];
     
     return color;
 }
