@@ -26,6 +26,8 @@ static CGRect textLabelFrameWithHaveDate;
 
 @implementation GanUnComplateTableViewCell{
     UIImageView *_editRemindImgView;
+    //editRemindImg的作用范围View，扩大原本的作用范围
+    UIView *_editRemindImgEffectView;
     //使用iconFont，高保真
     UILabel *_remindClockImg;
     UILabel *_remindTxt;
@@ -121,7 +123,6 @@ static CGRect textLabelFrameWithHaveDate;
     _contentEditTxt = [[UITextField alloc]init];
     _contentEditTxt.frame = CGRectMake(PaddingLeft, 0, UI_SCREEN_WIDTH - PaddingLeft, GAN_CELL_HEIGHT);
     _contentEditTxt.font = [UIFont fontWithName:@"Arial" size:18.0];
-//    _contentEditTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _contentEditTxt.returnKeyType = UIReturnKeyDone;
     [_contentEditTxt addTarget:self action:@selector(keyboardDoneClick:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [_contentEditTxt addTarget:self action:@selector(keyboardEnter:) forControlEvents:UIControlEventEditingChanged];
@@ -141,8 +142,10 @@ static CGRect textLabelFrameWithHaveDate;
     UITextField *tf = sender;
     if([GanStringUtil isBlank:tf.text]){
         _editRemindImgView.hidden = YES;
+        _editRemindImgEffectView.hidden = YES;
     }else{
         _editRemindImgView.hidden = NO;
+        _editRemindImgEffectView.hidden = NO;
     }
 }
 
@@ -162,7 +165,7 @@ static CGRect textLabelFrameWithHaveDate;
 - (void)editHandler:(UIGestureRecognizer *)recognizer{
     //如果双击的位置是clockImg的为止，则不进行编辑
     CGPoint touchPoint = [recognizer locationInView:self];
-    BOOL isTouchImgView = CGRectContainsPoint(_editRemindImgView.frame, touchPoint);
+    BOOL isTouchImgView = CGRectContainsPoint(_editRemindImgEffectView.frame, touchPoint);
     if(isTouchImgView){
         return;
     }
@@ -180,9 +183,11 @@ static CGRect textLabelFrameWithHaveDate;
     _contentEditTxt.hidden = NO;
     self.textLabel.hidden = YES;
     _editRemindImgView.hidden = YES;
+    _editRemindImgEffectView.hidden = YES;
     
     if(![GanStringUtil isBlank:_contentEditTxt.text]){
         _editRemindImgView.hidden = NO;
+        _editRemindImgEffectView.hidden = NO;
     }
     [_contentEditTxt becomeFirstResponder];
     if([self.delegate respondsToSelector:@selector(focusCell)]){
@@ -201,14 +206,21 @@ static CGRect textLabelFrameWithHaveDate;
     _editRemindImgView.hidden = YES;
     
     [self.contentView addSubview:_editRemindImgView];
+    
+    //扩大EditClockIcon的作用范围
+    CGRect originRect = _editRemindImgView.frame;
+    CGRect increaseRect = CGRectMake(CGRectGetMinX(originRect) - 7, CGRectGetMinY(originRect) - 7, CGRectGetWidth(originRect) + 14, CGRectGetHeight(originRect) + 14);
+    _editRemindImgEffectView = [[UIView alloc]initWithFrame:increaseRect];
+    _editRemindImgEffectView.hidden = YES;
+    [self.contentView addSubview:_editRemindImgEffectView];
 }
 
 - (void)addClockIconSingleTapEvent{
-    _editRemindImgView.userInteractionEnabled = YES;
+    _editRemindImgEffectView.userInteractionEnabled = YES;
     UITapGestureRecognizer *clockTapGestureGecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(editDateAction:)];
     clockTapGestureGecognizer.numberOfTapsRequired = 1;
     clockTapGestureGecognizer.numberOfTouchesRequired = 1;
-    [_editRemindImgView addGestureRecognizer:clockTapGestureGecognizer];
+    [_editRemindImgEffectView addGestureRecognizer:clockTapGestureGecognizer];
 }
 
 - (void)editDateAction:(id)sender{
@@ -256,9 +268,11 @@ static CGRect textLabelFrameWithHaveDate;
     _contentEditTxt.hidden = YES;
     self.textLabel.hidden = NO;
     _editRemindImgView.hidden = YES;
+    _editRemindImgEffectView.hidden = YES;
     
     if(selected){
         _editRemindImgView.hidden = NO;
+        _editRemindImgEffectView.hidden = NO;
         //新增行，自动进入编辑模式
         if([self.data.content isEqualToString:@""]){
             [self beginEdit];
