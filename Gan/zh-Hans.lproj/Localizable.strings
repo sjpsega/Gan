@@ -12,6 +12,7 @@ unComplateItem1 = "右上角'+'按钮，添加新任务";
 unComplateItem2 = "双击编辑任务";
 unComplateItem3 = "任务左拖动，完成任务";
 unComplateItem4 = "任务右拖动，删除任务";
+unComplateItem5 = "单击任务右方的图标，设置任务提醒";
 
 complateItem1 = "任务左拖动，重新加入任务列表";
 complateItem2 = "任务右拖动，删除任务";

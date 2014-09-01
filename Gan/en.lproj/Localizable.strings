@@ -12,6 +12,7 @@ unComplateItem1 = "click '+' button to add new task";
 unComplateItem2 = "double click to edit task";
 unComplateItem3 = "swipe task left to complete it";
 unComplateItem4 = "swipe task right to delete it";
+unComplateItem5 = "click icon at right side to remind";
 
 complateItem1 = "swipe task left to set it incomplete";
 complateItem2 = "swipe task right to delete it";

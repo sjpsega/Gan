@@ -119,7 +119,8 @@
 
 - (NSMutableArray *)returnInitData{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:
-                    @[[[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem4", @"swipe task right to delete it")],
+                    @[[[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem5", @"click icon at right side to remind")],
+                      [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem4", @"swipe task right to delete it")],
                       [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem3", @"swipe task left to complete it")],
                       [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem2", @"double click to edit task")],
                       [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem1", @"click '+' button to add new task")]]];

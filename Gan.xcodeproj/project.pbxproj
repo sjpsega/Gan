@@ -468,8 +468,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jianping shen (K5VFH2E7N6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jianping shen (K5VFH2E7N6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jianping shen (QFX23S23N7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianping shen (QFX23S23N7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -486,8 +486,8 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AB194426-1152-4E62-86F3-AF3E446F3237";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AB194426-1152-4E62-86F3-AF3E446F3237";
+				PROVISIONING_PROFILE = "667f2d53-ebf6-4976-b064-041388184f77";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "667f2d53-ebf6-4976-b064-041388184f77";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
@@ -498,8 +498,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jianping shen (K5VFH2E7N6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jianping shen (K5VFH2E7N6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jianping shen (QFX23S23N7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianping shen (QFX23S23N7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -519,8 +519,8 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AB194426-1152-4E62-86F3-AF3E446F3237";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AB194426-1152-4E62-86F3-AF3E446F3237";
+				PROVISIONING_PROFILE = "667f2d53-ebf6-4976-b064-041388184f77";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "667f2d53-ebf6-4976-b064-041388184f77";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};

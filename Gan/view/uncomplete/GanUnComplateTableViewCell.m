@@ -163,7 +163,7 @@ static CGRect textLabelFrameWithHaveDate;
 }
 
 - (void)editHandler:(UIGestureRecognizer *)recognizer{
-    //如果双击的位置是clockImg的为止，则不进行编辑
+    //如果双击的位置是clockImg的位置，则不进行编辑
     CGPoint touchPoint = [recognizer locationInView:self];
     BOOL isTouchImgView = CGRectContainsPoint(_editRemindImgEffectView.frame, touchPoint);
     if(isTouchImgView){
