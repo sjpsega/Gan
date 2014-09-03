@@ -60,7 +60,9 @@ static CGRect textLabelFrameWithHaveDate;
         DLog(@"Locale: %@ -- %@ -- %@",[[NSLocale currentLocale] localeIdentifier],[[NSLocale systemLocale]localeIdentifier],[NSLocale preferredLanguages]);
         
         [dateFormatter setDateFormat:@"dd/MM HH:mm ccc"];
-        if([[[NSLocale currentLocale]localeIdentifier] rangeOfString:@"zh-Hans"].location != NSNotFound || [[[NSLocale currentLocale]localeIdentifier] rangeOfString:@"zh-Hant"].location != NSNotFound){
+        
+        NSString *localeIdentifierLowercase = [[[NSLocale currentLocale]localeIdentifier] lowercaseString];
+        if([localeIdentifierLowercase rangeOfString:@"zh_cn"].location != NSNotFound || [localeIdentifierLowercase rangeOfString:@"zh_tw"].location != NSNotFound){
             [dateFormatter setDateFormat:@"MM-dd HH:mm ccc"];
         }
         
