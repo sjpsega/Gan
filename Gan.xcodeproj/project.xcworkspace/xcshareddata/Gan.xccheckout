@@ -10,29 +10,29 @@
 	<string>Gan</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>72BFBA11-42BA-4935-910F-CDB4DB0B2D3F</key>
+		<key>E98AECC385C75735173A1F1B1F9240C6A5DDEA24</key>
 		<string>ssh://github.com/sjpsega/Gan.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Gan.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>72BFBA11-42BA-4935-910F-CDB4DB0B2D3F</key>
+		<key>E98AECC385C75735173A1F1B1F9240C6A5DDEA24</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/sjpsega/Gan.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>72BFBA11-42BA-4935-910F-CDB4DB0B2D3F</string>
+	<string>E98AECC385C75735173A1F1B1F9240C6A5DDEA24</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>72BFBA11-42BA-4935-910F-CDB4DB0B2D3F</string>
+			<string>E98AECC385C75735173A1F1B1F9240C6A5DDEA24</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Gan</string>
 		</dict>

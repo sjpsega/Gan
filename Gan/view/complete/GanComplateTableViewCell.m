@@ -39,7 +39,6 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 
 - (void)dealloc{
     [self clear];
-    self.data = nil;
 }
 
 - (void)clear{

@@ -45,4 +45,8 @@
 - (void)setRemindDate:(NSDate *)date{
     
 }
+
+- (void)dealloc{
+    _data = nil;
+}
 @end

@@ -83,7 +83,6 @@ static CGRect textLabelFrameWithHaveDate;
 
 - (void)dealloc{
     [self clear];
-    self.data = nil;
 }
 
 - (void)clear{
@@ -283,6 +282,7 @@ static CGRect textLabelFrameWithHaveDate;
         //cell失去焦点，保存编辑数据
         self.textLabel.text = _contentEditTxt.text;
         [self setDataContent:_contentEditTxt.text];
+        _contentEditTxt.text = @"";
         [self hideKeyboard:self];
     }
     [self changeStateForRemindDate];
@@ -328,6 +328,7 @@ static CGRect textLabelFrameWithHaveDate;
         _remindClockImg.hidden = YES;
     }
     [self setNeedsDisplay];
+    [self layoutIfNeeded];
     [self setNeedsLayout];
 }
 
