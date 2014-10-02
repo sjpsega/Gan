@@ -43,7 +43,15 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 
 - (void)clear{
     if(self.data){
-        [self.data removeObserver:self forKeyPath:@"isCompelete"];
+        @try {
+            [self.data removeObserver:self forKeyPath:@"isCompelete"];
+        }
+        @catch (NSException *exception) {
+            DLog(@"exception:%@",exception);
+        }
+        @finally {
+            
+        }
     }
 }
 

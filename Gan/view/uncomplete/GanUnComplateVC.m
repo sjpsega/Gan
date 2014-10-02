@@ -235,7 +235,7 @@
         }
         //删除
         else if(state == MCSwipeTableViewCellState4){
-            [[GanLocalNotificationManager sharedInstance]cancelLocalNotify:data];
+            [[GanLocalNotificationManager sharedInstance] cancelLocalNotify:data];
             [self.dataManager removeData:data];
             self.dataSource = [self.dataManager unCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];

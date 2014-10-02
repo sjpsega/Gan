@@ -87,8 +87,17 @@ static CGRect textLabelFrameWithHaveDate;
 
 - (void)clear{
     if(self.data){
-        [self.data removeObserver:self forKeyPath:@"remindDate"];
-        [self.data removeObserver:self forKeyPath:@"isCompelete"];
+        @try {
+            [self.data removeObserver:self forKeyPath:@"remindDate"];
+            [self.data removeObserver:self forKeyPath:@"isCompelete"];
+        }
+        @catch (NSException *exception) {
+            DLog(@"exception:%@",exception);
+        }
+        @finally {
+            
+        }
+        
     }
 }
 //- (void)didReceiveMemoryWarning
@@ -266,10 +275,7 @@ static CGRect textLabelFrameWithHaveDate;
     //去除底色，否则默认是白色...
     self.detailTextLabel.backgroundColor = [UIColor clearColor];
     
-    _contentEditTxt.hidden = YES;
-    self.textLabel.hidden = NO;
-    _editRemindImgView.hidden = YES;
-    _editRemindImgEffectView.hidden = YES;
+    [self resetElementsHidden];
     
     if(selected){
         _editRemindImgView.hidden = NO;
@@ -282,10 +288,19 @@ static CGRect textLabelFrameWithHaveDate;
         //cell失去焦点，保存编辑数据
         self.textLabel.text = _contentEditTxt.text;
         [self setDataContent:_contentEditTxt.text];
-        _contentEditTxt.text = @"";
+        //清空_contentEditTxt数据，防止触发keyboardEnter，引起状态判断问题
+//        _contentEditTxt.text = @"";
         [self hideKeyboard:self];
+        [self resetElementsHidden];
     }
     [self changeStateForRemindDate];
+}
+
+- (void)resetElementsHidden{
+    _contentEditTxt.hidden = YES;
+    self.textLabel.hidden = NO;
+    _editRemindImgView.hidden = YES;
+    _editRemindImgEffectView.hidden = YES;
 }
 
 - (void)setDataContent:(NSString *)content{
@@ -328,7 +343,6 @@ static CGRect textLabelFrameWithHaveDate;
         _remindClockImg.hidden = YES;
     }
     [self setNeedsDisplay];
-    [self layoutIfNeeded];
     [self setNeedsLayout];
 }
 
@@ -360,9 +374,9 @@ static CGRect textLabelFrameWithHaveDate;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if (context == (__bridge void *)(self)) {
-        [self changeStateForRemindDate];
-        [[GanLocalNotificationManager sharedInstance]cancelLocalNotify:self.data];
+        [[GanLocalNotificationManager sharedInstance] cancelLocalNotify:self.data];
         if([keyPath isEqualToString:@"remindDate"]){
+            [self changeStateForRemindDate];
             DLog(@"%@,%@,%d",self.data.remindDate,[NSDate date],[self.data.remindDate compare:[NSDate date]]);
             if([self.data.remindDate compare:[NSDate date]] == NSOrderedDescending){
                 [[GanLocalNotificationManager sharedInstance] registeredLocalNotify:self.data];
