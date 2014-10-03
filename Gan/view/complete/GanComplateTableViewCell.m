@@ -44,7 +44,7 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 - (void)clear{
     if(self.data){
         @try {
-            [self.data removeObserver:self forKeyPath:@"isCompelete"];
+            [self.data removeObserver:self forKeyPath:@"isComplete"];
         }
         @catch (NSException *exception) {
             DLog(@"exception:%@",exception);
@@ -58,12 +58,11 @@ static const NSString *ReuseIdentifier = @"GanComplateTableViewCellIdentifier";
 - (void)setData:(GanDataModel *)data{
     [self clear];
     [super setData:data];
-    [self.data addObserver:self forKeyPath:@"isCompelete" options:NSKeyValueObservingOptionNew context:(__bridge void *)(self)];
+    [self.data addObserver:self forKeyPath:@"isComplete" options:NSKeyValueObservingOptionNew context:(__bridge void *)(self)];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if (context == (__bridge void *)(self)) {
-        //空实现，只需要取消本地提醒即可
         if([keyPath isEqualToString:@"isComplete"]){
             if([self.data.remindDate compare:[NSDate date]] == NSOrderedDescending){
                 [[GanLocalNotificationManager sharedInstance] registeredLocalNotify:self.data];

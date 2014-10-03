@@ -49,4 +49,8 @@
 - (void)dealloc{
     _data = nil;
 }
+
+- (void)clear{
+    
+}
 @end

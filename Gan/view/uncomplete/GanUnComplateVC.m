@@ -222,11 +222,12 @@
         DLog(@"error!!!");
         return;
     }
+    GanUnComplateTableViewCell *currentCell = ((GanUnComplateTableViewCell *)cell);
     if (mode == MCSwipeTableViewCellModeExit) {
-        GanDataModel *data = ((GanUnComplateTableViewCell *)cell).data;
+        GanDataModel *data = currentCell.data;
         //完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
-            data.isCompelete = YES;
+            data.isComplete = YES;
             self.dataSource = [self.dataManager unCompletedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [self.dataManager saveData];
@@ -243,6 +244,7 @@
 
             [MobClick event:@"remove"];
         }
+        [currentCell clear];
     }
 
 }
@@ -286,7 +288,8 @@
     if(_datePicker){
         _datePicker.hidden = YES;
     }
-    [self.tableView setContentOffset:_savedContentOffset animated:YES];
+    _savedContentOffset  = CGPointZero;
+    [self.tableView setContentOffset:_savedContentOffset animated:NO];
 }
 
 #pragma mark UIPickerView delegate & dataSource

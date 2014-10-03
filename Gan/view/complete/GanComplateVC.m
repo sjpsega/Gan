@@ -160,11 +160,12 @@
         DLog(@"error!!!");
         return;
     }
+    GanComplateTableViewCell *currentCell = ((GanComplateTableViewCell *)cell);
     if (mode == MCSwipeTableViewCellModeExit) {
-        GanDataModel *data = ((GanComplateTableViewCell *)cell).data;
+        GanDataModel *data = currentCell.data;
         //变成未完成
         if(state == MCSwipeTableViewCellState1 || state == MCSwipeTableViewCellState2){
-            data.isCompelete = NO;
+            data.isComplete = NO;
             self.dataSource = [self.dataManager completedData];
             [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
             [self.dataManager saveData];
@@ -181,6 +182,7 @@
             
             [MobClick event:@"remove"];
         }
+        [currentCell clear];
     }
 }
 

@@ -21,7 +21,7 @@
 
 - (void)registeredLocalNotify:(GanDataModel *)model{
     DLog(@"%@,%@,%d",model.remindDate,[NSDate date],[model.remindDate compare:[NSDate date]]);
-    if(!model.remindDate || [model.remindDate compare:[NSDate date]] == NSOrderedAscending || model.isCompelete){
+    if(!model.remindDate || [model.remindDate compare:[NSDate date]] == NSOrderedAscending || model.isComplete){
         [self cancelLocalNotify:model];
         return;
     }

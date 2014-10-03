@@ -16,7 +16,7 @@
         _content = @"";
         _modifyDate = [NSDate date];
         _remindDate = nil;
-        _isCompelete = NO;
+        _isComplete = NO;
         _isNew = YES;
     }
     return self;
@@ -33,8 +33,8 @@
     _isNew = NO;
 }
 
-- (void)setIsCompelete:(BOOL)isCompelete{
-    _isCompelete = isCompelete;
+- (void)setisComplete:(BOOL)isComplete{
+    _isComplete = isComplete;
     _modifyDate = [NSDate date];
 }
 
@@ -44,7 +44,7 @@
     [aCoder encodeObject:_content forKey:@"content"];
     [aCoder encodeObject:_modifyDate forKey:@"date"];
     [aCoder encodeObject:_remindDate forKey:@"remindDate"];
-    [aCoder encodeBool:_isCompelete forKey:@"isComplate"];
+    [aCoder encodeBool:_isComplete forKey:@"isComplate"];//这里isComplate拼写错误！
     [aCoder encodeBool:_isNew forKey:@"isNew"];
 }
 
@@ -52,7 +52,7 @@
     if(self = [self init]){
         _content = [aDecoder decodeObjectForKey:@"content"];
         _isNew = NO;
-        _isCompelete = [aDecoder decodeBoolForKey:@"isComplate"];
+        _isComplete = [aDecoder decodeBoolForKey:@"isComplate"];
         _uuid = [aDecoder decodeObjectForKey:@"uuid"];
         if(!_uuid){
             _uuid =  [[NSUUID UUID] UUIDString];

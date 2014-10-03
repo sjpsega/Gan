@@ -89,7 +89,7 @@ static CGRect textLabelFrameWithHaveDate;
     if(self.data){
         @try {
             [self.data removeObserver:self forKeyPath:@"remindDate"];
-            [self.data removeObserver:self forKeyPath:@"isCompelete"];
+            [self.data removeObserver:self forKeyPath:@"isComplete"];
         }
         @catch (NSException *exception) {
             DLog(@"exception:%@",exception);
@@ -369,7 +369,7 @@ static CGRect textLabelFrameWithHaveDate;
     [self clear];
     [super setData:data];
     [self.data addObserver:self forKeyPath:@"remindDate" options:NSKeyValueObservingOptionNew context:(__bridge void *)(self)];
-    [self.data addObserver:self forKeyPath:@"isCompelete" options:NSKeyValueObservingOptionNew context:(__bridge void *)(self)];
+    [self.data addObserver:self forKeyPath:@"isComplete" options:NSKeyValueObservingOptionNew context:(__bridge void *)(self)];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -384,7 +384,6 @@ static CGRect textLabelFrameWithHaveDate;
         }
         //空实现，只需要取消本地提醒即可
         if([keyPath isEqualToString:@"isComplete"]){
-            
         }
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

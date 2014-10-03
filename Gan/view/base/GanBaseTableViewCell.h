@@ -12,4 +12,5 @@
 - (void)addLine;
 - (void)setDataValToTxt;
 - (void)setRemindDate:(NSDate *)date;
+- (void)clear;
 @end

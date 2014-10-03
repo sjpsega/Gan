@@ -48,7 +48,7 @@
         [self data];
     }
     NSPredicate *predicate =
-    [NSPredicate predicateWithFormat:@"SELF.isCompelete==YES"];
+    [NSPredicate predicateWithFormat:@"SELF.isComplete==YES"];
     NSArray *arr =
     [_datas filteredArrayUsingPredicate:predicate];
     arr = [self returnSortedArray:arr];
@@ -60,7 +60,7 @@
         [self data];
     }
     NSPredicate *predicate =
-    [NSPredicate predicateWithFormat:@"SELF.isCompelete==NO"];
+    [NSPredicate predicateWithFormat:@"SELF.isComplete==NO"];
     NSArray *arr =
     [_datas filteredArrayUsingPredicate:predicate];
     arr = [self returnSortedArray:arr];
@@ -126,15 +126,15 @@
                       [[GanDataModel alloc]initWithContent:NSLocalizedString(@"unComplateItem1", @"click '+' button to add new task")]]];
     GanDataModel *tempData;
     tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem1", @"swipe task left to set it incomplete")];
-    tempData.isCompelete = YES;
+    tempData.isComplete = YES;
     [arr addObject:tempData];
     
     tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem2", @"swipe task right to delete it")];
-    tempData.isCompelete = YES;
+    tempData.isComplete = YES;
     [arr addObject:tempData];
     
     tempData = [[GanDataModel alloc]initWithContent:NSLocalizedString(@"complateItem3", @"click 'trash' to delete all completed")];
-    tempData.isCompelete = YES;
+    tempData.isComplete = YES;
     [arr addObject:tempData];
     
     return arr;
