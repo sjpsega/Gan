@@ -598,7 +598,7 @@
             startingLineNumber = "22"
             endingLineNumber = "22"
             landmarkName = "-registeredLocalNotify:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -614,7 +614,7 @@
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "-registeredLocalNotify:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1110,7 +1110,7 @@
             startingLineNumber = "54"
             endingLineNumber = "54"
             landmarkName = "-cancelLocalNotify:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1190,7 +1190,7 @@
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "-registeredLocalNotify:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1622,7 +1622,7 @@
             startingLineNumber = "24"
             endingLineNumber = "24"
             landmarkName = "-registeredLocalNotify:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

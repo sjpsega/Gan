@@ -29,6 +29,7 @@
 		4A946FE0199E6150007038A1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A946FDF199E6150007038A1 /* CFNetwork.framework */; };
 		4A946FE2199E6159007038A1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A946FE1199E6159007038A1 /* QuartzCore.framework */; };
 		4AB0398219A8855000C71D6A /* GanDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0398119A8855000C71D6A /* GanDateUtil.m */; };
+		4AC7127C1DBD1B0D001B4043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC7127B1DBD1B0D001B4043 /* LaunchScreen.storyboard */; };
 		4AE36BE719A05A650090CE5F /* GanInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE36BE619A05A650090CE5F /* GanInit.m */; };
 		4AE36BEA19A084720090CE5F /* GanStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE36BE919A084720090CE5F /* GanStringUtil.m */; };
 		4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFDC5AB1944C0DD0054457B /* Images.xcassets */; };
@@ -81,6 +82,7 @@
 		4A954FDC194563C700A34770 /* VersionCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCompare.h; sourceTree = "<group>"; };
 		4AB0398019A8855000C71D6A /* GanDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDateUtil.h; sourceTree = "<group>"; };
 		4AB0398119A8855000C71D6A /* GanDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDateUtil.m; sourceTree = "<group>"; };
+		4AC7127B1DBD1B0D001B4043 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AE36BE519A05A650090CE5F /* GanInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanInit.h; sourceTree = "<group>"; };
 		4AE36BE619A05A650090CE5F /* GanInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanInit.m; sourceTree = "<group>"; };
 		4AE36BE819A084720090CE5F /* GanStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanStringUtil.h; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		1842AF9F176CA9A200A1ED20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4AC7127B1DBD1B0D001B4043 /* LaunchScreen.storyboard */,
 				4A211AE819A442AE00045E0C /* icomoon.ttf */,
 				184EF9B117FFEDDA00827FF9 /* Localizable.strings */,
 				1842AFA0176CA9A200A1ED20 /* Gan-Info.plist */,
@@ -345,6 +348,7 @@
 				1842AFA3176CA9A200A1ED20 /* InfoPlist.strings in Resources */,
 				4A211AE919A442AE00045E0C /* icomoon.ttf in Resources */,
 				4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */,
+				4AC7127C1DBD1B0D001B4043 /* LaunchScreen.storyboard in Resources */,
 				184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,7 +430,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "667f2d53-ebf6-4976-b064-041388184f77";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "667f2d53-ebf6-4976-b064-041388184f77";
@@ -453,7 +457,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "667f2d53-ebf6-4976-b064-041388184f77";
