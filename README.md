@@ -4,6 +4,7 @@
 * 反馈信息，推荐机制
 * 数据存储验证
 * 添加操作音效
+* iOS9 内容搜索支持
 
 ## Thanks
 [MCSwipeTableViewCell](https://github.com/alikaragoz/MCSwipeTableViewCell)
