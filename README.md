@@ -1,5 +1,7 @@
 # Gan
 
+[![Build Status](https://travis-ci.org/sjpsega/Gan.svg?branch=test-travis)](https://travis-ci.org/sjpsega/Gan)
+
 ## To Do
 * 反馈信息，推荐机制
 * 数据存储验证
