@@ -1,5 +1,5 @@
 language: objective-c
 osx_image: xcode8
-language: objective-c
-xcode_project: Gan.xcodeproj # path to your xcodeproj folder
-xcode_scheme: Gan
+script:
+    - xcodebuild clean -project Gan.xcodeproj -scheme Gan | xcpretty
+    - xcodebuild test -project Gan.xcodeproj -scheme Gan -destination 'platform=iOS Simulator,name=iPhone 5s,OS=10.0' | xcpretty
