@@ -30,6 +30,7 @@
 		4A946FE2199E6159007038A1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A946FE1199E6159007038A1 /* QuartzCore.framework */; };
 		4AB0398219A8855000C71D6A /* GanDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0398119A8855000C71D6A /* GanDateUtil.m */; };
 		4AC7127C1DBD1B0D001B4043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC7127B1DBD1B0D001B4043 /* LaunchScreen.storyboard */; };
+		4AC712841DBD2089001B4043 /* GanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC712831DBD2089001B4043 /* GanTests.m */; };
 		4AE36BE719A05A650090CE5F /* GanInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE36BE619A05A650090CE5F /* GanInit.m */; };
 		4AE36BEA19A084720090CE5F /* GanStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE36BE919A084720090CE5F /* GanStringUtil.m */; };
 		4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFDC5AB1944C0DD0054457B /* Images.xcassets */; };
@@ -37,6 +38,16 @@
 		58B83AE72C28F0D59A2A4288 /* UIColor+GanHEXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B83941C4630E2D92A31D7C /* UIColor+GanHEXColor.m */; };
 		58B83BBC682DB8E66F776406 /* GanDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8384A1C10E8101EA88ED6 /* GanDataModel.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4AC712861DBD2089001B4043 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1842AF8D176CA9A200A1ED20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1842AF94176CA9A200A1ED20;
+			remoteInfo = Gan;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1842AF95176CA9A200A1ED20 /* Gan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +94,9 @@
 		4AB0398019A8855000C71D6A /* GanDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanDateUtil.h; sourceTree = "<group>"; };
 		4AB0398119A8855000C71D6A /* GanDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanDateUtil.m; sourceTree = "<group>"; };
 		4AC7127B1DBD1B0D001B4043 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4AC712811DBD2089001B4043 /* GanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AC712831DBD2089001B4043 /* GanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GanTests.m; sourceTree = "<group>"; };
+		4AC712851DBD2089001B4043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AE36BE519A05A650090CE5F /* GanInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanInit.h; sourceTree = "<group>"; };
 		4AE36BE619A05A650090CE5F /* GanInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanInit.m; sourceTree = "<group>"; };
 		4AE36BE819A084720090CE5F /* GanStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanStringUtil.h; sourceTree = "<group>"; };
@@ -112,6 +126,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AC7127E1DBD2089001B4043 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -120,6 +141,7 @@
 			children = (
 				1879AEDB181BBAB90051735A /* UM */,
 				1842AF97176CA9A200A1ED20 /* Frameworks */,
+				4AC712821DBD2089001B4043 /* GanTests */,
 				1842AF9E176CA9A200A1ED20 /* Gan */,
 				18CF068A178D0AB600F0CD7D /* MCSwipeTableViewCell */,
 				1842AF96176CA9A200A1ED20 /* Products */,
@@ -130,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				1842AF95176CA9A200A1ED20 /* Gan.app */,
+				4AC712811DBD2089001B4043 /* GanTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,6 +270,15 @@
 			path = macros;
 			sourceTree = "<group>";
 		};
+		4AC712821DBD2089001B4043 /* GanTests */ = {
+			isa = PBXGroup;
+			children = (
+				4AC712831DBD2089001B4043 /* GanTests.m */,
+				4AC712851DBD2089001B4043 /* Info.plist */,
+			);
+			path = GanTests;
+			sourceTree = SOURCE_ROOT;
+		};
 		58B831CB86DBC0441D892478 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +339,24 @@
 			productReference = 1842AF95176CA9A200A1ED20 /* Gan.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4AC712801DBD2089001B4043 /* GanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AC712881DBD2089001B4043 /* Build configuration list for PBXNativeTarget "GanTests" */;
+			buildPhases = (
+				4AC7127D1DBD2089001B4043 /* Sources */,
+				4AC7127E1DBD2089001B4043 /* Frameworks */,
+				4AC7127F1DBD2089001B4043 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4AC712871DBD2089001B4043 /* PBXTargetDependency */,
+			);
+			name = GanTests;
+			productName = GanTests;
+			productReference = 4AC712811DBD2089001B4043 /* GanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -319,6 +369,11 @@
 				TargetAttributes = {
 					1842AF94176CA9A200A1ED20 = {
 						DevelopmentTeam = QFX23S23N7;
+					};
+					4AC712801DBD2089001B4043 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1842AF94176CA9A200A1ED20;
 					};
 				};
 			};
@@ -336,6 +391,7 @@
 			projectRoot = "";
 			targets = (
 				1842AF94176CA9A200A1ED20 /* Gan */,
+				4AC712801DBD2089001B4043 /* GanTests */,
 			);
 		};
 /* End PBXProject section */
@@ -350,6 +406,13 @@
 				4AFDC5AC1944C0DD0054457B /* Images.xcassets in Resources */,
 				4AC7127C1DBD1B0D001B4043 /* LaunchScreen.storyboard in Resources */,
 				184EF9AF17FFEDDA00827FF9 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AC7127F1DBD2089001B4043 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +443,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AC7127D1DBD2089001B4043 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AC712841DBD2089001B4043 /* GanTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4AC712871DBD2089001B4043 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1842AF94176CA9A200A1ED20 /* Gan */;
+			targetProxy = 4AC712861DBD2089001B4043 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1842AFA1176CA9A200A1ED20 /* InfoPlist.strings */ = {
@@ -532,6 +611,75 @@
 			};
 			name = Release;
 		};
+		4AC712891DBD2089001B4043 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = GanTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = sjpsega.GanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gan.app/Gan";
+			};
+			name = Debug;
+		};
+		4AC7128A1DBD2089001B4043 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = GanTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = sjpsega.GanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gan.app/Gan";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -552,6 +700,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4AC712881DBD2089001B4043 /* Build configuration list for PBXNativeTarget "GanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AC712891DBD2089001B4043 /* Debug */,
+				4AC7128A1DBD2089001B4043 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
